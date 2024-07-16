@@ -1,0 +1,27 @@
+.product-menu{
+    border-radius: 5px;
+    width: 140px;
+    background-color: rgb(234, 234, 234);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    gap: 5px;
+    cursor: pointer;
+}
+
+.product-menu:hover{
+    background-color: rgb(229, 229, 229);
+}
+
+.product-img{
+    height: 250px;
+    width: 250px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product-img:hover{
+    transition: 0.6s;
+    transform: scale(1.05);
+    opacity: calc(0.9);
+}

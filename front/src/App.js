@@ -15,7 +15,8 @@ function App() {
   const theme = createTheme({
     palette: {
       primary: {
-        main: "#202020"
+        main: "#202020",
+        dull: "#DCDCDC",
       },
       highlight: {
         main: "orangered"
