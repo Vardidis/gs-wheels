@@ -1,6 +1,6 @@
 .product-menu{
     border-radius: 5px;
-    width: 140px;
+    width: 130px;
     background-color: rgb(234, 234, 234);
     display: flex;
     align-items: center;
@@ -24,4 +24,11 @@
     transition: 0.6s;
     transform: scale(1.05);
     opacity: calc(0.9);
+}
+
+.product-img-mob{
+    height: 308px;
+    width: 308px;
+    border-radius: 5px;
+    cursor: pointer;
 }
