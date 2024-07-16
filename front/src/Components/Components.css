@@ -1,0 +1,13 @@
+.infobox{
+    border: 1px solid black;
+    width: 250px;
+    height: 300px;
+    margin-top: 20px;
+    border-radius: 5px;
+}
+
+.infobox img{
+    width: 250px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
