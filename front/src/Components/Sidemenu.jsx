@@ -1,27 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "./Context";
 import logo from '../assets/logo.jpg';
-import Box from '@mui/material/Box';
+import {Box, List, ListItem, ListItemText, Stack, SwipeableDrawer, Drawer, Divider, Select, MenuItem, Modal, TextField, Button } from '@mui/material';
 import HomeIcon from '@mui/icons-material/Home';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemText from '@mui/material/ListItemText';
 import AdjustIcon from '@mui/icons-material/Adjust';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 import AttributionOutlinedIcon from '@mui/icons-material/AttributionOutlined';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { Stack } from "@mui/material";
 import { Link } from 'react-router-dom';
-import SwipeableDrawer from '@mui/material/SwipeableDrawer';
 import { Global } from '@emotion/react';
-import Drawer from '@mui/material/Drawer';
-import Divider from '@mui/material/Divider';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Modal from '@mui/material/Modal';
-import TextField from '@mui/material/TextField';
-import Button from '@mui/material/Button';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 const Sidemenu = () => {
@@ -33,6 +21,22 @@ const Sidemenu = () => {
     const [openModal, setOpenModal] = useState(false);
     const handleOpen = () => setOpenModal(true);
     const handleClose = () => setOpenModal(false);
+
+    // const select = () => {        
+    //     const div = document.getElementsByClassName('menu-list')[0];
+    //     const all_selected = document.getElementsByClassName("selected")[0];
+        
+    //     if(div){            
+    //         if(div.childNodes.length > 0){
+    //             div.childNodes.forEach(element => {
+                    
+    //             });(let index=0; index<all_selected.length; index++){                    
+    //                 all_selected[index].classList.remove("selected");
+    //             }
+    //         }            
+    //         div.classList.toggle("selected");      
+    //     }
+    // }
 
     const handleTheme = (event) => {
       setThemeSelect(event.target.value);
@@ -76,60 +80,51 @@ const Sidemenu = () => {
     if(isDesktop){
         return(
             <>            
-                <Box component="section"
-                    sx={{ 
-                        width: {md: 200, xl: 200},
-                        height: '100vh',
-                        borderRight: '1px solid grey',
-                        boxShadow: "2px 0px 2px -3px black",
-                        backgroundColor: "theme.light",                    
-                    }}>
-                    <Stack 
-                        justifyContent="space-between"
-                        alignItems="center"
-                        height="100vh"
-                    >
-                        <div>
-                            <img src={logo} style={{width: 50, padding: 10, cursor: 'pointer'}}/>
-                        </div>                    
-                        <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
-                            <Link to='/' style={{textDecoration: 'none'}}>                    
-                                <ListItem className="hoverable" sx={{gap: 1}}>
-                                    <HomeIcon sx={{color: "highlight.main"}}/>
-                                    <ListItemText primary="Αρχική" sx={{color: "highlight.main"}}/>
-                                </ListItem>    
-                            </Link>  
-                            <Link to='/services' style={{textDecoration: 'none'}}>     
-                                <ListItem className="hoverable" sx={{gap: 1}}>
-                                    <AdjustIcon sx={{color: "primary.main"}}/>
-                                    <ListItemText primary="Υπηρεσίες" sx={{color: "primary.main"}}/>
-                                </ListItem> 
-                            </Link>    
-                            <Link to='/products' style={{textDecoration: 'none'}}>  
-                                <ListItem className="hoverable" sx={{gap: 1}}>
-                                    <Inventory2OutlinedIcon sx={{color: "primary.main"}}/>
-                                    <ListItemText primary="Προϊόντα" sx={{color: "primary.main"}}/>
-                                </ListItem>     
-                            </Link>
-                            <Link to='/about-us' style={{textDecoration: 'none'}}>  
-                                <ListItem className="hoverable" sx={{gap: 1}}>
-                                    <AttributionOutlinedIcon sx={{color: "primary.main"}}/>
-                                    <ListItemText primary="Σχετικά με εμάς" sx={{color: "primary.main"}}/>
-                                </ListItem> 
-                            </Link>               
-                        </List>
-                        <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                            <ListItem className="hoverable" sx={{gap: 1}} onClick={handleOpen}>
-                                <ChatBubbleOutlineIcon/>
-                                <ListItemText primary="Επικοινωνία"/>
-                            </ListItem>         
-                            <ListItem className="hoverable" sx={{gap: 1}} onClick={toggleDrawerDesk(true)}>
-                                <SettingsIcon/>
-                                <ListItemText primary="Ρυθμίσεις"/>
-                            </ListItem>                    
-                        </List>
-                    </Stack>                   
-                </Box>
+                <Stack 
+                    justifyContent="space-between"
+                    alignItems="center"
+                    height="100vh"
+                >
+                    <div>
+                        <img src={logo} style={{width: 50, padding: 10, cursor: 'pointer'}} alt=""/>
+                    </div>                    
+                    <List id='menu-list' sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+                        <Link to='/' style={{textDecoration: 'none'}}>                    
+                            <ListItem className="hoverable selected" sx={{gap: 1}}>
+                                <HomeIcon/>
+                                <ListItemText primary="Αρχική"/>
+                            </ListItem>    
+                        </Link>  
+                        <Link to='/services' style={{textDecoration: 'none'}}>     
+                            <ListItem className="hoverable" sx={{gap: 1}}>
+                                <AdjustIcon sx={{color: "primary.main"}}/>
+                                <ListItemText primary="Υπηρεσίες" sx={{color: "primary.main"}}/>
+                            </ListItem> 
+                        </Link>    
+                        <Link to='/products' style={{textDecoration: 'none'}}>  
+                            <ListItem className="hoverable" sx={{gap: 1}}>
+                                <Inventory2OutlinedIcon sx={{color: "primary.main"}}/>
+                                <ListItemText primary="Προϊόντα" sx={{color: "primary.main"}}/>
+                            </ListItem>     
+                        </Link>
+                        <Link to='/about-us' style={{textDecoration: 'none'}}>  
+                            <ListItem className="hoverable" sx={{gap: 1}}>
+                                <AttributionOutlinedIcon sx={{color: "primary.main"}}/>
+                                <ListItemText primary="Σχετικά με εμάς" sx={{color: "primary.main"}}/>
+                            </ListItem> 
+                        </Link>               
+                    </List>
+                    <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
+                        <ListItem className="hoverable" sx={{gap: 1}} onClick={handleOpen}>
+                            <ChatBubbleOutlineIcon/>
+                            <ListItemText primary="Επικοινωνία"/>
+                        </ListItem>         
+                        <ListItem className="hoverable" sx={{gap: 1}} onClick={toggleDrawerDesk(true)}>
+                            <SettingsIcon/>
+                            <ListItemText primary="Ρυθμίσεις"/>
+                        </ListItem>                    
+                    </List>
+                </Stack>                   
                 <Drawer
                     anchor={'bottom'}
                     open={openDesk}
@@ -209,7 +204,7 @@ const Sidemenu = () => {
                         alignItems="center"
                         height="93vh"
                     >
-                        <img src={logo} style={{width: 50, padding: 4}}/>
+                        <img src={logo} style={{width: 50, padding: 4}} alt=""/>
                         <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
                             <ListItem sx={{ paddingBottom: 4 }}>
                                 <HomeIcon fontSize="large" sx={{color:"red"}}/>

@@ -1,33 +1,34 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import './Components.css';
+import { Stack } from '@mui/material';
+import { Context } from "./Context";
+import { Link } from 'react-router-dom';
+import Infocard from "./Infocard";
 import bg1 from '../assets/interior3.jpg';
-import {bg2} from '../assets/bgimg2.jpg';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
+import bg2 from '../assets/bgimg2.jpg';
 
 const Infobox = () => {
-
-    return(
-        <Card sx={{ maxWidth: 400, maxHeight: 375 }}>
-            <CardActionArea>
-                <CardMedia
-                    component="img"
-                    height="120"
-                    image={bg1}
-                    alt="green iguana"
-                />
-                <CardContent>
-                    <Typography variant="body2" color="text.primary">
-                        Στη GS Wheelchairs γνωρίζουμε ότι κάθε άτομο είναι διαφορετικό, και οι ανάγκες του ξεχωριστές. Για τον λόγο αυτό ειδικευόμαστε στην κατασκευή προσαρμοσμένων αναπηρικών αμαξιδίων, σχεδιασμένων αποκλειστικά για τις ανάγκες
-                        του κάθε ατόμου.
-                    </Typography>
-                </CardContent>
-            </CardActionArea>
-        </Card>
-    );
+    const {isDesktop} = useContext(Context);
+    if(isDesktop){
+        return(
+            <Stack direction='row' spacing={2} sx={{ justifyContent: "center" }}>
+                <Link to='/products' style={{ textDecoration: 'none' }}>
+                    <Infocard image={bg1}/>
+                </Link>
+                <Link to='/services' style={{ textDecoration: 'none' }}>
+                    <Infocard image={bg2}/>
+                </Link>
+            </Stack>
+        );
+    }else{
+        return(
+            <Stack direction='row' spacing={2} sx={{ justifyContent: "center" }}>
+                <Link to='/products' style={{ textDecoration: 'none' }}>
+                    <Infocard image={bg1}/>
+                </Link>
+            </Stack>
+        )
+    }
 }
 
 export default Infobox;
