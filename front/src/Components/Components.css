@@ -18,7 +18,8 @@
 }
 
 .suc-stories img{
-    width: 200px;
+    min-width: 200px;
+    height: 250px;
     border-radius: 5px;
 }
 
@@ -43,4 +44,13 @@
     padding-bottom: 30px;
     row-gap: 20px;
     gap: 20px;
+}
+
+.partbox:hover{
+    opacity: 0;
+}
+
+.canvas-part:hover{
+    transition: 0.6s;
+    opacity: calc(0.7);
 }

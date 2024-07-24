@@ -146,9 +146,7 @@ const AboutSlider = () => {
                     </Stack>
                 </>}
             </Box>
-        </>
-        
-        
+        </> 
     );
 }
 

@@ -10,6 +10,7 @@ import GetStarted from './Pages/GetStarted.jsx';
 import Products from './Pages/Products.jsx';
 import About from './Pages/About.jsx';
 import Services from './Pages/Services.jsx';
+import Education from './Pages/Education.jsx';
 
 function App() {
   const theme = createTheme({
@@ -26,7 +27,7 @@ function App() {
         success: "#97CC8E",
       },
       theme: {
-        light: "white",
+        light: "rgb(255, 252, 253)",
         dark: "#202020",
       }
     },
@@ -75,9 +76,12 @@ function App() {
           }}>
             <Routes>
               <Route path="/" element={<GetStarted/>}/>
-              <Route path="/services" element={<Services/>}/>
-              <Route path='/products' element={<Products/>}>
-                <Route path=':productid' element={<Products/>}/>
+              <Route path="services" element={<Services/>}/>               
+              <Route path='service' element={<Education/>}>
+                <Route path=':service' element={<Education/>}/>
+              </Route>
+              <Route path='products' element={<Products/>}>
+                <Route path=':productsId' element={<Products/>}/>
               </Route>
               <Route path='/about-us' element={<About/>}/>              
             </Routes>
