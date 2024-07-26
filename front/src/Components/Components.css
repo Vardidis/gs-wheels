@@ -54,3 +54,22 @@
     transition: 0.6s;
     opacity: calc(0.7);
 }
+
+.partbox-img{
+    opacity: 0.4;
+    border-radius: 5px;
+    width: 300px;
+    object-fit: cover;
+}
+
+@media(max-width: 900px){
+    .partbox-img{
+        width: 225px;
+    }
+}
+
+@media(max-width: 600px){
+    .partbox-img{
+        width: 250px;
+    }
+}

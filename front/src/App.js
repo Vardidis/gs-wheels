@@ -11,6 +11,7 @@ import Products from './Pages/Products.jsx';
 import About from './Pages/About.jsx';
 import Services from './Pages/Services.jsx';
 import Education from './Pages/Education.jsx';
+import Product from './Pages/Product.jsx';
 
 function App() {
   const theme = createTheme({
@@ -55,24 +56,15 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Box display="flex" height="100vh">            
-          <Box component="section" sx={{ 
-            width: {lg: '200px', md: '200px', sm: '70px', xs: '70px'},
-            height: '100%',
-            borderRight: '1px solid grey',
-            boxShadow: "2px 0px 2px -3px black",
-            backgroundColor: "theme.light", 
-            flexShrink: 0,
-            position: 'fixed',                   
-          }}>
-            <Sidemenu/>
-          </Box>
+        <Box display="flex" height="100vh">                      
+          <Sidemenu/>
           <Box component="main" sx={{
             flexGrow: 1,
             marginLeft: {lg: '200px', md: '200px', sm: '70px', xs: '70px', xxs: '70px'},
             height: '100vh',
             overflowY: 'auto',
-            overflowX: 'hidden'
+            overflowX: 'hidden',
+            bgcolor: 'rgb(252,252,252)'
           }}>
             <Routes>
               <Route path="/" element={<GetStarted/>}/>
@@ -80,8 +72,9 @@ function App() {
               <Route path='service' element={<Education/>}>
                 <Route path=':service' element={<Education/>}/>
               </Route>
-              <Route path='products' element={<Products/>}>
-                <Route path=':productsId' element={<Products/>}/>
+              <Route path='products' element={<Products/>}/>
+              <Route path='product' element={<Product/>}>
+                <Route path=':productId' element={<Product/>}/>
               </Route>
               <Route path='/about-us' element={<About/>}/>              
             </Routes>

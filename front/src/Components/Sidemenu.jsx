@@ -1,60 +1,35 @@
-import React, { useContext } from "react";
-import { Context } from "./Context";
+import React from "react";
 import logo from '../assets/logo.jpg';
 import {Box, Stack } from '@mui/material';
-import { Global } from '@emotion/react';
 import Menulist from "./Menulist";
 import MenuFooter from "./MenuFooter";
 
 const Sidemenu = () => {
-    const {isDesktop} = useContext(Context);
-
-    if(isDesktop){
-        return(
-            <>            
-                <Stack 
-                    justifyContent="space-between"
-                    alignItems="center"
-                    height="100vh"
-                >
-                    <div>
-                        <img src={logo} style={{width: 50, padding: 10, cursor: 'pointer'}} alt=""/>
-                    </div>                    
-                    <Menulist/>
-                    <MenuFooter/>
-                </Stack>                                                   
-            </>
-        )
-    }else{
-        return(
-            <>
-                <Global
-                    styles={{
-                    '.MuiDrawer-root > .MuiPaper-root': {
-                        height: `calc(20% - ${56}px)`,
-                        overflow: 'visible',
-                    },
-                    }}
-                />
-                <Box component="section"
-                    sx={{           
-                        width: 70,
-                        height: '100vh',
-                        borderRight: '1px solid grey',
-                    }}>
-                    <Stack 
-                        justifyContent="space-between"
-                        alignItems="center"
-                        height="93vh"
-                    >
-                        <img src={logo} style={{width: 50, padding: 4}} alt=""/>
-                        <Menulist/>
-                        <MenuFooter/>
-                    </Stack>                    
-                </Box>                
-            </>            
-        );
-    }
+    return(
+        <Box component="section" sx={{ 
+            width: {lg: '200px', md: '200px', sm: '70px', xs: '70px'},
+            height: '100%',
+            borderRight: '1px solid grey',
+            boxShadow: "2px 0px 2px -3px black",
+            backgroundColor: 'rgb(252,252,252)', 
+            flexShrink: 0,
+            position: 'fixed',                   
+            }}>
+            <Stack 
+                justifyContent="space-between"
+                alignItems="center"
+                sx={{
+                    height: {lg: '100vh', md: '100vh', sm: '93vh', xs: '93vh', xxs: '93vh'}
+                }}
+            >
+                <div>
+                    <img src={logo} style={{ width: 50, padding: 10, cursor: 'pointer', borderRadius: 5 }} alt=""/>
+                </div>                    
+                <Menulist/>
+                <MenuFooter/>
+            </Stack>                                                   
+        </Box>
+    );
 }
 
 export default Sidemenu;

@@ -13,7 +13,8 @@ const MenuFooter = () => {
     const [openModal, setOpenModal] = useState(false);
     const handleClose = () => setOpenModal(false);
     const handleOpen = () => setOpenModal(true);
-  
+    const iconSize = isDesktop ? 'medium' : 'large';
+
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
     };
@@ -21,71 +22,50 @@ const MenuFooter = () => {
     const toggleDrawerDesk = (newOpen) => () => {
         setOpenDesk(newOpen);
     };
-
-    if(isDesktop){
-        return(
-            <>
-                <Modal
-                    open={openModal}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Contact/>
-                </Modal>                
-                <Drawer
-                    anchor={'bottom'}
-                    open={openDesk}
-                    onClose={toggleDrawerDesk(false)}
-                >
-                    <SettingsBox/>
-                </Drawer>
-                <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                    <ListItem className="hoverable" sx={{gap: 1}} onClick={handleOpen}>
-                        <ChatBubbleOutlineIcon/>
-                        <ListItemText primary="Επικοινωνία"/>
-                    </ListItem>         
-                    <ListItem className="hoverable" sx={{gap: 1}} onClick={toggleDrawerDesk(true)}>
-                        <SettingsIcon/>
-                        <ListItemText primary="Ρυθμίσεις"/>
-                    </ListItem>                    
-                </List>
-            </>            
-        );
-    }else{
-        return(
-            <>
-                <Modal
-                    open={openModal}
-                    onClose={handleClose}
-                    aria-labelledby="modal-modal-title"
-                    aria-describedby="modal-modal-description"
-                >
-                    <Contact/>
-                </Modal> 
-                <List sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                    <ListItem sx={{ paddingBottom: 4 }}>
-                        <ChatBubbleOutlineIcon fontSize="large" onClick={handleOpen}/>
-                    </ListItem>         
-                    <ListItem sx={{ paddingBottom: 4 }} onClick={toggleDrawer(true)}>
-                        <SettingsIcon fontSize="large"/>
-                    </ListItem>                    
-                </List>
-                <SwipeableDrawer          
-                    anchor="bottom"
-                    open={open}
-                    onClose={toggleDrawer(false)}
-                    onOpen={toggleDrawer(true)}
-                    disableSwipeToOpen={true}
-                    ModalProps={{
-                        keepMounted: true,
-                    }}
-                >
-                    <SettingsBox/>
-                </SwipeableDrawer>
-            </>            
-        );
-    }
+    
+    return(
+        <>
+            <Modal
+                open={openModal}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+                <Contact/>
+            </Modal>                
+            { isDesktop 
+            ? <Drawer
+                anchor={'bottom'}
+                open={openDesk}
+                onClose={toggleDrawerDesk(false)}
+            >                
+                <SettingsBox/>
+            </Drawer>
+            : <SwipeableDrawer          
+                anchor="bottom"
+                open={open}
+                onClose={toggleDrawer(false)}
+                onOpen={toggleDrawer(true)}
+                disableSwipeToOpen={true}
+                ModalProps={{
+                    keepMounted: true,
+                }}
+            >
+                <SettingsBox/>
+            </SwipeableDrawer>
+            }
+            <List sx={{ width: '100%', bgcolor: 'transparent' }}>
+                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }} onClick={handleOpen}>
+                    <ChatBubbleOutlineIcon fontSize={iconSize}/>
+                    { isDesktop && <ListItemText primary="Επικοινωνία"/> }
+                </ListItem>         
+                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }} onClick={isDesktop ? toggleDrawerDesk(true) : toggleDrawer(true)}>
+                    <SettingsIcon fontSize={iconSize}/>
+                    { isDesktop && <ListItemText primary="Ρυθμίσεις"/> }
+                </ListItem>                    
+            </List>            
+        </>            
+    );            
 }
 
 export default MenuFooter;

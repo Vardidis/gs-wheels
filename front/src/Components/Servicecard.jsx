@@ -3,7 +3,7 @@ import { Card, CardContent, CardMedia, Typography, CardActionArea} from '@mui/ma
 
 const Servicecard = (props) => {
     return(
-        <Card sx={{ width: {lg: 345, md: 300, sm: '100%', xs: '100%', xxs: '100%'}, textAlign: 'center' }}>
+        <Card sx={{ width: {lg: 383, md: 300, sm: '100%', xs: '100%', xxs: '100%'}, textAlign: 'center' }}>
             <CardActionArea>
                 <CardMedia
                     component="img"                    

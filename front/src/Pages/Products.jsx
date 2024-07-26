@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Stack, Box } from "@mui/material";
 import { Context } from "../Components/Context";
 import CategoryMenu from "../Components/CategoryMenu";
@@ -7,6 +7,16 @@ import ProductMenu from '../Components/ProductMenu';
 
 const Products = () => {
     const {isDesktop} = useContext(Context);
+    const [imageList, setImageList] = useState([]);
+
+    useEffect(()=>{
+        fetch("http://localhost:4300/products")
+        .then(((response) => response.json()))
+        .then((data) => {
+            setImageList(data);
+            console.log(data);
+        })
+    }, []);
 
     return(      
         <Box sx={{ display: 'flex', justifyContent: 'center', paddingBottom: 3 }}>          

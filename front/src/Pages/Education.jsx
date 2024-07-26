@@ -1,10 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import FullCustom from "../Components/FullCustom";
-import Basics from '../Components/Basics';
-import Interior from '../Components/Interior';
-import LifeCoaching from '../Components/LifeCoaching';
-import FuncRepair from "../Components/FuncRepair";
+import FullCustom from "../Components/Services/FullCustom";
+import Basics from '../Components/Services/Basics';
+import Interior from '../Components/Services/Interior';
+import LifeCoaching from '../Components/Services/LifeCoaching';
+import FuncRepair from "../Components/Services/FuncRepair";
 
 const Education = () => {
     const {service} = useParams();
