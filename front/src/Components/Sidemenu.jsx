@@ -11,7 +11,7 @@ const Sidemenu = () => {
             height: '100%',
             borderRight: '1px solid grey',
             boxShadow: "2px 0px 2px -3px black",
-            backgroundColor: 'rgb(252,252,252)', 
+            backgroundColor: 'rgb(245,245,245)', 
             flexShrink: 0,
             position: 'fixed',                   
             }}>
@@ -19,7 +19,7 @@ const Sidemenu = () => {
                 justifyContent="space-between"
                 alignItems="center"
                 sx={{
-                    height: {lg: '100vh', md: '100vh', sm: '93vh', xs: '93vh', xxs: '93vh'}
+                    height: '100vh'
                 }}
             >
                 <div>

@@ -1,10 +1,13 @@
 import React, { useContext, useState } from "react";
 import { Context } from "./Context";
-import SettingsIcon from '@mui/icons-material/Settings';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import { List, ListItem, ListItemText, Modal, SwipeableDrawer, Drawer } from '@mui/material';
 import Contact from "./Contact";
 import SettingsBox from "./SettingsBox";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faComment, faGear } from '@fortawesome/free-solid-svg-icons';
+library.add(faGear, faComment);
 
 const MenuFooter = () => {
     const {isDesktop} = useContext(Context);
@@ -13,7 +16,7 @@ const MenuFooter = () => {
     const [openModal, setOpenModal] = useState(false);
     const handleClose = () => setOpenModal(false);
     const handleOpen = () => setOpenModal(true);
-    const iconSize = isDesktop ? 'medium' : 'large';
+    const iconSize = isDesktop ? 'lg' : 'xl';
 
     const toggleDrawer = (newOpen) => () => {
         setOpen(newOpen);
@@ -55,12 +58,12 @@ const MenuFooter = () => {
             </SwipeableDrawer>
             }
             <List sx={{ width: '100%', bgcolor: 'transparent' }}>
-                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }} onClick={handleOpen}>
-                    <ChatBubbleOutlineIcon fontSize={iconSize}/>
+                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }} onClick={handleOpen}>
+                    <FontAwesomeIcon icon={faComment} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Επικοινωνία"/> }
                 </ListItem>         
-                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }} onClick={isDesktop ? toggleDrawerDesk(true) : toggleDrawer(true)}>
-                    <SettingsIcon fontSize={iconSize}/>
+                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }} onClick={isDesktop ? toggleDrawerDesk(true) : toggleDrawer(true)}>
+                    <FontAwesomeIcon icon={faGear} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Ρυθμίσεις"/> }
                 </ListItem>                    
             </List>            
