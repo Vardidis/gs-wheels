@@ -7,7 +7,7 @@ const ProductMenu = (props) => {
     return(
         <Box className="product-items">
             {props.items.map((item, index) => {                
-                return <ProductItem item={item} index={index}/>
+                return <ProductItem item={item} index={index} key={index}/>
             })}
         </Box>
     )

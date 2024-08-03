@@ -34,5 +34,56 @@
     width: 500px;
     box-shadow: 1px 2px 3px -2px black;
     border-radius: 5px;
+}
+
+.zoom-image img{
+    width: 500px;
+    border-radius: 5px;
+}
+
+.sub-image{
+    width: 130px;
+    box-shadow: 1px 2px 3px -2px black;
+    border-radius: 5px;
     cursor: pointer;
+}
+
+@media(max-width: 1200px){
+    .zoom-image{
+        max-width: 400px;
+        box-shadow: 1px 2px 3px -2px black;
+        border-radius: 5px;
+    }
+    
+    .zoom-image img{
+        max-width: 400px;
+        border-radius: 5px;
+    }
+
+    .sub-image{
+        max-width: 110px;
+        box-shadow: 1px 2px 3px -2px black;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 900px){
+    .zoom-image{
+        max-width: 100%;
+        box-shadow: 1px 2px 3px -2px black;
+        border-radius: 5px;
+    }
+    
+    .zoom-image img{
+        max-width: 100%;
+        border-radius: 5px;
+    }
+
+    .sub-image{
+        max-width: 100%;
+        box-shadow: 1px 2px 3px -2px black;
+        border-radius: 5px;
+        cursor: pointer;
+    }
 }

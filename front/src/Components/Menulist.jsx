@@ -13,25 +13,25 @@ const Menulist = () => {
 
     return(
         <List id='menu-list' sx={{ width: '100%', maxWidth: 360, bgcolor: 'transparent' }}>
-            <NavLink to='/' exact className='navlink' activeClassName='active'>                    
+            <NavLink to='/' className='navlink' activeclassname='active'>                    
                 <ListItem className="hoverable" sx={{gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent'}}>
                     <FontAwesomeIcon icon={faHouse} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Αρχική"/> }
                 </ListItem>    
             </NavLink>  
-            <NavLink to='/services' exact className='navlink' activeClassName='active'>     
+            <NavLink to='/services' className='navlink' activeclassname='active'>     
                 <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }}>
                     <FontAwesomeIcon icon={faGraduationCap} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Εκπαίδευση"/> }
                 </ListItem> 
             </NavLink>    
-            <NavLink to='/products' className='navlink' activeClassName='active'>  
+            <NavLink to='/products' className='navlink' activeclassname='active'>  
                 <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }}>
                     <FontAwesomeIcon icon={faShop} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Προϊόντα"/> }
                 </ListItem>     
             </NavLink>
-            <NavLink to='/about-us' className='navlink' activeClassName='active'>  
+            <NavLink to='/about-us' className='navlink' activeclassname='active'>  
                 <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }}>
                     <FontAwesomeIcon icon={faAddressCard} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Σχετικά με εμάς"/> }

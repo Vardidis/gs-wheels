@@ -21,7 +21,6 @@
     min-width: 100px;
     height: 100px;
     border-radius: 5px;
-    box-shadow: 2px 3px 3px -2px black;
 }
 
 .gsbtn{
@@ -57,7 +56,7 @@
 }
 
 .partbox-img{
-    opacity: 0.4;
+    opacity: 0.3;
     border-radius: 5px;
     width: 300px;
     object-fit: cover;
@@ -102,6 +101,12 @@
     opacity: calc(0.9);
 }
 
+.mob-partbox{
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    gap: 10px;
+}
+
 @media(max-width: 1200px){
     .product-items img{
         height: 179px;
@@ -120,33 +125,49 @@
     }
 
     .product-items img{
-        height: 268px;
-        width: 400px;
+        height: 90%;
+        width: 90%;
         border-radius: 5px;
         cursor: pointer;
         border: 1px solid rgb(238, 238, 238);
         box-shadow: 1px 2px 3px -2px black;
     }
+
+
 }
 
 @media(max-width: 600px){
     .product-items img{
-        height: 215px;
-        max-width: 300px;
+        height: 100%;
+        width: 100%;
         border-radius: 5px;
         cursor: pointer;
         border: 1px solid rgb(238, 238, 238);
         box-shadow: 1px 2px 3px -2px black;
+    }
+
+    .mob-partbox{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 70%;
     }
 }
 
 @media(max-width: 420px){
     .product-items img{
-        height: 179px;
-        max-width: 260px;
+        height: 100%;
+        width: 100%;
         border-radius: 5px;
         cursor: pointer;
         border: 1px solid rgb(238, 238, 238);
         box-shadow: 1px 2px 3px -2px black;
+    }
+
+    .mob-partbox{
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+        max-width: 80%;
     }
 }

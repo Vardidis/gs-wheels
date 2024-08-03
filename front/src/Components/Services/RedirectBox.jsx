@@ -6,13 +6,40 @@ import { Box, Button } from '@mui/material';
 
 const RedirectBox = (props) => {
     return(
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingLeft: {xl: props.pd, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, paddingRight: {xl: props.pd, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, paddingTop: 3, paddingBottom: 4}}>
+        <Box sx={{ 
+            bottom: 0,
+            width: '100%',
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: 10
+        }}>
             <Link to={props.back}>
-                <Button variant="contained" startIcon={<ArrowBackIcon/>} sx={{ width: {sm: 150, xs: 100, xxs: 125}, fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10} }}>Πισω</Button>
+                <Button
+                    variant="contained"
+                    startIcon={<ArrowBackIcon/>}
+                    sx={{
+                        width: {sm: 150, xs: 100, xxs: 125},
+                        fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10},
+                        marginLeft: {xl: 15, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
+                    }}
+                >
+                    Πισω
+                </Button>
             </Link>   
             {!props.last &&   
                 <Link to={props.forward}>
-                    <Button variant="contained" endIcon={<ArrowForwardIcon/>} sx={{ width: {sm: 150, xs: 100, xxs: 100}, fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10} }}>Επομενο</Button>
+                    <Button
+                        variant="contained"
+                        endIcon={<ArrowForwardIcon/>}
+                        sx={{
+                            width: {sm: 150, xs: 100, xxs: 100},
+                            fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10},
+                            marginRight: {xl: 15, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
+                        }}
+                    >
+                        Επομενο
+                    </Button>
                 </Link>
             }
         </Box>

@@ -35,34 +35,35 @@ const Interior = () => {
                 {isDesktop
                 ?
                 <Stack direction='row' spacing={{lg: 2, md: 2, sm: 1, xs: 1, xxs: 1}} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <PartBox image={inter2} height={'200px'} font={14} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
-                    <PartBox image={inter4} height={'200px'} font={14} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές μπορούν να είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
-                    <PartBox image={inter1} height={'200px'} font={14} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
+                    <PartBox image={inter2} height={'180px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
+                    <PartBox image={inter4} height={'180px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές μπορούν να είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
+                    <PartBox image={inter1} height={'180px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
                 </Stack>
                 :
-                <Stack direction='row' spacing={{lg: 2, md: 2, sm: 1, xs: 1, xxs: 1}} sx={{ display: 'flex', justifyContent: 'center', paddingTop: 2, paddingBottom: 3, alignItems: 'center' }}>
-                    <ArrowBackIosIcon/>
-                    <PartBox image={inter2} height={'200px'} font={14} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
-                    <PartBox image={inter4} height={'200px'} font={14} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές μπορούν να είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
-                    <ArrowForwardIosIcon/>
-                </Stack>
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>                
+                    <Box className='mob-partbox'>
+                    <PartBox image={inter2} height={'180px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
+                    <PartBox image={inter4} height={'180px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές μπορούν να είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
+                    <PartBox image={inter1} height={'180px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
+                    </Box>
+                </Box>
                 }
                 <Stack spacing={1} sx={{ paddingBottom: 3 }}>
-                    <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 2, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 2, xs: 2, xxs: 1} }}>
+                    <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
                         <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
                         <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/>
                         <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>
                         <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                        
                     </Stack>
-                    <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 2, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 2, xs: 2, xxs: 1} }}>
+                    <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
                         <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
                         <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
                         <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
                         <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
                     </Stack>
-                </Stack>      
-                <RedirectBox back={'/service/full-custom'} forward={'/service/products'} pd={90} last={true}/>
+                </Stack>                      
             </Stack>
+            <RedirectBox back={'/service/full-custom'} forward={'/service/products'} pd={90} last={true}/>
         </Box>
     );
 }

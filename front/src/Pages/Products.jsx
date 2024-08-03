@@ -41,7 +41,7 @@ const Products = () => {
         );
     }else{
         return(
-            <Box sx={{ paddingLeft: 3, paddingRight: 3, paddingBottom: 3 }}>          
+            <Box sx={{ paddingLeft: {sm: 6, xs: 3, xxs: 2}, paddingRight: {sm: 3, xs: 3, xxs: 2}, paddingBottom: 3 }}>          
                 <Stack spacing={5} sx={{ paddingTop: 3 }}>     
                     <ProductTopRow/>                
                     <Stack spacing={3}>

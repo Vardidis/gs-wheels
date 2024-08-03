@@ -11,14 +11,25 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 const WheelcharCanvas = () => {
     const {isDesktop} = useContext(Context);
     const placing = isDesktop ? 'row' : 'column';
+    const style = isDesktop ? {
+        display: 'flex',
+        justifyContent: 'center'
+    }
+    : {
+        marginLeft: 5,
+        marginRight: 5
+    }
 
     return(
-        <Box  sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Stack spacing={2} direction={placing}>
-                <img src={rotsi} alt='' style={{
-                    maxWidth: '650px',
-                    borderRadius: 5,
-                }}/>
+        <Box sx={style}>
+            <Stack spacing={1} direction={placing}>
+                <Box sx={{ maxWidth: {xl: 650, lg: 650, md: 600, sm: '100%', xs: '100%', xxs: '100%'} }}>
+                    <img src={rotsi} alt='' style={{
+                        maxWidth: 'inherit',
+                        borderRadius: 5,
+                    }}/>
+                </Box>
+                
                 <Box>
                     <Accordion sx={{ backgroundColor: 'rgb(247, 247, 247)' }}>
                         <AccordionSummary
