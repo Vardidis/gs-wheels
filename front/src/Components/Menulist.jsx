@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Link } from 'react-router-dom';
+import React, { useContext} from "react";
+import { NavLink } from 'react-router-dom';
 import { List, ListItem, ListItemText } from '@mui/material';
 import { Context } from "./Context";
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -13,30 +13,30 @@ const Menulist = () => {
 
     return(
         <List id='menu-list' sx={{ width: '100%', maxWidth: 360, bgcolor: 'transparent' }}>
-            <Link to='/' style={{textDecoration: 'none'}}>                    
-                <ListItem className="hoverable selected" sx={{gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent'}}>
-                <FontAwesomeIcon icon={faHouse} size={iconSize} style={{ color: 'black' }}/>
-                    { isDesktop && <ListItemText primary="Αρχική" sx={{ color: 'black' }}/> }                        
+            <NavLink to='/' exact className='navlink' activeClassName='active'>                    
+                <ListItem className="hoverable" sx={{gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent'}}>
+                    <FontAwesomeIcon icon={faHouse} size={iconSize}/>
+                    { isDesktop && <ListItemText primary="Αρχική"/> }
                 </ListItem>    
-            </Link>  
-            <Link to='/services' style={{ textDecoration: 'none' }}>     
+            </NavLink>  
+            <NavLink to='/services' exact className='navlink' activeClassName='active'>     
                 <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }}>
-                    <FontAwesomeIcon icon={faGraduationCap} size={iconSize} style={{ color: 'black' }}/>
-                    { isDesktop && <ListItemText primary="Εκπαίδευση" sx={{ color: 'black' }}/> }
+                    <FontAwesomeIcon icon={faGraduationCap} size={iconSize}/>
+                    { isDesktop && <ListItemText primary="Εκπαίδευση"/> }
                 </ListItem> 
-            </Link>    
-            <Link to='/products' style={{ textDecoration: 'none' }}>  
+            </NavLink>    
+            <NavLink to='/products' className='navlink' activeClassName='active'>  
                 <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }}>
-                    <FontAwesomeIcon icon={faShop} size={iconSize} style={{ color: 'black' }}/>
-                    { isDesktop && <ListItemText primary="Προϊόντα" sx={{ color: 'black' }}/> }
+                    <FontAwesomeIcon icon={faShop} size={iconSize}/>
+                    { isDesktop && <ListItemText primary="Προϊόντα"/> }
                 </ListItem>     
-            </Link>
-            <Link to='/about-us' style={{ textDecoration: 'none' }}>  
+            </NavLink>
+            <NavLink to='/about-us' className='navlink' activeClassName='active'>  
                 <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent' }}>
-                    <FontAwesomeIcon icon={faAddressCard} size={iconSize} style={{ color: 'black' }}/>
-                    { isDesktop && <ListItemText primary="Σχετικά με εμάς" sx={{ color: 'black' }}/> }
+                    <FontAwesomeIcon icon={faAddressCard} size={iconSize}/>
+                    { isDesktop && <ListItemText primary="Σχετικά με εμάς"/> }
                 </ListItem> 
-            </Link>               
+            </NavLink>               
         </List>
     );
 }

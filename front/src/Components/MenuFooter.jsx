@@ -1,33 +1,62 @@
 import React, { useContext, useState } from "react";
 import { Context } from "./Context";
-import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import { List, ListItem, ListItemText, Modal, SwipeableDrawer, Drawer } from '@mui/material';
+import { List, ListItem, ListItemText, Modal, SwipeableDrawer, Drawer, Typography, Paper, Popper, Fade } from '@mui/material';
 import Contact from "./Contact";
 import SettingsBox from "./SettingsBox";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faGear } from '@fortawesome/free-solid-svg-icons';
+import LangSwitch from "./LangSwitch";
+import Info from "./Info";
 library.add(faGear, faComment);
 
 const MenuFooter = () => {
     const {isDesktop} = useContext(Context);
     const [open, setOpen] = useState(false);
-    const [openDesk, setOpenDesk] = useState(false);
+    const [openInfoModal, setOpenInfoModal] = useState(false);
     const [openModal, setOpenModal] = useState(false);
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [placement, setPlacement] = useState();
     const handleClose = () => setOpenModal(false);
     const handleOpen = () => setOpenModal(true);
+    const openInfoMod = () => setOpenInfoModal(true);
+    const closeInfoMod = () => setOpenInfoModal(false);
     const iconSize = isDesktop ? 'lg' : 'xl';
 
-    const toggleDrawer = (newOpen) => () => {
-        setOpen(newOpen);
+    const handleClick = (newPlacement) => (event) => {
+      setAnchorEl(event.currentTarget);
+      setOpen((prev) => placement !== newPlacement || !prev);
+      setPlacement(newPlacement);
     };
 
-    const toggleDrawerDesk = (newOpen) => () => {
-        setOpenDesk(newOpen);
-    };
-    
     return(
         <>
+         <Popper
+            sx={{ zIndex: 1 }}
+            open={open}
+            anchorEl={anchorEl}
+            placement={'right'}
+            transition
+        >
+            {({ TransitionProps }) => (
+            <Fade {...TransitionProps} timeout={350}>
+                <Paper sx={{ backgroundColor: 'rgb(57, 57, 57)', color: 'white' }}>
+                    <List>
+                        <ListItem className='contact-list' onClick={()=>handleOpen()}>
+                            <Typography>
+                                Αποστολή μηνύματος
+                            </Typography>
+                        </ListItem>
+                        <ListItem className='contact-list' onClick={()=>openInfoMod()}>
+                            <Typography>
+                                Πληροφορίες επικοινωνίας
+                            </Typography>
+                        </ListItem>                       
+                    </List>
+                </Paper>
+            </Fade>
+            )}
+        </Popper>
             <Modal
                 open={openModal}
                 onClose={handleClose}
@@ -35,37 +64,25 @@ const MenuFooter = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Contact/>
-            </Modal>                
-            { isDesktop 
-            ? <Drawer
-                anchor={'bottom'}
-                open={openDesk}
-                onClose={toggleDrawerDesk(false)}
-            >                
-                <SettingsBox/>
-            </Drawer>
-            : <SwipeableDrawer          
-                anchor="bottom"
-                open={open}
-                onClose={toggleDrawer(false)}
-                onOpen={toggleDrawer(true)}
-                disableSwipeToOpen={true}
-                ModalProps={{
-                    keepMounted: true,
-                }}
+            </Modal>         
+            <Modal
+                open={openInfoModal}
+                onClose={closeInfoMod}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
             >
-                <SettingsBox/>
-            </SwipeableDrawer>
-            }
+                <Info/>
+            </Modal>               
             <List sx={{ width: '100%', bgcolor: 'transparent' }}>
-                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }} onClick={handleOpen}>
+                <ListItem className="hoverable"  sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }} onClick={handleClick()}>
                     <FontAwesomeIcon icon={faComment} size={iconSize}/>
-                    { isDesktop && <ListItemText primary="Επικοινωνία"/> }
+                    { isDesktop && <ListItemText primary="Επικοινωνία"/> }                    
                 </ListItem>         
-                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }} onClick={isDesktop ? toggleDrawerDesk(true) : toggleDrawer(true)}>
+                {/* <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>
+                    <LangSwitch/>
                     <FontAwesomeIcon icon={faGear} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Ρυθμίσεις"/> }
-                </ListItem>                    
+                </ListItem>                     */}
             </List>            
         </>            
     );            

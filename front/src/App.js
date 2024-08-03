@@ -60,7 +60,7 @@ function App() {
           <Sidemenu/>
           <Box component="main" sx={{
             flexGrow: 1,
-            marginLeft: {lg: '200px', md: '200px', sm: '70px', xs: '70px', xxs: '70px'},
+            marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '70px', xs: '70px', xxs: '70px'},
             height: '100vh',
             overflowY: 'auto',
             overflowX: 'hidden',
@@ -72,7 +72,9 @@ function App() {
               <Route path='service' element={<Education/>}>
                 <Route path=':service' element={<Education/>}/>
               </Route>
-              <Route path='products' element={<Products/>}/>
+              <Route path='products' element={<Products/>}>
+                <Route path=':category' element={<Products/>}/>
+              </Route>
               <Route path='product' element={<Product/>}>
                 <Route path=':productId' element={<Product/>}/>
               </Route>

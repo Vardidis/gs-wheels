@@ -1,30 +1,25 @@
 import React from "react";
-import { Box, Stack, Typography, Button } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import AccordionComp from "../AccordionComp";
 import fc from '../../assets/full-custom.jpg';
-import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { Link } from "react-router-dom";
+import TitleComp from "./TitleComp";
+import RedirectBox from "./RedirectBox";
+import ImageComp from "./ImageComp";
 
-const Basics = () => {
+const Basics = () => {   
     return(
         <Box sx={{ paddingBottom: 5 }}>
-            <img src={fc} alt='' style={{ width: '100%', height: '160px', objectFit: 'cover' }}/>
-            <Stack spacing={6} sx={{ paddingTop: 3, paddingLeft: {lg: 15, md: 15, sm: 10, xs: 5, xxs: 1}, paddingRight: {lg: 15, md: 15, sm: 10, xs: 5, xxs: 1}}}>       
-                <Typography variant='h6' fontWeight={600} sx={{ textAlign: 'center' }}>
-                    Βασικές Αρχές Λειτουργικής Αποκατάστασης
-                </Typography>     
-                <div>
+            <ImageComp image={fc}/>
+            <TitleComp text={'Βασικές Αρχές Λειτουργικής Αποκατάστασης'}/>
+            <Stack spacing={6} sx={{ paddingTop: 3, paddingLeft: {lg: 15, md: 15, sm: 10, xs: 5, xxs: 1}, paddingRight: {lg: 15, md: 15, sm: 10, xs: 5, xxs: 1} }}>                                                  
+                <Box sx={{ paddingLeft: {xl: 50, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, paddingRight: {xl: 50, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1} }}>
                     <AccordionComp title={'Διαχείριση Σώματος'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>
                     <AccordionComp title={'Τεχνικές Μεταφορών'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>
                     <AccordionComp title={'Χειρισμός Αναπηρικού Καθίσματος'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>
                     <AccordionComp title={'Καθιστή θέση (Seating position)'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>
                     <AccordionComp title={'Προσωπική Υγιεινή'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>
-                </div>
-                <div style={{ display: 'flex', justifyContent: 'center' }}>
-                    <Link to='/service/apokatastasi'>
-                        <Button variant="contained" endIcon={<ArrowForwardIcon/>} sx={{ width: 300, fontSize: 14 }}>Λειτουργικη αποκατασταση</Button>
-                    </Link>
-                </div>                
+                </Box>    
+                <RedirectBox back={'/services'} forward={'/service/apokatastasi'} pd={50}/>
             </Stack>
         </Box>
     );

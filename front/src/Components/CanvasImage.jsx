@@ -1,22 +1,21 @@
+import { Stack, Typography } from "@mui/material";
 import React from "react";
 
 const CanvasImage = (props) => {
     return(
-        <>
+        <Stack direction='row' spacing={1} sx={{ display: 'flex', alignItems: 'center' }}>
             <img src={props.image} alt='' style={{
-                width: '50px',
+                width: '40px',
+                height: '40px',
                 borderRadius: 50,
-                position: 'absolute',
-                transform: 'translate(-50%, -50%)',
-                left: `${props.left}`,
-                top: `${props.top}`,
-                zIndex: 2,
                 cursor: 'pointer',
-                rotate: `${props.rotate}`,
-                border: '1px solid blue'
+                border: '1px solid black'
             }}
             className='canvas-part'/>
-        </>
+            <Typography>
+                {props.text}
+            </Typography>
+        </Stack>
     );
 }
 

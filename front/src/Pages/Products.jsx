@@ -1,42 +1,57 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Stack, Box } from "@mui/material";
+import { Stack, Box, Divider } from "@mui/material";
 import { Context } from "../Components/Context";
 import CategoryMenu from "../Components/CategoryMenu";
 import ProductTopRow from '../Components/ProductTopRow';
 import ProductMenu from '../Components/ProductMenu';
+import { useParams } from "react-router-dom";
 
 const Products = () => {
-    const {isDesktop} = useContext(Context);
-    const [imageList, setImageList] = useState([]);
-
+    const {isDesktop, allProducts} = useContext(Context);
+    const [items, setItems] = useState([]);
+    const {category} = useParams();
+    
     useEffect(()=>{
-        fetch("http://localhost:4300/products")
-        .then(((response) => response.json()))
-        .then((data) => {
-            setImageList(data);
-            console.log(data);
-        })
-    }, []);
+        setItems([]);
 
-    return(      
-        <Box sx={{ display: 'flex', justifyContent: 'center', paddingBottom: 3 }}>          
-            <Stack spacing={3} sx={{ width: {lg: 715, md: 700, sm: 625, xs: 600, xxs: 500}, paddingTop: 3, paddingRight: {lg: 20, md: 0, sm: 0, xs: 0, xxs: 0} }}>     
-                <ProductTopRow/>
-                {isDesktop &&
-                    <Stack direction='row' spacing={{lg: 6, md: 4}}>
-                        <CategoryMenu/>
-                        <ProductMenu/>                                             
+        let sortedData;
+        if(category){
+            sortedData = allProducts.filter(product => product.tag === category);
+        }else{
+            sortedData = allProducts;                
+        }
+
+        sortedData.map(product => {
+            setItems((prevItems) => [...prevItems, product]);                
+        });
+    });
+    
+    if(isDesktop){
+        return(
+            <Box sx={{ display: 'flex', justifyContent: 'center', paddingBottom: 3 }}>          
+                <Stack spacing={10} sx={{ width: {xl: 1200, lg: 880, md: 740}, paddingTop: 3 }}>     
+                    <ProductTopRow/>               
+                    <Stack direction='row' spacing={{lg: 4, md: 2}}>
+                        <CategoryMenu tag={category}/>
+                        <Divider orientation="vertical"/>
+                        <ProductMenu items={items}/>
                     </Stack> 
-                }  
-                {!isDesktop &&
-                    <Stack spacing={4} sx={{ width: {sm: 625, xs: 600} }}>
+                </Stack>
+            </Box>      
+        );
+    }else{
+        return(
+            <Box sx={{ paddingLeft: 3, paddingRight: 3, paddingBottom: 3 }}>          
+                <Stack spacing={5} sx={{ paddingTop: 3 }}>     
+                    <ProductTopRow/>                
+                    <Stack spacing={3}>
                         <CategoryMenu/>
-                        <ProductMenu/>
-                    </Stack>    
-                }         
-            </Stack>
-        </Box>      
-    );
+                        <ProductMenu items={items}/>
+                    </Stack>           
+                </Stack>
+            </Box>      
+        )
+    }
 }
 
 export default Products;

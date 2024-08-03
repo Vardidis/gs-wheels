@@ -1,16 +1,9 @@
-.product-menu{
-    border-radius: 5px;
-    width: 130px;
-    background-color: rgb(234, 234, 234);
-    display: flex;
-    align-items: center;
-    padding: 10px;
-    gap: 5px;
-    cursor: pointer;
-}
-
 .product-menu:hover{
     background-color: rgb(229, 229, 229);
+}
+
+.product-menu-selected:hover{
+    background-color: #ffe6ce;
 }
 
 .product-img{
@@ -35,4 +28,11 @@
 
 .about{
     justify-content: center;
+}
+
+.zoom-image{
+    width: 500px;
+    box-shadow: 1px 2px 3px -2px black;
+    border-radius: 5px;
+    cursor: pointer;
 }

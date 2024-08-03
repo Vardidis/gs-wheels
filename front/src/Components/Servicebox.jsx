@@ -14,7 +14,7 @@ const Servicebox = () => {
     const {isDesktop} = useContext(Context);
 
     return(
-        <Stack spacing={{lg: 2, md: 2, sm: 5, xs: 5, xxs: 5}} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 3, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 3, xxs: 1}, paddingTop: {lg: 0, md: 0, sm: 3, xs: 3, xxs: 3}, paddingBottom: {lg: 0, md: 0, sm: 10, xs: 10, xxs: 10} }}>
+        <Stack spacing={{xl: 2, lg: 2, md: 2, sm: 5, xs: 5, xxs: 5}} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 3, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 3, xxs: 1}, paddingTop: {lg: 0, md: 0, sm: 3, xs: 3, xxs: 3}, paddingBottom: {lg: 0, md: 0, sm: 10, xs: 10, xxs: 10} }}>
             {isDesktop
             ? <>                
                 <Stack direction='row' spacing={2}>

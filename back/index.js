@@ -12,52 +12,35 @@ const assets = path.join(__dirname, 'assets/images');
 app.use('/images', express.static(assets));
 
 app.get('/products', async(req, res) => {
-        const data = fs.readFile(path.join(__dirname, 'items.json'), 'utf8');
-        const products = JSON.parse(data).products;
-
-        products.map(async product => {
-            if(product.thumbnail){
-                const response = await axios.get(`${assets}/${product.thumbnail}`, { responseType: 'arraybuffer' });
-                const base64Image = Buffer.from(response.data, 'binary').toString('base64');
-                product.thumbnail = `data:image/jpeg;base64,${base64Image}`;
+        fs.readFile(path.join(__dirname, 'items.json'), 'utf8', async(err, data) => {
+            if(err){
+                res.status(500).send('Error reading products file');
             }
+            const products = JSON.parse(data).products;
+
+            const resThumbImage = products.map(async product => {
+                // Resolve thumbnail image
+                const imageData = await fs.promises.readFile(path.join(assets, product.thumbnail));
+                product.thumbnail = "data:image/jpeg;base64," + imageData.toString('base64');
+            });
+
+            await Promise.all(resThumbImage);
+
+            res.json(products);
         });
-
-        console.log(products)
-
-        res.status(500).send('Error reading products file');
-
-    
-    
-
-
-
-
-
-    // products.map(async product => {
-    //     await fs.promises.readFile(path.join(assets, product.thumbnail)).then(data =>{
-    //         product.thumbnail = "data:image/jpeg;base64," + data.toString('base64');                
-    //     });
-    // })
-
-
-    // const files = await fs.promises.readdir(assets);
-    // const images = files.filter(file => file.endsWith('.jpg'));
-    // const imagePromises = images.map(async image => {
-    //     const data = await fs.promises.readFile(path.join(assets, image));
-    //     return {
-    //         name: image,
-    //         data: "data:image/jpeg;base64," + data.toString('base64')
-    //     }
-    // });
-    // const resolvedImages = await Promise.all(imagePromises);
-    // res.json(resolvedImages);
 });
 
 app.get('/product', async(req, res) => {
 // PROVIDE ALL THE PHOTOS OF THE CURRENT PRODUCT AS WELL AS A DESCRIPTION.
 // INFO ALREADY GIVEN WILL BE PASSED BY THE FRONT END.
 // SO BASICALLY /product WILL DO WHAT /products IS CURRENTLY DOING.
+// Resolve sub images
+                
+const subs = product.sub.map(async(image, index) => {
+    let subImgs = [];
+    const subImage = await fs.promises.readFile(path.join(assets, image));
+        subImgs.add("data:image/jpeg;base64," + subImage.toString('base64'));
+});
 });
 
 app.listen(port, (error)=>{
