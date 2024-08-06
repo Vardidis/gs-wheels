@@ -1,8 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Context } from "./Context";
-import { List, ListItem, ListItemText, Modal, SwipeableDrawer, Drawer, Typography, Paper, Popper, Fade } from '@mui/material';
+import { List, ListItem, ListItemText, Modal, Typography, Paper, Popper, Fade } from '@mui/material';
 import Contact from "./Contact";
-import SettingsBox from "./SettingsBox";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faGear } from '@fortawesome/free-solid-svg-icons';
@@ -17,16 +16,20 @@ const MenuFooter = () => {
     const [openModal, setOpenModal] = useState(false);
     const [anchorEl, setAnchorEl] = useState(null);
     const [placement, setPlacement] = useState();
+    const [menuOpen, setMenuOpen] = useState(false);
+    const [itemColor, setItemColor] = useState('black');
+
     const handleClose = () => setOpenModal(false);
     const handleOpen = () => setOpenModal(true);
     const openInfoMod = () => setOpenInfoModal(true);
     const closeInfoMod = () => setOpenInfoModal(false);
-    const iconSize = isDesktop ? 'lg' : 'xl';
 
     const handleClick = (newPlacement) => (event) => {
-      setAnchorEl(event.currentTarget);
-      setOpen((prev) => placement !== newPlacement || !prev);
-      setPlacement(newPlacement);
+        setMenuOpen(!menuOpen);
+        setItemColor(menuOpen ? 'black' : '#f68b24');
+        setAnchorEl(event.currentTarget);
+        setOpen((prev) => placement !== newPlacement || !prev);
+        setPlacement(newPlacement);
     };
 
     return(
@@ -74,8 +77,8 @@ const MenuFooter = () => {
                 <Info/>
             </Modal>               
             <List sx={{ width: '100%', bgcolor: 'transparent' }}>
-                <ListItem className="hoverable"  sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }} onClick={handleClick()}>
-                    <FontAwesomeIcon icon={faComment} size={iconSize}/>
+                <ListItem className="hoverable"  sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent', color: itemColor }} onClick={handleClick()}>
+                    <FontAwesomeIcon icon={faComment} size='lg'/>
                     { isDesktop && <ListItemText primary="Επικοινωνία"/> }                    
                 </ListItem>         
                 {/* <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>

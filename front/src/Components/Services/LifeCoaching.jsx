@@ -19,7 +19,7 @@ const LifeCoaching = () => {
             <Alert severity="success">
                 Το Life Coaching δεν απευθύνεται μόνο σε άτομα με αναπηρία, αλλά επίσης στον οικογενειακό και φιλικό περίγυρο τους.
             </Alert>
-            <TitleComp text={'Life Coaching'}/>
+            <TitleComp text={'Συμβουλευτική'}/>
             <Stack spacing={5} sx={{ display: 'flex', justifyContent: 'center' }}>
                 {isDesktop 
                 ?

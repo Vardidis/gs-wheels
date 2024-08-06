@@ -21,19 +21,20 @@ function App() {
         dull: "#DCDCDC",
       },
       highlight: {
-        main: "orangered"
+        main: "#f68b24"
       },
       placeholder: {
         info: "#9BC9FF",
         success: "#97CC8E",
       },
       theme: {
-        light: "rgb(255, 252, 253)",
+        light: "#f8f8f8",
         dark: "#202020",
       }
     },
     typography: {
-      fontSize: 16,
+      fontFamily: '"Kanit", "Helvetica", "Arial", sans-serif',
+      fontSize: 15,
     },
     breakpoints: {
       values: {
@@ -60,11 +61,11 @@ function App() {
           <Sidemenu/>
           <Box component="main" sx={{
             flexGrow: 1,
-            marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '70px', xs: '70px', xxs: '70px'},
+            marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '70px', xs: '50px', xxs: '50px'},
             height: '100vh',
             overflowY: 'auto',
             overflowX: 'hidden',
-            bgcolor: 'rgb(252,252,252)'
+            bgcolor: '#f8f8f8'
           }}>
             <Routes>
               <Route path="/" element={<GetStarted/>}/>

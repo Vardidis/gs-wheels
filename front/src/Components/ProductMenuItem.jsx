@@ -17,7 +17,7 @@ const ProductMenuItem = (props) => {
         }}
         className={props.highlight?'product-menu-selected':'product-menu'}>
             {props.icon}
-            <Typography fontSize={{xl: 16, lg: 16, md: 16, sm: 14, xs: 12, xxs: 12}}>
+            <Typography fontSize={{xl: 16, lg: 16, md: 16, sm: 16, xs: 12, xxs: 12}}>
                 {props.text}
             </Typography>                   
         </Box>

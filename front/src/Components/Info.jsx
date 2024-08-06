@@ -28,7 +28,7 @@ const Info = () => {
                         <Box sx={{ boxShadow: '1px 2px 3px -2px black', backgroundColor: 'black', opacity: 0.8, width: 40, height: 40, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid orangered' }}>
                             <FontAwesomeIcon icon={faPhone} size='lg' style={{ color: 'white' }}/>
                         </Box>                        
-                        <Typography fontSize={22} fontWeight={600}>
+                        <Typography fontSize={22}>
                             +30 2310 428949
                         </Typography>
                     </Stack>
@@ -37,10 +37,10 @@ const Info = () => {
                             <FontAwesomeIcon icon={faEnvelope} size='lg' style={{ color: 'white' }}/>
                         </Box>    
                         <Box>
-                            <Typography fontSize={20} fontWeight={600}>
+                            <Typography fontSize={20}>
                                 gswheelchairs@gmail.com
                             </Typography>
-                            <Typography fontSize={20} fontWeight={600}>
+                            <Typography fontSize={18} sx={{ textAlign: 'start' }}>
                                 info@gswheelchairs.gr
                             </Typography>
                         </Box>                                           
@@ -49,7 +49,7 @@ const Info = () => {
                     <Box sx={{ boxShadow: '1px 2px 3px -2px black', backgroundColor: 'black', opacity: 0.8, width: 40, height: 40, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid orangered' }}>
                         <FontAwesomeIcon icon={faLocationDot} size='lg' style={{ color: 'white' }}/>
                     </Box>
-                    <Box>
+                    <Box sx={{ textAlign: 'start' }}>
                         <Typography fontWeight={600}>
                             Κρήτης 80, Θεσσαλονίκη
                         </Typography>

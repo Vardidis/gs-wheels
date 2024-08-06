@@ -1,3 +1,7 @@
+.title{
+    font-family: "Roboto Condensed", sans-serif;
+}
+
 .product-menu:hover{
     background-color: rgb(229, 229, 229);
 }
@@ -34,6 +38,7 @@
     width: 500px;
     box-shadow: 1px 2px 3px -2px black;
     border-radius: 5px;
+    border: 1px solid rgb(235, 235, 235);
 }
 
 .zoom-image img{
@@ -81,7 +86,16 @@
     }
 
     .sub-image{
-        max-width: 100%;
+        max-width: 100px;
+        box-shadow: 1px 2px 3px -2px black;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+}
+
+@media(max-width: 900px){
+    .sub-image{
+        max-width: 80px;
         box-shadow: 1px 2px 3px -2px black;
         border-radius: 5px;
         cursor: pointer;

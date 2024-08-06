@@ -17,8 +17,8 @@ const FullCustom = () => {
     return(
         <Box sx={{ paddingBottom: 5 }}>
             <ImageComp image={fc}/>
-            <TitleComp text={'Full Custom Made'}/>
-            <Stack spacing={8} sx={{ textAlign: 'center', display: 'flex', justifyContent: 'center', m: 1 }}>                   
+            <TitleComp text={'Προσαρμογή Αμαξιδίου'}/>
+            <Stack spacing={{xl: 10, lg: 8, md: 8, sm: 8, xs: 6, xxs: 6}} sx={{ textAlign: 'center', display: 'flex', justifyContent: 'center', m: 1 }}>                   
                 {isDesktop
                 ?
                 <Stack direction='row' spacing={2} sx={{ paddingBottom: 2, display: 'flex', justifyContent: 'center' }}>
@@ -27,11 +27,15 @@ const FullCustom = () => {
                     <PartBox height={'110px'} image={back} text={'Ένα αμαξίδιο που προσαρμόζεται σε εσένα δίχως να χρειαστεί να προσαρμοστείς εσύ σε αυτό.'}/>
                 </Stack>
                 :
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>                
-                    <Box className='mob-partbox'>
-                        <PartBox height={'100px'} image={aksonas} text={'Κατασκευάζουμε αμαξίδια από υψηλής ποιότητας υλικά με αντοχή στο χρόνο'}/>
-                        <PartBox height={'100px'} image={brakes} text={'Σχεδιάζεται και κατασκευάζεται από την αρχή με στόχο να καλύψει τις δικές σου μοναδικές ανάγκες.'}/>
-                        <PartBox height={'100px'} image={back} text={'Ένα αμαξίδιο που προσαρμόζεται σε εσένα δίχως να χρειαστεί να προσαρμοστείς εσύ σε αυτό.'}/>                                      
+                <Box sx={{ paddingLeft: {sm: 2, xs: 1, xxs: 1}, paddingRight: {sm: 2, xs: 1, xxs: 1} }}>
+                    <Box sx={{ overflowX: 'scroll', display: 'flex', paddingTop: 1, paddingBottom: 1 }}>
+                        <Stack direction='row' spacing={2} sx={{ justifyContent: "center" }}>
+                            <Box sx={{ display: 'flex', gap: 2, }}>
+                                <PartBox height={'100px'} image={aksonas} text={'Κατασκευάζουμε αμαξίδια από υψηλής ποιότητας υλικά με αντοχή στο χρόνο'}/>
+                                <PartBox height={'100px'} image={brakes} text={'Σχεδιάζεται και κατασκευάζεται από την αρχή με στόχο να καλύψει τις δικές σου μοναδικές ανάγκες.'}/>
+                                <PartBox height={'100px'} image={back} text={'Ένα αμαξίδιο που προσαρμόζεται σε εσένα δίχως να χρειαστεί να προσαρμοστείς εσύ σε αυτό.'}/>                                      
+                            </Box>
+                        </Stack>
                     </Box>
                 </Box>
                 }

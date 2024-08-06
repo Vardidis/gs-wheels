@@ -9,11 +9,11 @@ const AccordionComp = (props) => {
                 expandIcon={<ExpandMoreIcon />}
                 aria-controls="panel1-content"
                 id="panel1-header"
-                sx={{ fontWeight: 600, backgroundColor: 'rgb(248,248,248)' }}
+                sx={{ fontWeight: 600, backgroundColor: '#f5f5f5' }}
             >
                 {props.title}
             </AccordionSummary>
-            <AccordionDetails sx={{ backgroundColor: 'rgb(250,250,250)' }}>
+            <AccordionDetails sx={{ backgroundColor: '#f6f6f6' }}>
                 {props.text}
             </AccordionDetails>
         </Accordion>

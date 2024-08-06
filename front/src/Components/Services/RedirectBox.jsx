@@ -14,12 +14,12 @@ const RedirectBox = (props) => {
             alignItems: 'center',
             marginTop: 10
         }}>
-            <Link to={props.back}>
+            <Link to={props.back} style={{ textDecoration: 'none' }}>
                 <Button
                     variant="contained"
                     startIcon={<ArrowBackIcon/>}
                     sx={{
-                        width: {sm: 150, xs: 100, xxs: 125},
+                        width: {sm: 150, xs: 100, xxs: 100},
                         fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10},
                         marginLeft: {xl: 15, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
                     }}
@@ -28,7 +28,7 @@ const RedirectBox = (props) => {
                 </Button>
             </Link>   
             {!props.last &&   
-                <Link to={props.forward}>
+                <Link to={props.forward} style={{ textDecoration: 'none' }}>
                     <Button
                         variant="contained"
                         endIcon={<ArrowForwardIcon/>}

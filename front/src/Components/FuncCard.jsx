@@ -24,7 +24,7 @@ const FuncCard = (props) => {
                 </Box>
                 <Box sx={{ maxWidth: {xl: 1000, lg: 800, md: 550, sm: 400, xs: 220, xxs: 150, borderRadius: 10}, boxShadow: '1px 2px 3px -2px black', backgroundColor: 'rgb(60, 60, 60)', textAlign: 'center', padding: 3, border: '1px solid orangered' }}>
                     <Typography sx={{
-                        fontSize: {xl: 22, lg: 18, md: 18, sm: 18, xs: 16, xxs: 12},
+                        fontSize: {xl: 22, lg: 18, md: 18, sm: 18, xs: 18, xxs: 16},
                         color: 'white'
                     }} gutterBottom>
                         {props.text}

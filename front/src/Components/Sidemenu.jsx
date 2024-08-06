@@ -7,11 +7,11 @@ import MenuFooter from "./MenuFooter";
 const Sidemenu = () => {
     return(
         <Box component="section" sx={{ 
-            width: {lg: '200px', md: '200px', sm: '70px', xs: '70px'},
+            width: {lg: '200px', md: '200px', sm: '70px', xs: '50px', xxs: '50px'},
             height: '100%',
-            borderRight: '1px solid grey',
+            borderRight: '1px solid #f8f8f8',
             boxShadow: "2px 0px 2px -3px black",
-            backgroundColor: 'rgb(245,245,245)', 
+            backgroundColor: '#f8f8f8', 
             flexShrink: 0,
             position: 'fixed',                   
             }}>
@@ -22,9 +22,9 @@ const Sidemenu = () => {
                     height: '100vh'
                 }}
             >
-                <div>
+                <Box>
                     <img src={logo} style={{ width: 50, padding: 10, cursor: 'pointer', borderRadius: 5 }} alt=""/>
-                </div>                    
+                </Box>                    
                 <Menulist/>
                 <MenuFooter/>
             </Stack>                                                   

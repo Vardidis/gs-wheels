@@ -16,8 +16,8 @@ const WheelcharCanvas = () => {
         justifyContent: 'center'
     }
     : {
-        marginLeft: 5,
-        marginRight: 5
+        marginLeft: 2,
+        marginRight: 2
     }
 
     return(

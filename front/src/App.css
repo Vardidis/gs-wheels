@@ -1,5 +1,9 @@
+body{
+  font-family: "Kanit", sans-serif;
+}
+
 .hoverable:hover{
-  background-color: rgb(237,237,237);
+  background-color: #f3f3f3;
   cursor: pointer;
 }
 

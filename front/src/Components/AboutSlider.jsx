@@ -68,7 +68,7 @@ const AboutSlider = () => {
                 </StyledTabs>
                 <Box sx={{ p: 2 }} />                             
                 {value === 0 ?
-                    <Stack spacing={3} sx={{marginLeft: 3, marginRight: 3, padding: 3, bgcolor: "rgb(242, 242, 242)", borderRadius: 2  }}>
+                    <Stack spacing={3} sx={{marginLeft: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, marginRight: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2  }}>
                         <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                             <Box sx={{ height: '300px', width: '100%', borderRadius: 2, overflow: 'hidden' }}>
                                 <YouTube videoId='d0fYQ3sorTE' opts={opts} onReady={onReady} style={{ borderRadius: '10px' }}/>
@@ -128,10 +128,10 @@ const AboutSlider = () => {
                         </Typography>
                     </Stack>
                 : <>
-                    <Stack spacing={5} sx={{marginLeft: 3, marginRight: 3 }}>
+                    <Stack spacing={5} sx={{marginLeft: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, marginRight: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1} }}>
                         <Box className="suc-stories">
                             <img src={suc1} alt=""/>
-                            <Stack spacing={2} sx={{ padding: 3, bgcolor: "rgb(242, 242, 242)", borderRadius: 2, boxShadow: '2px 3px 3px -2px black' }}>                            
+                            <Stack spacing={2} sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2, boxShadow: '2px 3px 3px -2px black' }}>                            
                                 <Typography variant="body2" fontWeight={600}>
                                     Το κουτί με τις έγνοιες
                                 </Typography>
@@ -160,7 +160,7 @@ const AboutSlider = () => {
                         </Box>
                         <Box className="suc-stories">
                             <img src={suc2} alt=""/>
-                            <Stack spacing={2} sx={{ padding: 3, bgcolor: "rgb(242, 242, 242)", borderRadius: 2, boxShadow: '2px 3px 3px -2px black' }}>
+                            <Stack spacing={2} sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2, boxShadow: '2px 3px 3px -2px black' }}>
                                 <Typography variant="body2">
                                     Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,
                                     έμαθα πώς να χρησιμοποιώ το αναπηρικό μου αμαξίδιο και πώς να το εντάξω στην

@@ -15,8 +15,6 @@ import ShowerOutlinedIcon from '@mui/icons-material/ShowerOutlined';
 import DeckOutlinedIcon from '@mui/icons-material/DeckOutlined';
 import DeskOutlinedIcon from '@mui/icons-material/DeskOutlined';
 import { Context } from "../Context";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import TitleComp from "./TitleComp";
 import RedirectBox from "./RedirectBox";
 import ImageComp from "./ImageComp";
@@ -30,24 +28,30 @@ const Interior = () => {
             <Alert severity="success">
                         Η προσβασιμότητα δεν αφορά μόνο μεγάλες κατασκευές ή υψηλού κόστους τροποποιήσεις. Πολλές φορές, μικρές αλλά στοχευμένες παρεμβάσεις μπορούν να κάνουν τη διαφορά.
                     </Alert>
-            <TitleComp text={'Interior Design'}/>        
+            <TitleComp text={'Διαμόρφωση Χώρου'}/>        
             <Stack spacing={10}>                      
                 {isDesktop
                 ?
                 <Stack direction='row' spacing={{lg: 2, md: 2, sm: 1, xs: 1, xxs: 1}} sx={{ display: 'flex', justifyContent: 'center' }}>
                     <PartBox image={inter2} height={'180px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
-                    <PartBox image={inter4} height={'180px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές μπορούν να είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
+                    <PartBox image={inter4} height={'180px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
                     <PartBox image={inter1} height={'180px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
                 </Stack>
                 :
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>                
-                    <Box className='mob-partbox'>
-                    <PartBox image={inter2} height={'180px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
-                    <PartBox image={inter4} height={'180px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές μπορούν να είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
-                    <PartBox image={inter1} height={'180px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
+                <Box sx={{ paddingLeft: {sm: 2, xs: 1, xxs: 1}, paddingRight: {sm: 2, xs: 1, xxs: 1} }}>
+                    <Box sx={{ overflowX: 'scroll', display: 'flex', paddingTop: 1, paddingBottom: 1 }}>
+                        <Stack direction='row' spacing={2} sx={{ justifyContent: "center" }}>
+                            <Box sx={{ display: 'flex', gap: 2, }}>
+                                <PartBox image={inter2} height={'200px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
+                                <PartBox image={inter4} height={'200px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
+                                <PartBox image={inter1} height={'200px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
+                            </Box>
+                        </Stack>
                     </Box>
                 </Box>
                 }
+                {isDesktop
+                ?
                 <Stack spacing={1} sx={{ paddingBottom: 3 }}>
                     <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
                         <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
@@ -61,7 +65,25 @@ const Interior = () => {
                         <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
                         <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
                     </Stack>
-                </Stack>                      
+                </Stack>   
+                :
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>  
+                    <Stack direction='row' spacing={1} sx={{ paddingBottom: 3 }}>
+                        <Stack spacing={1} sx={{ paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2}}}>
+                            <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
+                            <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/> 
+                            <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>     
+                            <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                                                               
+                        </Stack>
+                        <Stack spacing={1} sx={{ paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2} }}>
+                            <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
+                            <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
+                            <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
+                            <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
+                        </Stack>
+                    </Stack>   
+                </Box>
+                }                   
             </Stack>
             <RedirectBox back={'/service/full-custom'} forward={'/service/products'} pd={90} last={true}/>
         </Box>
