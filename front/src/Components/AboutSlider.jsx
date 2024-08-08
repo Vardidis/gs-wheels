@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import suc1 from '../assets/stompis.jpg';
 import suc2 from '../assets/kopelia.jpg';
-import { Typography, Tabs, Tab, Box, Stack } from '@mui/material';
+import { Typography, Tabs, Tab, Box, Stack, Paper } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import YouTube from 'react-youtube';
+import { useContext } from "react";
+import { Context } from "./Context";
 
 const StyledTabs = styled((props) => (
     <Tabs
@@ -37,6 +39,7 @@ const StyledTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 const AboutSlider = () => {
+    const {isDesktop} = useContext(Context);
     const [value, setValue] = useState(0);
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -53,7 +56,9 @@ const AboutSlider = () => {
 
     const onReady = (event) => {
         event.target.pauseVideo();
-      };
+    };
+
+    const dir = isDesktop ? 'row' : 'column';
 
     return(
         <>
@@ -129,61 +134,65 @@ const AboutSlider = () => {
                     </Stack>
                 : <>
                     <Stack spacing={5} sx={{marginLeft: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, marginRight: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1} }}>
-                        <Box className="suc-stories">
-                            <img src={suc1} alt=""/>
-                            <Stack spacing={2} sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2, boxShadow: '2px 3px 3px -2px black' }}>                            
-                                <Typography variant="body2" fontWeight={600}>
-                                    Το κουτί με τις έγνοιες
-                                </Typography>
-                                <Typography variant="body2">
-                                    Ο Παναγιώτης ή Γιώτης όπως τον φωνάζουν, 
-                                    ήταν το άτομο που μου έδειξε τον τρόπο προς την αυτονομία.
-                                    Ένα άτομο με κάταγμα στην σπονδυλική στήλη έχει άμεση ανάγκη από
-                                    έναν άνθρωπο που θα του ανοίξει τους ορίζοντες προς την αποδοχή
-                                    και την άμεση αποκατάσταση. Για μένα αυτό το άτομο ήταν ο Γιώτης.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Μαζί του έμαθα να ντύνομαι,
-                                    να σηκώνομαι από το κρεβάτι και να κινούμαι με το αμαξίδιο άνετα.
-                                    Το σημαντικότερο όμως μάθημα που πήρα από αυτόν ήταν το “κουτί με τις έγνοιες”.
-                                    Προσπαθούμε να τακτοποιήσουμε μια έγνοια μέχρι να έρθει η επόμενη και να πάρει
-                                    την θέση της στο κουτί. Έτσι έμαθα να ζω με την αναπηρία και σήμερα ζω σχεδόν
-                                    αυτόνομος όντας τετραπληγικός στην Ελλάδα.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Σε ευχαριστώ για άλλη μια φορά!
-                                </Typography>
-                                <Typography variant="body2" fontWeight={600}>
-                                    Ν.Τ.
-                                </Typography>
-                            </Stack>
-                        </Box>
-                        <Box className="suc-stories">
-                            <img src={suc2} alt=""/>
-                            <Stack spacing={2} sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2, boxShadow: '2px 3px 3px -2px black' }}>
-                                <Typography variant="body2">
-                                    Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,
-                                    έμαθα πώς να χρησιμοποιώ το αναπηρικό μου αμαξίδιο και πώς να το εντάξω στην
-                                    καθημερινότητά μου με αυτονομία και αυτοπεποίθηση. Μου μετέδωσε το μήνυμα ότι
-                                    έχω τη δυνατότητα να επιλέξω τον τρόπο ζωής που επιθυμώ, παρά τις προκλήσεις
-                                    που αντιμετωπίζω.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Σε ψυχολογικό επίπεδο, ήταν πάντα δίπλα μου, έτοιμος να με
-                                    στηρίξει και να μου προσφέρει την άνεση και την ασφάλεια που χρειαζόμουν.
-                                    Είχε πάντα κάτι να πει που θα με βοηθούσε να αντιμετωπίσω τις δυσκολίες και
-                                    να νιώσω καλύτερα, ανεξάρτητα από το τι μου περνούσε στο μυαλό.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Ήταν ένας εξαιρετικός επαγγελματίας, αφοσιωμένος στο έργο του και πρόθυμος να με βοηθήσει σε κάθε βήμα του
-                                    ταξιδιού μου προς την αυτονομία. Πέρα από αυτό, όμως, ήταν και ένας θερμός και αγαπητός
-                                    άνθρωπος, που φρόντιζε για την ευημερία μου όχι μόνο σωματικά αλλά και ψυχικά.
-                                </Typography>
-                                <Typography variant="body2" fontWeight={600}>
-                                    Ε.Π.
-                                </Typography>
-                            </Stack>
-                        </Box>
+                        <Stack spacing={0.1} direction={dir} className="suc-stories">
+                            <img src={suc1} alt=""/>                        
+                            <Paper sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2 }}>                          
+                                <Stack spacing={2}> 
+                                    <Typography variant="body2" fontWeight={600}>
+                                        Το κουτί με τις έγνοιες
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        Ο Παναγιώτης ή Γιώτης όπως τον φωνάζουν, 
+                                        ήταν το άτομο που μου έδειξε τον τρόπο προς την αυτονομία.
+                                        Ένα άτομο με κάταγμα στην σπονδυλική στήλη έχει άμεση ανάγκη από
+                                        έναν άνθρωπο που θα του ανοίξει τους ορίζοντες προς την αποδοχή
+                                        και την άμεση αποκατάσταση. Για μένα αυτό το άτομο ήταν ο Γιώτης.
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        Μαζί του έμαθα να ντύνομαι,
+                                        να σηκώνομαι από το κρεβάτι και να κινούμαι με το αμαξίδιο άνετα.
+                                        Το σημαντικότερο όμως μάθημα που πήρα από αυτόν ήταν το “κουτί με τις έγνοιες”.
+                                        Προσπαθούμε να τακτοποιήσουμε μια έγνοια μέχρι να έρθει η επόμενη και να πάρει
+                                        την θέση της στο κουτί. Έτσι έμαθα να ζω με την αναπηρία και σήμερα ζω σχεδόν
+                                        αυτόνομος όντας τετραπληγικός στην Ελλάδα.
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        Σε ευχαριστώ για άλλη μια φορά!
+                                    </Typography>
+                                    <Typography variant="body2" fontWeight={600}>
+                                        Ν.Τ.
+                                    </Typography>
+                                </Stack>
+                            </Paper>                             
+                        </Stack>
+                        <Stack spacing={0.1} direction={dir} className="suc-stories">
+                            <img src={suc2} alt=""/>                            
+                            <Paper sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2 }}>
+                                <Stack spacing={2}>
+                                    <Typography variant="body2">
+                                        Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,
+                                        έμαθα πώς να χρησιμοποιώ το αναπηρικό μου αμαξίδιο και πώς να το εντάξω στην
+                                        καθημερινότητά μου με αυτονομία και αυτοπεποίθηση. Μου μετέδωσε το μήνυμα ότι
+                                        έχω τη δυνατότητα να επιλέξω τον τρόπο ζωής που επιθυμώ, παρά τις προκλήσεις
+                                        που αντιμετωπίζω.
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        Σε ψυχολογικό επίπεδο, ήταν πάντα δίπλα μου, έτοιμος να με
+                                        στηρίξει και να μου προσφέρει την άνεση και την ασφάλεια που χρειαζόμουν.
+                                        Είχε πάντα κάτι να πει που θα με βοηθούσε να αντιμετωπίσω τις δυσκολίες και
+                                        να νιώσω καλύτερα, ανεξάρτητα από το τι μου περνούσε στο μυαλό.
+                                    </Typography>
+                                    <Typography variant="body2">
+                                        Ήταν ένας εξαιρετικός επαγγελματίας, αφοσιωμένος στο έργο του και πρόθυμος να με βοηθήσει σε κάθε βήμα του
+                                        ταξιδιού μου προς την αυτονομία. Πέρα από αυτό, όμως, ήταν και ένας θερμός και αγαπητός
+                                        άνθρωπος, που φρόντιζε για την ευημερία μου όχι μόνο σωματικά αλλά και ψυχικά.
+                                    </Typography>
+                                    <Typography variant="body2" fontWeight={600}>
+                                        Ε.Π.
+                                    </Typography>
+                                </Stack>
+                            </Paper>                            
+                        </Stack>
                     </Stack>
                 </>}
             </Box>

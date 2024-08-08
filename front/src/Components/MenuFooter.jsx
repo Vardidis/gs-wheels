@@ -81,11 +81,9 @@ const MenuFooter = () => {
                     <FontAwesomeIcon icon={faComment} size='lg'/>
                     { isDesktop && <ListItemText primary="Επικοινωνία"/> }                    
                 </ListItem>         
-                {/* <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>
-                    <LangSwitch/>
-                    <FontAwesomeIcon icon={faGear} size={iconSize}/>
-                    { isDesktop && <ListItemText primary="Ρυθμίσεις"/> }
-                </ListItem>                     */}
+                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>
+                    <LangSwitch/>           
+                </ListItem>                    
             </List>            
         </>            
     );            

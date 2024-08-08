@@ -6,7 +6,7 @@ import ProductMenu from '../Components/ProductMenu';
 import { useParams } from "react-router-dom";
 
 const Products = () => {
-    const {isDesktop, allProducts, endpoint} = useContext(Context);
+    const {isDesktop, allProducts} = useContext(Context);
     const [items, setItems] = useState([]);
     const {category} = useParams();
     

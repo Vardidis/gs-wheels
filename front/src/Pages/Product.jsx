@@ -16,6 +16,8 @@ const Product = () => {
         justifyContent: 'center',
         paddingBottom: 3,
         paddingTop: 3,
+        paddingLeft: 1,
+        paddingRight: 1
     }
     : {
         padding: 2
