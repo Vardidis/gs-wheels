@@ -3,14 +3,22 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs');
 const cors = require('cors');
-const nodemailer = require('nodemailer');
+const multer = require('multer');
 
 const app = express();
 app.use(express.json());
 app.use(cors());
-const assets = path.join(__dirname, 'assets/images');
+const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
 app.use('/images', express.static(assets));
+
+const storage = multer.diskStorage({
+    destination: assets,
+    filename:(req, file, cb)=>{
+        return cb(null, `${file.originalname}`);
+    }
+});
+const upload = multer({storage:storage});
 
 app.get('/products', async(req, res) => {
     fs.readFile(path.join(__dirname, 'items.json'), 'utf8', async(err, data) => {
@@ -33,6 +41,20 @@ app.get('/messages', (req, res) => {
         let msgData = JSON.parse(data);
         res.json(msgData);
     });
+});
+
+app.get('/uploads', (req, res) => {
+    fs.readdir(assets, (err, files) => {
+        if(err){
+            res.status(500);
+        }
+        let allFiles = []
+        files.forEach(file => {
+            allFiles.push(file);
+        });
+
+        res.json({"files": allFiles});
+    });
 })
 
 const getDate = () => {
@@ -46,6 +68,12 @@ const getDate = () => {
 
     return `${day}/${month}/${year} ${hours}:${minutes}`;
 }
+
+app.post('/upload-image', upload.single('image'), (req,res)=>{
+    res.json({
+        success: 1,
+    });
+});
 
 app.post('/submit-message', (req, res) => {
     const {name, email, tel, text} = req.body;
@@ -81,7 +109,31 @@ app.post('/submit-message', (req, res) => {
               console.log('File successfully updated');
         })
     });
-})
+});
+
+app.post('/delete-message', (req, res) => {
+    const productId = req.body.id;
+
+    fs.readFile(path.join(__dirname, 'items.json'), 'utf8', async(err, data) => {
+        if(err){
+            res.status(500).send('Error reading products file');
+        }
+
+        const products = JSON.parse(data).products;        
+
+        const updatedProducts = products.filter(element => element.id !== productId);
+        fs.writeFile(path.join(__dirname, 'items.json'), JSON.stringify({"products": updatedProducts}, null, 2), (response, writeErr) => {
+            if(writeErr){
+                res.status(500);
+                console.error('Error writing file:', writeErr);  
+                return;              
+            }
+            res.status(200).json({
+                message: 'Data deleted successfully',        
+            });
+        });
+    });
+});
 
 app.listen(port, (error)=>{
     if(!error){

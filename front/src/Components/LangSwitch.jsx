@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { styled } from '@mui/material/styles';
-import { Box, FormControlLabel, Switch, ToggleButton, ToggleButtonGroup } from '@mui/material';
+import { Box, Switch, ToggleButton, ToggleButtonGroup } from '@mui/material';
 import { useContext } from "react";
 import { Context } from "./Context";
 

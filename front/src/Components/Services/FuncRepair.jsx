@@ -13,7 +13,7 @@ library.add(faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash);
 
 const FuncRepair = () => {
     const {isDesktop} = useContext(Context);
-    const iconSize = isDesktop ? '2xl' : 'lg';
+    const iconSize = isDesktop ? '2xl' : '2xl';
 
     return(
         <Box sx={{ paddingBottom: 5 }}>      

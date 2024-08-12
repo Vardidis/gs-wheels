@@ -4,7 +4,7 @@ export const Context = createContext(null);
 
 const ContextProvider = (props) => {
     const [isDesktop, setIsDesktop] = useState(true);
-    const endpoint = 'http://192.168.1.13:4300/images/';
+    const endpoint = `${process.env.REACT_APP_BACKEND}/images/`;
 
     const [settings, setSettings] = useState({
         'theme': 'light',
@@ -14,7 +14,7 @@ const ContextProvider = (props) => {
     const contextValue = {isDesktop, setIsDesktop, settings, setSettings, allProducts, endpoint};    
 
     useEffect(()=>{
-        fetch("http://192.168.1.13:4300/products")
+        fetch(`${process.env.REACT_APP_BACKEND}/products`)
         .then(((response) => response.json()))
         .then((data) => {
             setAllProducts(data);

@@ -16,6 +16,11 @@ const MenuList = () => {
                         <ListItemText primary="Μηνύματα" sx={{  color: 'black' }}/>
                     </ListItem> 
                 </NavLink>    
+                <NavLink to='/uploads' className='navlink' activeclassname='active'style={{ textDecoration: 'none' }}>           
+                    <ListItem sx={{gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 4}, backgroundColor: 'transparent'}}>                    
+                        <ListItemText primary="Media" sx={{  color: 'black' }}/>
+                    </ListItem> 
+                </NavLink>   
             </List>
         </Box>
     );

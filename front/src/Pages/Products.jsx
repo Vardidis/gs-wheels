@@ -27,13 +27,12 @@ const Products = () => {
     
     if(isDesktop){
         return(
-            <Box sx={{ position: 'relative', transform: 'translate(-50%)', left: '50%', width: {xl: '50%', lg: '85%', md: '95%'} }}>            
+            <Box sx={{ position: 'relative', transform: 'translate(-50%)', left: '50%', width: {xl: '70%', lg: '85%', md: '95%'}, paddingBottom: 5 }}>            
                 <Box sx={{ paddingTop: 3 }}>          
                     <Stack spacing={10}>     
                         <Typography fontSize={26} fontWeight={600}>Κατάστημα</Typography>           
-                        <Stack direction='row' spacing={{lg: 2, md: 1}}>
-                            <CategoryMenu tag={category}/>
-                            <Divider orientation="vertical"/>
+                        <Stack direction='row' spacing={{lg: 4, md: 2}}>
+                            <CategoryMenu tag={category}/>                            
                             <ProductMenu items={items}/>
                         </Stack> 
                     </Stack>
@@ -46,7 +45,7 @@ const Products = () => {
                 <Stack spacing={5} sx={{ paddingTop: 3 }}>     
                     <Typography fontSize={26} fontWeight={600}>Κατάστημα</Typography>               
                     <Stack spacing={3}>
-                        <CategoryMenu/>
+                        <CategoryMenu tag={category}/>
                         <ProductMenu items={items}/>
                     </Stack>           
                 </Stack>

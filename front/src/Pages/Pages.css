@@ -92,12 +92,3 @@
         cursor: pointer;
     }
 }
-
-@media(max-width: 900px){
-    .sub-image{
-        max-width: 80px;
-        box-shadow: 1px 2px 3px -2px black;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-}

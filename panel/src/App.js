@@ -4,6 +4,8 @@ import SideMenu from './Components/SideMenu';
 import Messages from './Components/Messages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Box } from '@mui/material';
+import Product from './Components/Product';
+import Uploads from './Components/Uploads';
 
 function App() {
   return (
@@ -21,6 +23,10 @@ function App() {
           <Routes>
             <Route path="/" element={<Eshop/>}/>
             <Route path="/messages" element={<Messages/>}/>
+            <Route path="/edit" element={<Product/>}>
+              <Route path='/edit/:productId' element={<Product/>}/>
+            </Route>
+            <Route path="/uploads" element={<Uploads/>}/>
           </Routes>            
         </Box>
       </Box>

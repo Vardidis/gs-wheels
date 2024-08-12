@@ -4,10 +4,11 @@ import {Box, Stack } from '@mui/material';
 import Menulist from "./Menulist";
 import MenuFooter from "./MenuFooter";
 
-const Sidemenu = () => {
+const Sidemenu = (props) => {
+    const iconSize = props.desktop ? 50 : 40;
     return(
         <Box component="section" sx={{ 
-            width: {lg: '200px', md: '200px', sm: '70px', xs: '50px', xxs: '50px'},
+            width: {lg: '200px', md: '200px', sm: '50px', xs: '50px', xxs: '50px'},
             height: '100%',
             borderRight: '1px solid #f8f8f8',
             boxShadow: "2px 0px 2px -3px black",
@@ -23,7 +24,7 @@ const Sidemenu = () => {
                 }}
             >
                 <Box>
-                    <img src={logo} style={{ width: 50, padding: 10, cursor: 'pointer', borderRadius: 5 }} alt=""/>
+                    <img src={logo} style={{ width: iconSize, padding: 10, cursor: 'pointer', borderRadius: 5 }} alt=""/>
                 </Box>                    
                 <Menulist/>
                 <MenuFooter/>

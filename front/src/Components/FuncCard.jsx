@@ -1,36 +1,25 @@
 import React from "react";
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Box, Stack, Paper } from "@mui/material";
 
 const FuncCard = (props) => {
     return(
         <Box sx={{
-            paddingLeft: {xl: 0, lg: 0, md: 0, sm: 1, xs: 1, xxs: 1},
-            paddingRight: {xl: 0, lg: 0, md: 0, sm: 1, xs: 1, xxs: 1}
+            paddingLeft: {xl: 20, lg: 30, md: 20, sm: 5, xs: 3, xxs: 2},
+            paddingRight: {xl: 20, lg: 30, md: 20, sm: 5, xs: 3, xxs: 2}
         }}>
-            <Stack direction='row' spacing={1}>
-                <Box sx={{
-                    boxShadow: '1px 2px 3px -2px black', 
-                    backgroundColor: 'black',
-                    opacity: 0.8,
-                    width: {xl: 60, lg: 60, md: 60, sm: 45, xs: 45, xxs: 45},
-                    height: {xl: 60, lg: 60, md: 60, sm: 45, xs: 45, xxs: 45},
-                    borderRadius: 50,
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    border: '2px solid orangered'
-                }}>
-                    {props.icon} 
-                </Box>
-                <Box sx={{ maxWidth: {xl: 1000, lg: 800, md: 550, sm: 400, xs: 220, xxs: 150, borderRadius: 10}, boxShadow: '1px 2px 3px -2px black', backgroundColor: 'rgb(60, 60, 60)', textAlign: 'center', padding: 3, border: '1px solid orangered' }}>
-                    <Typography sx={{
-                        fontSize: {xl: 22, lg: 18, md: 18, sm: 18, xs: 18, xxs: 16},
-                        color: 'white'
-                    }} gutterBottom>
-                        {props.text}
-                    </Typography>                
-                </Box>
-            </Stack>
+                <Paper sx={{ borderRadius: 3, backgroundColor: 'rgb(60, 60, 60)', textAlign: 'center', padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 2, xxs: 2}, border: '1px solid orangered' }}>
+                    <Stack spacing={3}>
+                        <Box>
+                            {props.icon} 
+                        </Box>                        
+                        <Typography sx={{
+                            fontSize: {xl: 22, lg: 18, md: 18, sm: 18, xs: 18, xxs: 16},
+                            color: 'white'
+                        }} gutterBottom>
+                            {props.text}
+                        </Typography>       
+                    </Stack>               
+                </Paper>
         </Box>
     );
 }

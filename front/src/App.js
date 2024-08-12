@@ -47,7 +47,7 @@ function App() {
       },
     },
   })
-  const {setIsDesktop} = useContext(Context);
+  const {setIsDesktop, isDesktop} = useContext(Context);
   const screenSize = useScreenSize();
 
   useEffect(()=>{
@@ -58,10 +58,10 @@ function App() {
     <ThemeProvider theme={theme}>
       <BrowserRouter>
         <Box display="flex" height="100vh">                      
-          <Sidemenu/>
+          <Sidemenu desktop={isDesktop}/>
           <Box component="main" sx={{
             flexGrow: 1,
-            marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '70px', xs: '50px', xxs: '50px'},
+            marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '50px', xs: '50px', xxs: '50px'},
             height: '100vh',
             overflowY: 'auto',
             overflowX: 'hidden',

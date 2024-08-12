@@ -7,6 +7,7 @@ const ProductMenuItem = (props) => {
             id: props.id,
             borderRadius: 1,
             minWidth: {lg: 130, md: 130, sm: 130, xs: 100, xxs: 100},
+            height: 30,
             backgroundColor: props.highlight ? '#FFDCBC' : 'rgb(234, 234, 234)',
             display: 'flex',
             alignItems: 'center',
@@ -17,7 +18,7 @@ const ProductMenuItem = (props) => {
         }}
         className={props.highlight?'product-menu-selected':'product-menu'}>
             {props.icon}
-            <Typography fontSize={{xl: 16, lg: 16, md: 16, sm: 16, xs: 12, xxs: 12}}>
+            <Typography fontSize={{xl: 16, lg: 16, md: 16, sm: 16, xs: 13, xxs: 12}}>
                 {props.text}
             </Typography>                   
         </Box>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { Alert, Button, TextField, Stack, Box, Fade, Snackbar } from '@mui/material';
+import { Alert, Button, TextField, Stack, Box, Snackbar } from '@mui/material';
 
-const Contact = () => {
+const Contact = (props) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [subInfo, setSubInfo] = useState({
         name: '',
@@ -14,8 +14,7 @@ const Contact = () => {
         email: false,
         tel: false,
         text: false
-    });
-    const [open, setOpen] = useState(false);
+    });    
 
     function sanitize(text) {
         const map = {
@@ -86,7 +85,7 @@ const Contact = () => {
                 sanitize(subInfo.text);
                 
                 try {
-                    const response = await fetch('http://localhost:4300/submit-message', {
+                    const response = await fetch(`${process.env.REACT_APP_BACKEND}/submit-message`, {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
@@ -96,8 +95,9 @@ const Contact = () => {
                     .then(response => {     
                         if(!response.ok){
                             console.log('oops')
-                        }                 
-                        setOpen(true);
+                        }                                                                    
+                        props.close();
+                        props.snack({ vertical: 'top', horizontal: 'right' });           
                     })                                                                            
                 } catch (error) {
                     console.log(error)
@@ -111,22 +111,8 @@ const Contact = () => {
         setSubInfo({ ...subInfo, [e.target.id]: e.target.value});
     }
 
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-          return;
-        }
-    
-        setOpen(false);
-    };
-
     return(
-        <Box>
-            <Snackbar
-                open={open}
-                autoHideDuration={3000}
-                onClose={handleClose}
-                message="Η αποστολή ήταν επιτυχής. Σας ευχαριστούμε !"
-            />        
+        <Box>                
             <Box sx={{
                 position: 'absolute',
                 top: '50%',

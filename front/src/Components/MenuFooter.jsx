@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "./Context";
-import { List, ListItem, ListItemText, Modal, Typography, Paper, Popper, Fade } from '@mui/material';
+import { List, ListItem, ListItemText, Modal, Typography, Paper, Popper, Fade, Box, Snackbar } from '@mui/material';
 import Contact from "./Contact";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,12 @@ const MenuFooter = () => {
     const [placement, setPlacement] = useState();
     const [menuOpen, setMenuOpen] = useState(false);
     const [itemColor, setItemColor] = useState('black');
+    const [state, setState] = useState({
+        openSnack: false,
+        vertical: 'top',
+        horizontal: 'center',
+    });
+    const { vertical, horizontal, openSnack } = state;
 
     const handleClose = () => setOpenModal(false);
     const handleOpen = () => setOpenModal(true);
@@ -32,8 +38,23 @@ const MenuFooter = () => {
         setPlacement(newPlacement);
     };
 
+    const handleCloseSnack = () => {
+        setState({ ...state, openSnack: false });
+    };
+
+    const handleClickSnack = (newState) => {
+        setState({ ...newState, openSnack: true });
+    }
+
     return(
-        <>
+        <Box>
+        <Snackbar
+            open={openSnack}
+            autoHideDuration={5000}
+            anchorOrigin={{ vertical, horizontal }}
+            onClose={handleCloseSnack}
+            message="Η αποστολή ήταν επιτυχής. Σας ευχαριστούμε !"
+        />    
          <Popper
             sx={{ zIndex: 1 }}
             open={open}
@@ -45,7 +66,7 @@ const MenuFooter = () => {
             <Fade {...TransitionProps} timeout={350}>
                 <Paper sx={{ backgroundColor: 'rgb(57, 57, 57)', color: 'white' }}>
                     <List>
-                        <ListItem className='contact-list' onClick={()=>handleOpen()}>
+                        <ListItem className='contact-list' onClick={()=>{handleOpen()}}>
                             <Typography>
                                 Αποστολή μηνύματος
                             </Typography>
@@ -66,7 +87,7 @@ const MenuFooter = () => {
                 aria-labelledby="modal-modal-title"
                 aria-describedby="modal-modal-description"
             >
-                <Contact/>
+                <Contact close={handleClose} snack={handleClickSnack}/>
             </Modal>         
             <Modal
                 open={openInfoModal}
@@ -81,11 +102,11 @@ const MenuFooter = () => {
                     <FontAwesomeIcon icon={faComment} size='lg'/>
                     { isDesktop && <ListItemText primary="Επικοινωνία"/> }                    
                 </ListItem>         
-                <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>
+                {/* <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>
                     <LangSwitch/>           
-                </ListItem>                    
+                </ListItem>                     */}
             </List>            
-        </>            
+        </Box>            
     );            
 }
 
