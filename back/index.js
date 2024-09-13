@@ -75,6 +75,18 @@ app.post('/upload-image', upload.single('image'), (req,res)=>{
     });
 });
 
+app.post('/delete-image', (req, res) => {
+    const index = req.body.index;
+    
+    fs.unlink(path.join(assets, index), (err) => {
+        if (err) {
+            return res.status(500).json({ message: 'Error deleting file' });
+        }
+
+        res.status(200).json({ message: 'File deleted successfully' });
+    });
+})
+
 app.post('/submit-message', (req, res) => {
     const {name, email, tel, text} = req.body;
     fs.readFile(messages, 'utf8', (err, data) => {
