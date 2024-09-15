@@ -7,7 +7,13 @@ const multer = require('multer');
 
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.use(cors(
+    {
+        origin: ['https://gs-wheels-server.vercel.app/'],
+        methods: ['POST', 'GET']
+    }
+));
+
 const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
 app.use('/images', express.static(assets));
