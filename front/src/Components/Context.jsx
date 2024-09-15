@@ -13,8 +13,7 @@ const ContextProvider = (props) => {
     const [allProducts, setAllProducts] = useState([]);
     const contextValue = {isDesktop, setIsDesktop, settings, setSettings, allProducts, endpoint};    
 
-    useEffect(()=>{
-        console.log(process.env.REACT_APP_BACKEND)
+    useEffect(()=>{   
         fetch(`${process.env.REACT_APP_BACKEND}/products`)
         .then(((response) => response.json()))
         .then((data) => {
