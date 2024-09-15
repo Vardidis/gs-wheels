@@ -12,7 +12,7 @@ const allowedOrigins = ['https://gs-wheels-vardidis-projects.vercel.app', 'https
 
 const corsOptions = {
     origin: function(origin, callback) {
-        if(!origin || allowedOrigins.indexOf(origin) !== -1){
+        if(allowedOrigins.indexOf(origin) !== -1){
             callback(null, true);
         }else{
             callback(new Error('Access is not allowed by CORS'));
