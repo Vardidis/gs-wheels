@@ -15,7 +15,6 @@ const ContextProvider = (props) => {
 
     useEffect(()=>{
         console.log(process.env.REACT_APP_BACKEND)
-        console.log(REACT_APP_BACKEND)
         fetch(`${process.env.REACT_APP_BACKEND}/products`)
         .then(((response) => response.json()))
         .then((data) => {
