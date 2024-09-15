@@ -21,7 +21,7 @@ const RedirectBox = (props) => {
                     sx={{
                         width: {sm: 150, xs: 100, xxs: 100},
                         fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10},
-                        marginLeft: {xl: 15, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
+                        marginLeft: {xl: 70, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
                     }}
                 >
                     Πισω
@@ -35,7 +35,7 @@ const RedirectBox = (props) => {
                         sx={{
                             width: {sm: 150, xs: 100, xxs: 100},
                             fontSize: {xl: 16, lg: 14, md: 14, sm: 12, xs: 12, xxs: 10},
-                            marginRight: {xl: 15, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
+                            marginRight: {xl: 70, lg: 15, sm: 15, sm: 5, xs: 1, xxs: 1}
                         }}
                     >
                         Επομενο

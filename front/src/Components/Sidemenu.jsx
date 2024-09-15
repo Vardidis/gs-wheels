@@ -1,8 +1,9 @@
 import React from "react";
-import logo from '../assets/logo.jpg';
+import logo from '../assets/logo.png';
 import {Box, Stack } from '@mui/material';
 import Menulist from "./Menulist";
 import MenuFooter from "./MenuFooter";
+import { Link } from 'react-router-dom';
 
 const Sidemenu = (props) => {
     const iconSize = props.desktop ? 50 : 40;
@@ -23,9 +24,11 @@ const Sidemenu = (props) => {
                     height: '100vh'
                 }}
             >
-                <Box>
-                    <img src={logo} style={{ width: iconSize, padding: 10, cursor: 'pointer', borderRadius: 5 }} alt=""/>
-                </Box>                    
+                <Link to='/'>
+                    <Box>
+                        <img src={logo} style={{ width: iconSize, padding: 10, cursor: 'pointer', borderRadius: 5 }} alt=""/>
+                    </Box>    
+                </Link>                                
                 <Menulist/>
                 <MenuFooter/>
             </Stack>                                                   

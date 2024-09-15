@@ -30,7 +30,7 @@ const WheelcharCanvas = () => {
                     }}/>
                 </Box>
                 
-                <Box>
+                {/* <Box>
                     <Accordion sx={{ backgroundColor: 'rgb(247, 247, 247)' }}>
                         <AccordionSummary
                             expandIcon={<ExpandMoreIcon />}
@@ -47,7 +47,7 @@ const WheelcharCanvas = () => {
                             </Stack>
                         </AccordionDetails>
                     </Accordion>                 
-                </Box>               
+                </Box>                */}
             </Stack>
         </Box>        
     );
