@@ -9,7 +9,7 @@ const app = express();
 app.use(express.json());
 app.use(cors(
     {
-        origin: ['https://gs-wheels-vardidis-projects.vercel.app'],
+        origin: ['https://gs-wheels-vardidis-projects.vercel.app', 'https://gs-wheels-1w2d1z471-vardidis-projects.vercel.app'],
         methods: ['POST', 'GET']
     }
 ));
