@@ -7,12 +7,22 @@ const multer = require('multer');
 
 const app = express();
 app.use(express.json());
-app.use(cors(
-    {
-        origin: ['https://gs-wheels-vardidis-projects.vercel.app', 'https://gs-wheels-1w2d1z471-vardidis-projects.vercel.app'],
-        methods: ['POST', 'GET']
-    }
-));
+
+const allowedOrigins = ['https://gs-wheels-vardidis-projects.vercel.app', 'https://gs-wheels-1w2d1z471-vardidis-projects.vercel.app'];
+
+const corsOptions = {
+    origin: function(origin, callback) {
+        if(!origin || allowedOrigins.indexOf(origin) !== -1){
+            callback(null, true);
+        }else{
+            callback(new Error('Access is not allowed by CORS'));
+        }
+    },
+    methods: ['POST', 'GET'],
+    credentials: true
+}
+
+app.use(cors(corsOptions));
 
 const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
