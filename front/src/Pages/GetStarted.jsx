@@ -3,11 +3,10 @@ import Infobox from '../Components/Infobox';
 import './Pages.css';
 import { Stack, Box, Typography } from "@mui/material";
 import GsButton from "../Components/GsButton";
-import mnml from '../assets/minimal2.jpg';
 
 const GetStarted = () => {
     return(
-        <Box sx={{ textAlign: 'center', paddingTop: 3, paddingBottom: 5, backgroundImage: `url(${mnml})`, backgroundSize: 'cover', backgroundPosition: 'center', height: '100%' }}>            
+        <Box sx={{ textAlign: 'center', paddingTop: 3, paddingBottom: 5, height: '100%' }}>            
             <Box sx={{ display: 'flex', justifyContent: 'center', gap: 1 }}>
                 <Typography fontSize={{xl: 26, lg: 22, md: 20, sm: 20, xs: 20, xxs: 16}}>
                     Καλωσήρθατε στη
