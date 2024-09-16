@@ -23,7 +23,7 @@ app.use(express.json());
 //     credentials: true
 // }
 
-// app.use(cors(corsOptions));
+app.use(cors());
 
 const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
