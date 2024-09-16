@@ -21,7 +21,7 @@ function App() {
         dull: "#DCDCDC",
       },
       highlight: {
-        main: "#f68b24"
+        main: "#ff7300f8"
       },
       placeholder: {
         info: "#9BC9FF",
@@ -65,8 +65,8 @@ function App() {
             height: '100vh',
             overflowY: 'auto',
             overflowX: 'hidden',
-            bgcolor: '#f8f8f8',            
-          }}>
+            bgcolor: '#f8f8f8',                 
+          }}>           
             <Routes>
               <Route path="/" element={<GetStarted/>}/>
               <Route path="services" element={<Services/>}/>               

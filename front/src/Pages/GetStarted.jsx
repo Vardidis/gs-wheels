@@ -4,16 +4,33 @@ import './Pages.css';
 import { Stack, Box, Typography } from "@mui/material";
 import GsButton from "../Components/GsButton";
 import logo from '../assets/logo.png';
+import bgImg from '../assets/bgWheel2.png';
 
 const GetStarted = () => {
     return(
-        <Box sx={{ textAlign: 'center', paddingTop: 3, paddingBottom: 5, height: '100%' }}>            
-            <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, alignItems: 'center' }}>
+        <Box sx={{
+            textAlign: 'center',
+            paddingTop: 3,
+            paddingBottom: 5,
+            height: '100%',
+            backgroundImage: `url(${bgImg})`,
+            backgroundPosition: 'right',
+            backgroundRepeat: 'no-repeat',
+            justifyContent: 'flex-end',
+            backgroundSize: '200%, 200%'
+        }}>            
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 2,
+                alignItems: 'center',
+                paddingLeft: 55,                
+            }}>
                 <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
                     <img src={logo} style={{ width: 75 }} alt=""/>
                 </Box>                
                 <Stack sx={{ textAlign: 'left' }}>
-                    <Typography fontWeight={600} fontSize={{xl: 40, lg: 36, md: 30, sm: 28, xs: 26, xxs: 22}} sx={{ color: '#f68b24' }}>
+                    <Typography fontWeight={600} fontSize={{xl: 40, lg: 36, md: 30, sm: 28, xs: 26, xxs: 22}} sx={{ color: '#ff7300f8' }}>
                         GS Wheelchairs
                     </Typography>
                     <Typography fontSize={{xl: 20, lg: 18, md: 16, sm: 16, xs: 16, xxs: 14}}>

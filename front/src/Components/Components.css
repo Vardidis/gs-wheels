@@ -70,7 +70,7 @@
 }
 
 .navlink.active{
-    color: #f68b24;
+    color: #ff7300;
     font-weight: 600;
 }
 
@@ -127,7 +127,7 @@
 
 .clickable:hover{
     cursor: pointer;
-    color: #f68b24;
+    color: #ff7300f8;
 }
 
 @media(max-width: 1200px){
