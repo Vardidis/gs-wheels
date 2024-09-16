@@ -8,20 +8,20 @@ const multer = require('multer');
 const app = express();
 app.use(express.json());
 
-const allowedOrigins = ['https://gs-wheels-vardidis-projects.vercel.app'];
-const originPattern = /^https:\/\/gs-wheels-server-[a-z0-9]+-vardidis-projects\.vercel\.app$/;
+// const allowedOrigins = ['https://gs-wheels-vardidis-projects.vercel.app', '*'];
+// const originPattern = /^https:\/\/gs-wheels-server-[a-z0-9]+-vardidis-projects\.vercel\.app$/;
 
-const corsOptions = {
-    origin: function(origin, callback) {
-        if(allowedOrigins.indexOf(origin) !== -1 || originPattern.test(origin)){
-            callback(null, true);
-        }else{
-            callback(new Error('Access is not allowed by CORS'));
-        }
-    },
-    methods: ['POST', 'GET'],
-    credentials: true
-}
+// const corsOptions = {
+//     origin: function(origin, callback) {
+//         if(allowedOrigins.indexOf(origin) !== -1 || originPattern.test(origin)){
+//             callback(null, true);
+//         }else{
+//             callback(new Error('Access is not allowed by CORS'));
+//         }
+//     },
+//     methods: ['POST', 'GET'],
+//     credentials: true
+// }
 
 // app.use(cors(corsOptions));
 
