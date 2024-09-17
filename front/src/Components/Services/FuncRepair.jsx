@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Stack, Paper, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import FuncCard from "../FuncCard";
 import TitleComp from "./TitleComp";
 import RedirectBox from "./RedirectBox";
@@ -23,14 +23,14 @@ const FuncRepair = () => {
             <TitleComp text={'Λειτουργική Αποκατάσταση'}/>
             <Stack spacing={6} sx={{ marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}}}>
                 <Box>
-                    <Paper sx={{ borderRadius: 3, backgroundColor: 'rgb(40, 40, 40)', padding: {xl: 3, lg: 5, md: 3, sm: 2, xs: 2, xxs: 2}, border: '1px solid orangered' }}>
+                    <Box sx={{ borderRadius: 3, backgroundColor: 'rgb(232, 232, 240)', padding: {xl: 3, lg: 5, md: 3, sm: 2, xs: 2, xxs: 2}, border: '1px solid rgb(180, 180, 180)' }}>
                         <Stack spacing={7}>
-                            <FuncCard icon={<FontAwesomeIcon icon={faLinkSlash} size={iconSize} style={{ color: 'rgb(242, 242, 242)' }}/>} text={'Μετά από έναν τραυματισμό στην σπονδυλική στήλη το σώμα μας γίνεται απίστευτα βαρύ και μη λειτουργικό. Η λέξη αυτονομία και ανεξαρτησία αποκτούν άλλη έννοια.'}/>
-                            <FuncCard icon={<FontAwesomeIcon icon={faWheelchairMove} size={iconSize} style={{ color: 'rgb(242, 242, 242)' }}/>} text={'Καλείσαι ξαφνικά να αντιμετωπίσεις προκλήσεις και καταστάσεις που ποτέ δεν είχαν περάσει από το μυαλό σου ενώ προσπαθείς να συμβιβαστείς στον νέο τρόπο ζωής κάνοντας εκπτώσεις στα θέλω σου.'}/>                            
-                            <FuncCard icon={<FontAwesomeIcon icon={faBook} size={iconSize} style={{ color: 'rgb(242, 242, 242)' }}/>} text={'Υπάρχουν οι βασικές αρχές λειτουργικής αποκατάστασης  όπου εστιάζουν στην βελτίωση της αυτονομίας σου μέσα από την ομότιμη υποστήριξη με στόχο την βελτίωση της ποιότητας ζωής δίχως περιορισμούς.'}/>
-                            <FuncCard icon={<FontAwesomeIcon icon={faHandshakeAngle} size={iconSize} style={{ color: 'rgb(242, 242, 242)' }}/>} text={'Στην GS  Wheelchairs (Get Started)  γνωρίζουμε πολύ καλά τι χρειάζεσαι και μπορούμε να σου δώσουμε όλα εκείνα τα εφόδια που θα χρειαστείς ώστε να γίνεις ξανά αυτόνομος για μια ποιοτική ζωή δίχως περιορισμούς.'}/>                         
+                            <FuncCard icon={<FontAwesomeIcon icon={faLinkSlash} size={iconSize} style={{ color: 'rgb(40, 40, 40)' }}/>} text={'Μετά από έναν τραυματισμό στην σπονδυλική στήλη το σώμα μας γίνεται απίστευτα βαρύ και μη λειτουργικό. Η λέξη αυτονομία και ανεξαρτησία αποκτούν άλλη έννοια.'}/>
+                            <FuncCard icon={<FontAwesomeIcon icon={faWheelchairMove} size={iconSize} style={{ color: 'rgb(40, 40, 40)' }}/>} text={'Καλείσαι ξαφνικά να αντιμετωπίσεις προκλήσεις και καταστάσεις που ποτέ δεν είχαν περάσει από το μυαλό σου ενώ προσπαθείς να συμβιβαστείς στον νέο τρόπο ζωής κάνοντας εκπτώσεις στα θέλω σου.'}/>                            
+                            <FuncCard icon={<FontAwesomeIcon icon={faBook} size={iconSize} style={{ color: 'rgb(40, 40, 40)' }}/>} text={'Υπάρχουν οι βασικές αρχές λειτουργικής αποκατάστασης  όπου εστιάζουν στην βελτίωση της αυτονομίας σου μέσα από την ομότιμη υποστήριξη με στόχο την βελτίωση της ποιότητας ζωής δίχως περιορισμούς.'}/>
+                            <FuncCard icon={<FontAwesomeIcon icon={faHandshakeAngle} size={iconSize} style={{ color: 'rgb(40, 40, 40)' }}/>} text={'Στην GS  Wheelchairs (Get Started)  γνωρίζουμε πολύ καλά τι χρειάζεσαι και μπορούμε να σου δώσουμε όλα εκείνα τα εφόδια που θα χρειαστείς ώστε να γίνεις ξανά αυτόνομος για μια ποιοτική ζωή δίχως περιορισμούς.'}/>                         
                         </Stack>
-                    </Paper>
+                    </Box>
                 </Box>     
                 <Box sx={{ display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 250, 240)', padding: 3, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                     <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
@@ -41,7 +41,7 @@ const FuncRepair = () => {
                         και ολοκληρωμένες προσεγγίσεις, όπως η λειτουργική αποκατάσταση.
                     </Typography>          
                 </Box>
-                <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Μοντέλα Αποκατάστασης
                         </Typography> 

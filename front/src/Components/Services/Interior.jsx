@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Box, Stack, Alert, Typography, Paper } from "@mui/material";
+import { Box, Stack, Alert, Typography } from "@mui/material";
 import inter from '../../assets/interior5.jpg';
 import PartBox from "../PartBox";
 import inter2 from '../../assets/interior2.jpg';

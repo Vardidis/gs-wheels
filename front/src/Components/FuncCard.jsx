@@ -9,7 +9,7 @@ const FuncCard = (props) => {
             </Box>                        
             <Typography sx={{
                 fontSize: {xl: 22, lg: 18, md: 18, sm: 18, xs: 18, xxs: 16},
-                color: 'white'
+                color: 'rgb(40, 40, 40)'
             }} gutterBottom>
                 {props.text}
             </Typography>       
