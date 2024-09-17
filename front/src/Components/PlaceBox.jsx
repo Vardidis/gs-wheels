@@ -6,7 +6,7 @@ const PlaceBox = (props) => {
         <Box sx={{
             height: 20,
             width: {xl: 200, lg: 185, md: 185, sm: 185, xs: 130, xxs: 110},
-            backgroundColor: '#ECECEC',
+            bgcolor: 'rgb(235, 235, 240)',
             display: 'flex',
             gap: {xl: 1, lg: 1, md: 1, sm: 1, xs: 1, xxs: 0.5},
             padding: {xl: 1.5, lg: 1.5, md: 1.5, sm: 1.5, xs: 1.5, xxs: 1},
