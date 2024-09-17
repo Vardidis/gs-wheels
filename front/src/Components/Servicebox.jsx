@@ -22,8 +22,8 @@ const Servicebox = () => {
     }
     : {
         width: '100%',
-        paddingLeft: {sm: 5, xs: 3, xxs: 1},
-        paddingRight: {sm: 5, xs: 3, xxs: 1},
+        paddingLeft: {sm: 5, xs: 3, xxs: 2},
+        paddingRight: {sm: 5, xs: 3, xxs: 2},
         paddingTop: {sm: 3, xs: 3, xxs: 3},
         paddingBottom: {sm: 5, xs: 3, xxs: 3}
     }
@@ -33,40 +33,39 @@ const Servicebox = () => {
                 {isDesktop
                 ? <>                
                     <Stack direction='row' spacing={2}>
-                        <Link to='/service/vasikes-arxes' style={{textDecoration: 'none'}}>
+                        {/* <Link to='/service/vasikes-arxes' style={{textDecoration: 'none'}}>
                             <Servicecard image={img} text={'1. Βασικές Αρχές'}/>
-                        </Link>
+                        </Link> */}
                         <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
-                            <Servicecard image={bgimg} text={'2. Λειτουργική Αποκατάσταση'}/>
+                            <Servicecard image={bgimg} text={'1. Λειτουργική Αποκατάσταση'}/>
                         </Link>
-                    </Stack>
-                    <Stack direction='row' spacing={2}>
                         <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
-                            <Servicecard image={gw} text={'3. Life Coaching'}/>
+                            <Servicecard image={gw} text={'1. Life Coaching'}/>
                         </Link>
-                        <Link to='/service/full-custom' style={{textDecoration: 'none'}}>
-                            <Servicecard image={fc} text={'4. Προσαρμογή Αμαξιδίου'}/>
-                        </Link>                    
                     </Stack>
                     <Stack direction='row' spacing={2}>
+                        
+                        {/* <Link to='/service/full-custom' style={{textDecoration: 'none'}}>
+                            <Servicecard image={fc} text={'4. Προσαρμογή Αμαξιδίου'}/>
+                        </Link>                    */}
                         <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                            <Servicecard image={id} text={'5. Interior Design'}/>
+                            <Servicecard image={id} text={'3. Interior Design'}/>
                         </Link>
-                    </Stack>            
+                    </Stack>         
                 </>
                 : <>
-                    <Link to='/service/vasikes-arxes' style={{textDecoration: 'none'}}>
+                    {/* <Link to='/service/vasikes-arxes' style={{textDecoration: 'none'}}>
                         <Servicecard image={img} text={'1. Βασικές Αρχές'}/>
-                    </Link>
+                    </Link> */}
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
                         <Servicecard image={bgimg} text={'2. Λειτουργική Αποκατάσταση'}/>
                     </Link>
                     <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
                         <Servicecard image={gw} text={'3. Life Coaching'}/>
                     </Link>
-                    <Link to='/service/full-custom' style={{textDecoration: 'none'}}>
+                    {/* <Link to='/service/full-custom' style={{textDecoration: 'none'}}>
                         <Servicecard image={fc} text={'4. Προσαρμογή Αμαξιδίου'}/>
-                    </Link>
+                    </Link> */}
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
                         <Servicecard image={id} text={'5. Interior Design'}/>
                     </Link>
