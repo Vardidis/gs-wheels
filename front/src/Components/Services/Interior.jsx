@@ -156,7 +156,7 @@ const Interior = () => {
                     </Stack>         
                 </Stack>    
             </Box>            
-            <RedirectBox back={'/service/full-custom'} forward={'/service/products'} pd={90} last={true}/>
+            <RedirectBox back={'/service/life-coaching'} forward={'/'} pd={90} last={true}/>
         </Box>
     );
 }

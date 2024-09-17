@@ -38,7 +38,7 @@ const LifeCoaching = () => {
                 </Box>
                 }                             
             </Stack>
-            <RedirectBox back={'/service/apokatastasi'} forward={'/service/full-custom'} pd={80}/>
+            <RedirectBox back={'/service/apokatastasi'} forward={'/service/interior-design'} pd={80}/>
         </Box>
     );
 }
