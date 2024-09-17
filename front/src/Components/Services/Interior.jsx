@@ -86,7 +86,7 @@ const Interior = () => {
                 </Box>
                 }                   
             </Stack>
-            <Box sx={{ marginTop: 6, marginLeft: 15, marginRight: 15, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 250, 240)', padding: 3, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
+            <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 250, 240)', padding: 3, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                 <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
                     Η διαμόρφωση του χώρου ενός σπιτιού για τα άτομα που ζουν σε συνθήκες
                     αναπηρίας είναι ένα από τα πιο σημαντικά στοιχεία για την καθημερινή τους
@@ -98,7 +98,7 @@ const Interior = () => {
                     εμπόδια και να απολαμβάνει την ανεξαρτησία του.
                 </Typography>               
             </Box>
-            <Box sx={{ marginTop: 6, marginLeft: 15, marginRight: 15 }}>
+            <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2} }}>
                 <Stack spacing={6}>
                     <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
@@ -115,7 +115,7 @@ const Interior = () => {
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Η Υπηρεσία της GS Wheelchairs στη Διαμόρφωση του Χώρου
                         </Typography> 
-                        <Box sx={{ marginTop: 6, marginLeft: 15, marginRight: 15, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 252, 252)', padding: 2, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 252, 252)', padding: 2, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
                                 Η GS Wheelchairs δεν ασχολείται μόνο με την κατασκευή εξατομικευμένων
                                 αναπηρικών αμαξιδίων και τη λειτουργική αποκατάσταση. Προσφέρει επίσης
@@ -135,7 +135,7 @@ const Interior = () => {
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Πώς η Προσαρμογή του Σπιτιού Ενισχύει την Αυτοπεποίθηση
                         </Typography> 
-                        <Box sx={{ marginTop: 6, marginLeft: 15, marginRight: 15, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 252, 252)', padding: 2, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 252, 252)', padding: 2, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
                                 Η διαμόρφωση του χώρου δίνει στα άτομα με αναπηρία το αίσθημα ελέγχου στη ζωή
                                 τους. Όταν το περιβάλλον του σπιτιού είναι προσβάσιμο και προσαρμοσμένο, το
@@ -144,7 +144,7 @@ const Interior = () => {
                                 και την αίσθηση της αξιοπρέπειας​.
                             </Typography>                            
                         </Box>
-                        <Box sx={{ marginTop: 6, marginLeft: 15, marginRight: 15, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 252, 252)', padding: 2, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 252, 252)', padding: 2, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
                                 Η GS Wheelchairs προσφέρει ολοκληρωμένες λύσεις για τη διαμόρφωση του
                                 σπιτιού, λαμβάνοντας υπόψη τόσο τη λειτουργικότητα όσο και την ψυχολογική
