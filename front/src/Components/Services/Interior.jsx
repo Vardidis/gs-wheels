@@ -30,7 +30,7 @@ const Interior = () => {
                         Η προσβασιμότητα δεν αφορά μόνο μεγάλες κατασκευές ή υψηλού κόστους τροποποιήσεις. Πολλές φορές, μικρές αλλά στοχευμένες παρεμβάσεις μπορούν να κάνουν τη διαφορά.
                     </Alert>
             <TitleComp text={'Διαμόρφωση Χώρου'}/>        
-            <Stack spacing={10}>                      
+            {/* <Stack spacing={10}>                      
                 {isDesktop
                 ?
                 <Stack direction='row' spacing={{lg: 2, md: 2, sm: 1, xs: 1, xxs: 1}} sx={{ display: 'flex', justifyContent: 'center' }}>
@@ -50,43 +50,9 @@ const Interior = () => {
                         </Stack>
                     </Box>
                 </Box>
-                }
-                {isDesktop
-                ?
-                <Stack spacing={1} sx={{ paddingBottom: 3 }}>
-                    <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
-                        <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
-                        <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/>
-                        <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>
-                        <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                        
-                    </Stack>
-                    <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
-                        <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
-                        <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
-                        <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
-                        <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
-                    </Stack>
-                </Stack>   
-                :
-                <Box sx={{ display: 'flex', justifyContent: 'center' }}>  
-                    <Stack direction='row' spacing={1} sx={{ paddingBottom: 3 }}>
-                        <Stack spacing={1} sx={{ paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2}}}>
-                            <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
-                            <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/> 
-                            <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>     
-                            <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                                                               
-                        </Stack>
-                        <Stack spacing={1} sx={{ paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2} }}>
-                            <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
-                            <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
-                            <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
-                            <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
-                        </Stack>
-                    </Stack>   
-                </Box>
-                }                   
-            </Stack>
-            <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 250, 240)', padding: 3, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
+                }                
+            </Stack> */}
+            <Box sx={{ marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 250, 240)', padding: 3, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                 <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
                     Η διαμόρφωση του χώρου ενός σπιτιού για τα άτομα που ζουν σε συνθήκες
                     αναπηρίας είναι ένα από τα πιο σημαντικά στοιχεία για την καθημερινή τους
@@ -100,6 +66,41 @@ const Interior = () => {
             </Box>
             <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2} }}>
                 <Stack spacing={6}>
+                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>  
+                        <Stack direction='row' spacing={1} sx={{ paddingBottom: 3 }}>
+                            <Stack spacing={1} sx={{ paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2}}}>
+                                <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
+                                <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/> 
+                                <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>     
+                                <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                                                               
+                            </Stack>
+                            <Stack spacing={1} sx={{ paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2} }}>
+                                <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
+                                <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
+                                <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
+                                <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
+                            </Stack>
+                        </Stack>   
+                    </Box>
+                    {/* {isDesktop
+                    ?
+                    <Stack spacing={1} sx={{ paddingBottom: 3 }}>
+                        <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
+                            <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
+                            <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/>
+                            <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>
+                            <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                        
+                        </Stack>
+                        <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
+                            <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
+                            <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
+                            <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
+                            <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
+                        </Stack>
+                    </Stack>   
+                    :
+                    
+                    }                    */}
                     <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Η Σημασία της Προσαρμογής του Χώρου
