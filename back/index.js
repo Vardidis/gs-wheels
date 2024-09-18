@@ -27,6 +27,8 @@ app.use(cors());
 
 const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
+const items = path.join(__dirname, 'items.json');
+
 app.use('/images', express.static(assets));
 
 const storage = multer.diskStorage({
@@ -38,7 +40,7 @@ const storage = multer.diskStorage({
 const upload = multer({storage:storage});
 
 app.get('/products', async(req, res) => {
-    fs.readFile(path.join(__dirname, 'items.json'), 'utf8', async(err, data) => {
+    fs.readFile(items, 'utf8', async(err, data) => {
         if(err){
             res.status(500).send('Error reading products file');
         }
@@ -140,10 +142,10 @@ app.post('/submit-message', (req, res) => {
     });
 });
 
-app.post('/delete-message', (req, res) => {
+app.post('/delete-item', (req, res) => {
     const productId = req.body.id;
 
-    fs.readFile(path.join(__dirname, 'items.json'), 'utf8', async(err, data) => {
+    fs.readFile(items, 'utf8', async(err, data) => {
         if(err){
             res.status(500).send('Error reading products file');
         }
@@ -161,6 +163,85 @@ app.post('/delete-message', (req, res) => {
                 message: 'Data deleted successfully',        
             });
         });
+    });
+});
+
+app.post('/save-item', (req, res) => {
+    const product = req.body.product;
+
+    fs.readFile(items, 'utf8', (err, data) => {
+        let itemData = JSON.parse(data);
+
+        if(product){
+            const cleanItem = {
+                id: itemData.products.length,
+                tag: product.category,
+                title: "test",
+                subtitle: "also test",
+                thumbnail: product.mainImg,
+                sub: product.subs,
+                desc: product.desc,
+                chars: product.dets
+            }
+
+            itemData.products.push(cleanItem);
+
+            fs.writeFile(items, JSON.stringify(itemData, null, 2), (response, writeErr) => {
+                if(writeErr){
+                    res.status(500);
+                    console.error('Error writing file:', writeErr);  
+                    return;              
+                }
+                res.status(200).json({
+                    message: 'Data received successfully',
+                    receivedData: itemData,
+                  });
+                  console.log('File successfully updated');
+            })
+        }
+    });
+});
+
+app.post('/update-item', (req, res) => {
+    const productId = Number(req.body.id);
+    const product = req.body.product;
+
+    fs.readFile(items, 'utf8', async(err, data) => {
+        if(err){
+            res.status(500).send('Error reading products file');
+        }
+
+        const products = JSON.parse(data).products        
+
+        if(product){
+            const cleanItem = {
+                id: productId,
+                tag: product.category,
+                title: "test",
+                subtitle: "also test",
+                thumbnail: product.mainImg,
+                sub: product.subs,
+                desc: product.desc,
+                chars: product.dets
+            }
+            
+            let updatedProducts = products.filter(element => element.id !== productId);
+            
+            console.log(updatedProducts)
+            updatedProducts.push(cleanItem);
+            
+
+            fs.writeFile(items, JSON.stringify({"products": updatedProducts}, null, 2), (response, writeErr) => {
+                if(writeErr){
+                    res.status(500);
+                    console.error('Error writing file:', writeErr);  
+                    return;              
+                }
+                res.status(200).json({
+                    message: 'Data updated successfully',        
+                });
+            });
+        }
     });
 });
 
