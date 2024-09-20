@@ -1,28 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Box, Stack, Alert, Typography } from "@mui/material";
 import inter from '../../assets/interior5.jpg';
-import PartBox from "../PartBox";
-import inter2 from '../../assets/interior2.jpg';
-import inter4 from '../../assets/interior4.jpg';
-import inter1 from '../../assets/interior1.jpg';
-import PlaceBox from '../PlaceBox';
-import HotelOutlinedIcon from '@mui/icons-material/HotelOutlined';
-import KitchenOutlinedIcon from '@mui/icons-material/KitchenOutlined';
-import BalconyOutlinedIcon from '@mui/icons-material/BalconyOutlined';
-import CountertopsOutlinedIcon from '@mui/icons-material/CountertopsOutlined';
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import ShowerOutlinedIcon from '@mui/icons-material/ShowerOutlined';
-import DeckOutlinedIcon from '@mui/icons-material/DeckOutlined';
-import DeskOutlinedIcon from '@mui/icons-material/DeskOutlined';
-import { Context } from "../Context";
 import TitleComp from "./TitleComp";
 import RedirectBox from "./RedirectBox";
 import ImageComp from "./ImageComp";
 import AccordionComp from "../AccordionComp";
+import TextWindow from "./TextWindow";
 
 const Interior = () => {
-    const {isDesktop} = useContext(Context);
-
     return(
         <Box sx={{ paddingBottom: 5 }}>  
             <ImageComp image={inter}/>
@@ -30,28 +15,6 @@ const Interior = () => {
                         Η προσβασιμότητα δεν αφορά μόνο μεγάλες κατασκευές ή υψηλού κόστους τροποποιήσεις. Πολλές φορές, μικρές αλλά στοχευμένες παρεμβάσεις μπορούν να κάνουν τη διαφορά.
                     </Alert>
             <TitleComp text={'Διαμόρφωση Χώρου'}/>        
-            {/* <Stack spacing={10}>                      
-                {isDesktop
-                ?
-                <Stack direction='row' spacing={{lg: 2, md: 2, sm: 1, xs: 1, xxs: 1}} sx={{ display: 'flex', justifyContent: 'center' }}>
-                    <PartBox image={inter2} height={'180px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
-                    <PartBox image={inter4} height={'180px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
-                    <PartBox image={inter1} height={'180px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
-                </Stack>
-                :
-                <Box sx={{ paddingLeft: {sm: 2, xs: 1, xxs: 1}, paddingRight: {sm: 2, xs: 1, xxs: 1} }}>
-                    <Box sx={{ overflowX: 'scroll', display: 'flex', paddingTop: 1, paddingBottom: 1 }}>
-                        <Stack direction='row' spacing={2} sx={{ justifyContent: "center" }}>
-                            <Box sx={{ display: 'flex', gap: 2, }}>
-                                <PartBox image={inter2} height={'200px'} text={'Όταν μιλάμε για αυτονομία και άτομα με αναπηρία, η προσβασιμότητα είναι πολύ περισσότερο από ένα απλό “καλό είναι να έχουμε”. Είναι ένα αναγκαίο στοιχείο που διασφαλίζει την ποιότητα ζωής.'}/>
-                                <PartBox image={inter4} height={'200px'} text={'Έχοντας προσωπική εμπειρία με την αναπηρία για πάνω από τριάντα χρόνια γνωρίζουμε από πρώτο χέρι πόσο σημαντικές είναι οι κατάλληλες παρεμβάσεις στον προσωπικό χώρο ενός ατόμου με αναπηρία.'}/>
-                                <PartBox image={inter1} height={'200px'} text={'Η προσωπική μας γνώση είναι η δύναμη που μας επιτρέπει να κατανοούμε βαθιά τις ανάγκες των ατόμων με αναπηρία και να προσφέρουμε λύσεις που αποτελούν πραγματικές βελτιώσεις στη ζωή τους.'}/>
-                            </Box>
-                        </Stack>
-                    </Box>
-                </Box>
-                }                
-            </Stack> */}
             <Box sx={{ marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, display: 'flex', justifyContent: 'center', bgcolor: 'rgb(255, 250, 240)', padding: 3, borderRadius: 2, border: '1px solid rgb(180, 180, 180)' }}>
                 <Typography sx={{ color: 'rgb(40, 40, 40)' }}>
                     Η διαμόρφωση του χώρου ενός σπιτιού για τα άτομα που ζουν σε συνθήκες
@@ -66,53 +29,18 @@ const Interior = () => {
             </Box>
             <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2} }}>
                 <Stack spacing={6}>
-                    <Box sx={{ display: 'flex', justifyContent: 'center' }}>  
-                        <Stack direction='row' spacing={1} sx={{ paddingBottom: 3 }}>
-                            <Stack spacing={1} sx={{ paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2}}}>
-                                <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
-                                <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/> 
-                                <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>     
-                                <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                                                               
-                            </Stack>
-                            <Stack spacing={1} sx={{ paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 2} }}>
-                                <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
-                                <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
-                                <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
-                                <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
-                            </Stack>
-                        </Stack>   
-                    </Box>
-                    {/* {isDesktop
-                    ?
-                    <Stack spacing={1} sx={{ paddingBottom: 3 }}>
-                        <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
-                            <PlaceBox icon={<HotelOutlinedIcon/>} text={'Υπνοδωμάτιο'}/>
-                            <PlaceBox icon={<KitchenOutlinedIcon/>} text={'Κουζίνα'}/>
-                            <PlaceBox icon={<BalconyOutlinedIcon/>} text={'Μπαλκόνι'}/>
-                            <PlaceBox icon={<CountertopsOutlinedIcon/>} text={'Τουαλέτα'}/>                        
-                        </Stack>
-                        <Stack direction='row' spacing={1} sx={{ display: 'flex', justifyContent: 'center', paddingLeft: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1}, paddingRight: {lg: 0, md: 0, sm: 5, xs: 2, xxs: 1} }}>
-                            <PlaceBox icon={<HomeOutlinedIcon/>} text={'Πρόσβαση'}/>
-                            <PlaceBox icon={<ShowerOutlinedIcon/>} text={'Μπάνιο'}/>
-                            <PlaceBox icon={<DeckOutlinedIcon/>} text={'Εξ. χώροι'}/>
-                            <PlaceBox icon={<DeskOutlinedIcon/>} text={'Χώρος εργασίας'}/>
-                        </Stack>
-                    </Stack>   
-                    :
-                    
-                    }                    */}
-                    <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                    <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Η Σημασία της Προσαρμογής του Χώρου
                         </Typography> 
-                        <Box sx={{ bgcolor: 'transparent', marginLeft: {xl: 20, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, marginRight: {xl: 20, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, borderRadius: 2, overflow: 'hidden', color: 'rgb(40, 40, 40)' }}>
-                            <AccordionComp title={'Μείωση της Εξάρτησης από Άλλους'} text={'Ένα σπίτι που έχει σχεδιαστεί με γνώμονα την προσβασιμότητα μπορεί να βοηθήσει τα άτομα με αναπηρία να εκτελούν καθημερινές δραστηριότητες με μεγαλύτερη ευκολία, όπως η μετακίνηση από το ένα δωμάτιο στο άλλο, η χρήση της κουζίνας, η τουαλέτα ή το ντους. Με την προσθήκη κατάλληλων υποδομών, όπως ράμπες, ευρύχωρους διαδρόμους, προσαρμοσμένα έπιπλα και συσκευές, το άτομο μπορεί να μειώσει σημαντικά την ανάγκη για βοήθεια από άλλους​. Αυτό έχει ως αποτέλεσμα την αύξηση της αυτονομίας, καθώς το άτομο δεν χρειάζεται να βασίζεται συνεχώς σε φροντιστές ή μέλη της οικογένειας για τις βασικές του ανάγκες.'}/>
-                            <AccordionComp title={'Ασφάλεια και Άνεση'} text={'Ένας καλά σχεδιασμένος χώρος προσφέρει ασφάλεια και μειώνει τους κινδύνους ατυχημάτων, όπως πτώσεις ή χτυπήματα. Με ειδικά σχεδιασμένα σημεία στήριξης, αντιολισθητικά υλικά, προσβάσιμα έπιπλα και κατάλληλη διαμόρφωση των χώρων, η μετακίνηση γίνεται πιο ασφαλής και άνετη. Αυτή η ασφάλεια ενισχύει το αίσθημα της σιγουριάς και της αυτοπεποίθησης του ατόμου​.'}/>
-                            <AccordionComp title={'Αυτονομία στις Καθημερινές Δραστηριότητες'} text={'Η προσαρμογή του σπιτιού διευκολύνει την εκτέλεση βασικών καθημερινών δραστηριοτήτων, όπως το μαγείρεμα, η φροντίδα του εαυτού, η προσωπική υγιεινή και η μετακίνηση εντός του σπιτιού. Ο σωστός σχεδιασμός εξασφαλίζει ότι το άτομο μπορεί να διαχειρίζεται τις ανάγκες του χωρίς να χρειάζεται συνεχή βοήθεια, αυξάνοντας την ανεξαρτησία του​.'}/>
-                            <AccordionComp title={'Αύξηση της Αυτοπεποίθησης'} text={'Όταν ένα άτομο με αναπηρία μπορεί να κινηθεί και να ζήσει στο σπίτι του χωρίς περιορισμούς, αυτό έχει άμεσο αντίκτυπο στην αυτοεκτίμηση και την ψυχολογία του. Το να μπορεί να διαχειρίζεται τις ανάγκες του χωρίς εξωτερική βοήθεια, του δίνει μια αίσθηση αυτοδυναμίας και αξιοπρέπειας. Το περιβάλλον του σπιτιού γίνεται ένας χώρος όπου μπορεί να αισθάνεται ασφαλές και ανεξάρτητο, γεγονός που ενισχύει τη θετική του εικόνα για τον εαυτό του​.'}/>                       
-                        </Box>     
+                        <Stack spacing={3}>
+                            <TextWindow title={'Μείωση της Εξάρτησης από Άλλους'} text={'Ένα σπίτι που έχει σχεδιαστεί με γνώμονα την προσβασιμότητα μπορεί να βοηθήσει τα άτομα με αναπηρία να εκτελούν καθημερινές δραστηριότητες με μεγαλύτερη ευκολία, όπως η μετακίνηση από το ένα δωμάτιο στο άλλο, η χρήση της κουζίνας, η τουαλέτα ή το ντους. Με την προσθήκη κατάλληλων υποδομών, όπως ράμπες, ευρύχωρους διαδρόμους, προσαρμοσμένα έπιπλα και συσκευές, το άτομο μπορεί να μειώσει σημαντικά την ανάγκη για βοήθεια από άλλους​. Αυτό έχει ως αποτέλεσμα την αύξηση της αυτονομίας, καθώς το άτομο δεν χρειάζεται να βασίζεται συνεχώς σε φροντιστές ή μέλη της οικογένειας για τις βασικές του ανάγκες.'}/>
+                            <TextWindow title={'Ασφάλεια και Άνεση'} text={'Ένας καλά σχεδιασμένος χώρος προσφέρει ασφάλεια και μειώνει τους κινδύνους ατυχημάτων, όπως πτώσεις ή χτυπήματα. Με ειδικά σχεδιασμένα σημεία στήριξης, αντιολισθητικά υλικά, προσβάσιμα έπιπλα και κατάλληλη διαμόρφωση των χώρων, η μετακίνηση γίνεται πιο ασφαλής και άνετη. Αυτή η ασφάλεια ενισχύει το αίσθημα της σιγουριάς και της αυτοπεποίθησης του ατόμου​.'}/>
+                            <TextWindow title={'Αυτονομία στις Καθημερινές Δραστηριότητες'} text={'Η προσαρμογή του σπιτιού διευκολύνει την εκτέλεση βασικών καθημερινών δραστηριοτήτων, όπως το μαγείρεμα, η φροντίδα του εαυτού, η προσωπική υγιεινή και η μετακίνηση εντός του σπιτιού. Ο σωστός σχεδιασμός εξασφαλίζει ότι το άτομο μπορεί να διαχειρίζεται τις ανάγκες του χωρίς να χρειάζεται συνεχή βοήθεια, αυξάνοντας την ανεξαρτησία του​.'}/>
+                            <TextWindow title={'Αύξηση της Αυτοπεποίθησης'} text={'Όταν ένα άτομο με αναπηρία μπορεί να κινηθεί και να ζήσει στο σπίτι του χωρίς περιορισμούς, αυτό έχει άμεσο αντίκτυπο στην αυτοεκτίμηση και την ψυχολογία του. Το να μπορεί να διαχειρίζεται τις ανάγκες του χωρίς εξωτερική βοήθεια, του δίνει μια αίσθηση αυτοδυναμίας και αξιοπρέπειας. Το περιβάλλον του σπιτιού γίνεται ένας χώρος όπου μπορεί να αισθάνεται ασφαλές και ανεξάρτητο, γεγονός που ενισχύει τη θετική του εικόνα για τον εαυτό του​.'}/>
+                        </Stack>  
                     </Stack>            
-                    <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                    <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Η Υπηρεσία της GS Wheelchairs στη Διαμόρφωση του Χώρου
                         </Typography> 
@@ -126,11 +54,11 @@ const Interior = () => {
                                 χώρους, βοηθώντας τα άτομα να αποκτήσουν μεγαλύτερη ανεξαρτησία.
                             </Typography>                            
                         </Box>
-                        <Box sx={{ bgcolor: 'transparent', color: 'rgb(40, 40, 40)', marginLeft: {xl: 20, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, marginRight: {xl: 20, lg: 0, md: 0, sm: 0, xs: 1, xxs: 1}, borderRadius: 2, overflow: 'hidden' }}>
-                            <AccordionComp title={'Εξατομικευμένες Λύσεις'} text={'Κάθε άτομο έχει διαφορετικές ανάγκες και η GS Wheelchairs αναγνωρίζει αυτή την ποικιλία. Η υπηρεσία διαμόρφωσης χώρου παρέχει πλήρως εξατομικευμένες λύσεις, λαμβάνοντας υπόψη το είδος της αναπηρίας, τις δυνατότητες του χρήστη και τις απαιτήσεις της καθημερινότητάς του. Αυτό μπορεί να περιλαμβάνει την εγκατάσταση ειδικών ραμπών, τη ρύθμιση των εσωτερικών χώρων ώστε να υπάρχει αρκετός χώρος για ελιγμούς με το αμαξίδιο, καθώς και την προσαρμογή των επίπλων και των συσκευών σε προσιτό ύψος​.'}/>
-                            <AccordionComp title={'Συνδυασμός Αισθητικής και Λειτουργικότητας'} text={'Η GS Wheelchairs δίνει ιδιαίτερη σημασία στο να διατηρήσει το σπίτι όμορφο και λειτουργικό. Οι προσαρμογές δεν γίνονται εις βάρος της αισθητικής, αλλά ενσωματώνονται με τρόπο που να εξασφαλίζει τόσο την πρακτικότητα όσο και τη φιλικότητα του χώρου προς τον χρήστη. Ένα σπίτι πρέπει να είναι ένας χώρος όπου το άτομο αισθάνεται άνετα, αλλά και ένας χώρος που του επιτρέπει να κινείται ελεύθερα​.'}/>
-                            <AccordionComp title={'Συμβουλευτική και Εκπαίδευση'} text={'Μέσω της υπηρεσίας διαμόρφωσης χώρου, η GS Wheelchairs προσφέρει επίσης συμβουλές και εκπαίδευση για τη βέλτιστη χρήση του σπιτιού. Οι ειδικευμένοι σύμβουλοι εργάζονται μαζί με το άτομο και την οικογένειά του για να σχεδιάσουν λύσεις που ταιριάζουν στις ανάγκες τους, διασφαλίζοντας ότι ο χώρος θα καλύπτει κάθε πτυχή της καθημερινότητας. Αυτή η διαδικασία δεν είναι απλώς τεχνική, αλλά εμπλέκει και το χρήστη, ώστε να αισθάνεται πως ο χώρος του είναι ακριβώς όπως τον χρειάζεται​​.'}/>                           
-                        </Box>     
+                        <Stack spacing={3}>
+                            <TextWindow title={'Εξατομικευμένες Λύσεις'} text={'Κάθε άτομο έχει διαφορετικές ανάγκες και η GS Wheelchairs αναγνωρίζει αυτή την ποικιλία. Η υπηρεσία διαμόρφωσης χώρου παρέχει πλήρως εξατομικευμένες λύσεις, λαμβάνοντας υπόψη το είδος της αναπηρίας, τις δυνατότητες του χρήστη και τις απαιτήσεις της καθημερινότητάς του. Αυτό μπορεί να περιλαμβάνει την εγκατάσταση ειδικών ραμπών, τη ρύθμιση των εσωτερικών χώρων ώστε να υπάρχει αρκετός χώρος για ελιγμούς με το αμαξίδιο, καθώς και την προσαρμογή των επίπλων και των συσκευών σε προσιτό ύψος​.'}/>
+                            <TextWindow title={'Συνδυασμός Αισθητικής και Λειτουργικότητας'} text={'Η GS Wheelchairs δίνει ιδιαίτερη σημασία στο να διατηρήσει το σπίτι όμορφο και λειτουργικό. Οι προσαρμογές δεν γίνονται εις βάρος της αισθητικής, αλλά ενσωματώνονται με τρόπο που να εξασφαλίζει τόσο την πρακτικότητα όσο και τη φιλικότητα του χώρου προς τον χρήστη. Ένα σπίτι πρέπει να είναι ένας χώρος όπου το άτομο αισθάνεται άνετα, αλλά και ένας χώρος που του επιτρέπει να κινείται ελεύθερα​.'}/>
+                            <TextWindow title={'Συμβουλευτική και Εκπαίδευση'} text={'Μέσω της υπηρεσίας διαμόρφωσης χώρου, η GS Wheelchairs προσφέρει επίσης συμβουλές και εκπαίδευση για τη βέλτιστη χρήση του σπιτιού. Οι ειδικευμένοι σύμβουλοι εργάζονται μαζί με το άτομο και την οικογένειά του για να σχεδιάσουν λύσεις που ταιριάζουν στις ανάγκες τους, διασφαλίζοντας ότι ο χώρος θα καλύπτει κάθε πτυχή της καθημερινότητας. Αυτή η διαδικασία δεν είναι απλώς τεχνική, αλλά εμπλέκει και το χρήστη, ώστε να αισθάνεται πως ο χώρος του είναι ακριβώς όπως τον χρειάζεται​​.'}/>
+                        </Stack>      
                     </Stack>    
                     <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
