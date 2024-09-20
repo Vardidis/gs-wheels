@@ -73,7 +73,7 @@ const AboutSlider = () => {
                 </StyledTabs>
                 <Box sx={{ p: 2 }} />                             
                 {value === 0 ?
-                    <Paper sx={{marginLeft: {xl: 40, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, marginRight: {xl: 40, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2  }}>
+                    <Paper sx={{marginLeft: {xl: 40, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, marginRight: {xl: 40, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(232, 228, 236)", borderRadius: 2  }}>
                         <Stack spacing={3}>
                             <Box sx={{ display: 'flex', justifyContent: 'center'}}>
                                 <Box sx={{ height: '300px', width: '100%', borderRadius: 2, overflow: 'hidden' }}>
@@ -138,7 +138,7 @@ const AboutSlider = () => {
                     <Stack spacing={5} sx={{marginLeft: {xl: 40, lg: 20, md: 10, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 40, lg: 20, md: 10, sm: 5, xs: 3, xxs: 2} }}>
                         <Stack spacing={0.1} direction={dir} className="suc-stories">
                             <img src={suc1} alt=""/>                        
-                            <Paper sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2 }}>                          
+                            <Paper sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(232, 228, 236)", borderRadius: 2 }}>                          
                                 <Stack spacing={2}> 
                                     <Typography variant="body2" fontWeight={600}>
                                         Το κουτί με τις έγνοιες
@@ -169,7 +169,7 @@ const AboutSlider = () => {
                         </Stack>
                         <Stack spacing={0.1} direction={dir} className="suc-stories">
                             <img src={suc2} alt=""/>                            
-                            <Paper sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(242, 242, 242)", borderRadius: 2 }}>
+                            <Paper sx={{ padding: {xl: 3, lg: 3, md: 3, sm: 2, xs: 1, xxs: 1}, bgcolor: "rgb(232, 228, 236)", borderRadius: 2 }}>
                                 <Stack spacing={2}>
                                     <Typography variant="body2">
                                         Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,

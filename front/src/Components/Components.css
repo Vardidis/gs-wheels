@@ -101,11 +101,6 @@
     border-radius: 10px;
 }
 
-.product-item-box:hover{
-    transition: 1s;
-    background-color: #f8f8f8;
-}
-
 .mob-partbox{
     display: grid;
     grid-template-columns: 0.5fr 1fr;

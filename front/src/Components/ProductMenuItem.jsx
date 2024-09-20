@@ -8,7 +8,7 @@ const ProductMenuItem = (props) => {
             borderRadius: 1,
             minWidth: {lg: 130, md: 130, sm: 130, xs: 100, xxs: 100},
             height: 30,
-            backgroundColor: props.highlight ? '#FFDCBC' : 'rgb(234, 234, 234)',
+            backgroundColor: props.highlight ? '#FFDCBC' : 'rgb(232, 228, 236)',
             display: 'flex',
             alignItems: 'center',
             padding: 1,

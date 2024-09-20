@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import Infobox from '../Components/Infobox';
 import './Pages.css';
 import { Stack, Box, Typography } from "@mui/material";
 import GsButton from "../Components/GsButton";
 import logo from '../assets/logo.png';
 import bgImg from '../assets/bgWheel2.png';
+import { Context } from "../Components/Context";
 
-const GetStarted = () => {
+const GetStarted = (props) => {
+    const {isDesktop} = useContext(Context);
+    const logoSize = isDesktop ? 75 : 55;
     return(
         <Box sx={{
             textAlign: 'center',
@@ -17,17 +20,18 @@ const GetStarted = () => {
             backgroundPosition: 'right',
             backgroundRepeat: 'no-repeat',
             justifyContent: 'flex-end',
-            backgroundSize: '200%, 200%'
+            backgroundSize: '200%, 200vh',
+            bgcolor: 'rgb(248, 242, 250)'
         }}>            
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 gap: 2,
                 alignItems: 'center',
-                paddingLeft: 55,                
+                paddingLeft: {xl: 55, lg: 55, md: 35, sm: 0, xs: 0, xxs: 0},                
             }}>
                 <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
-                    <img src={logo} style={{ width: 75 }} alt=""/>
+                    <img src={logo} style={{ width: logoSize }} alt=""/>
                 </Box>                
                 <Stack sx={{ textAlign: 'left' }}>
                     <Typography fontWeight={600} fontSize={{xl: 40, lg: 36, md: 30, sm: 28, xs: 26, xxs: 22}} sx={{ color: '#ff7300f8' }}>
