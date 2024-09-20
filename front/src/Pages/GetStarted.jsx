@@ -20,7 +20,8 @@ const GetStarted = (props) => {
             backgroundPosition: 'right',
             backgroundRepeat: 'no-repeat',
             justifyContent: 'flex-end',
-            backgroundSize: '200%, 200vh',
+            backgroundSize: {xl: '185%', lg: '170%', md: '165%', sm: '200%', xs: '185%'},
+            backgroundAttachment: 'fixed',
             bgcolor: 'rgb(248, 242, 250)'
         }}>            
             <Box sx={{
@@ -28,7 +29,7 @@ const GetStarted = (props) => {
                 justifyContent: 'center',
                 gap: 2,
                 alignItems: 'center',
-                paddingLeft: {xl: 55, lg: 55, md: 35, sm: 0, xs: 0, xxs: 0},                
+                paddingLeft: {xl: 55, lg: 55, md: 40, sm: 30, xs: 0, xxs: 0},                
             }}>
                 <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
                     <img src={logo} style={{ width: logoSize }} alt=""/>

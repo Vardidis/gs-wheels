@@ -1,13 +1,9 @@
-import React, { useContext, useState } from "react";
-import { CardContent, CardMedia, Typography, CardActionArea, CardActions,  Card, Box } from '@mui/material';
-import MobileStepper from '@mui/material/MobileStepper';
-import { Context } from "./Context";
+import React from "react";
+import { CardContent, CardMedia, Typography, CardActionArea, Card } from '@mui/material';
 
 const Infocard = (props) => {
-    const {isDesktop} = useContext(Context);
-
     return(
-        <Card sx={{ width: {xl: 600, lg: 400, md: 325, sm: 650, xs: '45vh', xxs: '49vh'}, maxHeight: {lg: 375, md: 275, sm: '100%', xs: '100%', xxs: '100%'} }}>
+        <Card sx={{ width: {xl: 600, lg: 400, md: 325, sm: 450, xs: 250, xxs: 200}, maxHeight: {lg: 375, md: 275, sm: '100%', xs: '100%', xxs: '100%'} }}>
             <CardActionArea>
                 <CardMedia
                     component="img"
@@ -19,21 +15,7 @@ const Infocard = (props) => {
                     <Typography variant="body2" color="text.primary" fontSize={{xl: 20, lg: 16, md: 14, sm: 18, xs: 14, xxs: 14}}>
                         {props.text}
                     </Typography>
-                </CardContent>
-                {!isDesktop &&
-                        <CardActions>
-                            <Box>                    
-                                <MobileStepper
-                                    variant="dots"
-                                    steps={4}
-                                    position="static"
-                                    activeStep={props.step}                                                       
-                                />
-                            </Box>
-                        </CardActions>
-                    }
-
-                
+                </CardContent>                
             </CardActionArea>
         </Card>
     );
