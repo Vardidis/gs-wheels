@@ -3,7 +3,7 @@ body{
 }
 
 .hoverable:hover{
-  background-color: #f3f3f3;
+  color: #f88120f8;
   cursor: pointer;
 }
 

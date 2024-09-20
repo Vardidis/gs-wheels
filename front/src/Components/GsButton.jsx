@@ -5,7 +5,7 @@ import bg2 from '../assets/bgimg2.jpg';
 
 const GsButton = () => {
     return(   
-        <Link to='/service/vasikes-arxes' style={{ textDecoration: 'none' }}>             
+        <Link to='/service/apokatastasi' style={{ textDecoration: 'none' }}>             
             <Box sx={{
                 backgroundColor: 'black',
                 borderRadius: 2,
