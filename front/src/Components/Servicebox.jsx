@@ -40,7 +40,7 @@ const Servicebox = () => {
                     </Stack>
                     <Stack direction='row' spacing={2}>
                         <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                            <Servicecard image={id} text={'3. Προσαρμογή Χώρου'}/>
+                            <Servicecard image={id} text={'3. Διαμόρφωση Χώρου'}/>
                         </Link>
                     </Stack>         
                 </>
@@ -52,7 +52,7 @@ const Servicebox = () => {
                         <Servicecard image={gw} text={'2. Συμβουλευτική'}/>
                     </Link>
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                        <Servicecard image={id} text={'3. Προσαρμογή Χώρου'}/>
+                        <Servicecard image={id} text={'3. Διαμόρφωση Χώρου'}/>
                     </Link>
                 </>}
             </Stack>

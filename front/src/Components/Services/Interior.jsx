@@ -4,7 +4,6 @@ import inter from '../../assets/interior5.jpg';
 import TitleComp from "./TitleComp";
 import RedirectBox from "./RedirectBox";
 import ImageComp from "./ImageComp";
-import AccordionComp from "../AccordionComp";
 import TextWindow from "./TextWindow";
 
 const Interior = () => {
