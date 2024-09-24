@@ -65,7 +65,7 @@ function App() {
             height: '100vh',
             overflowY: 'auto',
             overflowX: 'hidden',
-            bgcolor: 'rgb(246, 242, 250)',                 
+            bgcolor: 'rgb(250, 242, 246)',                 
           }}>           
             <Routes>
               <Route path="/" element={<GetStarted/>}/>

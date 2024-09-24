@@ -13,7 +13,7 @@ const Sidemenu = (props) => {
             height: '100%',
             borderRight: '1px solid rgb(232, 232, 230)',
             boxShadow: "2px 0px 2px -3px black",
-            backgroundColor: 'rgb(235, 232, 240)', 
+            backgroundColor: 'rgb(240, 235, 240)', 
             flexShrink: 0,
             position: 'fixed',                   
             }}>

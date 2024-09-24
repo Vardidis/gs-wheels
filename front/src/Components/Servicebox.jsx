@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import './Components.css';
 import Servicecard from "./Servicecard";
-import img from '../assets/interior3.jpg';
 import bgimg from '../assets/bgimg2.jpg';
 import gw from '../assets/giotis-wheelie.jpg';
-import fc from '../assets/full-custom.jpg';
 import id from '../assets/interior3.jpg';
 import { Box, Stack } from "@mui/material";
 import { Context } from "./Context";
@@ -33,41 +31,28 @@ const Servicebox = () => {
                 {isDesktop
                 ? <>                
                     <Stack direction='row' spacing={2}>
-                        {/* <Link to='/service/vasikes-arxes' style={{textDecoration: 'none'}}>
-                            <Servicecard image={img} text={'1. Βασικές Αρχές'}/>
-                        </Link> */}
                         <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
                             <Servicecard image={bgimg} text={'1. Λειτουργική Αποκατάσταση'}/>
                         </Link>
                         <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
-                            <Servicecard image={gw} text={'1. Life Coaching'}/>
+                            <Servicecard image={gw} text={'2. Life Coaching'}/>
                         </Link>
                     </Stack>
                     <Stack direction='row' spacing={2}>
-                        
-                        {/* <Link to='/service/full-custom' style={{textDecoration: 'none'}}>
-                            <Servicecard image={fc} text={'4. Προσαρμογή Αμαξιδίου'}/>
-                        </Link>                    */}
                         <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
                             <Servicecard image={id} text={'3. Interior Design'}/>
                         </Link>
                     </Stack>         
                 </>
                 : <>
-                    {/* <Link to='/service/vasikes-arxes' style={{textDecoration: 'none'}}>
-                        <Servicecard image={img} text={'1. Βασικές Αρχές'}/>
-                    </Link> */}
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
-                        <Servicecard image={bgimg} text={'2. Λειτουργική Αποκατάσταση'}/>
+                        <Servicecard image={bgimg} text={'1. Λειτουργική Αποκατάσταση'}/>
                     </Link>
                     <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
-                        <Servicecard image={gw} text={'3. Life Coaching'}/>
+                        <Servicecard image={gw} text={'2. Life Coaching'}/>
                     </Link>
-                    {/* <Link to='/service/full-custom' style={{textDecoration: 'none'}}>
-                        <Servicecard image={fc} text={'4. Προσαρμογή Αμαξιδίου'}/>
-                    </Link> */}
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                        <Servicecard image={id} text={'5. Interior Design'}/>
+                        <Servicecard image={id} text={'3. Interior Design'}/>
                     </Link>
                 </>}
             </Stack>

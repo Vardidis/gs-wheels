@@ -22,7 +22,7 @@ const GetStarted = (props) => {
             justifyContent: 'flex-end',
             backgroundSize: {xl: '185%', lg: '170%', md: '165%', sm: '200%', xs: '185%'},
             backgroundAttachment: 'fixed',
-            bgcolor: 'rgb(248, 242, 250)'
+            // bgcolor: 'rgb(248, 242, 250)'
         }}>            
             <Box sx={{
                 display: 'flex',

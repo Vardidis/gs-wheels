@@ -29,7 +29,7 @@ const Interior = () => {
             </Box>
             <Box sx={{ marginTop: 6, marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2} }}>
                 <Stack spacing={6}>
-                    <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                    <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Η Σημασία της Προσαρμογής του Χώρου
                         </Typography> 
@@ -40,7 +40,7 @@ const Interior = () => {
                             <TextWindow title={'Αύξηση της Αυτοπεποίθησης'} text={'Όταν ένα άτομο με αναπηρία μπορεί να κινηθεί και να ζήσει στο σπίτι του χωρίς περιορισμούς, αυτό έχει άμεσο αντίκτυπο στην αυτοεκτίμηση και την ψυχολογία του. Το να μπορεί να διαχειρίζεται τις ανάγκες του χωρίς εξωτερική βοήθεια, του δίνει μια αίσθηση αυτοδυναμίας και αξιοπρέπειας. Το περιβάλλον του σπιτιού γίνεται ένας χώρος όπου μπορεί να αισθάνεται ασφαλές και ανεξάρτητο, γεγονός που ενισχύει τη θετική του εικόνα για τον εαυτό του​.'}/>
                         </Stack>  
                     </Stack>            
-                    <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                    <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Η Υπηρεσία της GS Wheelchairs στη Διαμόρφωση του Χώρου
                         </Typography> 
@@ -60,7 +60,7 @@ const Interior = () => {
                             <TextWindow title={'Συμβουλευτική και Εκπαίδευση'} text={'Μέσω της υπηρεσίας διαμόρφωσης χώρου, η GS Wheelchairs προσφέρει επίσης συμβουλές και εκπαίδευση για τη βέλτιστη χρήση του σπιτιού. Οι ειδικευμένοι σύμβουλοι εργάζονται μαζί με το άτομο και την οικογένειά του για να σχεδιάσουν λύσεις που ταιριάζουν στις ανάγκες τους, διασφαλίζοντας ότι ο χώρος θα καλύπτει κάθε πτυχή της καθημερινότητας. Αυτή η διαδικασία δεν είναι απλώς τεχνική, αλλά εμπλέκει και το χρήστη, ώστε να αισθάνεται πως ο χώρος του είναι ακριβώς όπως τον χρειάζεται​​.'}/>
                         </Stack>      
                     </Stack>    
-                    <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                    <Stack spacing={3} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                         <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                             Πώς η Προσαρμογή του Σπιτιού Ενισχύει την Αυτοπεποίθηση
                         </Typography> 

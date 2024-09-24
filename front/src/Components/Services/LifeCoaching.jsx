@@ -26,7 +26,7 @@ const LifeCoaching = () => {
                         καθημερινότητας και να αλληλεπιδρούν πιο αποτελεσματικά με την κοινωνία.
                     </Typography>          
                 </Box>
-                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                         Συμβουλευτική για Άτομα με Αναπηρία
                     </Typography> 
@@ -50,7 +50,7 @@ const LifeCoaching = () => {
                         </Typography>          
                     </Box>
                 </Stack>   
-                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                         Συμβουλευτική για Οικογένειες
                     </Typography> 
@@ -63,7 +63,7 @@ const LifeCoaching = () => {
                         </Typography>          
                     </Box>                  
                 </Stack>   
-                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                         Αλληλεπίδραση με την Κοινωνία
                     </Typography> 
@@ -88,7 +88,7 @@ const LifeCoaching = () => {
                         </Typography>          
                     </Box>                  
                 </Stack>   
-                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                <Stack spacing={4} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                         Η Συμβουλευτική ως Εργαλείο Ενδυνάμωσης
                     </Typography> 

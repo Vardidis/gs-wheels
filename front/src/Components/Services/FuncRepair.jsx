@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Box, Stack, Typography, Tabs, Tab } from "@mui/material";
 import FuncCard from "../FuncCard";
 import TitleComp from "./TitleComp";
@@ -63,6 +63,10 @@ const FuncRepair = () => {
         console.log(selection)
     }
 
+    useEffect(() => {
+        setSelection(null);
+    }, [value]);
+
     return(
         <Box sx={{ paddingBottom: 5 }}>      
             <ImageComp image={fc}/>   
@@ -78,7 +82,7 @@ const FuncRepair = () => {
                 <Box>
                     <TitleComp text={'Λειτουργική Αποκατάσταση'}/>
                     <Stack spacing={6} sx={{ marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}}}>           
-                        <Box sx={{ borderRadius: 3, backgroundColor: 'rgb(232, 232, 240)', padding: {xl: 3, lg: 5, md: 3, sm: 2, xs: 2, xxs: 2}, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{ borderRadius: 3, backgroundColor: 'rgb(232, 226, 232)', padding: {xl: 3, lg: 5, md: 3, sm: 2, xs: 2, xxs: 2}, border: '1px solid rgb(180, 180, 180)' }}>
                             <Stack spacing={7}>
                                 <FuncCard icon={<FontAwesomeIcon icon={faLinkSlash} size={iconSize} style={{ color: 'rgb(40, 40, 40)' }}/>} text={'Μετά από έναν τραυματισμό στην σπονδυλική στήλη το σώμα μας γίνεται απίστευτα βαρύ και μη λειτουργικό. Η λέξη αυτονομία και ανεξαρτησία αποκτούν άλλη έννοια.'}/>
                                 <FuncCard icon={<FontAwesomeIcon icon={faWheelchairMove} size={iconSize} style={{ color: 'rgb(40, 40, 40)' }}/>} text={'Καλείσαι ξαφνικά να αντιμετωπίσεις προκλήσεις και καταστάσεις που ποτέ δεν είχαν περάσει από το μυαλό σου ενώ προσπαθείς να συμβιβαστείς στον νέο τρόπο ζωής κάνοντας εκπτώσεις στα θέλω σου.'}/>                            
@@ -95,7 +99,7 @@ const FuncRepair = () => {
                                 και ολοκληρωμένες προσεγγίσεις, όπως η λειτουργική αποκατάσταση.
                             </Typography>          
                         </Box>
-                        <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                        <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                             <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                                 Μοντέλα Αποκατάστασης
                             </Typography> 
@@ -105,7 +109,7 @@ const FuncRepair = () => {
                             <TextWindow title={'Κοινοτικό Μοντέλο Αποκατάστασης'} text={'Αυτό το μοντέλο αναγνωρίζει ότι η αποκατάσταση είναι μια διαδικασία που πρέπει να γίνεται σε συνεργασία με την κοινότητα. Η παροχή εκπαίδευσης, υποδομών και πρόσβασης σε κοινωνικές υπηρεσίες, σε συνδυασμό με τη συνεργασία της τοπικής κοινότητας, επιτρέπει στο άτομο να λειτουργεί πιο αποτελεσματικά μέσα στην κοινωνία​.'}/>
                             <TextWindow title={'Κοινοτικό Μοντέλο Αποκατάστασης'} text={'Το ολιστικό μοντέλο αντιμετωπίζει την αναπηρία όχι ως μεμονωμένη κατάσταση, αλλά ως ένα σύνολο σωματικών, ψυχικών και κοινωνικών προκλήσεων. Βασίζεται στη συνεργασία μεταξύ πολλών ειδικοτήτων και στόχο έχει την ενίσχυση του ατόμου σε όλους τους τομείς της ζωής του, περιλαμβάνοντας τη σωματική, ψυχική και κοινωνική υποστήριξη​.'}/>                        
                         </Stack>      
-                        <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                        <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                             <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                                 Η Λειτουργική Αποκατάσταση και η GS Wheelchairs
                             </Typography> 
