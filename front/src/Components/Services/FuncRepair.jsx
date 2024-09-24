@@ -184,7 +184,7 @@ const FuncRepair = () => {
                     {selection === 1 &&    
                         <Box>
                             <TitleComp text={'Βασικές Αρχές'}/>                                                  
-                            <Stack spacing={6} sx={{ marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, border: '1px solid rgb(180, 180, 180)', borderRadius: 3, backgroundColor: 'rgb(232, 232, 240)', padding: {xl: 3, lg: 5, md: 3, sm: 2, xs: 2, xxs: 2} }}>                                                                
+                            <Stack spacing={6} sx={{ marginLeft: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, marginRight: {xl: 70, lg: 15, md: 5, sm: 5, xs: 3, xxs: 2}, border: '1px solid rgb(180, 180, 180)', borderRadius: 3, backgroundColor: 'rgb(232, 226, 232)', padding: {xl: 3, lg: 5, md: 3, sm: 2, xs: 2, xxs: 2} }}>                                                                
                                 <TextWindow title={'Διαχείριση Σώματος'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>                        
                                 <TextWindow title={'Τεχνικές Μεταφορών'} text={'Παρέχουμε εκπαίδευση και υποστήριξη σε τεχνικές μεταφορών που επιτρέπουν στους χρήστες να μετακινούνται με άνεση και πάνω από όλα ασφάλεια, είτε μέσω αναπηρικού αμαξιδίου είτε με άλλα μέσα.'}/> 
                                 <TextWindow title={'Χειρισμός Αναπηρικού Καθίσματος'} text={'Προσφέρουμε εξειδικευμένη εκπαίδευση στον χειρισμό αναπηρικού καθίσματος, συμπεριλαμβανομένης της προσαρμογής και της σωστής καθιστής θέσης, προκειμένου να επιτευχθεί η μέγιστη λειτουργικότητα και άνεση.'}/> 
@@ -207,7 +207,7 @@ const FuncRepair = () => {
                                         του και προωθώντας την ανεξαρτησία του.
                                     </Typography>               
                                 </Box>                    
-                                <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                                <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                                         Γιατί είναι τόσο σημαντικό το αμαξίδιο να είναι προσαρμοσμένο στις ανάγκες του χρήστη;
                                     </Typography> 
@@ -228,7 +228,7 @@ const FuncRepair = () => {
                                         <TextWindow title={'Ψυχολογική Ευεξία'} text={'Ένα αμαξίδιο που ταιριάζει τέλεια στον χρήστη, δεν είναι μόνο σωματική βοήθεια αλλά και ψυχολογική ενίσχυση. Όταν το άτομο αισθάνεται άνετα και ασφαλές στο αμαξίδιό του, μπορεί να ζει με περισσότερη αυτοπεποίθηση και αξιοπρέπεια. Το γεγονός ότι μπορεί να διαχειρίζεται μόνο του τη μετακίνησή του, μειώνει το άγχος και την ψυχολογική επιβάρυνση που προκαλεί η εξάρτηση από άλλους​​.'}/>                        
                                     </Stack>                                    
                                 </Stack>    
-                                <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                                <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                                         Το Αμαξίδιο ως Κομμάτι των Τριών Πυλώνων της GS Wheelchairs
                                     </Typography> 
@@ -244,7 +244,7 @@ const FuncRepair = () => {
                                         <TextWindow title={'Ψυχοκοινωνική Στήριξη'} text={'Ένα αμαξίδιο που προσφέρει άνεση και αυτονομία έχει τεράστιο αντίκτυπο στην ψυχολογική και κοινωνική ζωή του χρήστη. Ο τρίτος πυλώνας της GS Wheelchairs, η ψυχοκοινωνική στήριξη, βασίζεται στην ιδέα ότι η αυτονομία που προσφέρει το αμαξίδιο ενδυναμώνει τον χρήστη ψυχολογικά, βελτιώνει την κοινωνική του ενσωμάτωση και μειώνει τα εμπόδια που συναντά στην καθημερινότητά του​​.'}/>                                               
                                     </Stack>              
                                 </Stack>    
-                                <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 232, 240)' }}>
+                                <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center', padding: 5, borderRadius: 3, border: '1px solid rgb(180, 180, 180)', bgcolor: 'rgb(232, 226, 232)' }}>
                                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'rgb(40, 40, 40)' }}>
                                         Τι Προσφέρει ένα Προσαρμοσμένο Αμαξίδιο στον Χρήστη
                                     </Typography> 
