@@ -166,42 +166,6 @@ app.post('/delete-item', (req, res) => {
     });
 });
 
-app.post('/save-item', (req, res) => {
-    const product = req.body.product;
-
-    fs.readFile(items, 'utf8', (err, data) => {
-        let itemData = JSON.parse(data);
-
-        if(product){
-            const cleanItem = {
-                id: itemData.products.length,
-                tag: product.category,
-                title: "test",
-                subtitle: "also test",
-                thumbnail: product.mainImg,
-                sub: product.subs,
-                desc: product.desc,
-                chars: product.dets
-            }
-
-            itemData.products.push(cleanItem);
-
-            fs.writeFile(items, JSON.stringify(itemData, null, 2), (response, writeErr) => {
-                if(writeErr){
-                    res.status(500);
-                    console.error('Error writing file:', writeErr);  
-                    return;              
-                }
-                res.status(200).json({
-                    message: 'Data received successfully',
-                    receivedData: itemData,
-                  });
-                  console.log('File successfully updated');
-            })
-        }
-    });
-});
-
 app.post('/update-item', (req, res) => {
     const productId = Number(req.body.id);
     const product = req.body.product;
@@ -212,22 +176,21 @@ app.post('/update-item', (req, res) => {
         }
 
         const products = JSON.parse(data).products        
-
+        console.log(product)
         if(product){
             const cleanItem = {
                 id: productId,
                 tag: product.category,
-                title: "test",
+                title: product.title,
                 subtitle: "also test",
                 thumbnail: product.mainImg,
                 sub: product.subs,
                 desc: product.desc,
                 chars: product.dets
             }
-            
+            console.log(cleanItem)
             let updatedProducts = products.filter(element => element.id !== productId);
             
-            console.log(updatedProducts)
             updatedProducts.push(cleanItem);
             
 
