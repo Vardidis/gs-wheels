@@ -5,20 +5,23 @@ const ProductMenuItem = (props) => {
     return(
         <Box sx={{
             id: props.id,
-            borderRadius: 1,
+            borderRadius: 90,
             minWidth: {lg: 130, md: 130, sm: 130, xs: 100, xxs: 100},
             height: 30,
-            backgroundColor: props.highlight ? '#FFDCBC' : 'rgb(232, 228, 236)',
+            backgroundColor: props.highlight ? '#30343f' : 'transparent',
+            border: '1px solid #30343f',
             display: 'flex',
-            alignItems: 'center',
-            padding: 1,
+            alignItems: 'center', 
+            justifyContent: 'center',       
             gap: 1,
             cursor: 'pointer',
-            color: 'black'
+            color: props.highlight ? 'white' : '#30343f',       
+            padding: 1,       
+            boxShadow: 2,       
         }}
-        className={props.highlight?'product-menu-selected':'product-menu'}>
+        >
             {props.icon}
-            <Typography fontSize={{xl: 16, lg: 16, md: 16, sm: 16, xs: 13, xxs: 12}}>
+            <Typography fontSize={{xl: 16, lg: 15, md: 15, sm: 14, xs: 13, xxs: 12}} fontWeight={600}>
                 {props.text}
             </Typography>                   
         </Box>

@@ -12,7 +12,7 @@ const CategoryMenu = (props) => {
 
     if(isDesktop){
         return(
-            <Stack spacing={1}>
+            <Stack direction='row' spacing={1}>
                 <Link to='/products' style={{ textDecoration: 'none' }}>
                     <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
                 </Link>
