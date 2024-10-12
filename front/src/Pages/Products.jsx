@@ -23,7 +23,7 @@ const Products = () => {
         sortedData.map(product => {
             setItems((prevItems) => [...prevItems, product]);                
         });
-    });
+    }, [category, allProducts]);
     
         return(
             <Box>            

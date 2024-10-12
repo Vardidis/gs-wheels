@@ -1,8 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import './Pages.css';
 import { Stack, Box, Typography, keyframes, Grid } from "@mui/material";
 import logo from '../assets/logo.png';
-import { Context } from "../Components/Context";
 import GsButton from "../Components/GsButton";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
@@ -36,9 +35,6 @@ const ColorBox = (props) => {
 }
 
 const GetStarted = () => {
-    const {isDesktop} = useContext(Context);
-    const logoSize = isDesktop ? 75 : 35;
-
     return(
         <Box sx={{
             textAlign: 'center',            

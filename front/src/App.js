@@ -48,12 +48,11 @@ function App() {
       },
     },
   })
-  const {setIsDesktop, isDesktop, setFullHeight} = useContext(Context);
+  const {setIsDesktop, isDesktop} = useContext(Context);
   const screenSize = useScreenSize();
 
   useEffect(()=>{
     setIsDesktop(screenSize.width >= 900);
-    setFullHeight(screenSize.height);
   }, [screenSize])
 
   return (

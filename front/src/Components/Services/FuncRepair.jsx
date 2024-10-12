@@ -32,7 +32,7 @@ const FuncRepair = () => {
                             <Stack spacing={1}>
                                 <CButton text={'Βασικές Έννοιες'} link={'/service/apokatastasi'} anchor={0}/> 
                                 <CButton text={'Μοντέλα Αποκατάστασης'} link={'/service/apokatastasi'} anchor={1}/>  
-                                <CButton text={'η GS και ο ρόλος της'} link={'/service/apokatastasi'} anchor={2}/>  
+                                <CButton text={'η GS Wheelchairs και ο ρόλος της'} link={'/service/apokatastasi'} anchor={2}/>  
                             </Stack>                                             
                         </Stack>
                     </Grid>        
