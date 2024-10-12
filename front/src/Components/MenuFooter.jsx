@@ -5,7 +5,6 @@ import Contact from "./Contact";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faComment, faGear } from '@fortawesome/free-solid-svg-icons';
-import LangSwitch from "./LangSwitch";
 import Info from "./Info";
 library.add(faGear, faComment);
 
@@ -17,14 +16,16 @@ const MenuFooter = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [placement, setPlacement] = useState();
     const [menuOpen, setMenuOpen] = useState(false);
-    const [itemColor, setItemColor] = useState('black');
+    const [itemColor, setItemColor] = useState('#30343f');
+    const [borderColor, setBorderColor] = useState('transparent');
     const [state, setState] = useState({
         openSnack: false,
         vertical: 'top',
         horizontal: 'center',
     });
     const { vertical, horizontal, openSnack } = state;
-
+    const iconSize = isDesktop ? 'md' : 'lg';
+    
     const handleClose = () => setOpenModal(false);
     const handleOpen = () => setOpenModal(true);
     const openInfoMod = () => setOpenInfoModal(true);
@@ -32,7 +33,8 @@ const MenuFooter = () => {
 
     const handleClick = (newPlacement) => (event) => {
         setMenuOpen(!menuOpen);
-        setItemColor(menuOpen ? 'black' : '#f68b24');
+        setItemColor(menuOpen ? 'black' : 'white');
+        setBorderColor(!menuOpen ? '#30343f' : 'transparent');
         setAnchorEl(event.currentTarget);
         setOpen((prev) => placement !== newPlacement || !prev);
         setPlacement(newPlacement);
@@ -48,39 +50,39 @@ const MenuFooter = () => {
 
     return(
         <Box>
-        <Snackbar
-            open={openSnack}
-            autoHideDuration={5000}
-            anchorOrigin={{ vertical, horizontal }}
-            onClose={handleCloseSnack}
-            message="Η αποστολή ήταν επιτυχής. Σας ευχαριστούμε !"
-        />    
-         <Popper
-            sx={{ zIndex: 1 }}
-            open={open}
-            anchorEl={anchorEl}
-            placement={'right'}
-            transition
-        >
-            {({ TransitionProps }) => (
-            <Fade {...TransitionProps} timeout={350}>
-                <Paper sx={{ backgroundColor: 'rgb(57, 57, 57)', color: 'white' }}>
-                    <List>
-                        <ListItem className='contact-list' onClick={()=>{handleOpen()}}>
-                            <Typography>
-                                Αποστολή μηνύματος
-                            </Typography>
-                        </ListItem>
-                        <ListItem className='contact-list' onClick={()=>openInfoMod()}>
-                            <Typography>
-                                Πληροφορίες επικοινωνίας
-                            </Typography>
-                        </ListItem>                       
-                    </List>
-                </Paper>
-            </Fade>
-            )}
-        </Popper>
+            <Snackbar
+                open={openSnack}
+                autoHideDuration={5000}
+                anchorOrigin={{ vertical, horizontal }}
+                onClose={handleCloseSnack}
+                message="Η αποστολή ήταν επιτυχής. Σας ευχαριστούμε !"
+            />    
+            <Popper
+                sx={{ zIndex: 1 }}
+                open={open}
+                anchorEl={anchorEl}
+                placement={'right'}
+                transition
+            >
+                {({ TransitionProps }) => (
+                    <Fade {...TransitionProps} timeout={350}>
+                        <Paper sx={{ backgroundColor: '#30343f', color: 'white' }}>
+                            <List>
+                                <ListItem className='contact-list' onClick={()=>{handleOpen()}}>
+                                    <Typography>
+                                        Αποστολή μηνύματος
+                                    </Typography>
+                                </ListItem>
+                                <ListItem className='contact-list' onClick={()=>openInfoMod()}>
+                                    <Typography>
+                                        Πληροφορίες επικοινωνίας
+                                    </Typography>
+                                </ListItem>                       
+                            </List>
+                        </Paper>
+                    </Fade>
+                )}
+            </Popper>
             <Modal
                 open={openModal}
                 onClose={handleClose}
@@ -98,13 +100,10 @@ const MenuFooter = () => {
                 <Info/>
             </Modal>               
             <List sx={{ width: '100%', bgcolor: 'transparent' }}>
-                <ListItem className="hoverable"  sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent', color: itemColor }} onClick={handleClick()}>
-                    <FontAwesomeIcon icon={faComment} size='lg'/>
+                <ListItem className="hoverable"  sx={{ gap: 1, borderRadius: 2, paddingBottom: {lg: 1, md: 1, sm: 2, xs: 2, xxs: 2}, paddingTop: {lg: 1, md: 1, sm: 2, xs: 2, xxs: 2}, backgroundColor: borderColor, color: itemColor }} onClick={handleClick()}>
+                    <FontAwesomeIcon icon={faComment} size={iconSize}/>
                     { isDesktop && <ListItemText primary="Επικοινωνία"/> }                    
                 </ListItem>         
-                {/* <ListItem className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 4, xs: 4, xxs: 1}, backgroundColor: 'transparent' }}>
-                    <LangSwitch/>           
-                </ListItem>                     */}
             </List>            
         </Box>            
     );            

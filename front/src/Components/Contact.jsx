@@ -124,7 +124,7 @@ const Contact = (props) => {
                 p: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
                 border: "none",
                 textAlign: "center",
-                borderRadius: 1,
+                borderRadius: 10,
                 height: {xl: '80vh', lg: '80vh', md: '80vh', sm: '80vh', xs: 'fit-content', xxs: 'fit-content'},
                 overflowY: 'auto',
             }}>

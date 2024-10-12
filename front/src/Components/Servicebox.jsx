@@ -1,61 +1,48 @@
-import React, { useContext } from "react";
+import React from "react";
 import './Components.css';
 import Servicecard from "./Servicecard";
 import bgimg from '../assets/bgimg2.jpg';
-import gw from '../assets/giotis-wheelie.jpg';
-import id from '../assets/interior3.jpg';
-import { Box, Stack } from "@mui/material";
-import { Context } from "./Context";
+import gw from '../assets/gbgb.jpg';
+import id from '../assets/interior1.jpg';
+import { Box, keyframes, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
 const Servicebox = () => {
-    const {isDesktop} = useContext(Context);
-    const style = isDesktop ? {
-        display: 'flex',
-        justifyContent: 'center',
-        paddingLeft: {xl: 0, lg: 0, md: 0},
-        paddingRight: {xl: 0, lg: 0, md: 0},
-        paddingTop: {lg: 0, md: 0},
-        paddingBottom: {lg: 0, md: 0}
-    }
-    : {
-        width: '100%',
-        paddingLeft: {sm: 5, xs: 3, xxs: 2},
-        paddingRight: {sm: 5, xs: 3, xxs: 2},
-        paddingTop: {sm: 3, xs: 3, xxs: 3},
-        paddingBottom: {sm: 5, xs: 3, xxs: 3}
-    }
     return(
-        <Box sx={style}>
-            <Stack spacing={{xl: 2, lg: 2, md: 2, sm: 5, xs: 5, xxs: 5}}>
-                {isDesktop
-                ? <>                
-                    <Stack direction='row' spacing={2}>
-                        <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
-                            <Servicecard image={bgimg} text={'1. Λειτουργική Αποκατάσταση'}/>
-                        </Link>
-                        <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
-                            <Servicecard image={gw} text={'2. Συμβουλευτική'}/>
-                        </Link>
-                    </Stack>
-                    <Stack direction='row' spacing={2}>
-                        <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                            <Servicecard image={id} text={'3. Διαμόρφωση Χώρου'}/>
-                        </Link>
-                    </Stack>         
-                </>
-                : <>
+        <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1} }}>
+            <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ maxWidth: 1400, animation: `${fadeIn} 1s ease-in-out` }}>                                      
+                <Grid item xs={12} md={6}>            
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
-                        <Servicecard image={bgimg} text={'1. Λειτουργική Αποκατάσταση'}/>
+                        <Servicecard image={bgimg} text={'Λειτουργική Αποκατάσταση'}/>
                     </Link>
-                    <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
-                        <Servicecard image={gw} text={'2. Συμβουλευτική'}/>
-                    </Link>
+                </Grid>
+                <Grid item xxs={12} md={6}>
+                    <Link to='/service/education' style={{textDecoration: 'none'}}>
+                        <Servicecard image={bgimg} text={'Εκπαίδευση'}/>
+                    </Link>      
+                </Grid>
+                <Grid item xxs={12} md={6}>
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                        <Servicecard image={id} text={'3. Διαμόρφωση Χώρου'}/>
+                            <Servicecard image={id} text={'Διαμόρφωση Χώρου'}/>
                     </Link>
-                </>}
-            </Stack>
+                </Grid>
+                <Grid item xxs={12} md={6}>
+                    <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
+                        <Servicecard image={gw} text={'Συμβουλευτική'}/>
+                    </Link>
+                </Grid>                                                                             
+            </Grid>
         </Box>
     );
 }

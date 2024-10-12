@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductItem from "./ProductItem";
 import { Box, Grid } from "@mui/material";
+import { Context } from "./Context";
 
 const ProductMenu = (props) => {
+    const {fullHeight} = useContext(Context);
+
     return(
-        <Grid container className='no-scrollbar' sx={{ gap: 2, overflowY: 'scroll', maxHeight: {xl: '100%', lg: 650, md: 580, sm: 800, xs: 600, xxs: 600}, justifyContent: 'center', padding: 2 }}>
+        <Grid container className='no-scrollbar' sx={{ gap: 2, overflowY: 'scroll', maxHeight: fullHeight, padding: 5, paddingBottom: 20, justifyContent: 'center' }}>
             {props.items.map((item, index) => {                                
                 return(
-                    <Grid sx={{ maxWidth: 500, height: 'fit-content', marginBottom: 3 }}>                    
-                        <ProductItem item={item} index={index} key={index}/>                
+                    <Grid sx={{ maxWidth: 350, height: 'fit-content', marginBottom: 3 }}>                    
+                        <ProductItem item={item} index={item.id} key={index}/>                
                     </Grid>
                 )
             })}

@@ -5,6 +5,21 @@ import { Context } from "../Components/Context";
 import ProductImageView from "../Components/ProductImageView";
 import ProductViewDetails from "../Components/ProductViewDetails";
 
+const DetailsBox = (props) => {
+    return(
+        <Paper sx={{ padding: 3, bgcolor: '#30343f', color: 'white', borderRadius: 4}}>
+            <Stack spacing={3} alignItems='center' sx={{ maxWidth: 1400 }}>
+                <Typography variant='h6' sx={{ textAlign: 'center' }}>
+                    Περιγραφή
+                </Typography>
+                <Typography fontSize={15}>
+                    {props.desc}
+                </Typography>
+            </Stack>                
+        </Paper>
+    );
+}
+
 const Product = () => {
     const {productId} = useParams();
     const {allProducts, isDesktop} = useContext(Context);
@@ -27,38 +42,19 @@ const Product = () => {
     if(productItem){
         return(
             <Box sx={style}>
-                <Stack spacing={{xl: 6, lg: 6, md: 6, sm: 4, xs: 4, xxs: 2}}>
-                    <Typography fontSize={{xl: 26, lg: 26, md: 24, sm: 24, xs: 18, xxs: 14}} fontWeight={600}>
-                        {productItem.title} Black - Fully Adjustable
+                <Stack spacing={5} alignItems='center'>
+                    <Typography variant='h5'>
+                        {productItem.title} Black
                     </Typography>
-                    <Stack direction={orient} spacing={{xl: 12, lg: 6, md: 6, sm: 4, xs: 4, xxs: 1}}>
-                        <ProductImageView mainImg={productItem.thumbnail} subImages={productItem.sub}/>
-                        {!isDesktop &&
-                            <Paper sx={{ padding: 2, bgcolor: '#f1f1f1', borderRadius: 2 }}>
-                                <Stack spacing={{xl: 3, lg: 3, md: 3, sm: 2, xs: 2, xxs: 1}} sx={{ maxWidth: {xl: 960, lg: 900, md: 730, sm: 920, xs: 880, xxs: 850} }}>
-                                    <Typography fontSize={{xl: 20, lg: 20, md: 20, sm: 18, xs: 18, xxs: 16}} fontWeight={600} sx={{ textAlign: 'center' }}>
-                                        Περιγραφή
-                                    </Typography>
-                                    <Typography fontSize={{xl: 16, lg: 16, md: 14, sm: 14, xs: 14, xxs: 14}}>
-                                        {productItem.desc}
-                                    </Typography>
-                                </Stack>                
-                            </Paper>
-                        }
-                        <ProductViewDetails chars={productItem.chars}/>
-                    </Stack>
-                    {isDesktop &&                    
-                        <Paper sx={{ padding: 2, bgcolor: '#f1f1f1', borderRadius: 2 }}>
-                            <Stack spacing={{xl: 3, lg: 3, md: 3, sm: 2, xs: 2, xxs: 1}} sx={{ maxWidth: {xl: 960, lg: 900, md: 730, sm: 920, xs: 880, xxs: 850} }}>
-                                <Typography fontSize={{xl: 20, lg: 20, md: 20, sm: 18, xs: 18, xxs: 16}} fontWeight={600} sx={{ textAlign: 'center' }}>
-                                    Περιγραφή
-                                </Typography>
-                                <Typography fontSize={{xl: 16, lg: 16, md: 14, sm: 14, xs: 14, xxs: 14}}>
-                                    {productItem.desc}
-                                </Typography>
-                            </Stack>                
-                        </Paper>
-                    }
+                    <Stack direction={orient} alignItems={isDesktop ? 'top' : 'center'} spacing={{xl: 12, lg: 6, md: 6, sm: 4, xs: 4, xxs: 1}}>
+                        <ProductImageView mainImg={productItem.thumbnail} subImages={productItem.sub}/>     
+                        <Stack spacing={4}>
+                            <DetailsBox
+                                desc={productItem.desc}
+                            />    
+                            <ProductViewDetails chars={productItem.chars}/>
+                        </Stack>                                                                                      
+                    </Stack>                    
                 </Stack>            
             </Box>
         );

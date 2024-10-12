@@ -5,13 +5,11 @@ export const Context = createContext(null);
 const ContextProvider = (props) => {
     const [isDesktop, setIsDesktop] = useState(true);
     const endpoint = `${process.env.REACT_APP_BACKEND}/images/`;
-
-    const [settings, setSettings] = useState({
-        'theme': 'light',
-        'lang': 'Ελληνικά',
-    });
+    const [fullHeight, setFullHeight] = useState(0);
     const [allProducts, setAllProducts] = useState([]);
-    const contextValue = {isDesktop, setIsDesktop, settings, setSettings, allProducts, endpoint};    
+    const [navSelection, setNavSelection] = useState(0);
+
+    const contextValue = {isDesktop, setIsDesktop, allProducts, endpoint, fullHeight, setFullHeight, navSelection, setNavSelection};    
 
     useEffect(()=>{   
         fetch(`${process.env.REACT_APP_BACKEND}/products`)

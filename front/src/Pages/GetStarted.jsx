@@ -1,54 +1,96 @@
 import React, { useContext } from "react";
-import Infobox from '../Components/Infobox';
 import './Pages.css';
-import { Stack, Box, Typography } from "@mui/material";
-import GsButton from "../Components/GsButton";
+import { Stack, Box, Typography, keyframes, Grid } from "@mui/material";
 import logo from '../assets/logo.png';
-import bgImg from '../assets/bgWheel2.png';
 import { Context } from "../Components/Context";
+import GsButton from "../Components/GsButton";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import wheels from '../assets/wheelchairs.png';
+library.add(faPhone, faEnvelope, faLocationDot);
 
-const GetStarted = (props) => {
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+`;
+
+const ColorBox = (props) => {
+    return(
+        <Box sx={{ boxShadow: 12, borderRadius: 10, padding: 4, bgcolor: props.color, alignItems: 'center', minHeight: 200 }}>
+            <Stack spacing={3}>
+                <Typography fontSize={18} fontWeight={600}>
+                    {props.title}
+                </Typography>
+                <Typography>
+                    {props.text}
+                </Typography>         
+            </Stack>       
+        </Box>
+    )
+}
+
+const GetStarted = () => {
     const {isDesktop} = useContext(Context);
     const logoSize = isDesktop ? 75 : 55;
+
     return(
         <Box sx={{
-            textAlign: 'center',
-            paddingTop: 3,
-            paddingBottom: 5,
-            height: '100%',
-            backgroundImage: `url(${bgImg})`,
-            backgroundPosition: 'right',
-            backgroundRepeat: 'no-repeat',
-            justifyContent: 'flex-end',
-            backgroundSize: {xl: '185%', lg: '170%', md: '165%', sm: '200%', xs: '185%'},
-            backgroundAttachment: 'fixed',
-            // bgcolor: 'rgb(248, 242, 250)'
+            textAlign: 'center',            
+            paddingBottom: 5    
         }}>            
             <Box sx={{
                 display: 'flex',
                 justifyContent: 'center',
                 gap: 2,
-                alignItems: 'center',
-                paddingLeft: {xl: 55, lg: 55, md: 40, sm: 30, xs: 0, xxs: 0},                
+                alignItems: 'center',  
+                paddingTop: 2,                             
             }}>
                 <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
                     <img src={logo} style={{ width: logoSize }} alt=""/>
                 </Box>                
-                <Stack sx={{ textAlign: 'left' }}>
-                    <Typography fontWeight={600} fontSize={{xl: 40, lg: 36, md: 30, sm: 28, xs: 26, xxs: 22}} sx={{ color: '#ff7300f8' }}>
-                        GS Wheelchairs
-                    </Typography>
-                    <Typography fontSize={{xl: 20, lg: 18, md: 16, sm: 16, xs: 16, xxs: 14}}>
-                        Καλωσήρθατε
-                    </Typography>
-                </Stack>                                
-            </Box>            
-            <Stack spacing={{xl: 18, lg: 8, md: 14, sm: 12, xs: 10, xxs: 6}} sx={{ paddingTop: {xl: 15, lg: 15, md: 12, sm: 10, xs: 8, xxs: 4}, textAlign: 'center' }}>                
-                <Infobox/>              
-                <Box sx={{ paddingLeft: {xl: 40, lg: 25, md: 14, sm: 5, xs: 3, xxs: 1}, paddingRight: {xl: 40, lg: 25, md: 14, sm: 5, xs: 3, xxs: 1} }}>
-                    <GsButton/>          
-                </Box>                       
-            </Stack>            
+                    <img src={wheels} style={{ width: isDesktop ? 350 : 300 }}/>                               
+            </Box>               
+            <Box sx={{ paddingTop: 7, display: 'flex', justifyContent: 'center' }}>
+                <Stack spacing={2} alignItems='center'>
+                    <Grid container spacing={2} rowSpacing={2} justifyContent='center' sx={{ animation: `${fadeIn} 1s ease-in-out`, padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, maxWidth: 1400, display: 'flex', alignItems: 'stretch' }}>                                                         
+                        <Grid item xs={12} md={5}>
+                            <ColorBox
+                                color={'rgb(240, 235, 240)'}
+                                title={'Εξατομικευμένα Αναπηρικά Αμαξίδια'}
+                                text={'Στη GS Wheelchairs γνωρίζουμε ότι κάθε άτομο είναι διαφορετικό, και οι ανάγκες του ξεχωριστές. Για τον λόγο αυτό ειδικευόμαστε στην κατασκευή προσαρμοσμένων αναπηρικών αμαξιδίων, σχεδιασμένων αποκλειστικά για τις ανάγκες του κάθε ατόμου.'}
+                            />                        
+                        </Grid>
+                        <Grid item xs={12} md={5}>
+                            <ColorBox
+                                color={'rgb(240, 230, 245)'}
+                                title={'Ψυχοκοινωνική Στήριξη'}
+                                text={'Προσφέρουμε υπηρεσίες Life Coaching και Εκπαίδευσης σε θέματα αυτονομίας, από πιστοποιημένο εκπαιδευτή στη Σουηδία για άτομα με αναπηρία, και ειδικά για τραυματισμούς στην σπονδυλική στήλη.'}
+                            />                             
+                        </Grid>
+                        <Grid item xs={12} md={5}>
+                            <ColorBox
+                                color={'rgb(240, 225, 230)'}
+                                title={'Προσαρμογή Χώρου'}
+                                text={'Επιπλέον, προσφέρουμε λύσεις για την προσαρμογή του εσωτερικού και εξωτερικού χώρου σας, παρέχοντας ιδέες και προτάσεις που θα βελτιώσουν το περιβάλλον σας. Αντιμετωπίζουμε τις προκλήσεις που συνοδεύουν την αναπηρία με εξειδικευμένες υπηρεσίες.'}
+                            />                            
+                        </Grid>
+                        <Grid item xs={12} md={5}>
+                            <ColorBox
+                                color={'rgb(240, 225, 250)'}
+                                title={'Εκπαίδευση στη Λειτουργική Αποκατάσταση'}
+                                text={'Η εμπειρία μας ως άνθρωποι που ζουν σε συνθήκες αναπηρίας μας επιτρέπει να κατανοούμε πλήρως τις ανάγκες σας. Το Customize Your Life αποτελεί τη δέσμευσή μας για μια καλύτερη ποιότητα ζωής, πλήρως προσαρμοσμένη στις δικές σας ανάγκες.'}
+                            />                           
+                        </Grid>                                                                            
+                    </Grid>     
+                    <GsButton/>
+                </Stack>
+            </Box>
         </Box>
     );
 }

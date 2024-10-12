@@ -3,16 +3,15 @@ import { Card, CardContent, CardMedia, Typography, CardActionArea} from '@mui/ma
 
 const Servicecard = (props) => {
     return(
-        <Card sx={{ width: {xl: 609, lg: 383, md: 300, sm: '100%', xs: '100%', xxs: '100%'}, textAlign: 'center' }}>
+        <Card sx={{ textAlign: 'center', borderRadius: 1, boxShadow: 12 }}>
             <CardActionArea>
                 <CardMedia
                     component="img"                    
-                    image={props.image}
-                    alt="green iguana"
-                    sx={{ height: {xl: 200, lg: 140, md: 120, sm: 220, xs: 180, xxs: 140} }}
+                    image={props.image}            
+                    sx={{ height: {xl: 200, lg: 200, md: 150, sm: 220, xs: 180, xxs: 140} }}
                 />
-                <CardContent>
-                    <Typography variant="body2" color="text.primary" fontSize={{xl: 20, lg: 16, md: 16, sm: 22, xs: 20, xxs: 18}}>
+                <CardContent sx={{ bgcolor: '#30343f' }}>
+                    <Typography variant="body2" color="white" fontWeight={600} fontSize={{xl: 20, lg: 16, md: 16, sm: 22, xs: 20, xxs: 18}}>
                         {props.text}
                     </Typography>
                 </CardContent>

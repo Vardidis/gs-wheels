@@ -3,8 +3,11 @@ body{
 }
 
 .hoverable:hover{
-  color: #f88120f8;
   cursor: pointer;
+}
+
+.hoverable-comp:hover{
+  font-weight: bold;
 }
 
 .selected{

@@ -1,18 +1,32 @@
-import React from "react";
+import React, { useContext } from "react";
 import Servicebox from "../Components/Servicebox";
-import { Stack, Box, Alert } from "@mui/material";
+import { Stack, Box } from "@mui/material";
+import bgwheel from '../assets/backg.jfif';
+import wheels from '../assets/wheelchairs.png';
+import logo from '../assets/logo.png';
+import { Context } from "../Components/Context";
 
 const Services = () => {
+    const {fullHeight} = useContext(Context);
+
     return(
-        <Box sx={{ paddingBottom: 5 }}>
-            <Alert severity="success" sx={{ width: '100%', fontSize: {xl: 20, lg: 16, md: 16, sm: 16, xs: 12, xxs: 12} }}>
-                Στην GS  Wheelchairs (Get Started)  γνωρίζουμε πολύ καλά τι χρειάζεσαι και μπορούμε να σου δώσουμε όλα εκείνα τα εφόδια που θα χρειάστείς ώστε να γίνεις ξανά αυτόνομος για μια ποιοτική ζωή δίχως περιορισμούς
-            </Alert>
-            <Stack spacing={{xl: 16, lg: 6}} sx={{ paddingTop: 5 }}>                
+        <Box>   
+            <Box sx={{
+                display: 'flex',
+                justifyContent: 'center',
+                gap: 2,
+                alignItems: 'center',  
+                paddingTop: 2,        
+            }}>
+                <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
+                    <img src={logo} style={{ width: 80 }} alt=""/>
+                </Box>                
+                    <img src={wheels}/>                               
+            </Box>         
+            <Stack sx={{ paddingTop:5, overflow: 'auto', maxHeight: fullHeight, paddingBottom: 20 }}>                
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Servicebox/>
-                </Box>
-                
+                </Box>                
             </Stack>
         </Box>        
     );

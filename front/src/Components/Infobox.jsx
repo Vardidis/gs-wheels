@@ -1,6 +1,6 @@
 import React, { useContext, useRef} from "react";
 import './Components.css';
-import { Stack, Box } from '@mui/material';
+import { Box } from '@mui/material';
 import { Context } from "./Context";
 import Infocard from "./Infocard";
 import photo1 from '../assets/full-custom.jpg';

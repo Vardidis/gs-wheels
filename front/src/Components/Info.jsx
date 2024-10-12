@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Box, Stack, Typography } from '@mui/material';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,7 +18,7 @@ const Info = () => {
             p: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
             border: "none",
             textAlign: "center",
-            borderRadius: 2,
+            borderRadius: 10,
             height: 'fit-content',
             overflowY: 'auto',
         }}>

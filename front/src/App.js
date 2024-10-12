@@ -12,6 +12,7 @@ import About from './Pages/About.jsx';
 import Services from './Pages/Services.jsx';
 import Education from './Pages/Education.jsx';
 import Product from './Pages/Product.jsx';
+import FuncRepair from './Components/Services/FuncRepair.jsx';
 
 function App() {
   const theme = createTheme({
@@ -47,11 +48,12 @@ function App() {
       },
     },
   })
-  const {setIsDesktop, isDesktop} = useContext(Context);
+  const {setIsDesktop, isDesktop, setFullHeight} = useContext(Context);
   const screenSize = useScreenSize();
 
   useEffect(()=>{
     setIsDesktop(screenSize.width >= 900);
+    setFullHeight(screenSize.height);
   }, [screenSize])
 
   return (
@@ -64,8 +66,7 @@ function App() {
             marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '50px', xs: '50px', xxs: '50px'},
             height: '100vh',
             overflowY: 'auto',
-            overflowX: 'hidden',
-            bgcolor: 'rgb(250, 242, 246)',                 
+            overflowX: 'hidden',               
           }}>           
             <Routes>
               <Route path="/" element={<GetStarted/>}/>
@@ -79,7 +80,8 @@ function App() {
               <Route path='product' element={<Product/>}>
                 <Route path=':productId' element={<Product/>}/>
               </Route>
-              <Route path='/about-us' element={<About/>}/>              
+              <Route path='/about-us' element={<About/>}/>    
+              <Route path='customize-your-life' element={<FuncRepair/>}/>         
             </Routes>
           </Box>     
         </Box>

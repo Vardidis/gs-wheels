@@ -27,15 +27,7 @@ const Products = () => {
     });
     
         return(
-            <Box sx={{
-                height: '100vh',
-                width: '100%',          
-                backgroundImage: `url(${bgwheel})`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundAttachment: 'fixed',  
-                overflow: 'hidden'
-            }}>            
+            <Box>            
                 <Box sx={{ padding: 5, height: '100%' }}>                                                           
                     <Stack spacing={{lg: 4, md: 4}} alignItems='center'>
                         <CategoryMenu tag={category}/>                            
