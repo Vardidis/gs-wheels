@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useEffect, useState} from "react";
 import { Box, Grid, Stack, Typography, keyframes, Tabs, Tab } from "@mui/material";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -6,6 +6,7 @@ import { faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash } from '@fortaw
 import { Context } from "../Context";
 import TextWindow from "./TextWindow";
 import { styled } from '@mui/material/styles';
+import { useLocation } from 'react-router-dom';
 
 library.add(faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash);
 
@@ -73,6 +74,8 @@ const ModelBox = (props) => {
 
 const FuncBasic = () => {
     const {isDesktop} = useContext(Context);
+    const location = useLocation();
+    const {anchor} = location.state || {};
     const iconSize = isDesktop ? 'xl' : '2xl'; 
     const [secValue, setSecValue] = useState(0);
 
@@ -90,6 +93,12 @@ const FuncBasic = () => {
     const handleChange = (newValue) => {
         setSecValue(newValue);
     };
+
+    useEffect(()=>{        
+        if(anchor){
+            setSecValue(anchor);
+        }
+    }, [])
 
     return(
         <Box sx={{

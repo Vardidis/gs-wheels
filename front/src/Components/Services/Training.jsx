@@ -1,8 +1,9 @@
 import { Box, Stack, Tabs, Tab } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Basics from "./Basics";
 import CustomWheels from "./CustomWheels";
 import { styled } from '@mui/material/styles';
+import { useLocation } from "react-router-dom";
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -29,10 +30,18 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 
 const Training = () => {
     const [selection, setSelection] = useState(0);
+    const location = useLocation();
+    const {anchor} = location.state || {};
 
     const handleSecChange = (newValue) => {
         setSelection(newValue);
     };
+
+    useEffect(()=>{        
+        if(anchor){
+            setSelection(anchor);
+        }
+    }, [])
 
     return(
         <Box>             

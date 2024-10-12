@@ -22,7 +22,7 @@ const fadeIn = keyframes`
 
 const ColorBox = (props) => {
     return(
-        <Box sx={{ boxShadow: 12, borderRadius: 10, padding: 4, bgcolor: props.color, alignItems: 'center', minHeight: 200 }}>
+        <Box sx={{ boxShadow: 12, borderRadius: 10, padding: 4, bgcolor: props.color, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }}>
             <Stack spacing={3}>
                 <Typography fontSize={18} fontWeight={600}>
                     {props.title}
