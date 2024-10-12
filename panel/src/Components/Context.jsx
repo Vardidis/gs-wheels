@@ -3,9 +3,7 @@ import { createContext, useState, useEffect } from "react";
 export const Context = createContext(null);
 
 const ContextProvider = (props) => {
-    const [isDesktop, setIsDesktop] = useState(true);
-    const endpoint = 'http://192.168.1.13:4300/images/';
-
+    const endpoint = `${process.env.REACT_APP_BACKEND}/images/`;
     const [allProducts, setAllProducts] = useState([]);
     const [allMessages, setAllMessages] = useState([]);
     const [allImages, setAllImages] = useState([]);
@@ -13,19 +11,19 @@ const ContextProvider = (props) => {
     const contextValue = {allProducts, endpoint, allMessages, allImages};    
 
     useEffect(()=>{
-        fetch("http://192.168.1.13:4300/products")
+        fetch(`${process.env.REACT_APP_BACKEND}/products`)
         .then(((response) => response.json()))
         .then((data) => {
             setAllProducts(data);
         });
 
-        fetch("http://192.168.1.13:4300/messages")
+        fetch(`${process.env.REACT_APP_BACKEND}/messages`)
         .then(((response) => response.json()))
         .then((data) => {
             setAllMessages(data.messages);                        
         });
 
-        fetch("http://192.168.1.13:4300/uploads")
+        fetch(`${process.env.REACT_APP_BACKEND}/uploads`)
         .then(((response) => response.json()))
         .then((data) => {
             setAllImages(data.files);                        

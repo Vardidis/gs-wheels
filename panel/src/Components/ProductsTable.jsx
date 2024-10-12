@@ -37,7 +37,7 @@ const ProductsTable = (props) => {
         const id = toDelete[0];
 
         try {
-            const response = await fetch('http://localhost:4300/delete-message', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND}/delete-item`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

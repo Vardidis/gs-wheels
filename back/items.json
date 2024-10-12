@@ -184,7 +184,7 @@
     },
     {
       "id": 5,
-      "tag": "parts",
+      "tag": "brakes",
       "title": "Φρένα scissors",
       "subtitle": "Ανταλλακτικά φρένα τύπου scissors",
       "thumbnail": "brake2.jpg",
@@ -201,7 +201,7 @@
     },
     {
       "id": 6,
-      "tag": "parts",
+      "tag": "brakes",
       "title": "Φρένα push-to-brake",
       "subtitle": "Ανταλλακτικά φρένα τύπου push-to-brake",
       "thumbnail": "brake.jpg",
@@ -217,7 +217,7 @@
     },
     {
       "id": 7,
-      "tag": "parts",
+      "tag": "wheels",
       "title": "Ρόδες MBL",
       "subtitle": "Ρόδες MBL για ανώμαλα εδάφη",
       "thumbnail": "mblwheel.jpg",
@@ -241,7 +241,7 @@
     },
     {
       "id": 8,
-      "tag": "parts",
+      "tag": "wheels",
       "title": "Ρόδες Spinergy",
       "subtitle": "Η πιο ελαφριές ρόδες της αγοράς",
       "thumbnail": "wheels.png",
@@ -272,7 +272,7 @@
     },
     {
       "id": 9,
-      "tag": "parts",
+      "tag": "wheels",
       "title": "Μπροστινοί τροχοί",
       "subtitle": "Μικροί τροχοί από λάστιχο και πλαστικό",
       "thumbnail": "wheel.jpg",

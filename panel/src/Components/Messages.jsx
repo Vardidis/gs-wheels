@@ -87,9 +87,9 @@ const Messages = () => {
                             {allMessages
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .reverse()
-                            .map((message) => {                                
+                            .map((message, index) => {                                
                                 return (
-                                    <TableRow onClick={(e)=>handleClick(e, message.text)} className='table-row' role="checkbox" tabIndex={-1} key={message.code} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>
+                                    <TableRow onClick={(e)=>handleClick(e, index)} className='table-row' role="checkbox" tabIndex={-1} key={message.code} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>
                                         {columns.map((column) => {
                                         const value = message[column.id];                                    
                                         return (
