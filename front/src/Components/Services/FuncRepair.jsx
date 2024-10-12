@@ -32,7 +32,7 @@ const FuncRepair = () => {
                 </Typography>               
                 <Grid container rowSpacing={3} columnSpacing={3} justifyContent='center' sx={{ maxWidth: 1400 }}>     
                     <Grid item xxs={12} md={6} lg={5}>
-                        <Stack spacing={4} sx={{ padding: 4, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 235, 240)' }}>                            
+                        <Stack spacing={4} sx={{ padding: 5, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 235, 240)' }}>                            
                             <Typography fontSize={18} fontWeight={600} textAlign='center'>
                                 Λειτουργική Αποκατάσταση
                             </Typography>   
@@ -43,7 +43,7 @@ const FuncRepair = () => {
                         </Stack>
                     </Grid>        
                     <Grid item xxs={12} md={6} lg={5}>
-                        <Stack spacing={4} sx={{ padding: 4, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 230, 245)' }}>
+                        <Stack spacing={4} sx={{ padding: 5, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 230, 245)' }}>
                             <Typography fontSize={18} fontWeight={600} textAlign='center'>
                                 Εκπαίδευση
                             </Typography>   
@@ -54,7 +54,7 @@ const FuncRepair = () => {
                         </Stack>
                     </Grid>
                     <Grid item xxs={12} md={6} lg={5}>
-                        <Stack spacing={4} sx={{ padding: 4, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 225, 230)' }}>
+                        <Stack spacing={4} sx={{ padding: 5, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 225, 230)' }}>
                             <Typography fontSize={18} fontWeight={600} textAlign='center'>
                                 Διαμόρφωση Χώρου
                             </Typography>    
@@ -62,7 +62,7 @@ const FuncRepair = () => {
                         </Stack>
                     </Grid>
                     <Grid item xxs={12} md={6} lg={5}>
-                        <Stack spacing={4} sx={{ padding: 4, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 225, 250)' }}>
+                        <Stack spacing={4} sx={{ padding: 5, borderRadius: 2, boxShadow: 8, bgcolor: 'rgb(240, 225, 250)' }}>
                             <Typography fontSize={18} fontWeight={600} textAlign='center'>
                                 Συμβουλευτική
                             </Typography>    

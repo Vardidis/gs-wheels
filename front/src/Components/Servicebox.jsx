@@ -1,7 +1,8 @@
 import React from "react";
 import './Components.css';
 import Servicecard from "./Servicecard";
-import bgimg from '../assets/bgimg2.jpg';
+import bgimg from '../assets/bgbg2.jpg';
+import bgimg2 from '../assets/gbgbgbgb.jpg';
 import gw from '../assets/gbgb.jpg';
 import id from '../assets/interior1.jpg';
 import { Box, keyframes, Grid } from "@mui/material";
@@ -24,7 +25,7 @@ const Servicebox = () => {
             <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ maxWidth: 1400, animation: `${fadeIn} 1s ease-in-out` }}>                                      
                 <Grid item xs={12} md={6}>            
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
-                        <Servicecard image={bgimg} text={'Λειτουργική Αποκατάσταση'}/>
+                        <Servicecard image={bgimg2} text={'Λειτουργική Αποκατάσταση'}/>
                     </Link>
                 </Grid>
                 <Grid item xxs={12} md={6}>
