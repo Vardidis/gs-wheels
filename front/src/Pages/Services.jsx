@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import Servicebox from "../Components/Servicebox";
 import { Stack, Box } from "@mui/material";
-import bgwheel from '../assets/backg.jfif';
 import wheels from '../assets/wheelchairs.png';
 import logo from '../assets/logo.png';
 import { Context } from "../Components/Context";

@@ -1,12 +1,5 @@
-import React, { useState } from "react";
-import { Box, Tabs, Tab, Stack, Typography, Grid, Button } from "@mui/material";
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash } from '@fortawesome/free-solid-svg-icons';
-import { styled } from '@mui/material/styles';
-import FuncBasic from "./FuncBasic";
-import LifeCoaching from "./LifeCoaching";
-import Interior from './Interior';
-import Training from "./Training";
+import React from "react";
+import { Box,Stack, Typography, Grid } from "@mui/material";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import { Link } from 'react-router-dom';
 

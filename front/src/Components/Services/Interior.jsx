@@ -1,7 +1,6 @@
 import React from "react";
 import { Box, Stack, Typography, Grid } from "@mui/material";
 import TextWindow from "./TextWindow";
-import bgwheel from '../../assets/bbg.avif';
 
 const Interior = () => {
     return(

@@ -1,5 +1,6 @@
 import React from "react";
 import { Box, Typography } from '@mui/material';
+
 const TitleComp = (props) => {
     return(
         <Box sx={{ paddingTop: 3, paddingBottom: {xl: 8, lg: 6, md: 6, sm: 6, xs: 4, xxs: 3} }}>            

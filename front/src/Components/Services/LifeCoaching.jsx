@@ -1,27 +1,6 @@
 import React from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
 
-const TitleBox = (props) => {
-    return(
-        <Stack spacing={4} alignItems='center'>
-            <Typography variant='h6' sx={{ fontWeight: 'bold', color: '#30343f' }}>
-                {props.title}
-            </Typography>        
-            <Stack spacing={4} sx={{  bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 5, border: '1px solid rgb(180, 180, 180)' }}>                
-                <Typography sx={{ color: 'white' }}>
-                    {props.text1}
-                </Typography>   
-                {props.text2 &&
-                    <Typography sx={{ color: 'white' }}>
-                        {props.text2}
-                    </Typography>             
-                }                                            
-            </Stack>    
-        </Stack>
-        
-    )
-}
-
 const LifeCoaching = () => {
     return(
         <Box sx={{

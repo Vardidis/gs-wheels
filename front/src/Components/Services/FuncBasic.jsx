@@ -6,7 +6,6 @@ import { faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash } from '@fortaw
 import { Context } from "../Context";
 import TextWindow from "./TextWindow";
 import { styled } from '@mui/material/styles';
-import bgwheel from '../../assets/bbg.avif';
 
 library.add(faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash);
 

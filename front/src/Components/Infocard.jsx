@@ -7,8 +7,7 @@ const Infocard = (props) => {
             <CardActionArea>
                 <CardMedia
                     component="img"
-                    image={props.image}
-                    alt="green iguana"
+                    image={props.image}          
                     sx={{ height: {xl: 140, lg: 120, md: 100, sm: 120, xs: 80, xxs: 80} }}
                 />
                 <CardContent sx={{ height: {xl: 150, lg: 130, md: 140, sm: '100%', xs: '100%', xxs: '100%'} }}>

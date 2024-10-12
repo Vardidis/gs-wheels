@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import ProductItem from "./ProductItem";
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { Context } from "./Context";
 
 const ProductMenu = (props) => {

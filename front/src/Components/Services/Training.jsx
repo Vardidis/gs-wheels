@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Basics from "./Basics";
 import CustomWheels from "./CustomWheels";
 import { styled } from '@mui/material/styles';
-import bgwheel from '../../assets/bbg.avif';
 
 const SecTabs = styled((props) => (
     <Tabs

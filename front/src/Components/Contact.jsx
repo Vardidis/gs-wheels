@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, TextField, Stack, Box, Snackbar } from '@mui/material';
+import { Alert, Button, TextField, Stack, Box } from '@mui/material';
 
 const Contact = (props) => {
     const [isSubmitting, setIsSubmitting] = useState(false);

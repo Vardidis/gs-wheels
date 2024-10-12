@@ -4,7 +4,6 @@ import {Box, Stack } from '@mui/material';
 import Menulist from "./Menulist";
 import MenuFooter from "./MenuFooter";
 import { Link } from 'react-router-dom';
-import GsButton from "./GsButton";
 
 const Sidemenu = (props) => {
     const iconSize = props.desktop ? 80 : 40;
