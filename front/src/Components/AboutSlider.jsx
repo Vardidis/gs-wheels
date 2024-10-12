@@ -66,7 +66,7 @@ const TripleBox = (props) => {
         bgcolor: '#30343f',
         color: 'white',
         padding: 3,
-        borderRadius: 5,
+        borderRadius: 2,
         boxShadow: 4,
         minHeight: 50
     }
@@ -95,17 +95,6 @@ const TripleBox = (props) => {
                 </Box>     
             </Grid>
         </Grid>                    
-    );
-}
-
-const SideButton = (props) => {
-    return(
-        <Box onClick={()=>{props.func()}} sx={{ border: '1px solid #30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}>            
-                <Typography>
-                    {props.text}
-                </Typography>
-                {props.icon}                    
-        </Box>
     );
 }
 
@@ -176,13 +165,13 @@ const AboutSlider = () => {
                         <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, maxWidth: 1400 }}>
                             <Box sx={{ marginBottom: 2, display: 'flex', justifyContent: 'end' }}>
                                 <Stack direction='row' spacing={1}>
-                                    <Box onClick={()=>{showVideo()}} sx={{ border: '1px solid #30343f', bgcolor: vidOpen ? '#30343f' : 'transparent', color: vidOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}>            
+                                    <Box onClick={()=>{showVideo()}} sx={{ border: '1px solid #30343f', bgcolor: vidOpen ? '#30343f' : 'transparent', color: vidOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
                                         <Typography>
                                             Προβολή βίντεο
                                         </Typography>
                                         <PlayArrowIcon/>               
                                     </Box>      
-                                    <Box onClick={()=>{showBio()}} sx={{ border: '1px solid #30343f', bgcolor: bioOpen ? '#30343f' : 'transparent', color: bioOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}>            
+                                    <Box onClick={()=>{showBio()}} sx={{ border: '1px solid #30343f', bgcolor: bioOpen ? '#30343f' : 'transparent', color: bioOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
                                         <Typography>
                                             Προβολή βιογραφικού
                                         </Typography>
@@ -190,13 +179,13 @@ const AboutSlider = () => {
                                     </Box>                                                                  
                                 </Stack>
                             </Box>             
-                            <Box sx={{ display: 'flex', justifyContent: 'center', display: vidOpen ? 'flex' : 'none', marginTop: 5, marginBottom: 5, bgcolor: 'rgb(235, 240, 248)', padding: 1 }}>
-                                        <Box sx={{ height: 250, width: 450, borderRadius: 2, overflow: 'hidden' }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'center', display: vidOpen ? 'flex' : 'none', marginTop: 5, marginBottom: 5, bgcolor: 'rgb(235, 240, 248)', padding: 1, borderRadius: 2, boxShadow: 4 }}>
+                                        <Box sx={{ height: 250, width: 450, borderRadius: 3, overflow: 'hidden' }}>
                                             <YouTube videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>
                                         </Box>
                                     </Box>  
                             <Box sx={{ display: bioOpen ? 'flex' : 'none', justifyContent: 'center', width: '100%', marginTop: 5, marginBottom: 5 }}>
-                                <Stack spacing={3} sx={{ borderRadius: 2, bgcolor: 'rgb(235, 240, 248)', padding: 5, boxShadow: 4 }}>                                
+                                <Stack spacing={3} sx={{ borderRadius: 2, bgcolor: 'rgb(235, 240, 248)', padding: 5, boxShadow: 8 }}>                                
                                     <Typography variant="body2">
                                         Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
                                         Νοσηλεύτηκα στο Νοσοκομείο Παπανικολάου της Θεσσαλονίκης για σχεδόν δύο μήνες
@@ -252,7 +241,7 @@ const AboutSlider = () => {
                                 </Stack>
                             </Box>
                             <Stack spacing={10}>                                
-                                <Box sx={{ padding: 4, bgcolor: '#30343f', borderRadius: 5, boxShadow: 2 }}>                                 
+                                <Box sx={{ padding: 4, bgcolor: '#30343f', borderRadius: 2, boxShadow: 2 }}>                                 
                                     <Typography variant="body2" sx={{ color: 'white' }}>
                                         Η GS Wheelchairs δεν είναι απλώς μια εταιρεία που κατασκευάζει αναπηρικά
                                         αμαξίδια. Μέσα από την πολυετή εμπειρία της, έχει δημιουργήσει ένα ολοκληρωμένο
@@ -320,7 +309,7 @@ const AboutSlider = () => {
                                         </Box>
                                     }           
                                     { secValue === 2 &&
-                                        <Box sx={{ padding: 4, bgcolor: '#30343f', color: 'white', borderRadius: 5, boxShadow: 8 }}>
+                                        <Box sx={{ padding: 4, bgcolor: '#30343f', color: 'white', borderRadius: 2, boxShadow: 8 }}>
                                             <Stack spacing={3}>
                                                 <Typography variant="body2">
                                                     Η GS Wheelchairs πιστεύει ότι η αναπηρία δεν είναι μόνο ένα σωματικό ζήτημα,
@@ -342,7 +331,7 @@ const AboutSlider = () => {
                                         </Box>
                                     }                       
                                     { secValue === 3 &&
-                                        <Box sx={{ padding: 4, bgcolor: '#30343f', color: 'white', borderRadius: 5, boxShadow: 8 }}>
+                                        <Box sx={{ padding: 4, bgcolor: '#30343f', color: 'white', borderRadius: 2, boxShadow: 8 }}>
                                             <Stack spacing={3}>
                                                 <Typography variant="body2">
                                                     Η υπηρεσία συμβουλευτικής της GS Wheelchairs δεν περιορίζεται μόνο στην
@@ -362,65 +351,6 @@ const AboutSlider = () => {
                                     }
                                 </Stack>
                             </Stack>
-                            {/* <Stack spacing={3} sx={{ borderRadius: 10, bgcolor: 'rgb(235, 240, 248)', padding: 5, boxShadow: 2 }}>                                
-                                <Typography variant="body2">
-                                    Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
-                                    Νοσηλεύτηκα στο Νοσοκομείο Παπανικολάου της Θεσσαλονίκης για σχεδόν δύο μήνες
-                                    όπου οι γιατροί διέγνωσαν τραυματισμό στην σπονδυλική μου στήλη στο επιπεδο Α8
-                                    Νευροτόμιο.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Μετά από μια σύντομη παραμονή στο σπίτι, και δίχως να μου έχουν δώσει
-                                    κάποιο βοήθημα μετακίνησης, μεταφέρθηκα στη Χαϊδελβέργη της Γερμανίας σε κέντρο
-                                    αποκατάστασης όπου εκεί μου εξήγησαν τι σημαίνει τραυματισμός στη σπονδυλική στήλη.
-                                    Μόνιμη παράλυση κάτω άκρων από το επίπεδο του τραυματισμού και κάτω. Νοσηλεύτηκα
-                                    για τέσσερις μήνες και τον Δεκέμβριο της ίδιας χρονιάς επέστρεψα στη Θεσσαλονίκη. Τον
-                                    Ιανουάριο συνέχισα το σχολείο μου.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Τελείωσα το Γυμνάσιο, πήγα στο λύκειο, σπούδασα Εφαρμοσμένη πληροφορική στο
-                                    Πανεπιστήμιο Μακεδονίας, και το 1995 ασχολήθηκα με το μπάσκετ με αμαξίδιο όπου από
-                                    το 1999 έως το 2009 ήμουν μέλος της Εθνικής ομάδας με πολλές συμμετοχές σε
-                                    ευρωπαϊκούς και πανευρωπαϊκούς αγώνες ενώ το 2004 πήρα μέρος στους
-                                    Παραολυμπιακούς αγώνες της Αθήνας.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Πρόεδρος της ομάδας του Αθλητικού Συλλόγου Αναπήρων Κένταυρος της Θεσσαλονίκης,
-                                    πρόεδρος της ομάδας μπάσκετ με αμαξίδιο του Άρη Θεσσαλονίκης. Δοκίμασα διάφορα
-                                    αθλήματα σαν Χόμπι ενώ υπήρξα αθλητής της προσαρμοσμένης χιονοδρομίας SEATSKI.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Το 2006 έγινα πιστοποιημένος εκπαιδευτής για ανθρώπους με τραυματισμό στην
-                                    σπονδυλική στήλη από τον Σουηδικό οργανισμό RG ενεργητική αποκατάσταση.
-                                    Ιδρυτικό μέλος και εκπαιδευτής του σωματείου Άλλη Όψη που σαν σκοπό είχε την
-                                    δημιουργία εκπαιδευτικών προγραμμάτων για άτομα με τραυματισμό στην σπονδυλική
-                                    στήλη με στόχο την βελτίωση της αυτονομίας σε βασικά θέματα καθημερινότητας.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Εργάστηκα στην Νομαρχία Θεσσαλονίκης στο τμήμα αθλητισμού και από εκεί για 8 χρόνια
-                                    σε ιδιωτικό κέντρο αποκατάστασης στη Θεσσαλονίκη, στο τμήμα εργοθεραπείας σαν
-                                    εκπαιδευτής, ενώ από το 2019 ασχολούμαι και με την κατασκευή αναπηρικών αμαξιδίων
-                                    Custom Made.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Η GS wheelchairs είναι το αποτέλεσμα όλων αυτών των ετών στο χώρο της αναπηρίας. Όλη
-                                    μου η εμπειρία στον χώρο την λειτουργικής αποκατάστασης, η φιλοσοφία μου για το τι
-                                    είναι αναπηρία, ποιες είναι η δυνατότητες σου και ποιες είναι οι πραγματικές σου ανάγκες
-                                    είναι αυτό που κάνει την GS (Get Started) την πρώτη εταιρία με ολιστική προσέγγιση.
-                                    Στόχος της είναι έχει να παρέχει ολοκληρωμένες λύσεις σε άτομα με αναπηρία και σε
-                                    όσους ζουν την αναπηρία από κοντά, με στόχο την βελτίωση της αυτονομίας και μια
-                                    καλύτερη ποιότητα ζωής. Όσο υψηλότερο το επίπεδο αυτονομίας τόσο καλύτερη και η
-                                    ποιότητα ζωής.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Η αναπηρία είναι μια κατάσταση, εσύ επιλέγεις το πως θα την ζήσεις.
-                                </Typography>
-                                <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-                                    <Box sx={{ height: 250, width: 450, borderRadius: 3, overflow: 'hidden' }}>
-                                        <YouTube videoId='d0fYQ3sorTE' opts={opts} onReady={onReady} style={{ borderRadius: '20px' }}/>
-                                    </Box>
-                                </Box>   
-                            </Stack> */}
                         </Box>
                     :
                     <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1} }}>                                 
