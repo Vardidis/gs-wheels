@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Stack } from "@mui/material";
 import AlbumIcon from '@mui/icons-material/Album';
 import SupportIcon from '@mui/icons-material/Support';
@@ -7,10 +7,13 @@ import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import ProductMenuItem from "./ProductMenuItem";
 import TripOriginIcon from '@mui/icons-material/TripOrigin';
 import { Link } from "react-router-dom";
+import { Context } from "./Context";
 
-const CategoryMenu = (props) => {    
+const CategoryMenu = (props) => {   
+    const {isDesktop} = useContext(Context);
+
     return(
-        <Stack direction='row' spacing={1}>
+        <Stack direction='row' className='no-scrollbar' justifyContent={isDesktop ? 'center' : 'front'} spacing={1} sx={{ display: 'flex', overflowX: 'auto', width: '100%' }}>
             <Link to='/products' style={{ textDecoration: 'none' }}>
                 <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
             </Link>

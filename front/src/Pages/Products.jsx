@@ -1,13 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Stack, Box, Typography } from "@mui/material";
+import { Stack, Box } from "@mui/material";
 import { Context } from "../Components/Context";
 import CategoryMenu from "../Components/CategoryMenu";
 import ProductMenu from '../Components/ProductMenu';
 import { useParams } from "react-router-dom";
-import bgwheel from '../assets/bg2k.jpg';
 
 const Products = () => {
-    const {isDesktop, allProducts} = useContext(Context);
+    const {allProducts} = useContext(Context);
     const [items, setItems] = useState([]);
     const {category} = useParams();
     
