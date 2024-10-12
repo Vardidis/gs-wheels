@@ -18,7 +18,7 @@ const CategoryMenu = (props) => {
                 <ProductMenuItem text={'Αμαξίδια'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='wheelchairs'}/>
             </Link>
             <Link to='wheels' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Ροδάκια'} icon={<AlbumIcon fontSize="small"/>} highlight={props.tag==='wheels'}/>
+                <ProductMenuItem text={'Ρόδες'} icon={<AlbumIcon fontSize="small"/>} highlight={props.tag==='wheels'}/>
             </Link>
             <Link to='parts' style={{ textDecoration: 'none' }}>
                 <ProductMenuItem text={'Ελαστικά'} icon={<TripOriginIcon fontSize="small"/>} highlight={props.tag==='parts'}/>
