@@ -121,10 +121,10 @@ const Contact = (props) => {
                 width: {xl: 750, lg: 550, md: 550, sm: 550, xs: '80%', xxs: '80%'},
                 bgcolor: 'theme.light',
                 boxShadow: 24,
-                p: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
+                padding: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
                 border: "none",
                 textAlign: "center",
-                borderRadius: 10,
+                borderRadius: 2,
                 height: {xl: '80vh', lg: '80vh', md: '80vh', sm: '80vh', xs: 'fit-content', xxs: 'fit-content'},
                 overflowY: 'auto',
             }}>
@@ -138,7 +138,7 @@ const Contact = (props) => {
                             <TextField id="text" error={fieldError.text} label="Πείτε μας λίγα λόγια" variant="outlined" onChange={handleChange} multiline rows={5} sx={{ height: '100px' }}/>
                         </Stack>                    
                     </Stack>     
-                    <Button onClick={submitMessage} variant="contained" sx={{ position: 'absolute', bottom: '30px', left: '5%', width: '90%', height: 45, fontSize: {lg: 16, md: 16, sm: 20}}}>Υποβολη</Button>                            
+                    <Button onClick={submitMessage} variant="contained" sx={{ position: 'absolute', bottom: '30px', left: '5%', width: '90%', height: 45, fontSize: {lg: 16, md: 16, sm: 20}, bgcolor: '#30343f'}}>Υποβολη</Button>                            
                 </Box>                                                             
             </Box>
         </Box>

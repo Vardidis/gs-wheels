@@ -23,7 +23,7 @@ const Servicebox = () => {
     return(
         <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1} }}>
             <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ maxWidth: 1400, animation: `${fadeIn} 1s ease-in-out` }}>                                      
-                <Grid item xs={12} md={6}>            
+                <Grid item xxs={12} md={6}>            
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
                         <Servicecard image={bgimg2} text={'Λειτουργική Αποκατάσταση'}/>
                     </Link>

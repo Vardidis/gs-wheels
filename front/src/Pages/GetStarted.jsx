@@ -22,7 +22,7 @@ const fadeIn = keyframes`
 
 const ColorBox = (props) => {
     return(
-        <Box sx={{ boxShadow: 12, borderRadius: 10, padding: 4, bgcolor: props.color, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }}>
+        <Box sx={{ boxShadow: 12, borderRadius: 4, padding: 4, bgcolor: props.color, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }}>
             <Stack spacing={3}>
                 <Typography fontSize={18} fontWeight={600}>
                     {props.title}
@@ -37,7 +37,7 @@ const ColorBox = (props) => {
 
 const GetStarted = () => {
     const {isDesktop} = useContext(Context);
-    const logoSize = isDesktop ? 75 : 55;
+    const logoSize = isDesktop ? 75 : 35;
 
     return(
         <Box sx={{
@@ -51,10 +51,13 @@ const GetStarted = () => {
                 alignItems: 'center',  
                 paddingTop: 2,                             
             }}>
-                <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
-                    <img src={logo} style={{ width: logoSize }} alt=""/>
-                </Box>                
-                    <img src={wheels} style={{ width: isDesktop ? 350 : 300 }}/>                               
+                <Box sx={{ paddingTop: 2, width: {lg: 75, md: 75, sm: 65, xs: 55, xxs: 45} }}>
+                    <img src={logo} style={{ width: 'inherit' }} alt=""/>
+                </Box>  
+                <Box sx={{ width: {lg: 350, md: 350, sm: 300, xs: 250, xxs: 200} }}>
+                    <img src={wheels} style={{ width: 'inherit' }}/>               
+                </Box>              
+                                    
             </Box>               
             <Box sx={{ paddingTop: 7, display: 'flex', justifyContent: 'center' }}>
                 <Stack spacing={2} alignItems='center'>

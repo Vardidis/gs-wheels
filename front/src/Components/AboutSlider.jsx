@@ -4,8 +4,6 @@ import suc2 from '../assets/kopelia.jpg';
 import { Typography, Tabs, Tab, Box, Stack, Paper, Grid } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import YouTube from 'react-youtube';
-import { useContext } from "react";
-import { Context } from "./Context";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import PortraitIcon from '@mui/icons-material/Portrait';
 
@@ -73,21 +71,21 @@ const TripleBox = (props) => {
 
     return(
         <Grid container columnGap={2} rowGap={3} justifyContent='center' sx={{ display: 'flex', alignItems: 'stretch' }}>  
-            <Grid item xs={12} sm={5}>
+            <Grid item xxs={12} sm={5}>
                 <Box sx={boxSets}>                                                    
                     <Typography variant="body2">
                         {props.text1}
                     </Typography>                                                                                           
                 </Box>
             </Grid>                   
-            <Grid item xs={12} sm={5}>
+            <Grid item xxs={12} sm={5}>
                 <Box sx={boxSets}>                    
                     <Typography variant="body2">
                         {props.text2}
                     </Typography>                                              
                 </Box>
             </Grid>
-            <Grid item xs={12} sm={10}>
+            <Grid item xxs={12} sm={10}>
                 <Box sx={boxSets}>                   
                     <Typography variant="body2">
                         {props.text3}
@@ -99,7 +97,6 @@ const TripleBox = (props) => {
 }
 
 const AboutSlider = () => {
-    const {isDesktop} = useContext(Context);
     const [mainValue, setMainValue] = useState(0);
     const [secValue, setSecValue] = useState(0);
     const [vidOpen, setVidOpen] = useState(false);
