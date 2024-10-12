@@ -152,7 +152,7 @@ const AboutSlider = () => {
                     <Box sx={{ display: 'flex', justifyContent: 'center', padding: 3 }}>
                         <MainTabs
                             value={mainValue}
-                            onChange={handleMainChange}                                                                                                               
+                            onChange={handleMainChange}                                                                                                                                         
                         >
                             <MainTab className='styled-t' label="Ποιοί είμαστε" sx={{ fontWeight: 600, fontSize: 15, padding: 2, color: '#30343f', backgroundColor: '#30343f', boxShadow: 2 }}/>
                             <MainTab className='styled-t' label="Success Stories" sx={{ fontWeight: 600, fontSize: 15, padding: 2, boxShadow: 2 }}/>
@@ -255,7 +255,10 @@ const AboutSlider = () => {
                                         Προσφέρουμε Συμβουλευτική
                                     </Typography>      
                                     <SecTabs
-                                        value={secValue}                                                                     
+                                        value={secValue}  
+                                        variant="scrollable"    
+                                        scrollButtons="auto"                                  
+                                        allowScrollButtonsMobile                                                                    
                                     >
                                         <SecTab label="για Άτομα με Αναπηρία" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 0 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(0)}/>
                                         <SecTab label="για Οικογένειες" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 1 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(1)}/>

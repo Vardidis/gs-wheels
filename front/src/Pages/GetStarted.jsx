@@ -52,10 +52,10 @@ const GetStarted = () => {
                 paddingTop: 2,                             
             }}>
                 <Box sx={{ paddingTop: 2, width: {lg: 75, md: 75, sm: 65, xs: 55, xxs: 45} }}>
-                    <img src={logo} style={{ width: 'inherit' }} alt=""/>
+                    <img src={logo} style={{ width: 'inherit' }} alt="gslogo"/>
                 </Box>  
                 <Box sx={{ width: {lg: 350, md: 350, sm: 300, xs: 250, xxs: 200} }}>
-                    <img src={wheels} style={{ width: 'inherit' }}/>               
+                    <img src={wheels} style={{ width: 'inherit' }} alt="gsfont"/>               
                 </Box>              
                                     
             </Box>               

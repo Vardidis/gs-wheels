@@ -17,11 +17,13 @@ const Services = () => {
                 alignItems: 'center',  
                 paddingTop: 2,        
             }}>
-                <Box sx={{ borderRadius: 5, paddingTop: 2 }}>
-                    <img src={logo} style={{ width: 80 }} alt=""/>
-                </Box>                
-                    <img src={wheels}/>                               
-            </Box>         
+                <Box sx={{ paddingTop: 2, width: {lg: 75, md: 75, sm: 65, xs: 55, xxs: 45} }}>
+                    <img src={logo} style={{ width: 'inherit' }} alt="gslogo"/>
+                </Box>  
+                <Box sx={{ width: {lg: 350, md: 350, sm: 300, xs: 250, xxs: 200} }}>
+                    <img src={wheels} style={{ width: 'inherit' }} alt="gsfont"/>               
+                </Box> 
+            </Box>
             <Stack sx={{ paddingTop:5, overflow: 'auto', maxHeight: fullHeight, paddingBottom: 20 }}>                
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Servicebox/>

@@ -49,6 +49,9 @@ const Training = () => {
                 <Box>        
                     <SecTabs
                         value={selection}
+                        variant="scrollable" 
+                        scrollButtons="auto"                                      
+                        allowScrollButtonsMobile  
                     >
                         <SecTab label='Βασικές Αρχές' sx={{ fontWeight: 600, fontSize: 16, color: selection === 0 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(0)}/>
                         <SecTab label='Προσαρμογή Αμαξιδίου' sx={{ fontWeight: 600, fontSize: 16, color: selection === 1 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(1)}/>                            

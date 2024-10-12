@@ -108,6 +108,9 @@ const FuncBasic = () => {
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <SecTabs
                         value={secValue}
+                        variant="scrollable"      
+                        scrollButtons="auto"                                 
+                        allowScrollButtonsMobile  
                     >
                         <SecTab label="Βασικές έννοιες" sx={{ fontWeight: 600, fontSize: 16, color: secValue === 0 ? 'orangered' : '#30343f' }} onClick={()=>handleChange(0)}/>
                         <SecTab label="Μοντέλα Αποκατάστασης" sx={{ fontWeight: 600, fontSize: 16, color: secValue === 1 ? 'orangered' : '#30343f' }} onClick={()=>handleChange(1)}/>
