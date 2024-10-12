@@ -44,7 +44,7 @@ const Product = () => {
             <Box sx={style}>
                 <Stack spacing={5} alignItems='center'>
                     <Typography variant='h5'>
-                        {productItem.title} Black
+                        {productItem.title}
                     </Typography>
                     <Stack direction={orient} alignItems={isDesktop ? 'top' : 'center'} spacing={{xl: 12, lg: 6, md: 6, sm: 4, xs: 4, xxs: 1}}>
                         <ProductImageView mainImg={productItem.thumbnail} subImages={productItem.sub}/>     
