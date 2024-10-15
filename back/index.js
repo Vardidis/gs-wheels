@@ -23,12 +23,7 @@ app.use(express.json());
 //     credentials: true
 // }
 
-const corsOptions = {
-    origin: '*', // Allows requests from any origin
-    methods: ['GET', 'POST'],
-};
-
-app.use(cors(corsOptions));
+app.use(cors());
 
 const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
