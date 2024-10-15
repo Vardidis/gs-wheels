@@ -21,7 +21,7 @@ const Uploads = () => {
             formData.append('image', file);
         
             try {
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData)
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData, {headers: {"Access-Control-Allow-Origin": "test.com"}})
                 console.log('File uploaded successfully', response.data);
             } catch (error) {
                 console.error('Error', error);
@@ -31,7 +31,7 @@ const Uploads = () => {
 
     const handleDelete = async() => {
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/delete-image`, {index: allImages[deleteImg]})
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/delete-image`, {index: allImages[deleteImg]}, {headers: {"Access-Control-Allow-Origin": "test.com"}})
             console.log('File deleted successfully', response.data);
         } catch (error) {
             console.error('Error', error);
