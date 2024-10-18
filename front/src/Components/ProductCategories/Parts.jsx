@@ -120,7 +120,7 @@ const Parts = () => {
         <Stack sx={{ width: '100%', marginTop: 5 }}>
             <Stack direction="row" spacing={1} sx={{ paddingLeft: {lg: 20, md: 10, sm: 5} }}>
                 <Chip
-                    label="Ρόδες"
+                    label="Ζάντες"
                     variant={wheels}
                     onClick={handleClickWheels}
                     onDelete={handleDeleteWheels}
