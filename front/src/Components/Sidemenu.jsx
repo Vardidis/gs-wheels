@@ -6,7 +6,7 @@ import MenuFooter from "./MenuFooter";
 import { Link } from 'react-router-dom';
 
 const Sidemenu = (props) => {
-    const iconSize = props.desktop ? 80 : 40;
+    const iconSize = props.desktop ? 180 : 40;
     return(
         <Box component="section" sx={{ 
             width: {lg: '200px', md: '200px', sm: '50px', xs: '50px', xxs: '50px'},

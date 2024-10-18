@@ -3,6 +3,7 @@
     {
       "id": 0,
       "tag": "wheelchairs",
+      "secTag": "lightweight",
       "title": "Αμαξίδιο R7",
       "subtitle": "Η κορυφαία επιλογή για όσους χρειάζονται αναπηρικό αμαξίδιο",
       "thumbnail": "R7.jpg",
@@ -60,7 +61,8 @@
     {
       "id": 1,
       "tag": "wheelchairs",
-      "title": "Αμαξίδιο S7",
+      "secTag": "lightweight",
+      "title": "Αμαξίδιο S7",      
       "subtitle": "Ενσωματώνει τον σχεδιασμό, την εργονομία και την βέλτιστη κύλιση τύπου S",
       "thumbnail": "S7.jpg",
       "sub": [
@@ -142,6 +144,7 @@
     {
       "id": 3,
       "tag": "parts",
+      "secTag": "rubber",
       "title": "Kenda K191 Koncept",
       "subtitle": "Το Kenda K191 Koncept είναι ένα εξαιρετικό αθλητικό ελαστικό γενικής χρήσης",
       "thumbnail": "rubber2.png",
@@ -184,7 +187,8 @@
     },
     {
       "id": 5,
-      "tag": "brakes",
+      "tag": "parts",
+      "secTag": "brakes",
       "title": "Φρένα scissors",
       "subtitle": "Ανταλλακτικά φρένα τύπου scissors",
       "thumbnail": "brake2.jpg",
@@ -201,7 +205,8 @@
     },
     {
       "id": 6,
-      "tag": "brakes",
+      "tag": "parts",
+      "secTag": "brakes",
       "title": "Φρένα push-to-brake",
       "subtitle": "Ανταλλακτικά φρένα τύπου push-to-brake",
       "thumbnail": "brake.jpg",
@@ -217,7 +222,8 @@
     },
     {
       "id": 7,
-      "tag": "wheels",
+      "tag": "parts",
+      "secTag": "wheels",
       "title": "Ρόδες MBL",
       "subtitle": "Ολοκληρωμένος τροχός από αλουμίνιο",
       "thumbnail": "mblwheel.jpg",
@@ -245,7 +251,8 @@
     },
     {
       "id": 8,
-      "tag": "wheels",
+      "tag": "parts",
+      "secTag": "wheels",
       "title": "Spinergy Lite Extreme LX",
       "subtitle": "Σχεδιασμένο για άτομα που αναζητούν ένα μοναδικό, καινοτόμο στυλ",
       "thumbnail": "wheels.png",
@@ -272,7 +279,8 @@
     },
     {
       "id": 9,
-      "tag": "wheels",
+      "tag": "parts",
+      "secTag": "wheelies",
       "title": "Τροχοί Fibre",
       "subtitle": "Μπροστινοί τροχοί",
       "thumbnail": "wheel.jpg",

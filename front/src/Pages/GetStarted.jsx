@@ -6,6 +6,8 @@ import GsButton from "../Components/GsButton";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import wheels from '../assets/wheelchairs.png';
+import { Link } from 'react-router-dom';
+
 library.add(faPhone, faEnvelope, faLocationDot);
 
 const fadeIn = keyframes`
@@ -28,7 +30,14 @@ const ColorBox = (props) => {
                 </Typography>
                 <Typography>
                     {props.text}
-                </Typography>         
+                </Typography>   
+                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                    <Link to={props.link} state={{ anchor: props.anchor }} style={{ textDecoration: 'none' }}>
+                        <Typography sx={{ borderRadius: 20, bgcolor: '#30343f', color: 'white', padding: 1, paddingLeft: 2, paddingRight: 2, cursor: 'pointer' }}>
+                            Δες περισσότερα
+                        </Typography>
+                    </Link>                
+                </Box>      
             </Stack>       
         </Box>
     )
@@ -62,28 +71,34 @@ const GetStarted = () => {
                             <ColorBox
                                 color={'rgb(240, 235, 240)'}
                                 title={'Εξατομικευμένα Αναπηρικά Αμαξίδια'}
-                                text={'Στη GS Wheelchairs γνωρίζουμε ότι κάθε άτομο είναι διαφορετικό, και οι ανάγκες του ξεχωριστές. Για τον λόγο αυτό ειδικευόμαστε στην κατασκευή προσαρμοσμένων αναπηρικών αμαξιδίων, σχεδιασμένων αποκλειστικά για τις ανάγκες του κάθε ατόμου.'}
+                                text={'Στη GS Wheelchairs γνωρίζουμε ότι κάθε άτομο είναι διαφορετικό, και οι ανάγκες του ξεχωριστές. Για τον λόγο αυτό ειδικευόμαστε στην κατασκευή προσαρμοσμένων αναπηρικών αμαξιδίων, σχεδιασμένων αποκλειστικά για τις ανάγκες του κάθε ατόμου...'}
+                                link={'/service/education'}
+                                anchor={1}
                             />                        
                         </Grid>
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 230, 245)'}
                                 title={'Ψυχοκοινωνική Στήριξη'}
-                                text={'Προσφέρουμε υπηρεσίες Life Coaching και Εκπαίδευσης σε θέματα αυτονομίας, από πιστοποιημένο εκπαιδευτή στη Σουηδία για άτομα με αναπηρία, και ειδικά για τραυματισμούς στην σπονδυλική στήλη.'}
+                                text={'Προσφέρουμε υπηρεσίες Life Coaching και Εκπαίδευσης σε θέματα αυτονομίας, από πιστοποιημένο εκπαιδευτή στη Σουηδία για άτομα με αναπηρία, και ειδικά για τραυματισμούς στην σπονδυλική στήλη...'}
+                                link={'/service/life-coaching'}
                             />                             
                         </Grid>
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 225, 230)'}
                                 title={'Προσαρμογή Χώρου'}
-                                text={'Επιπλέον, προσφέρουμε λύσεις για την προσαρμογή του εσωτερικού και εξωτερικού χώρου σας, παρέχοντας ιδέες και προτάσεις που θα βελτιώσουν το περιβάλλον σας. Αντιμετωπίζουμε τις προκλήσεις που συνοδεύουν την αναπηρία με εξειδικευμένες υπηρεσίες.'}
+                                text={'Επιπλέον, προσφέρουμε λύσεις για την προσαρμογή του εσωτερικού και εξωτερικού χώρου σας, παρέχοντας ιδέες και προτάσεις που θα βελτιώσουν το περιβάλλον σας. Αντιμετωπίζουμε τις προκλήσεις που συνοδεύουν την αναπηρία με εξειδικευμένες υπηρεσίες...'}
+                                link={'/service/interior-design'}
                             />                            
                         </Grid>
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 225, 250)'}
                                 title={'Εκπαίδευση στη Λειτουργική Αποκατάσταση'}
-                                text={'Η εμπειρία μας ως άνθρωποι που ζουν σε συνθήκες αναπηρίας μας επιτρέπει να κατανοούμε πλήρως τις ανάγκες σας. Το Customize Your Life αποτελεί τη δέσμευσή μας για μια καλύτερη ποιότητα ζωής, πλήρως προσαρμοσμένη στις δικές σας ανάγκες.'}
+                                text={'Η εμπειρία μας ως άνθρωποι που ζουν σε συνθήκες αναπηρίας μας επιτρέπει να κατανοούμε πλήρως τις ανάγκες σας. Το Customize Your Life αποτελεί τη δέσμευσή μας για μια καλύτερη ποιότητα ζωής, πλήρως προσαρμοσμένη στις δικές σας ανάγκες...'}
+                                link={'/service/apokatastasi'}
+                                anchor={0}
                             />                           
                         </Grid>                                                                            
                     </Grid>     

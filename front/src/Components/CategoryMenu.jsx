@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Stack } from "@mui/material";
+import React, { useState } from "react";
+import { Stack, Chip } from "@mui/material";
 import AlbumIcon from '@mui/icons-material/Album';
 import SupportIcon from '@mui/icons-material/Support';
 import WheelchairPickupIcon from '@mui/icons-material/WheelchairPickup';
@@ -7,20 +7,23 @@ import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import ProductMenuItem from "./ProductMenuItem";
 import TripOriginIcon from '@mui/icons-material/TripOrigin';
 import { Link } from "react-router-dom";
-import { Context } from "./Context";
 
 const CategoryMenu = (props) => {   
-    const {isDesktop} = useContext(Context);
-
     return(
-        <Stack direction='row' className='no-scrollbar' justifyContent={isDesktop ? 'center' : 'front'} spacing={1} sx={{ display: 'flex', overflowX: 'auto', width: '100%' }}>
+        <Stack direction='row' className='no-scrollbar' spacing={1} sx={{ display: 'flex', overflowX: 'auto', width: '100%', justifyContent: {lg: 'center', md: 'center', sm: 'center', xs: 'front', xxs: 'front'} }}>
             <Link to='/products' style={{ textDecoration: 'none' }}>
                 <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
             </Link>
             <Link to='wheelchairs' style={{ textDecoration: 'none' }}>
                 <ProductMenuItem text={'Αμαξίδια'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='wheelchairs'}/>
             </Link>
-            <Link to='wheels' style={{ textDecoration: 'none' }}>
+            <Link to='parts' style={{ textDecoration: 'none' }}>
+                <ProductMenuItem text={'Ανταλλακτικά'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='parts'}/>
+            </Link>
+            <Link to='helpers' style={{ textDecoration: 'none' }}>
+                <ProductMenuItem text={'Βοηθήματα'} icon={<SupportIcon fontSize="small"/>} highlight={props.tag==='helpers'}/>
+            </Link>
+            {/* <Link to='wheels' style={{ textDecoration: 'none' }}>
                 <ProductMenuItem text={'Ρόδες'} icon={<AlbumIcon fontSize="small"/>} highlight={props.tag==='wheels'}/>
             </Link>
             <Link to='parts' style={{ textDecoration: 'none' }}>
@@ -31,7 +34,7 @@ const CategoryMenu = (props) => {
             </Link>
             <Link to='brakes' style={{ textDecoration: 'none' }}>
                 <ProductMenuItem text={'Φρένα'} icon={<FiberSmartRecordIcon fontSize="small"/>} highlight={props.tag==='brakes'}/>
-            </Link>
+            </Link> */}                
         </Stack>
     );
 }

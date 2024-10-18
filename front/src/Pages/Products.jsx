@@ -4,6 +4,8 @@ import { Context } from "../Components/Context";
 import CategoryMenu from "../Components/CategoryMenu";
 import ProductMenu from '../Components/ProductMenu';
 import { useParams } from "react-router-dom";
+import Wheelchairs from "../Components/ProductCategories/Wheelchairs";
+import Parts from "../Components/ProductCategories/Parts";
 
 const Products = () => {
     const {allProducts} = useContext(Context);
@@ -23,18 +25,33 @@ const Products = () => {
         sortedData.map(product => {
             setItems((prevItems) => [...prevItems, product]);                
         });
-    }, [category, allProducts]);
-    
+    }, [category, allProducts]);    
+
         return(
             <Box>            
                 <Box sx={{ padding: 5, height: '100%' }}>                                                           
                     <Stack spacing={{lg: 4, md: 4}} alignItems='center'>
-                        <CategoryMenu tag={category}/>                            
-                        <ProductMenu items={items}/>
+                        <CategoryMenu tag={category}/>         
+                        {category === 'wheelchairs' &&
+                            <Wheelchairs/>
+                        }        
+                        {category === 'parts' &&
+                            <Parts/>
+                        }     
+                        {category === 'helpers' &&
+                            <ProductMenu items={items}/>
+                        }        
+                        {category === undefined &&
+                            <ProductMenu items={items}/>
+                        }
+                        
                     </Stack>                         
                 </Box>      
             </Box>
         );
+
+
+        
 }
 
 export default Products;
