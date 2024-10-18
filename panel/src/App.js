@@ -3,22 +3,20 @@ import Eshop from './Components/Eshop';
 import SideMenu from './Components/SideMenu';
 import Messages from './Components/Messages';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Box } from '@mui/material';
+import { Box, Stack } from '@mui/material';
 import Product from './Components/Product';
 import Uploads from './Components/Uploads';
 
 function App() {
   return (
     <BrowserRouter>
-      <Box display="flex" height="100vh">                      
+      <Stack>                      
         <SideMenu/>
-        <Box component="main" sx={{
-          flexGrow: 1,
-          marginLeft: {xl: '200px', lg: '200px', md: '200px', sm: '70px', xs: '50px', xxs: '50px'},
-          height: '100vh',
-          overflowY: 'auto',
-          overflowX: 'hidden',
-          bgcolor: '#f8f8f8',          
+        <Box component="main" sx={{                           
+          width: '100%',
+          overflowY: 'auto',         
+          bgcolor: '#f8f8f8',  
+          marginTop: 8       
         }}>      
           <Routes>
             <Route path="/" element={<Eshop/>}/>
@@ -29,7 +27,7 @@ function App() {
             <Route path="/uploads" element={<Uploads/>}/>
           </Routes>            
         </Box>
-      </Box>
+      </Stack>
     </BrowserRouter>
   );
 }

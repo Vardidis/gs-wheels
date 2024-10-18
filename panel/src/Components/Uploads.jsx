@@ -39,8 +39,8 @@ const Uploads = () => {
     }
 
     return(
-        <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3 }}>
-            <Stack spacing={5}>  
+        <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3, height: '100vh' }}>
+            <Stack spacing={5} sx={{ width: '100%' }}>  
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography fontSize={24} fontWeight={600}>
                         Uploads ({count})

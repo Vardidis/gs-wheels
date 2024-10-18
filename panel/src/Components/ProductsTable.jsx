@@ -90,7 +90,7 @@ const ProductsTable = (props) => {
                     border: "none",
                     textAlign: "center",
                     borderRadius: 2,
-                    height: 'fit-content',
+                    height: 'fit-content',                
                     overflowY: 'auto' }}
                 >
                     <Stack spacing={2}>

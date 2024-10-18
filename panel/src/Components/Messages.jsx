@@ -48,9 +48,9 @@ const Messages = () => {
         setPage(0);
     };
 
-    const handleClick = (e, text) => {     
-        if(selectedMessage !== text){
-            setSelectedMessage(text);
+    const handleClick = (e, mes) => {     
+        if(selectedMessage !== mes.text){
+            setSelectedMessage(mes);        
             e.target.parentElement.parentElement.childNodes.forEach(row => {
                 row.classList.remove('selected');
                 row.classList.add('table-row');
@@ -61,74 +61,96 @@ const Messages = () => {
     }
 
     return(
-        <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3 }}>
+        <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3, height: '100vh' }}>
             <Stack spacing={5}>     
                 <Typography fontSize={24} fontWeight={600}>
                     Μηνύματα ({unread})              
-                </Typography>                
-                <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                    <TableContainer sx={{ maxHeight: 440 }}>
-                        <Table stickyHeader aria-label="sticky table">
-                        <TableHead>
-                            <TableRow>
-                            {columns.map((column, index) => (
-                                <StyledTableCell
-                                    key={index}
-                                    align={column.align}
-                                    style={{ minWidth: column.minWidth }}
-                                >
-                                    {column.label}
-                                </StyledTableCell>
-                            ))}
-                            </TableRow>
-                        </TableHead>
-                        {allMessages.length > 0
-                        ? <TableBody>                            
-                            {allMessages
-                            .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                            .reverse()
-                            .map((message, index) => {                                
-                                return (
-                                    <TableRow onClick={(e)=>handleClick(e, index)} className='table-row' role="checkbox" tabIndex={-1} key={message.code} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>
-                                        {columns.map((column) => {
-                                        const value = message[column.id];                                    
-                                        return (
-                                            <TableCell key={column.id} align={column.align}>
-                                            {column.format && typeof value === 'number'
-                                                ? column.format(value)
-                                                : value}
-                                            </TableCell>
-                                        );
-                                        })}
-                                    </TableRow>
-                                );
-                            })}
-                        </TableBody>
-                        : <TableBody>  
-                            <Box sx={{ display: 'flex', justifyContent: 'center', p: 1 }}>
-                                Δεν υπάρχουν διαθέσιμα μηνύματα
-                            </Box>                            
-                        </TableBody>
+                </Typography>
+                <Stack direction='row' spacing={3}>                       
+                    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+                        <TableContainer sx={{ maxHeight: 440 }}>
+                            <Table stickyHeader aria-label="sticky table">
+                            <TableHead>
+                                <TableRow>
+                                {columns.map((column, index) => (
+                                    <StyledTableCell
+                                        key={index}
+                                        align={column.align}
+                                        style={{ minWidth: column.minWidth }}
+                                    >
+                                        {column.label}
+                                    </StyledTableCell>
+                                ))}
+                                </TableRow>
+                            </TableHead>
+                            {allMessages.length > 0
+                            ? <TableBody>                            
+                                {allMessages
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .reverse()
+                                .map((message) => {                                                             
+                                    return (                                        
+                                        <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message.code} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>                               
+                                            {columns.map((column) => {
+                                            const value = message[column.id];                                    
+                                            return (
+                                                <TableCell key={column.id} align={column.align}>
+                                                {column.format && typeof value === 'number'
+                                                    ? column.format(value)
+                                                    : value}
+                                                </TableCell>
+                                            );
+                                            })}
+                                        </TableRow>
+                                    );
+                                })}
+                            </TableBody>
+                            : <TableBody>  
+                                <Box sx={{ display: 'flex', justifyContent: 'center', p: 1 }}>
+                                    Δεν υπάρχουν διαθέσιμα μηνύματα
+                                </Box>                            
+                            </TableBody>
+                            }
+                            </Table>
+                        </TableContainer>
+                        <TablePagination
+                            rowsPerPageOptions={[10, 25, 100]}
+                            component="div"
+                            count={allMessages.length}
+                            rowsPerPage={rowsPerPage}
+                            page={page}
+                            onPageChange={handleChangePage}
+                            onRowsPerPageChange={handleChangeRowsPerPage}
+                        />
+                    </Paper>       
+                    <Paper sx={{ width: 500, overflowY: 'auto' }}>
+                        {selectedMessage &&
+                            <Box>
+                                <Stack>
+                                    <Stack direction='row' justifyContent='space-between' sx={{ boxShadow: 2, padding: 2, bgcolor: '#30343f', color: 'white',  alignItems: 'center' }}>
+                                        <Typography fontSize={14} fontWeight={600}>
+                                            {selectedMessage.name}
+                                        </Typography>
+                                        <Typography fontSize={12}>
+                                            {selectedMessage.date}
+                                        </Typography>
+                                        <Stack spacing={0}>
+                                            <Typography fontSize={12}>
+                                                {selectedMessage.email}
+                                            </Typography> 
+                                            <Typography fontSize={12}>
+                                                {selectedMessage.tel}
+                                            </Typography> 
+                                        </Stack>                                                                    
+                                    </Stack>            
+                                    <Typography sx={{ padding: 2 }}>
+                                        {selectedMessage.text}
+                                    </Typography>
+                                </Stack>                                
+                            </Box>
                         }
-                        </Table>
-                    </TableContainer>
-                    <TablePagination
-                        rowsPerPageOptions={[10, 25, 100]}
-                        component="div"
-                        count={allMessages.length}
-                        rowsPerPage={rowsPerPage}
-                        page={page}
-                        onPageChange={handleChangePage}
-                        onRowsPerPageChange={handleChangeRowsPerPage}
-                    />
-                </Paper>       
-                <Paper>
-                    {selectedMessage &&
-                        <Box sx={{ padding: 3 }}>
-                            {selectedMessage}
-                        </Box>
-                    }
-                </Paper>         
+                    </Paper>         
+                </Stack>            
             </Stack>
         </Box>
     );
