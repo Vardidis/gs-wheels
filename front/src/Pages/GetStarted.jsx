@@ -33,7 +33,7 @@ const ColorBox = (props) => {
                 </Typography>   
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Link to={props.link} state={{ anchor: props.anchor }} style={{ textDecoration: 'none' }}>
-                        <Typography sx={{ borderRadius: 20, bgcolor: '#30343f', color: 'white', padding: 1, paddingLeft: 2, paddingRight: 2, cursor: 'pointer' }}>
+                        <Typography sx={{ borderRadius: 20, bgcolor: '#30343f', color: 'white', padding: 1, paddingLeft: 2, paddingRight: 2, cursor: 'pointer', boxShadow: 4 }}>
                             Δες περισσότερα
                         </Typography>
                     </Link>                
