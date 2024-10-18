@@ -7,6 +7,7 @@ const multer = require('multer');
 
 const app = express();
 app.use(express.json());
+app.options('*', cors());
 
 // const allowedOrigins = ['https://gs-wheels-vardidis-projects.vercel.app', '*'];
 // const originPattern = /^https:\/\/gs-wheels-server-[a-z0-9]+-vardidis-projects\.vercel\.app$/;
