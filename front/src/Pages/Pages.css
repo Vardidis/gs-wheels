@@ -53,6 +53,11 @@
     cursor: pointer;
 }
 
+.hoverable-btn:hover{
+    background-color: rgb(247, 247, 255);
+    color: #30343f;
+}
+
 @media(max-width: 1200px){
     .zoom-image{
         max-width: 400px;

@@ -129,16 +129,16 @@ const Contact = (props) => {
                 overflowY: 'auto',
             }}>
                 <Box sx={{ overflowY: 'auto' }}>
-                    <Stack spacing={{lg: 1, md: 2, sm: 2, xs: 2, xxs: 2}} sx={{ paddingBottom: 20 }}>
-                        <Alert severity="info">Επικοινωνήστε μαζί μας για οποιαδήποτε διευκρίνηση ή απορία έχετε.</Alert>
-                        <Stack spacing={{lg: 1, md: 1, sm: 2, xs: 1, xxs: 1}} sx={{ paddingTop: {lg: 0, md: 0, sm: 5} }}>
+                    <Stack spacing={2} sx={{ paddingBottom: 20 }}>
+                        <Alert severity="info" sx={{ boxShadow: 2 }}>Επικοινωνήστε μαζί μας για οποιαδήποτε διευκρίνηση ή απορία έχετε.</Alert>
+                        <Stack spacing={1} sx={{ paddingTop: {lg: 0, md: 0, sm: 5} }}>
                             <TextField id="name" error={fieldError.name} label="Όνομα" variant="outlined" onChange={handleChange}/>
                             <TextField id="tel" error={fieldError.tel} label="Τηλέφωνο επικοινωνίας" variant="outlined" onChange={handleChange}/>
                             <TextField id="email" error={fieldError.email} label="Email" variant="outlined" onChange={handleChange}/>
                             <TextField id="text" error={fieldError.text} label="Πείτε μας λίγα λόγια" variant="outlined" onChange={handleChange} multiline rows={5} sx={{ height: '100px' }}/>
                         </Stack>                    
                     </Stack>     
-                    <Button onClick={submitMessage} variant="contained" sx={{ position: 'absolute', bottom: '30px', left: '5%', width: '90%', height: 45, fontSize: {lg: 16, md: 16, sm: 20}, bgcolor: '#30343f'}}>Υποβολη</Button>                            
+                    <Button onClick={submitMessage} variant="contained" sx={{ position: 'absolute', bottom: '30px', left: '5%', width: '90%', height: 45, fontSize: {lg: 16, md: 16, sm: 20}, bgcolor: '#30343f', boxShadow: 8}}>Υποβολη</Button>                            
                 </Box>                                                             
             </Box>
         </Box>

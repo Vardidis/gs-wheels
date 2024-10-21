@@ -18,7 +18,7 @@ const Info = () => {
             p: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
             border: "none",
             textAlign: "center",
-            borderRadius: 10,
+            borderRadius: 3,
             height: 'fit-content',
             overflowY: 'auto',
         }}>
