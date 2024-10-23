@@ -7,8 +7,16 @@ const multer = require('multer');
 
 const app = express();
 app.use(express.json());
-app.options('*', cors());
 
+
+const corsOptions = {
+    origin: '*',
+    methods: ['GET', 'POST', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  };
+  
+  app.use(cors(corsOptions));
+  app.options('*', cors(corsOptions));
 // const allowedOrigins = ['https://gs-wheels-vardidis-projects.vercel.app', '*'];
 // const originPattern = /^https:\/\/gs-wheels-server-[a-z0-9]+-vardidis-projects\.vercel\.app$/;
 
@@ -23,12 +31,6 @@ app.options('*', cors());
 //     methods: ['POST', 'GET'],
 //     credentials: true
 // }
-
-app.use(cors({
-    origin: '*',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: false
-}));
 
 const assets = path.join(__dirname, 'public/images');
 const messages = path.join(__dirname, 'messages.json');
