@@ -87,6 +87,7 @@ const Contact = (props) => {
                 try {
                     const response = await fetch(`${process.env.REACT_APP_BACKEND}/submit-message`, {
                     method: 'POST',
+                    mode: 'no-cors',
                     headers: {
                         'Content-Type': 'application/json',
                     },
