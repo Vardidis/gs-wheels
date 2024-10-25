@@ -14,7 +14,7 @@ const Products = () => {
     
     useEffect(()=>{
         setItems([]);
-
+            
         let sortedData;
         if(category){
             sortedData = allProducts.filter(product => product.tag === category);

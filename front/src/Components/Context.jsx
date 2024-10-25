@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import axios from 'axios';
 
 export const Context = createContext(null);
 
@@ -11,11 +12,10 @@ const ContextProvider = (props) => {
     const contextValue = {isDesktop, setIsDesktop, allProducts, endpoint, navSelection, setNavSelection};    
 
     useEffect(()=>{   
-        fetch(`${process.env.REACT_APP_BACKEND}/products`)
-        .then(((response) => response.json()))
-        .then((data) => {
-            setAllProducts(data);
-        });
+        axios.get(`${process.env.REACT_APP_BACKEND}/api/all-products`)
+        .then((response) => {
+            setAllProducts(response.data);
+        })
     }, []);
 
     return(

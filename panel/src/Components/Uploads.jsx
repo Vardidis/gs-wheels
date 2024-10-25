@@ -31,7 +31,7 @@ const Uploads = () => {
 
     const handleDelete = async() => {
         try {
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/delete-image`, {index: allImages[deleteImg]}, {headers: {"Access-Control-Allow-Origin": "test.com"}})
+            const response = await axios.delete(`${process.env.REACT_APP_BACKEND}/delete-image`, {params: {index: allImages[deleteImg]}})
             console.log('File deleted successfully', response.data);
         } catch (error) {
             console.error('Error', error);

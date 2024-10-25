@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Alert, Button, TextField, Stack, Box } from '@mui/material';
+import axios from 'axios';
 
 const Contact = (props) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -85,14 +86,7 @@ const Contact = (props) => {
                 sanitize(subInfo.text);
                 
                 try {
-                    const response = await fetch(`${process.env.REACT_APP_BACKEND}/submit-message`, {
-                    method: 'POST',
-                    mode: 'no-cors',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(subInfo),
-                    })
+                    const response = await axios.post(`${process.env.REACT_APP_BACKEND}/api/submit-message`, subInfo)
                     .then(response => {     
                         if(!response.ok){
                             console.log('oops')

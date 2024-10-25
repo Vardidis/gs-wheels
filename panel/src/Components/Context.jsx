@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import axios from 'axios';
 
 export const Context = createContext(null);
 
@@ -11,16 +12,14 @@ const ContextProvider = (props) => {
     const contextValue = {allProducts, endpoint, allMessages, allImages};    
 
     useEffect(()=>{
-        fetch(`${process.env.REACT_APP_BACKEND}/products`)
-        .then(((response) => response.json()))
-        .then((data) => {
-            setAllProducts(data);
-        });
+        axios.get(`${process.env.REACT_APP_BACKEND}/api/all-products`)
+        .then((response) => {
+            setAllProducts(response.data)
+        })
 
-        fetch(`${process.env.REACT_APP_BACKEND}/messages`)
-        .then(((response) => response.json()))
-        .then((data) => {
-            setAllMessages(data.messages);                        
+        axios.get(`${process.env.REACT_APP_BACKEND}/api/all-messages`)
+        .then((response) => {          
+            setAllMessages(response.data);                        
         });
 
         fetch(`${process.env.REACT_APP_BACKEND}/uploads`)

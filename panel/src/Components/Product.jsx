@@ -54,8 +54,7 @@ const Product = () => {
             setChanges(prevItems => ({...prevItems, mainImg: allImages[selectedImg]}));
         }else{
             setExtraSubs(prevItems => [...prevItems, allImages[selectedImg]]);           
-        }        
-        console.log(changes)
+        }               
         handleClick();
     }
 
@@ -97,8 +96,8 @@ const Product = () => {
             dets: details,
             desc: curDesc,
         }));
-        if(changes.mainImg && changes.subs && changes.title && changes.subtitle && changes.category && changes.dets && changes.desc){
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/update-item`, {product: changes, id: productId})
+        if(changes.mainImg && changes.subs && changes.title && changes.subtitle && changes.category && changes.dets && changes.desc){           
+            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/api/update-item`, {product: changes, id: productId})
 
             if(response){
                 window.location.href = '/';
@@ -125,8 +124,7 @@ const Product = () => {
     }
 
     useEffect(() => {
-        if(product){
-            console.log(product)
+        if(product){   
             setMainImg(product.thumbnail);
             setCurCategory(product.tag);
             setExtraSubs(product.sub);
@@ -138,9 +136,8 @@ const Product = () => {
     }, [product])
     
     return(
-        <Box sx={{ paddingLeft: 10, paddingRight: 10, paddingTop: 3 }}>
-            {console.log(changes)}
-                <Popper id={id} open={open} anchorEl={anchorEl} sx={{ zIndex: 1 }}>    
+        <Box sx={{ paddingLeft: 10, paddingRight: 10, paddingTop: 3 }}>     
+            <Popper id={id} open={open} anchorEl={anchorEl} sx={{ zIndex: 1 }}>    
                 <Paper sx={{ p: 3 }}>
                     <UploadTable item={selectedImg} setItem={setSelectedImg}/>
                     <Box sx={{ display: 'flex', justifyContent: 'end' }}>
@@ -221,8 +218,8 @@ const Product = () => {
                                         label="Category"
                                         onChange={categoryChange}
                                     >
-                                        {categories.map(cat => {
-                                            return <MenuItem value={cat}>{cat}</MenuItem>
+                                        {categories.map((cat, index) => {
+                                            return <MenuItem value={cat} key={index}>{cat}</MenuItem>
                                         })}                                                                        
                                     </Select>
                                 </FormControl>
@@ -297,6 +294,18 @@ const Product = () => {
                                 </Stack>                                                                                                    
                             </Stack>
                             <Stack direction='row' spacing={5}>
+                                <Typography sx={{ width: 150 }} id='title'>
+                                    Τίτλος
+                                </Typography>  
+                                <TextField onBlur={changeTitle} sx={{ width: 500 }}/>
+                            </Stack>
+                            <Stack direction='row' spacing={5}>
+                                <Typography sx={{ width: 150 }} id='subtitle'>
+                                    Υπότιτλος
+                                </Typography>  
+                                <TextField onBlur={changeSubtitle} sx={{ width: 500 }}/>
+                            </Stack>
+                            <Stack direction='row' spacing={5}>
                                 <Typography sx={{ width: 150 }}>
                                     Κατηγορία
                                 </Typography>  
@@ -309,8 +318,8 @@ const Product = () => {
                                         label="Category"
                                         onChange={categoryChange}
                                     >
-                                        {categories.map(cat => {
-                                            return <MenuItem value={cat}>{cat}</MenuItem>
+                                        {categories.map((cat, index) => {
+                                            return <MenuItem key={index} value={cat}>{cat}</MenuItem>
                                         })}                                                                        
                                     </Select>
                                 </FormControl>

@@ -5,6 +5,7 @@ import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import { useContext } from "react";
 import { Context } from "./Context";
+import axios from 'axios';
 
 const columns = [
     { id: 'name', label: 'Όνομα', minWidth: 100 },
@@ -25,7 +26,6 @@ const Messages = () => {
     const [page, setPage] = useState(0);
     const [rowsPerPage, setRowsPerPage] = useState(10);
     const [selectedMessage, setSelectedMessage] = useState(null);
-    const [selected, setSelected] = useState(null);
 
     const countUnread = () => {
         let count = 0;
@@ -50,13 +50,15 @@ const Messages = () => {
 
     const handleClick = (e, mes) => {     
         if(selectedMessage !== mes.text){
-            setSelectedMessage(mes);        
+            setSelectedMessage(mes);         
             e.target.parentElement.parentElement.childNodes.forEach(row => {
                 row.classList.remove('selected');
                 row.classList.add('table-row');
             });
             e.target.parentElement.classList.remove('table-row');
-            e.target.parentElement.classList.add('selected');            
+            e.target.parentElement.classList.add('selected');         
+            
+            axios.put(`${process.env.REACT_APP_BACKEND}/api/read-message`, {id: mes._id})
         }
     }
 
@@ -64,7 +66,7 @@ const Messages = () => {
         <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3, height: '100vh' }}>
             <Stack spacing={5}>     
                 <Typography fontSize={24} fontWeight={600}>
-                    Μηνύματα ({unread})              
+                    Μηνύματα ( {unread}/{allMessages.length} )              
                 </Typography>
                 <Stack direction='row' spacing={3}>                       
                     <Paper sx={{ width: '100%', overflow: 'hidden' }}>
@@ -90,7 +92,7 @@ const Messages = () => {
                                 .reverse()
                                 .map((message) => {                                                             
                                     return (                                        
-                                        <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message.code} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>                               
+                                        <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message._id} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>                               
                                             {columns.map((column) => {
                                             const value = message[column.id];                                    
                                             return (
@@ -123,7 +125,7 @@ const Messages = () => {
                             onRowsPerPageChange={handleChangeRowsPerPage}
                         />
                     </Paper>       
-                    <Paper sx={{ width: 500, overflowY: 'auto' }}>
+                    <Paper sx={{ width: 900, overflowY: 'auto' }}>
                         {selectedMessage &&
                             <Box>
                                 <Stack>

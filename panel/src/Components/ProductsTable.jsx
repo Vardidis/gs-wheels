@@ -5,6 +5,7 @@ import { tableCellClasses } from '@mui/material/TableCell';
 import { Link } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import axios from "axios";
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
     [`&.${tableCellClasses.head}`]: {
@@ -37,13 +38,7 @@ const ProductsTable = (props) => {
         const id = toDelete[0];
 
         try {
-            const response = await fetch(`${process.env.REACT_APP_BACKEND}/delete-item`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({id: id}),
-            })
+            await axios.delete(`${process.env.REACT_APP_BACKEND}/api/delete-item`, {params: {id: id}})
             .then(response => {     
                 if(!response.ok){
                     console.log('oops')
@@ -139,7 +134,7 @@ const ProductsTable = (props) => {
                             </StyledTableCell>                 
                             <StyledTableCell> 
                                 {product.sub.map(subImg => {
-                                    return <img src={`${props.endpoint}${subImg}`} alt='' style={{ width: '50px' }}/>
+                                    return <img src={`${props.endpoint}${subImg}`} key={subImg} alt='' style={{ width: '50px' }}/>
                                 })}
                             </StyledTableCell>
                             <StyledTableCell>
