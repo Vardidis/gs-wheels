@@ -8,7 +8,7 @@ async function handle(req, res) {
 
     if(method === 'POST'){            
         const {name, email, tel, text} = req.body;
-        console.log(req.body)
+              
         const read = false;
         const date = formatDate()
 
