@@ -86,14 +86,7 @@ const Contact = (props) => {
                 sanitize(subInfo.text);
                 
                 try {
-                    const response = await fetch(`${process.env.REACT_APP_BACKEND}/api/submit-message`, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: subInfo
-                    })
+                    await axios.post(`${process.env.REACT_APP_BACKEND}/api/submit-message`, subInfo)
                     .then(response => {     
                         if(!response.ok){
                             console.log('oops')

@@ -18,7 +18,13 @@ app.use(express.json());
 
 mongoose()
 
-app.use(cors());
+const corsOptions = {
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Specify allowed methods
+    allowedHeaders: ['*'], // Specify allowed headers
+};
+
+app.use(cors(corsOptions));
 
 const assets = path.join(__dirname, 'public/images');
 const items = path.join(__dirname, 'items.json');
@@ -57,7 +63,7 @@ app.post('/upload-image', upload.single('image'), (req,res)=>{
 app.delete('/delete-image', (req, res) => {
     
     const index = req.query.index;
-    
+
     fs.unlink(path.join(assets, index), (err) => {
         if (err) {
             return res.status(500).json({ message: 'Error deleting file' });
