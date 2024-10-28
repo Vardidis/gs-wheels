@@ -18,12 +18,14 @@ async function handle(req, res) {
                         
                     });
                                         
-                    product.sub.map(async(img, indx) => {
-                        await getImage(img)
-                        .then((imgPath) => {
-                            products[index].sub[indx] = imgPath;
-                        });                    
-                    });                    
+                    await Promise.all(
+                        product.sub.map(async(img, indx) => {
+                            await getImage(img)
+                            .then((imgPath) => {
+                                products[index].sub[indx] = imgPath;
+                            });                    
+                        })
+                    );
                 })
             );
                                          
