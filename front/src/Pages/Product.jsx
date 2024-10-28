@@ -7,7 +7,7 @@ import ProductViewDetails from "../Components/ProductViewDetails";
 
 const DetailsBox = (props) => {
     return(
-        <Paper sx={{ padding: 3, bgcolor: '#30343f', color: 'white', borderRadius: 4}}>
+        <Paper sx={{ padding: 3, bgcolor: '#30343f', color: 'white', borderRadius: 2}}>
             <Stack spacing={3} alignItems='center' sx={{ maxWidth: 1400 }}>
                 <Typography variant='h6' sx={{ textAlign: 'center' }}>
                     Περιγραφή
@@ -30,32 +30,30 @@ const Product = () => {
         justifyContent: 'center',
         paddingBottom: 5,
         paddingTop: 3,
-        paddingLeft: 1,
-        paddingRight: 1
+        paddingLeft: 2,
+        paddingRight: 2
     }
     : {
-        padding: 2
+        padding: 0
     }
 
     const orient = isDesktop ? 'row' : 'column';
 
     if(productItem){
         return(
-            <Box sx={style}>
-                <Stack spacing={5} alignItems='center'>
-                    <Typography variant='h5'>
+            <Box sx={style}>                               
+                <Stack direction={orient} alignItems={isDesktop ? 'top' : 'center'} spacing={{xl: 12, lg: 6, md: 6, sm: 4, xs: 4, xxs: 1}} sx={{padding: 1}}>
+                    <ProductImageView mainImg={productItem.thumbnail} subImages={productItem.sub}/>     
+                    <Stack spacing={4}>
+                    <Typography fontSize={22} fontWeight={600}>
                         {productItem.title}
                     </Typography>
-                    <Stack direction={orient} alignItems={isDesktop ? 'top' : 'center'} spacing={{xl: 12, lg: 6, md: 6, sm: 4, xs: 4, xxs: 1}}>
-                        <ProductImageView mainImg={productItem.thumbnail} subImages={productItem.sub}/>     
-                        <Stack spacing={4}>
-                            <DetailsBox
-                                desc={productItem.desc}
-                            />    
-                            <ProductViewDetails chars={productItem.chars}/>
-                        </Stack>                                                                                      
-                    </Stack>                    
-                </Stack>            
+                        <DetailsBox
+                            desc={productItem.desc}
+                        />    
+                        <ProductViewDetails chars={productItem.chars}/>
+                    </Stack>                                                                                      
+                </Stack>                                     
             </Box>
         );
     }

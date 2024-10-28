@@ -22,9 +22,9 @@ const Uploads = () => {
         
             try {
                 const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData)
-                console.log('File uploaded successfully', response.data);
+                alert('File uploaded successfully', response.data);
             } catch (error) {
-                console.error('Error', error);
+                alert('Error uploading your file');
             }
         }                
     }
