@@ -24,9 +24,9 @@ const ContextProvider = (props) => {
 
         axios.get(`${process.env.REACT_APP_BACKEND}/uploads`)
         .then((response)=>{
-            let imagesPaths = []
-            response.data.map((endpoint) => {
-                imagesPaths.push(endpoint)
+            let imagesPaths = []        
+            response.data.map((data) => {
+                imagesPaths.push(data)
             })
             setAllImages(imagesPaths);
         })

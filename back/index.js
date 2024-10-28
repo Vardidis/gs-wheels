@@ -12,7 +12,9 @@ const messageSubmit = require('./api/submitMessage');
 const messagesFetch = require('./api/fetchMessages');
 const messageRead = require('./api/readMessage');
 const {fetchAllImages} = require('./api/fetchImages');
+
 const uploadImage = require('./controllers/uploadFile');
+const {deleteImage} = require('./controllers/deleteFile');
 
 const app = express();
 app.use(express.json());
@@ -23,7 +25,7 @@ const fileFilter = (req, file, cb) => {
     } else {
       cb(new Error("Only image files are allowed!"), false);
     }
-  };
+};
 
 const upload = multer({
     storage: multer.memoryStorage(),
@@ -57,9 +59,10 @@ app.post('/upload-image', upload.single('image'), async(req, res) => {
     await uploadImage(req, res);
 });
 
-// app.delete('/delete-image', imageDelete {
-//     await uploadImage(req, res);
-// });
+app.delete('/delete-image', async(req, res) => {
+    const filename = req.query.filename;
+    await deleteImage(filename);
+});
 
 app.listen(port, (error)=>{
     if(!error){

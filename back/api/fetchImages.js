@@ -11,7 +11,12 @@ const fetchAllImages = async() => {
         const imageUrls = await Promise.all(
             result.items.map(async (itemRef) => {
                 const url = await getDownloadURL(itemRef);
-                return url;
+                const originalName = itemRef.name;
+
+                return {
+                    url,
+                    originalName
+                };
             })
         );
     

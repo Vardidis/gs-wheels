@@ -21,8 +21,8 @@ const Uploads = () => {
             formData.append('image', file);
         
             try {
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData)
-                alert('File uploaded successfully', response.data);
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData);
+                alert('File uploaded successfully');
             } catch (error) {
                 alert('Error uploading your file');
             }
@@ -31,10 +31,10 @@ const Uploads = () => {
 
     const handleDelete = async() => {
         try {
-            const response = await axios.delete(`${process.env.REACT_APP_BACKEND}/delete-image`, {params: {index: allImages[deleteImg]}})
-            console.log('File deleted successfully', response.data);
+            await axios.delete(`${process.env.REACT_APP_BACKEND}/delete-image`, {params: {filename: deleteImg}});
+            alert('File deleted successfully');
         } catch (error) {
-            console.error('Error', error);
+            alert('Error deleting file');
         }
     }
 

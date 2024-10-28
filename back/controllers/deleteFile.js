@@ -1,17 +1,17 @@
-// const { storage } = require('../lib/firebase');
-// const { ref, deleteObject } = require('firebase/storage');
+const { storage } = require('../lib/firebase');
+const { ref, deleteObject } = require('firebase/storage');
 
-// const deleteImage = async (fileName) => {
-//   try {
-//     const storageRef = ref(storage, `${fileName}`);
+const deleteImage = async(fileName) => {
+  try {
+    const storageRef = ref(storage, fileName);
 
-//     await deleteObject(imageRef);
+    await deleteObject(storageRef);
 
-//     console.log(`Image ${fileName} deleted successfully.`);
-//   } catch (error) {
-//     console.error('Error deleting image:', error);
-//     throw error;
-//   }
-// };
+    console.log(`Image ${fileName} deleted successfully.`);
+  } catch (error) {
+    console.error('Error deleting image:', error);
+    throw error;
+  }
+};
 
-// module.exports = { deleteImage };
+module.exports = {deleteImage};

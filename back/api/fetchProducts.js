@@ -25,7 +25,7 @@ async function handle(req, res) {
                                 products[index].sub[indx] = imgPath;
                             });                    
                         })
-                    );
+                    )                  
                 })
             );
                                          
