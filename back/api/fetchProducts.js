@@ -1,5 +1,6 @@
 const Product = require('../models/Product');
 const mongooseConnect = require('../lib/mongoose');
+const {getImage} = require('./fetchOneImage');
 
 async function handle(req, res) {
     const {method} = req;
@@ -7,7 +8,25 @@ async function handle(req, res) {
 
     if(method === 'GET'){    
         try{
-            const products = await Product.find({});     
+            let products = await Product.find({});    
+            let imageProm;
+            let subProm;
+            products.map((product, index) => {
+                imageProm = getImage(product.thumbnail)
+                .then((imgPath) => {
+                    products[index].thumbnail = imgPath;
+                    
+                });
+                                    
+                subProm = product.sub.map((img, indx) => {
+                    getImage(img)
+                    .then((imgPath) => {
+                        products[index].sub[indx] = imgPath;
+                    });                    
+                });                    
+            });
+            
+            await Promise.all([imageProm, subProm])              
             res.status(200).json(products);
         }catch(error){
             console.log(error);

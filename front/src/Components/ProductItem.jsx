@@ -1,7 +1,6 @@
 import { Box, Typography, Stack, keyframes } from "@mui/material";
-import React, { useContext } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { Context } from "./Context";
 import StarRateIcon from '@mui/icons-material/StarRate';
 
 const fadeIn = keyframes`
@@ -15,13 +14,11 @@ const fadeIn = keyframes`
   }
 `;
 
-const ProductItem = (props) => {
-    const {endpoint} = useContext(Context);
-
+const ProductItem = (props) => { 
     return(
         <Link to={`/product/${props.index}`} style={{ textDecoration: 'none', color: 'white' }}>
-            <Box sx={{ boxShadow: 12, cursor: 'pointer', borderRadius: 4, padding: 0.5, bgcolor: '#30343f', animation: `${fadeIn} 1s ease-in-out` }}>
-                <img src={`${endpoint}/${props.item.thumbnail}`} alt='' style={{ width: '100%', borderRadius: 10 }}/>
+            <Box sx={{ boxShadow: 12, cursor: 'pointer', borderRadius: 2, padding: 0.5, bgcolor: '#30343f', animation: `${fadeIn} 1s ease-in-out` }}>               
+                <img src={props.item.thumbnail} alt='' style={{ width: '100%', borderRadius:5 }}/>
                 <Stack>             
                     <Box sx={{ padding: 1 }}>
                         <Stack>

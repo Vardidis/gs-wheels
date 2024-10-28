@@ -21,7 +21,7 @@ const Uploads = () => {
             formData.append('image', file);
         
             try {
-                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData, {headers: {"Access-Control-Allow-Origin": "test.com"}})
+                const response = await axios.post(`${process.env.REACT_APP_BACKEND}/upload-image`, formData)
                 console.log('File uploaded successfully', response.data);
             } catch (error) {
                 console.error('Error', error);

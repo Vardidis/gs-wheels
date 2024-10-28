@@ -22,11 +22,14 @@ const ContextProvider = (props) => {
             setAllMessages(response.data);                        
         });
 
-        fetch(`${process.env.REACT_APP_BACKEND}/uploads`)
-        .then(((response) => response.json()))
-        .then((data) => {
-            setAllImages(data.files);                        
-        });
+        axios.get(`${process.env.REACT_APP_BACKEND}/uploads`)
+        .then((response)=>{
+            let imagesPaths = []
+            response.data.map((endpoint) => {
+                imagesPaths.push(endpoint)
+            })
+            setAllImages(imagesPaths);
+        })
     }, []);
 
     return(
