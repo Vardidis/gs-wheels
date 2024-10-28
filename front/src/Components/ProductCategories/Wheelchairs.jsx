@@ -9,6 +9,8 @@ const Wheelchairs = () => {
     const [items, setItems] = useState([]);    
     const [lightW, setLightW] = useState('');
     const [athl, setAthl] = useState('');
+    const [gallerian, setGallerian] = useState('');
+    const [portfolio, setPortfolio] = useState('');
 
     const handleClickLight = () => {
         if(lightW === 'outlined'){
@@ -31,6 +33,30 @@ const Wheelchairs = () => {
     const handleDeleteAthl = () => {
         if(athl === ''){
             setAthl('outlined');
+        }  
+    };
+
+    const handleClickGal = () => {
+        if(gallerian === 'outlined'){
+            setGallerian('');
+        }        
+    };
+
+    const handleDeleteGal = () => {
+        if(gallerian === ''){
+            setGallerian('outlined');
+        }  
+    };
+
+    const handleClickPort = () => {
+        if(portfolio === 'outlined'){
+            setPortfolio('');
+        }        
+    };
+
+    const handleDeletePort = () => {
+        if(portfolio === ''){
+            setPortfolio('outlined');
         }  
     };
 
@@ -62,10 +88,34 @@ const Wheelchairs = () => {
             sortedData = sortedData.filter(product => product.secTag !== 'athletic');                
         }
 
+        if(gallerian === ''){
+            const toPush = allProducts.filter(product => product.secTag === 'gallerian');
+            if(toPush){
+                toPush.map(item => {
+                    sortedData.push(item);
+                })
+            }
+            
+        }else{
+            sortedData = sortedData.filter(product => product.secTag !== 'gallerian');                
+        }
+
+        if(portfolio === ''){
+            const toPush = allProducts.filter(product => product.secTag === 'portfolio');
+            if(toPush){
+                toPush.map(item => {
+                    sortedData.push(item);
+                })
+            }
+            
+        }else{
+            sortedData = sortedData.filter(product => product.secTag !== 'portfolio');                
+        }
+
         sortedData.map(product => {
             setItems((prevItems) => [...prevItems, product]);                
         });
-    }, [lightW, athl, allProducts]);    
+    }, [lightW, athl, gallerian, portfolio, allProducts]);    
 
     return(
         <Stack sx={{ width: '100%', marginTop: 5}}>
@@ -81,6 +131,18 @@ const Wheelchairs = () => {
                     variant={athl}
                     onClick={handleClickAthl}
                     onDelete={handleDeleteAthl}
+                />
+                <Chip
+                    label="Εκθεσιακά"
+                    variant={gallerian}
+                    onClick={handleClickGal}
+                    onDelete={handleDeleteGal}
+                />
+                <Chip
+                    label="Πορτφόλιο"
+                    variant={portfolio}
+                    onClick={handleClickPort}
+                    onDelete={handleDeletePort}
                 />
             </Stack>
             <ProductMenu items={items}/>
