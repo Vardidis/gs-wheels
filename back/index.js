@@ -47,13 +47,6 @@ app.get('/uploads', async(req, res) => {
     res.status(200).send(imagePaths);
 });
 
-app.get('/api/fetch-image', async(req, res) => {
-    const image = req.query.filename;
-    const imagePath = await getImage(image);
-    
-    res.status(200).send(imagePath);
-});
-
 // app.get('/uploads', (req, res) => {
 //     fs.readdir(assets, (err, files) => {
 //         if(err){

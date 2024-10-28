@@ -12,7 +12,7 @@ import axios from 'axios';
 
 const Product = () => {
     const {productId} = useParams();
-    const {endpoint, allProducts, allImages} = useContext(Context);
+    const {allProducts, allImages} = useContext(Context);
     const product = allProducts[productId];
     const [anchorEl, setAnchorEl] = useState(null);
     const [mainImg, setMainImg] = useState(null);
@@ -168,7 +168,7 @@ const Product = () => {
                                 </Typography>
                                 <Stack direction='row' spacing={1}>
                                     <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                        <img id='mainImg' src={mainImg ? `${endpoint}${mainImg}` : `${endpoint}${product.thumbnail}`} alt='' style={{ width: '150px' }}/>
+                                        <img id='mainImg' src={mainImg ? mainImg : product.thumbnail} alt='' style={{ width: '150px' }}/>
                                     </Paper>  
                                     <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
                                         <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
@@ -183,7 +183,7 @@ const Product = () => {
                                     {extraSubs.map((subImg, index) => {
                                         return (
                                             <Paper key={subImg} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                                <img onClick={()=>removeSub(index)} src={`${endpoint}${subImg}`} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
+                                                <img onClick={()=>removeSub(index)} src={subImg} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
                                             </Paper>                                        
                                         );                                    
                                     })
@@ -197,13 +197,13 @@ const Product = () => {
                                 <Typography sx={{ width: 150 }} id='title'>
                                     Τίτλος
                                 </Typography>  
-                                <TextField onBlur={changeTitle} defaultValue={product.title} sx={{ width: 500 }}/>
+                                <TextField onBlur={changeTitle} defaultValue={product.title} value={product.title} sx={{ width: 500 }}/>
                             </Stack>
                             <Stack direction='row' spacing={5}>
                                 <Typography sx={{ width: 150 }} id='subtitle'>
                                     Υπότιτλος
                                 </Typography>  
-                                <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} sx={{ width: 500 }}/>
+                                <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} value={product.subtitle} sx={{ width: 500 }}/>
                             </Stack>
                             <Stack direction='row' spacing={5}>
                                 <Typography sx={{ width: 150 }} id='category'>
@@ -264,7 +264,7 @@ const Product = () => {
                                     {mainImg
                                     ?
                                     <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>      
-                                        <img src={`${endpoint}${mainImg}`} alt='' style={{ width: '150px' }}/>                        
+                                        <img src={mainImg} alt='' style={{ width: '150px' }}/>                        
                                     </Paper>                                          
                                     :
                                     <Paper sx={{ width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>      
@@ -284,7 +284,7 @@ const Product = () => {
                                     {extraSubs.map((img, index) => {
                                         return (
                                             <Paper key={index} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                                <img onClick={()=>removeSub(index)} src={`${endpoint}${img}`} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
+                                                <img onClick={()=>removeSub(index)} src={img} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
                                             </Paper>                                        
                                         );        
                                     })}                               

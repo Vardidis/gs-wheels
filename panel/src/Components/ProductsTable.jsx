@@ -125,7 +125,7 @@ const ProductsTable = (props) => {
                     {props.products.map((product) => (                    
                         <StyledTableRow key={product.id} hover sx={{ cursor: 'pointer' }}>
                             <StyledTableCell component="th" scope="row">
-                                <img src={`${props.endpoint}${product.thumbnail}`} style={{ width: '75px', height: '55px', borderRadius: '5px', border: '1px solid rgb(242, 242, 242)' }}/>
+                                <img src={product.thumbnail} style={{ width: '75px', height: '55px', borderRadius: '5px', border: '1px solid rgb(242, 242, 242)' }}/>
                             </StyledTableCell>
                             <StyledTableCell>
                                 <Typography fontSize={16}>
@@ -134,7 +134,7 @@ const ProductsTable = (props) => {
                             </StyledTableCell>                 
                             <StyledTableCell> 
                                 {product.sub.map(subImg => {
-                                    return <img src={`${props.endpoint}${subImg}`} key={subImg} alt='' style={{ width: '50px' }}/>
+                                    return <img src={subImg} key={subImg} alt='' style={{ width: '50px' }}/>
                                 })}
                             </StyledTableCell>
                             <StyledTableCell>

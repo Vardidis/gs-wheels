@@ -6,6 +6,8 @@ const getImage = async (fileName) => {
     try {   
         const file = ref(storage, `${process.env.FIREBASE_ENDPOINT + fileName}`);
         const url = await getDownloadURL(file);
+
+        await Promise.all([url]);   
         return url;
     } catch (error) {
         console.error('Error fetching image:', error);

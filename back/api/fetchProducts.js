@@ -9,24 +9,24 @@ async function handle(req, res) {
     if(method === 'GET'){    
         try{
             let products = await Product.find({});    
-            let imageProm;
-            let subProm;
-            products.map((product, index) => {
-                imageProm = getImage(product.thumbnail)
-                .then((imgPath) => {
-                    products[index].thumbnail = imgPath;
-                    
-                });
-                                    
-                subProm = product.sub.map((img, indx) => {
-                    getImage(img)
+ 
+            await Promise.all(
+                products.map(async(product, index) => {
+                    await getImage(product.thumbnail)
                     .then((imgPath) => {
-                        products[index].sub[indx] = imgPath;
+                        products[index].thumbnail = imgPath;
+                        
+                    });
+                                        
+                    product.sub.map(async(img, indx) => {
+                        await getImage(img)
+                        .then((imgPath) => {
+                            products[index].sub[indx] = imgPath;
+                        });                    
                     });                    
-                });                    
-            });
-            
-            await Promise.all([imageProm, subProm])              
+                })
+            );
+                                         
             res.status(200).json(products);
         }catch(error){
             console.log(error);
