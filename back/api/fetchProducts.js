@@ -9,21 +9,23 @@ async function handle(req, res) {
     if(method === 'GET'){    
         try{
             let products = await Product.find({});    
- 
+            
             await Promise.all(
-                products.map(async(product, index) => {
-                    await getImage(product.thumbnail)
-                    .then((imgPath) => {
-                        products[index].thumbnail = imgPath;
-                        
-                    });
+                products.map(async(product, index) => {               
+                    try{
+                        const imgPath = await getImage(product.thumbnail)               
+                        products[index].thumbnail = imgPath;                                          
+                    }catch(error){                        
+                    }
+                    
                                         
                     await Promise.all(
                         product.sub.map(async(img, indx) => {
-                            await getImage(img)
-                            .then((imgPath) => {
-                                products[index].sub[indx] = imgPath;
-                            });                    
+                            try{
+                                const imgPath = await getImage(img)                                      
+                                products[index].sub[indx] = imgPath;                            
+                            }catch(error){                        
+                            }       
                         })
                     )                  
                 })
