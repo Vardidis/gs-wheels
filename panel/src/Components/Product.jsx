@@ -48,13 +48,17 @@ const Product = () => {
     const open = Boolean(anchorEl);
     const id = open ? 'simple-popper' : undefined;
 
-    const handleChange = (main) => {        
-        if(main){
-            setMainImg(allImages[selectedImg]); 
-            setChanges(prevItems => ({...prevItems, mainImg: allImages[selectedImg]}));
-        }else{
-            setExtraSubs(prevItems => [...prevItems, allImages[selectedImg]]);           
-        }               
+    const handleChange = (main) => {     
+        allImages.map(img => {            
+            if(img.originalName === selectedImg){
+                if(main){
+                    setMainImg(img.url); 
+                    setChanges(prevItems => ({...prevItems, mainImg: img.url}));
+                }else{
+                    setExtraSubs(prevItems => [...prevItems, img.url]);     
+                }      
+            }    
+        })                               
         handleClick();
     }
 
