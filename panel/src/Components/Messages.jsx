@@ -92,7 +92,7 @@ const Messages = () => {
                                 .reverse()
                                 .map((message) => {                                                             
                                     return (                                        
-                                        <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message._id} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white' }}>                               
+                                        <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message._id} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white', cursor: 'pointer' }}>                               
                                             {columns.map((column) => {
                                             const value = message[column.id];                                    
                                             return (

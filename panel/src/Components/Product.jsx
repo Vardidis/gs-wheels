@@ -201,13 +201,13 @@ const Product = () => {
                                 <Typography sx={{ width: 150 }} id='title'>
                                     Τίτλος
                                 </Typography>  
-                                <TextField onBlur={changeTitle} defaultValue={product.title} value={product.title} sx={{ width: 500 }}/>
+                                <TextField onBlur={changeTitle} defaultValue={product.title} sx={{ width: 500 }}/>
                             </Stack>
                             <Stack direction='row' spacing={5}>
                                 <Typography sx={{ width: 150 }} id='subtitle'>
                                     Υπότιτλος
                                 </Typography>  
-                                <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} value={product.subtitle} sx={{ width: 500 }}/>
+                                <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} sx={{ width: 500 }}/>
                             </Stack>
                             <Stack direction='row' spacing={5}>
                                 <Typography sx={{ width: 150 }} id='category'>
