@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Box, Stack } from '@mui/material';
 import Product from './Components/Product';
 import Uploads from './Components/Uploads';
+import Texts from './Components/Texts';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
               <Route path='/edit/:productId' element={<Product/>}/>
             </Route>
             <Route path="/uploads" element={<Uploads/>}/>
+            <Route path="/texts" element={<Texts/>}/>
           </Routes>            
         </Box>
       </Stack>

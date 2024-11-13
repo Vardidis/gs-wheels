@@ -1,5 +1,6 @@
 const Product = require('../models/Product');
 const mongooseConnect = require('../lib/mongoose');
+const { ObjectId } = require('mongodb');
 
 async function handle(req, res) {
     const {method} = req;
@@ -15,9 +16,28 @@ async function handle(req, res) {
         const secTag = 'test';
         const title = product.title;
 
-        const productDoc = await Product.updateOne(
-            {id: id},
-            {
+        let productDoc;
+        console.log(id, product)
+        if(id){
+            productDoc = await Product.updateOne(
+                {_id: id},
+                {   
+                    $set: {
+                        tag: tag,
+                        subtitle: subtitle,
+                        thumbnail: thumbnail,
+                        sub: sub,
+                        desc: desc,
+                        chars: chars,
+                        secTag: secTag,
+                        title: title
+                    }                    
+                },             
+            );
+            console.log(productDoc)
+        }else{
+            productDoc = await Product.create({
+                _id: new ObjectId(),
                 tag,
                 subtitle,
                 thumbnail,
@@ -26,9 +46,9 @@ async function handle(req, res) {
                 chars,
                 secTag,
                 title
-            },
-            {upsert: true} 
-        );
+            });
+        }
+        
         res.json(productDoc);
     }
 }

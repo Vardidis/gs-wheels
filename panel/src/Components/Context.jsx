@@ -13,7 +13,7 @@ const ContextProvider = (props) => {
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_BACKEND}/api/all-products`)
-        .then((response) => {
+        .then((response) => {                         
             setAllProducts(response.data)
         })
 

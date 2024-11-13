@@ -16,7 +16,7 @@ const Eshop = () => {
                         <Typography fontSize={24} fontWeight={600}>
                             Προϊόντα ({count})
                         </Typography>
-                        <Link to={`/edit/${count}`}>
+                        <Link to={`/edit`}>
                             <Button variant='contained'>
                                 Προσθηκη
                             </Button>

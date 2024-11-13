@@ -122,8 +122,8 @@ const ProductsTable = (props) => {
                     </TableRow>
                     </TableHead>
                     <TableBody>                    
-                    {props.products.map((product) => (                    
-                        <StyledTableRow key={product.id} hover sx={{ cursor: 'pointer' }}>
+                    {props.products.map((product) => (                                           
+                        <StyledTableRow key={product._id} hover sx={{ cursor: 'pointer' }}>                         
                             <StyledTableCell component="th" scope="row">
                                 <img src={product.thumbnail} style={{ width: '75px', height: '55px', borderRadius: '5px', border: '1px solid rgb(242, 242, 242)' }}/>
                             </StyledTableCell>
@@ -139,10 +139,10 @@ const ProductsTable = (props) => {
                             </StyledTableCell>
                             <StyledTableCell>
                                 <Box sx={{ display: 'flex', gap: 2 }}>
-                                    <Link to={`/edit/${product.id}`} style={{ textDecoration: 'none' }}>
+                                    <Link to={`/edit/${product._id}`} style={{ textDecoration: 'none' }}>
                                         <EditIcon className='edit-icon' sx={{ color: 'black' }}/>
                                     </Link>
-                                    <DeleteIcon className='edit-icon' onClick={(e)=>handleDelete(e, product.id)}/>
+                                    <DeleteIcon className='edit-icon' onClick={(e)=>handleDelete(e, product._id)}/>
                                 </Box>                            
                             </StyledTableCell>
                         </StyledTableRow>            

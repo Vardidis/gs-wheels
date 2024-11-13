@@ -12,8 +12,9 @@ import axios from 'axios';
 
 const Product = () => {
     const {productId} = useParams();
+    const isNew = !productId;
     const {allProducts, allImages} = useContext(Context);
-    const product = allProducts[productId];
+    let product = !isNew ? allProducts.filter((prod) => { return prod._id === String(productId) })[0] : null;
     const [anchorEl, setAnchorEl] = useState(null);
     const [mainImg, setMainImg] = useState(null);
     const [extraSubs, setExtraSubs] = useState([]);
@@ -101,7 +102,12 @@ const Product = () => {
             desc: curDesc,
         }));
         if(changes.mainImg && changes.subs && changes.title && changes.subtitle && changes.category && changes.dets && changes.desc){           
-            const response = await axios.post(`${process.env.REACT_APP_BACKEND}/api/update-item`, {product: changes, id: productId})
+            let response;
+            if(isNew){
+                response = await axios.post(`${process.env.REACT_APP_BACKEND}/api/update-item`, {product: changes})
+            }else{
+                response = await axios.post(`${process.env.REACT_APP_BACKEND}/api/update-item`, {product: changes, id: productId})
+            }             
 
             if(response){
                 window.location.href = '/';
@@ -127,7 +133,7 @@ const Product = () => {
         setChanges(prevItems => ({...prevItems, subtitle: newSubtitle}));
     }
 
-    useEffect(() => {
+    useEffect(() => {        
         if(product){   
             setMainImg(product.thumbnail);
             setCurCategory(product.tag);

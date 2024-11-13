@@ -26,6 +26,13 @@ const MenuList = () => {
                         </Typography>
                     </Box>                     
                 </NavLink>     
+                <NavLink to='/texts' className='navlink' activeclassname='active'style={{ textDecoration: 'none' }}>           
+                    <Box>                    
+                        <Typography>
+                            Κείμενα
+                        </Typography>
+                    </Box>                     
+                </NavLink> 
         </Stack>
     );
 }

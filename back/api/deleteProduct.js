@@ -8,7 +8,7 @@ async function handle(req, res) {
         const {id} = req.query; 
 
         const productDoc = await Product.deleteOne({
-            id: id            
+            _id: id            
         });
         res.json(productDoc);
     }
