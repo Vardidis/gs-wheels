@@ -1,6 +1,5 @@
 const Product = require('../models/Product');
-const mongooseConnect = require('../lib/mongoose');
-const { ObjectId } = require('mongodb');
+const {mongooseConnect, obj} = require('../lib/mongoose');
 
 async function handle(req, res) {
     const {method} = req;
@@ -35,7 +34,7 @@ async function handle(req, res) {
             );            
         }else{
             productDoc = await Product.create({
-                _id: new ObjectId(),
+                _id: new obj(),
                 tag,
                 subtitle,
                 thumbnail,
