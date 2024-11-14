@@ -7,14 +7,14 @@
       }
     ],
     "routes": [
-      { "src": "/api/update-item", "dest": "/api/updateProduct.js" },
-      { "src": "/api/delete-item", "dest": "/api/deleteProduct.js" },
-      { "src": "/api/all-products", "dest": "/api/fetchProducts.js" },
-      { "src": "/api/submit-message", "dest": "/api/submitMessage.js" },
-      { "src": "/api/all-messages", "dest": "/api/fetchMessages.js" },
-      { "src": "/api/read-message", "dest": "/api/readMessage.js" },
-      { "src": "/uploads", "dest": "/api/fetchImages.js" },
-      { "src": "/upload-image", "dest": "/controllers/uploadFile.js" },
-      { "src": "/delete-image", "dest": "/controllers/deleteFile.js" }
+      {
+        "src": "/(.*)",
+        "dest": "index.js",
+         "methods": ["GET","POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+         "headers": {
+            "Access-Control-Allow-Origin": "*",         
+            "Access-Control-Allow-Headers": "X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version"
+        }
+      }
     ]
   }
