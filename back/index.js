@@ -3,7 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const multer = require("multer");
 
-const mongoose = require('./lib/mongoose');
+const {mongooseConnect} = require('./lib/mongoose');
 
 const productUpdate = require('./api/updateProduct');
 const productDelete = require('./api/deleteProduct');
@@ -32,7 +32,7 @@ const upload = multer({
     fileFilter
 });
 
-mongoose()
+mongooseConnect()
 
 const corsOptions = {
     origin: '*',
