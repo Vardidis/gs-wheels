@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-const mongooseConnect = require('../lib/mongoose');
+const {mongooseConnect} = require('../lib/mongoose');
 const {getImage} = require('./fetchOneImage');
 
 async function handle(req, res) {

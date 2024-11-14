@@ -1,5 +1,5 @@
 const Message = require('../models/Message');
-const mongooseConnect = require('../lib/mongoose');
+const {mongooseConnect} = require('../lib/mongoose');
 const formatDate = require('../lib/formatDate');
 
 async function handle(req, res) {

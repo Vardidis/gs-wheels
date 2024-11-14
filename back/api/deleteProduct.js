@@ -1,5 +1,5 @@
 const Product = require('../models/Product');
-const mongooseConnect = require('../lib/mongoose');
+const {mongooseConnect} = require('../lib/mongoose');
 
 async function handle(req, res) {
     const {method} = req;
