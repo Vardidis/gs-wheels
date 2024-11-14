@@ -9,8 +9,7 @@ const getImage = async (fileName) => {
 
         await Promise.all([url]);   
         return url;
-    } catch (error) {
-        console.error('Error fetching image:', error);
+    } catch (error) {        
         throw error;
     }
 };
