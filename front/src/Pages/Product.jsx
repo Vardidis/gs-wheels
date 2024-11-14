@@ -23,7 +23,8 @@ const DetailsBox = (props) => {
 const Product = () => {
     const {productId} = useParams();
     const {allProducts, isDesktop} = useContext(Context);
-    const productItem = allProducts.filter((product) => product.id === String(productId))[0];
+    const productItem = allProducts.filter((prod) => {return prod._id === String(productId)})[0] || null;
+    console.log(productItem)
 
     const style = isDesktop ? {
         display: 'flex',
