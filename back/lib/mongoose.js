@@ -1,7 +1,7 @@
 mongoose = require('mongoose');
 require('dotenv').config();
 
-const obj = mongoose.Types.ObjectId;
+const obj = mongoose.Schema.Types.ObjectId;
 
 const mongooseConnect = async() => {    
     if(mongoose.connection.readyState === 1){

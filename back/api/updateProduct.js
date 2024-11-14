@@ -34,7 +34,7 @@ async function handle(req, res) {
             );            
         }else{
             productDoc = await Product.create({
-                _id: new obj(),
+                _id: new obj,
                 tag,
                 subtitle,
                 thumbnail,
