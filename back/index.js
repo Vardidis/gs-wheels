@@ -64,10 +64,13 @@ app.delete('/delete-image', async(req, res) => {
     await deleteImage(filename);
 });
 
-app.listen(port, (error)=>{
-    if(!error){
-        console.log("server live: port " + port);
-    };
-});
+if (process.env.NODE_ENV === 'development') {
+    const port = 4300;
+    app.listen(port, (error)=>{
+        if(!error){
+            console.log("server live: port " + port);
+        };
+    });
+}
 
 module.exports = app;
