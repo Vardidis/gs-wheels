@@ -1,9 +1,6 @@
-const port = 4300;
 const express = require('express');
 const cors = require('cors');
 const multer = require("multer");
-
-const {mongooseConnect} = require('./lib/mongoose');
 
 const productUpdate = require('./api/updateProduct');
 const productDelete = require('./api/deleteProduct');
@@ -31,8 +28,6 @@ const upload = multer({
     storage: multer.memoryStorage(),
     fileFilter
 });
-
-mongooseConnect()
 
 const corsOptions = {
     origin: '*',
