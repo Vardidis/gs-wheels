@@ -35,7 +35,7 @@ const upload = multer({
 mongoose()
 
 const corsOptions = {
-    origin: 'https://gs-wheels-admin.vercel.app',
+    origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['*']
 };
