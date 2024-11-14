@@ -16,8 +16,7 @@ async function handle(req, res) {
         const secTag = 'test';
         const title = product.title;
 
-        let productDoc;
-        console.log(id, product)
+        let productDoc;        
         if(id){
             productDoc = await Product.updateOne(
                 {_id: id},
@@ -33,8 +32,7 @@ async function handle(req, res) {
                         title: title
                     }                    
                 },             
-            );
-            console.log(productDoc)
+            );            
         }else{
             productDoc = await Product.create({
                 _id: new ObjectId(),

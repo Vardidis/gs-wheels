@@ -10,6 +10,51 @@ import UploadTable from "./UploadTable";
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import axios from 'axios';
 
+const PopupBox = (props) => {
+    return(
+        <Box
+            sx={{
+                height: '100%',
+                width: '100%',                 
+            }}
+        >
+            <Box
+                sx={{
+                    position: 'absolute',
+                    transform: 'translate(-50%, -50%)',
+                    left: '50%',
+                    top: '50%',
+                    bgcolor: 'white',
+                    borderRadius: 2,
+                    boxShadow: 24,
+                    padding: 5,
+                    zIndex: 2
+                }}
+            >
+                <Stack
+                    spacing={3}
+                    alignItems={'center'}
+                >                    
+                    <Typography>
+                        Είστε βέβαιοι ότι θέλετε να αποθηκευτούν οι αλλαγές;
+                    </Typography>
+                    <Stack
+                        direction={'row'}
+                        spacing={2}
+                    >
+                        <Button variant='contained' onClick={()=>props.save()}>
+                            Ναι
+                        </Button>
+                        <Button variant="outlined" color="error" onClick={()=>props.close(false)}>
+                            Ακυρωση
+                        </Button>
+                    </Stack>
+                </Stack>
+            </Box>
+        </Box>
+    )
+}
+
 const Product = () => {
     const {productId} = useParams();
     const isNew = !productId;
@@ -33,6 +78,7 @@ const Product = () => {
         dets: []
     });
     const [curCategory, setCurCategory] = useState(product ? product.tag : '')
+    const [popupShow, setPopupShow] = useState(false);
 
     const categories = [
         'wheelchairs',
@@ -101,6 +147,10 @@ const Product = () => {
             dets: details,
             desc: curDesc,
         }));
+        setPopupShow(true);        
+    }
+
+    const commitSave = async() => {
         if(changes.mainImg && changes.subs && changes.title && changes.subtitle && changes.category && changes.dets && changes.desc){           
             let response;
             if(isNew){
@@ -166,7 +216,10 @@ const Product = () => {
                 <Button variant='contained' onClick={handleSaveClick}>
                     Αποθηκευση
                 </Button>
-            </Box>              
+            </Box>       
+            {popupShow && (
+                <PopupBox save={commitSave} close={setPopupShow}/>
+            )}       
             <Paper sx={{ padding: 4 }}>
                 {product 
                 ?
