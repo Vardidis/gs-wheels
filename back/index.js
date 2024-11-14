@@ -69,3 +69,5 @@ app.listen(port, (error)=>{
         console.log("server live: port " + port);
     };
 });
+
+module.exports = app;
