@@ -1,7 +1,26 @@
 import React from "react";
 import { Box, Grid, Stack, Typography } from "@mui/material";
+import { useContext } from "react";
+import { Context } from "../Context";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const LifeCoaching = () => {
+    const {allTexts} = useContext(Context);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{               
+        if(allTexts.length > 0){
+            setLoading(false);
+        }
+    }, [allTexts])
+
+    if(loading){
+        return(
+            <>Loading...</>
+        )
+    }
+
     return(
         <Box sx={{
             height: '100vh',      
@@ -13,44 +32,37 @@ const LifeCoaching = () => {
                 <Typography variant='h5' fontWeight={600}>
                     Συμβουλευτική
                 </Typography>         
-                <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 5, border: '1px solid rgb(180, 180, 180)' }}>
+                <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 2, boxShadow: 4, border: '1px solid rgb(180, 180, 180)' }}>
                     <Typography>
-                        Στην εταιρία μας, κατανοούμε πλήρως ότι η ζωή με αναπηρία μπορεί να συνοδεύεται από μοναδικές προκλήσεις και δυσκολίες.
-                        Ωστόσο, πιστεύουμε ότι η αναπηρία δεν πρέπει να ορίζει τα πεπραγμένα ή τα όνειρα κανενός. Είμαστε εδώ για να σας στηρίξουμε,
-                        να σας εμπνεύσουμε και να σας βοηθήσουμε να ανακαλύψετε το πλήρες δυναμικό σας μέσω της υπηρεσίας μας Life Coaching για άτομα που ζουν με αναπηρία.
+                        {allTexts[7].placeText}
                     </Typography>          
                 </Box>
                 <Grid container rowSpacing={2} columnSpacing={2} justifyContent='center' sx={{ maxWidth: 1400 }}>
                     <Grid item xxs={12} md={6}>
-                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 5, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 2, boxShadow: 4, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography>
-                                Η υπηρεσία μας δεν είναι απλώς συνεδρίες συμβουλευτικής. Είναι ένα ταξίδι αυτογνωσίας, ανάπτυξης και οδήγησης προς την επίτευξη προσωπικών στόχων.
-                                Σε κάθε βήμα του ταξιδιού αυτού, σας παρέχουμε την απαραίτητη στήριξη και εργαλεία για να αναπτύξετε τις δεξιότητες σας,
-                                να ξεπεράσετε τους περιορισμούς σας και να βρείτε νέους τρόπους προσέγγισης για μια καλύτερη ποιότητα ζωής.
+                                {allTexts[7].items[0].text}
                             </Typography>          
                         </Box>
                     </Grid>
                     <Grid item xxs={12} md={6}>
-                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 5, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 2, boxShadow: 4, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography>
-                                Κατά τη διάρκεια των συνεδριών μας, λειτουργούμε ως συνοδοιπόροι στο ταξίδι σας. Σας ακούμε προσεκτικά, κατανοούμε τις προκλήσεις σας και σας βοηθούμε να καθορίσετε σαφείς στόχους.
-                                Με συνεχή συνομιλία, ερωτήσεις που σας καθοδηγούν στην αυτοανακάλυψη και στρατηγικές ανάπτυξης, βοηθούμε να ανακαλύψετε νέες δυνατότητες και να ξεπεράσετε τα εμπόδια που μπορεί να αντιμετωπίζετε.
+                                {allTexts[7].items[1].text}
                             </Typography>          
                         </Box> 
                     </Grid>
                     <Grid item xxs={12} md={6}>
-                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 5, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 2, boxShadow: 4, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography>
-                                Το Life Coaching δεν απευθύνεται μόνο σε άτομα με αναπηρία, αλλά επίσης στον οικογενειακό και φιλικό περίγυρο τους.
-                                Στόχος μας είναι να βοηθήσουμε όχι μόνο να αναπτύξετε την αυτοπεποίθησή σας και να διευρύνετε τα όρια σας, αλλά και να δημιουργήσετε μια ισχυρή συνείδηση του εαυτού σας.
-                                Είμαστε εδώ για να σας υποστηρίξουμε σε αυτήν την συναρπαστική πορεία της αυτογνωσίας και της ανάπτυξης, βοηθώντας σας να δημιουργήσετε μια ζωή που αντικατοπτρίζει πλήρως τις προσωπικές σας επιθυμίες και φιλοδοξίες.
+                                {allTexts[7].items[2].text}
                             </Typography>          
                         </Box>
                     </Grid>
                     <Grid item xxs={12} md={6}>
-                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 5, border: '1px solid rgb(180, 180, 180)' }}>
+                        <Box sx={{bgcolor: '#30343f', color: 'white', padding: 5, borderRadius: 2, boxShadow: 4, border: '1px solid rgb(180, 180, 180)' }}>
                             <Typography>
-                                Στόχος μας είναι να σας εμπνεύσουμε και να σας βοηθήσουμε να ανακαλύψετε το πλήρες δυναμικό σας, ανεξαρτήτως των προκλήσεων που ενδέχεται να αντιμετωπίζετε.
+                                {allTexts[7].items[3].text}
                             </Typography>          
                         </Box>   
                     </Grid>

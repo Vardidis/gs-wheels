@@ -4,6 +4,8 @@ import Basics from "./Basics";
 import CustomWheels from "./CustomWheels";
 import { styled } from '@mui/material/styles';
 import { useLocation } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../Context";
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -29,7 +31,9 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 const Training = () => {
+    const {allTexts} = useContext(Context);
     const [selection, setSelection] = useState(0);
+    const [loading, setLoading] = useState(true);
     const location = useLocation();
     const {anchor} = location.state || {};
 
@@ -41,7 +45,17 @@ const Training = () => {
         if(anchor){
             setSelection(anchor);
         }
-    }, [])
+
+        if(allTexts.length > 0){
+            setLoading(false);
+        }
+    }, [allTexts])
+
+    if(loading){
+        return(
+            <>Loading...</>
+        )
+    }
 
     return(
         <Box>             

@@ -8,8 +8,16 @@ const ContextProvider = (props) => {
     const [allProducts, setAllProducts] = useState([]);
     const [allMessages, setAllMessages] = useState([]);
     const [allImages, setAllImages] = useState([]);
+    const [allTexts, setAllTexts] = useState([]);        
 
-    const contextValue = {allProducts, endpoint, allMessages, allImages};    
+    const submitTexts = () => {
+        axios.post(`${process.env.REACT_APP_BACKEND}/submit-texts`, {texts: allTexts})
+        .then((response) => {                         
+            return response;
+        })
+    }
+
+    const contextValue = {allProducts, endpoint, allMessages, allImages, allTexts, setAllTexts, submitTexts};    
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_BACKEND}/api/all-products`)
@@ -24,12 +32,19 @@ const ContextProvider = (props) => {
 
         axios.get(`${process.env.REACT_APP_BACKEND}/uploads`)
         .then((response)=>{
-            let imagesPaths = []        
+            let imagesPaths = [];        
             response.data.map((data) => {
                 imagesPaths.push(data)
             })
             setAllImages(imagesPaths);
-        })
+        });
+
+        axios.get(`${process.env.REACT_APP_BACKEND}/api/all-texts`)
+        .then((response)=>{
+            if(response){               
+                setAllTexts(response.data);
+            }            
+        });
     }, []);
 
     return(

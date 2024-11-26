@@ -9,9 +9,10 @@ const messageSubmit = require('./api/submitMessage');
 const messagesFetch = require('./api/fetchMessages');
 const messageRead = require('./api/readMessage');
 const {fetchAllImages} = require('./api/fetchImages');
-
+const fetchAllTexts = require('./api/allTexts');
 const uploadImage = require('./controllers/uploadFile');
 const {deleteImage} = require('./controllers/deleteFile');
+const textUpdate = require('./controllers/editText');
 
 const app = express();
 app.use(express.json());
@@ -49,6 +50,7 @@ app.use('/api/all-products', productsFetch);
 app.use('/api/submit-message', messageSubmit);
 app.use('/api/all-messages', messagesFetch);
 app.use('/api/read-message', messageRead);
+app.use('/api/all-texts', fetchAllTexts);
 
 app.post('/upload-image', upload.single('image'), async(req, res) => {
     await uploadImage(req, res);
@@ -59,13 +61,21 @@ app.delete('/delete-image', async(req, res) => {
     await deleteImage(filename);
 });
 
-if (process.env.NODE_ENV === 'development') {
-    const port = 4300;
-    app.listen(port, (error)=>{
-        if(!error){
-            console.log("server live: port " + port);
-        };
-    });
-}
+app.post('/submit-texts', async(req, res) => {
+    const texts = req.body.texts;    
+    const resp = await textUpdate(texts);
+    
+    res.json({success: resp});
+
+})
+
+
+const port = 4300;
+app.listen(port, (error)=>{
+    if(!error){
+        console.log("server live: port " + port);
+    };
+});
+
 
 module.exports = app;

@@ -3,10 +3,17 @@ import { Box, Stack, Typography, Grid } from "@mui/material";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash } from '@fortawesome/free-solid-svg-icons';
 import TextWindow from "./TextWindow";
+import { useState } from "react";
+import { useContext } from "react";
+import { Context } from "../Context";
+import { useEffect } from "react";
 
 library.add(faHandshakeAngle, faBook, faWheelchairMove, faLinkSlash);
 
 const CustomWheels = () => {
+    const {allTexts} = useContext(Context);
+    const [loading, setLoading] = useState(true);
+
     const boxSets = {    
         color: '#30343f',  
         maxWidth: 1400,
@@ -17,19 +24,26 @@ const CustomWheels = () => {
         color: '#30343f'
     }
 
+    useEffect(()=>{               
+        if(allTexts.length > 0){
+            setLoading(false);
+        }
+    }, [allTexts])
+
+    if(loading){
+        return(
+            <>Loading...</>
+        )
+    }
+
     return(
         <Box sx={{  
             padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}
         }}>                       
             <Stack spacing={10} alignItems='center'>                        
-                <Box sx={{ color: 'white', padding: 5, maxWidth: 1400, bgcolor: '#30343f', borderRadius: 4, boxShadow: 8 }}>
+                <Box sx={{ color: 'white', padding: 5, maxWidth: 1400, bgcolor: '#30343f', borderRadius: 2, boxShadow: 8 }}>
                     <Typography>
-                        Η επιλογή ενός αναπηρικού αμαξιδίου που είναι απόλυτα προσαρμοσμένο στις
-                        ανάγκες και στις δυνατότητες του χρήστη είναι ίσως η πιο κρίσιμη απόφαση για την
-                        ποιότητα ζωής του. Ένα προσαρμοσμένο αμαξίδιο δεν είναι απλώς ένα μέσο
-                        μετακίνησης, αλλά ένα εργαλείο αυτονομίας και άνεσης, που διαμορφώνει την
-                        καθημερινότητα του ατόμου, μειώνοντας τον πόνο, βελτιώνοντας τη λειτουργικότητά
-                        του και προωθώντας την ανεξαρτησία του.
+                        {allTexts[5].placeText}
                     </Typography>               
                 </Box>                    
                 <Stack spacing={4} alignItems='center' sx={boxSets}>
@@ -46,16 +60,16 @@ const CustomWheels = () => {
                     </Typography>                                   
                     <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2} sx={{ maxWidth: 1400 }}>
                         <Grid item xs={12} md={6} xl={4}>
-                            <TextWindow title={'Άνεση και Αποτροπή Τραυματισμών'} text={'Ένα αμαξίδιο που δεν είναι προσαρμοσμένο μπορεί να προκαλέσει πληθώρα προβλημάτων υγείας. Για παράδειγμα, αν το κάθισμα είναι πολύ φαρδύ ή πολύ στενό, μπορεί να προκληθούν κατακλίσεις, πόνοι στους γλουτούς ή ακόμα και δυσκολίες στην κυκλοφορία του αίματος. Επίσης, αν η θέση του σώματος δεν είναι σωστά ευθυγραμμισμένη, μπορεί να δημιουργηθούν μυοσκελετικά προβλήματα και να αυξηθεί η σπαστικότητα​​.'}/>                        
+                            <TextWindow title={allTexts[5].items[0].title} text={allTexts[5].items[0].text}/>                        
                         </Grid>
                         <Grid item xs={12} md={6} xl={4}>
-                            <TextWindow title={'Ψυχολογική Ευεξία'} text={'Ένα αμαξίδιο που ταιριάζει τέλεια στον χρήστη, δεν είναι μόνο σωματική βοήθεια αλλά και ψυχολογική ενίσχυση. Όταν το άτομο αισθάνεται άνετα και ασφαλές στο αμαξίδιό του, μπορεί να ζει με περισσότερη αυτοπεποίθηση και αξιοπρέπεια. Το γεγονός ότι μπορεί να διαχειρίζεται μόνο του τη μετακίνησή του, μειώνει το άγχος και την ψυχολογική επιβάρυνση που προκαλεί η εξάρτηση από άλλους​​.'}/>                        
+                            <TextWindow title={allTexts[5].items[1].title} text={allTexts[5].items[1].text}/>                        
                         </Grid>
                         <Grid item xs={12} md={6} xl={4}>
-                            <TextWindow title={'Λειτουργικότητα και Εργονομία'} text={'Ένα προσαρμοσμένο αμαξίδιο βοηθά στη σωστή στήριξη του σώματος και την εργονομική θέση, επιτρέποντας στον χρήστη να κινείται πιο αποτελεσματικά και με λιγότερη κόπωση. Η σωστή εφαρμογή των διαστάσεων (βάθος και πλάτος καθίσματος, ύψος πλάτης, κέντρο βάρους) είναι καθοριστική για την ευκολία χρήσης και την ελευθερία κινήσεων​.'}/>                                                
+                            <TextWindow title={allTexts[5].items[2].title} text={allTexts[5].items[2].text}/>                                                
                         </Grid>
                         <Grid item xs={12} md={6} xl={4}>
-                            <TextWindow title={'Αυτονομία και Ανεξαρτησία'} text={'Όταν το αμαξίδιο είναι προσαρμοσμένο στις ατομικές ανάγκες του χρήστη, διευκολύνει τις καθημερινές του δραστηριότητες, μειώνοντας την εξάρτηση από άλλους. Αυτό του επιτρέπει να εκτελεί βασικές κινήσεις, όπως η μεταφορά από το αμαξίδιο στο κρεβάτι ή στο αυτοκίνητο, με μεγαλύτερη ευκολία και ασφάλεια​.'}/>                                                
+                            <TextWindow title={allTexts[5].items[3].title} text={allTexts[5].items[3].text}/>                                                
                         </Grid>                      
                     </Grid>                                
                 </Stack>    
@@ -69,13 +83,13 @@ const CustomWheels = () => {
                     </Typography>                                       
                     <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2} sx={{ maxWidth: 1400 }}>
                         <Grid item xs={12} md={6} lg={4}>
-                            <TextWindow title={'Εξατομικευμένα Αναπηρικά Αμαξίδια'} text={'Ο πρώτος πυλώνας της GS Wheelchairs είναι η παροχή εξατομικευμένων αμαξιδίων που κατασκευάζονται στα μέτρα του χρήστη. Κάθε αμαξίδιο προσαρμόζεται με ακρίβεια στις αναλογίες και στις ανάγκες του χρήστη, λαμβάνοντας υπόψη τη φύση της αναπηρίας του, την καθημερινότητά του και την ψυχοσωματική του κατάσταση​. Ένα τέτοιο αμαξίδιο δεν είναι απλώς ένα εργαλείο μεταφοράς αλλά ένα μέσο που ενισχύει την ανεξαρτησία και την άνεση, επιτρέποντας στο άτομο να απολαμβάνει καλύτερη ποιότητα ζωής.'}/>                        
+                            <TextWindow title={allTexts[5].items2[0].title} text={allTexts[5].items2[0].text}/>                        
                         </Grid>
                         <Grid item xs={12} md={6} lg={4}>
-                            <TextWindow title={'Λειτουργική Αποκατάσταση'} text={'Ο δεύτερος πυλώνας της GS Wheelchairs είναι η εκπαίδευση στη λειτουργική αποκατάσταση, η οποία προϋποθέτει ότι το αμαξίδιο είναι απόλυτα προσαρμοσμένο στο σώμα και στις δεξιότητες του χρήστη. Μέσα από την εκπαίδευση, οι χρήστες μαθαίνουν πώς να χειρίζονται το αμαξίδιό τους με τον καλύτερο δυνατό τρόπο, να διαχειρίζονται σωστά το σώμα τους και να αναπτύσσουν τεχνικές για ασφαλείς και άνετες μετακινήσεις​.'}/>                        
+                            <TextWindow title={allTexts[5].items2[1].title} text={allTexts[5].items2[1].text}/>                        
                         </Grid>
                         <Grid item xs={12} md={6} lg={4}>
-                            <TextWindow title={'Ψυχοκοινωνική Στήριξη'} text={'Ένα αμαξίδιο που προσφέρει άνεση και αυτονομία έχει τεράστιο αντίκτυπο στην ψυχολογική και κοινωνική ζωή του χρήστη. Ο τρίτος πυλώνας της GS Wheelchairs, η ψυχοκοινωνική στήριξη, βασίζεται στην ιδέα ότι η αυτονομία που προσφέρει το αμαξίδιο ενδυναμώνει τον χρήστη ψυχολογικά, βελτιώνει την κοινωνική του ενσωμάτωση και μειώνει τα εμπόδια που συναντά στην καθημερινότητά του​​.'}/>                                               
+                            <TextWindow title={allTexts[5].items2[2].title} text={allTexts[5].items2[2].text}/>                                               
                         </Grid>
                     </Grid>              
                 </Stack>    
@@ -85,13 +99,13 @@ const CustomWheels = () => {
                     </Typography> 
                     <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2} sx={{ maxWidth: 1400 }}>
                         <Grid item xs={12} md={6} lg={4}>
-                            <TextWindow title={'Απόλυτη Ελευθερία Κίνησης'} text={'Το αμαξίδιο γίνεται επέκταση του σώματος του χρήστη, επιτρέποντάς του να κινείται με ευκολία σε κάθε περιβάλλον.'}/>                        
+                            <TextWindow title={allTexts[5].items3[0].title} text={allTexts[5].items3[0].text}/>                        
                         </Grid>
                         <Grid item xs={12} md={6} lg={4}>
-                            <TextWindow title={'Καλύτερη Ποιότητα Ζωής'} text={'Μειώνοντας τον πόνο και τη δυσφορία, το προσαρμοσμένο αμαξίδιο δίνει στο άτομο τη δυνατότητα να απολαμβάνει την καθημερινότητα χωρίς περιορισμούς​.'}/>                        
+                            <TextWindow title={allTexts[5].items3[1].title} text={allTexts[5].items3[1].text}/>                        
                         </Grid>
                         <Grid item xs={12} md={6} lg={4}>
-                            <TextWindow title={'Αυξημένη Ανεξαρτησία'} text={'Η δυνατότητα να χειρίζεται το αμαξίδιό του αυτόνομα δίνει στο άτομο την ευκαιρία να ζει χωρίς να εξαρτάται από άλλους για τη μετακίνησή του​.'}/>                                              
+                            <TextWindow title={allTexts[5].items3[2].title} text={allTexts[5].items3[2].text}/>                                              
                         </Grid>                        
                     </Grid>                            
                     <Typography>

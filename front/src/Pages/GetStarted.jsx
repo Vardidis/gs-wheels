@@ -7,6 +7,10 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import wheels from '../assets/wheelchairs.png';
 import { Link } from 'react-router-dom';
+import { useContext } from "react";
+import { Context } from "../Components/Context";
+import { useState } from "react";
+import { useEffect } from "react";
 
 library.add(faPhone, faEnvelope, faLocationDot);
 
@@ -44,6 +48,21 @@ const ColorBox = (props) => {
 }
 
 const GetStarted = () => {
+    const {allTexts} = useContext(Context);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=> {
+        if(allTexts.length > 0){
+            setLoading(false);
+        }
+    }, [allTexts]);
+
+    if(loading){
+        return(
+            <>Loading...</>
+        )
+    }
+
     return(
         <Box sx={{
             textAlign: 'center',            
@@ -70,8 +89,8 @@ const GetStarted = () => {
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 235, 240)'}
-                                title={'Εξατομικευμένα Αναπηρικά Αμαξίδια'}
-                                text={'Στη GS Wheelchairs γνωρίζουμε ότι κάθε άτομο είναι διαφορετικό, και οι ανάγκες του ξεχωριστές. Για τον λόγο αυτό ειδικευόμαστε στην κατασκευή προσαρμοσμένων αναπηρικών αμαξιδίων, σχεδιασμένων αποκλειστικά για τις ανάγκες του κάθε ατόμου...'}
+                                title={allTexts[0].items[0].title}
+                                text={allTexts[0].items[0].text}
                                 link={'/service/education'}
                                 anchor={1}
                             />                        
@@ -79,24 +98,24 @@ const GetStarted = () => {
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 230, 245)'}
-                                title={'Ψυχοκοινωνική Στήριξη'}
-                                text={'Προσφέρουμε υπηρεσίες Life Coaching και Εκπαίδευσης σε θέματα αυτονομίας, από πιστοποιημένο εκπαιδευτή στη Σουηδία για άτομα με αναπηρία, και ειδικά για τραυματισμούς στην σπονδυλική στήλη...'}
+                                title={allTexts[0].items[1].title}
+                                text={allTexts[0].items[1].text}
                                 link={'/service/life-coaching'}
                             />                             
                         </Grid>
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 225, 230)'}
-                                title={'Προσαρμογή Χώρου'}
-                                text={'Επιπλέον, προσφέρουμε λύσεις για την προσαρμογή του εσωτερικού και εξωτερικού χώρου σας, παρέχοντας ιδέες και προτάσεις που θα βελτιώσουν το περιβάλλον σας. Αντιμετωπίζουμε τις προκλήσεις που συνοδεύουν την αναπηρία με εξειδικευμένες υπηρεσίες...'}
+                                title={allTexts[0].items[2].title}
+                                text={allTexts[0].items[2].text}
                                 link={'/service/interior-design'}
                             />                            
                         </Grid>
                         <Grid item xs={12} md={5}>
                             <ColorBox
                                 color={'rgb(240, 225, 250)'}
-                                title={'Εκπαίδευση στη Λειτουργική Αποκατάσταση'}
-                                text={'Η εμπειρία μας ως άνθρωποι που ζουν σε συνθήκες αναπηρίας μας επιτρέπει να κατανοούμε πλήρως τις ανάγκες σας. Το Customize Your Life αποτελεί τη δέσμευσή μας για μια καλύτερη ποιότητα ζωής, πλήρως προσαρμοσμένη στις δικές σας ανάγκες...'}
+                                title={allTexts[0].items[3].title}
+                                text={allTexts[0].items[3].text}
                                 link={'/service/apokatastasi'}
                                 anchor={0}
                             />                           

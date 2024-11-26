@@ -1,25 +1,44 @@
 import { Grid, Box } from "@mui/material";
 import React from "react";
 import TextWindow from "./TextWindow";
+import { useContext } from "react";
+import { Context } from "../Context";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const Basics = () => {
+    const {allTexts} = useContext(Context);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(()=>{               
+        if(allTexts.length > 0){
+            setLoading(false);
+        }
+    }, [allTexts])
+
+    if(loading){
+        return(
+            <>Loading...</>
+        )
+    }
+
     return(
         <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, display: 'flex', justifyContent: 'center' }}>                                 
             <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ maxWidth: 1400 }}>
                 <Grid item xs={12} md={6} lg={4}>
-                    <TextWindow title={'Διαχείριση Σώματος'} text={'Μέσω εξειδικευμένων ασκήσεων και υποστήριξης, στοχεύουμε στη βελτίωση της κινητικότητας, της δύναμης και της ευελιξίας, βοηθώντας έτσι στη διαχείριση του σώματος. Το να μάθουμε τον τρόπο που θα διαχειριζόμαστε το σώμα μας σε όλες της καταστάσεις είναι το πιο σημαντικό κομμάτι του παζλ της αυτονομίας μας.'}/>
+                    <TextWindow title={allTexts[4].items[0].title} text={allTexts[4].items[0].text}/>
                 </Grid>
                 <Grid item xs={12} md={6} lg={4}>
-                    <TextWindow title={'Καθιστή θέση (Seating position)'} text={'Μέσω εξειδικευμένης αξιολόγησης και ρύθμισης της θέσης καθίσματος, στοχεύουμε στην εξασφάλιση της σωστής στήριξης και ευκολίας κίνησης ενώ παράλληλα προλαμβάνουμε τυχόν τραυματισμούς στα άνω άκρα και την ωμική ζώνη. Πολύ σημαντικό είναι σωστή κατανομή πίεσης στο αμαξίδιο μας για την αποφυγή κατακλίσεων και μείωση της σπαστικότητας.'}/> 
+                    <TextWindow title={allTexts[4].items[1].title} text={allTexts[4].items[1].text}/> 
                 </Grid>
                 <Grid item xs={12} md={6} lg={4}>
-                    <TextWindow title={'Προσωπική Υγιεινή'} text={'Παρέχουμε συμβουλευτική και υποστήριξη σε θέματα προσωπικής υγιεινής, βοηθώντας τους ανθρώπους με αναπηρία να διατηρήσουν την αξιοπρέπειά τους και να διασφαλίσουν τη φροντίδα του εαυτού τους με ασφάλεια και άνεση. Η σωστή εκκένωση της ουροδόχου κύστης και του εντέρου συμβάλει στην μακροζωία και την ποιότητα ζωής.'}/> 
+                    <TextWindow title={allTexts[4].items[2].title} text={allTexts[4].items[2].text}/> 
                 </Grid>
                 <Grid item xs={12} md={6} lg={4}>
-                    <TextWindow title={'Χειρισμός Αναπηρικού Καθίσματος'} text={'Προσφέρουμε εξειδικευμένη εκπαίδευση στον χειρισμό αναπηρικού καθίσματος, συμπεριλαμβανομένης της προσαρμογής και της σωστής καθιστής θέσης, προκειμένου να επιτευχθεί η μέγιστη λειτουργικότητα και άνεση.'}/> 
+                    <TextWindow title={allTexts[4].items[3].title} text={allTexts[4].items[3].text}/> 
                 </Grid>                                    
                 <Grid item xs={12} md={6} lg={4}>
-                    <TextWindow title={'Τεχνικές Μεταφορών'} text={'Παρέχουμε εκπαίδευση και υποστήριξη σε τεχνικές μεταφορών που επιτρέπουν στους χρήστες να μετακινούνται με άνεση και πάνω από όλα ασφάλεια, είτε μέσω αναπηρικού αμαξιδίου είτε με άλλα μέσα.'}/> 
+                    <TextWindow title={allTexts[4].items[4].title} text={allTexts[4].items[4].text}/> 
                 </Grid>                         
             </Grid>                                                                                                                        
         </Box>          
