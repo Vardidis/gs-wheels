@@ -4,13 +4,13 @@ import { Grid } from "@mui/material";
 
 const ProductMenu = (props) => {
     return(
-        <Grid container sx={{ gap: 2, padding: 5, paddingBottom: 20, justifyContent: 'center' }}>
+        <Grid container columnGap={2} rowGap={2} justifyContent={'center'} sx={{ padding: '32px 0px' }}>
             {props.items.map((item, index) => {                                
                 return(
-                    <Grid item key={item._id} sx={{ maxWidth: 350, height: 'fit-content', marginBottom: 3 }}>                            
+                    <Grid item key={item._id} xs={12} sm={5} sx={{ marginBottom: 3 }}>                            
                         <ProductItem item={item} index={item._id} key={index}/>                             
                     </Grid>
-                )
+                );
             })}
         </Grid>       
     )

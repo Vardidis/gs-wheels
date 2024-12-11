@@ -1,4 +1,4 @@
-import { Box, Stack, Tabs, Tab } from "@mui/material";
+import { Box, Stack, Tabs, Tab, Skeleton } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Basics from "./Basics";
 import CustomWheels from "./CustomWheels";
@@ -6,6 +6,7 @@ import { styled } from '@mui/material/styles';
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../Context";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -31,11 +32,11 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 const Training = () => {
-    const {allTexts} = useContext(Context);
-    const [selection, setSelection] = useState(0);
-    const [loading, setLoading] = useState(true);
+    const [selection, setSelection] = useState(0);    
     const location = useLocation();
     const {anchor} = location.state || {};
+    const {allTexts} = useContext(Context);
+    const [loading, setLoading] = useState(true);
 
     const handleSecChange = (newValue) => {
         setSelection(newValue);
@@ -53,7 +54,11 @@ const Training = () => {
 
     if(loading){
         return(
-            <>Loading...</>
+            <Grid2 container>
+                <Grid2 item>
+                    <Skeleton variant="rectangular" sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                </Grid2>
+            </Grid2>
         )
     }
 

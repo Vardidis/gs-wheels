@@ -1,6 +1,6 @@
 import React from "react";
 import './Pages.css';
-import { Stack, Box, Typography, keyframes, Grid } from "@mui/material";
+import { Stack, Box, Typography, keyframes, Grid, Skeleton } from "@mui/material";
 import logo from '../assets/logo.png';
 import GsButton from "../Components/GsButton";
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -11,6 +11,7 @@ import { useContext } from "react";
 import { Context } from "../Components/Context";
 import { useState } from "react";
 import { useEffect } from "react";
+import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 
 library.add(faPhone, faEnvelope, faLocationDot);
 
@@ -57,12 +58,6 @@ const GetStarted = () => {
         }
     }, [allTexts]);
 
-    if(loading){
-        return(
-            <>Loading...</>
-        )
-    }
-
     return(
         <Box sx={{
             textAlign: 'center',            
@@ -85,42 +80,61 @@ const GetStarted = () => {
             </Box>               
             <Box sx={{ paddingTop: 7, display: 'flex', justifyContent: 'center' }}>
                 <Stack spacing={2} alignItems='center'>
-                    <Grid container spacing={2} rowSpacing={2} justifyContent='center' sx={{ animation: `${fadeIn} 1s ease-in-out`, padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, maxWidth: 1400, display: 'flex', alignItems: 'stretch' }}>                                                         
-                        <Grid item xs={12} md={5}>
-                            <ColorBox
-                                color={'rgb(240, 235, 240)'}
-                                title={allTexts[0].items[0].title}
-                                text={allTexts[0].items[0].text}
-                                link={'/service/education'}
-                                anchor={1}
-                            />                        
-                        </Grid>
-                        <Grid item xs={12} md={5}>
-                            <ColorBox
-                                color={'rgb(240, 230, 245)'}
-                                title={allTexts[0].items[1].title}
-                                text={allTexts[0].items[1].text}
-                                link={'/service/life-coaching'}
-                            />                             
-                        </Grid>
-                        <Grid item xs={12} md={5}>
-                            <ColorBox
-                                color={'rgb(240, 225, 230)'}
-                                title={allTexts[0].items[2].title}
-                                text={allTexts[0].items[2].text}
-                                link={'/service/interior-design'}
-                            />                            
-                        </Grid>
-                        <Grid item xs={12} md={5}>
-                            <ColorBox
-                                color={'rgb(240, 225, 250)'}
-                                title={allTexts[0].items[3].title}
-                                text={allTexts[0].items[3].text}
-                                link={'/service/apokatastasi'}
-                                anchor={0}
-                            />                           
-                        </Grid>                                                                            
-                    </Grid>     
+                    {loading ? 
+                        (
+                            <Grid2 container rowGap={2} columnGap={2} sx={{ justifyContent: 'center' }}>
+                                <Grid2 item size={6}>
+                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                </Grid2>
+                                <Grid2 item size={6}>
+                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                </Grid2>
+                                <Grid2 item size={6}>
+                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                </Grid2>
+                                <Grid2 item size={6}>
+                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                </Grid2>
+                            </Grid2>
+                        )
+                    : (
+                        <Grid container spacing={2} rowSpacing={2} justifyContent='center' sx={{ animation: `${fadeIn} 1s ease-in-out`, padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, maxWidth: 1400, display: 'flex', alignItems: 'stretch' }}>                                                         
+                            <Grid item xs={12} md={5}>
+                                <ColorBox
+                                    color={'rgb(240, 235, 240)'}
+                                    title={allTexts[0].items[0].title}
+                                    text={allTexts[0].items[0].text}
+                                    link={'/service/education'}
+                                    anchor={1}
+                                />                        
+                            </Grid>
+                            <Grid item xs={12} md={5}>
+                                <ColorBox
+                                    color={'rgb(240, 230, 245)'}
+                                    title={allTexts[0].items[1].title}
+                                    text={allTexts[0].items[1].text}
+                                    link={'/service/life-coaching'}
+                                />                             
+                            </Grid>
+                            <Grid item xs={12} md={5}>
+                                <ColorBox
+                                    color={'rgb(240, 225, 230)'}
+                                    title={allTexts[0].items[2].title}
+                                    text={allTexts[0].items[2].text}
+                                    link={'/service/interior-design'}
+                                />                            
+                            </Grid>
+                            <Grid item xs={12} md={5}>
+                                <ColorBox
+                                    color={'rgb(240, 225, 250)'}
+                                    title={allTexts[0].items[3].title}
+                                    text={allTexts[0].items[3].text}
+                                    link={'/service/apokatastasi'}
+                                    anchor={0}
+                                />                           
+                            </Grid>                                                                            
+                        </Grid>     
+                    )}
                     <GsButton/>
                 </Stack>
             </Box>

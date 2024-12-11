@@ -18,7 +18,7 @@ const ProductItem = (props) => {
     return(
         <Link to={`/product/${props.index}`} style={{ textDecoration: 'none', color: 'white' }}>
             <Box sx={{ boxShadow: 12, cursor: 'pointer', borderRadius: 2, padding: 0.5, bgcolor: '#30343f', animation: `${fadeIn} 1s ease-in-out` }}>               
-                <img src={props.item.thumbnail} alt='' style={{ width: '100%', borderRadius:5 }}/>
+                <img src={props.item.thumbnail} alt='' style={{ width: '100%', borderRadius:5, maxHeight: 250, objectFit: 'cover' }}/>
                 <Stack>             
                     <Box sx={{ padding: 1 }}>
                         <Stack>

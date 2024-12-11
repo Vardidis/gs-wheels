@@ -29,7 +29,7 @@ const Products = () => {
 
         return(
             <Box>            
-                <Box sx={{ padding: 5, height: '100%' }}>                                                           
+                <Box sx={{ margin: '32px 8px'}}>                       
                     <Stack spacing={{lg: 4, md: 4}} alignItems='center'>
                         <CategoryMenu tag={category}/>         
                         {category === 'wheelchairs' &&
