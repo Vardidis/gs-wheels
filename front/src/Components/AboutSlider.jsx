@@ -185,7 +185,7 @@ const AboutSlider = () => {
                                 sx={{
                                     color: mainValue === 0 ? 'white' : '#30343f',
                                     bgcolor: mainValue === 0 ? '#30343f' : 'transparent',
-                                    boxShadow: mainValue === 0 ? 8 : 4,
+                                    boxShadow: mainValue === 0 ? 8 : 3,
                                     padding: '12px 32px',
                                     borderRadius: 20,
                                     maxWidth: 125,
@@ -207,7 +207,7 @@ const AboutSlider = () => {
                                 sx={{
                                     color: mainValue === 1 ? 'white' : '#30343f',
                                     bgcolor: mainValue === 1 ? '#30343f' : 'transparent',
-                                    boxShadow: mainValue === 1 ? 8 : 4,                                  
+                                    boxShadow: mainValue === 1 ? 8 : 3,                                  
                                     padding: '12px 32px',
                                     borderRadius: 20,
                                     maxWidth: 125,
@@ -233,19 +233,67 @@ const AboutSlider = () => {
                                     justifyContent={'end'}
                                 >
                                     <Grid item>
-                                        <Box onClick={()=>{showVideo()}} sx={{ border: '1px solid #30343f', bgcolor: vidOpen ? '#30343f' : 'transparent', color: vidOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
-                                            <Typography>
-                                                Προβολή βίντεο
-                                            </Typography>
-                                            <PlayArrowIcon/>               
+                                        <Box
+                                            onClick={()=>{showVideo()}}
+                                            sx={{
+                                                border: '1px solid #30343f',
+                                                bgcolor: vidOpen ? '#30343f' : 'transparent',
+                                                color: vidOpen ? 'white' : '#30343f',
+                                                borderRadius: 10,
+                                                padding: 1,
+                                                paddingLeft: 2,
+                                                paddingRight: 2,
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center',
+                                                cursor: 'pointer',
+                                                boxShadow: vidOpen ? 8 : 3
+                                            }}
+                                            >
+                                            <Stack
+                                                direction={'row'}
+                                                spacing={0.5}
+                                                alignItems={'center'}
+                                            >
+                                                <Typography
+                                                    fontSize={15}
+                                                >
+                                                    Προβολή βίντεο
+                                                </Typography>
+                                                <PlayArrowIcon ontSize={'small'}/>           
+                                            </Stack>    
                                         </Box>      
                                     </Grid>
                                     <Grid item>
-                                        <Box onClick={()=>{showBio()}} sx={{ border: '1px solid #30343f', bgcolor: bioOpen ? '#30343f' : 'transparent', color: bioOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
-                                            <Typography>
-                                                Προβολή βιογραφικού
-                                            </Typography>
-                                            <PortraitIcon/>            
+                                        <Box
+                                            onClick={()=>{showBio()}}
+                                            sx={{
+                                                border: '1px solid #30343f',
+                                                bgcolor: bioOpen ? '#30343f' : 'transparent',
+                                                color: bioOpen ? 'white' : '#30343f',
+                                                borderRadius: 10,
+                                                padding: 1,
+                                                paddingLeft: 2,
+                                                paddingRight: 2,
+                                                display: 'flex',
+                                                justifyContent: 'space-between',
+                                                alignItems: 'center',
+                                                cursor: 'pointer',
+                                                boxShadow: bioOpen ? 8 : 3
+                                            }}
+                                        >            
+                                            <Stack
+                                                direction={'row'}
+                                                spacing={0.5}
+                                                alignItems={'center'}
+                                            >
+                                                <Typography
+                                                    fontSize={15}
+                                                >
+                                                    Προβολή βιογραφικού
+                                                </Typography>
+                                                <PortraitIcon fontSize={'small'}/>    
+                                            </Stack>        
                                         </Box>      
                                     </Grid>                                                            
                                 </Grid>
@@ -398,9 +446,9 @@ const AboutSlider = () => {
                             </Stack>
                         </Box>
                     :
-                    <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1} }}>                                 
-                        <Grid container justifyContent='center' rowSpacing={5} columnSpacing={5} sx={{ display: 'flex', alignItems: 'stretch' }}>
-                            <Grid item xs={12} md={8} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                    
+                    <Box sx={{ width: '100%' }}>                                 
+                        <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ display: 'flex', alignItems: 'stretch' }}>
+                            <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                    
                                 <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 5, boxShadow: 12, minHeight: 200 }}>                          
                                     <Stack spacing={2}>     
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
@@ -435,7 +483,7 @@ const AboutSlider = () => {
                                     </Stack>
                                 </Paper>                             
                             </Grid>
-                            <Grid item xs={12} md={8} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                        
+                            <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                        
                                 <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 5, boxShadow: 12 }}>                                        
                                     <Stack spacing={2}>     
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
