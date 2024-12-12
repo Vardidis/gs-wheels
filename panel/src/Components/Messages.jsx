@@ -1,6 +1,6 @@
 import React , { useState } from "react";
 import './Components.css';
-import { Box, Stack, Typography, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
+import { Box, Stack, Typography, Paper, Table, TableBody, TableCell, Grid, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import { useContext } from "react";
@@ -63,96 +63,131 @@ const Messages = () => {
     }
 
     return(
-        <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3, height: '100vh' }}>
-            <Stack spacing={5}>     
+        <Box
+            sx={{                             
+                margin: '64px 16px',
+                display: 'flex',
+                justifyContent: 'center'
+            }}>
+            <Stack
+                spacing={3}
+                alignItems={'stretch'}
+                sx={{
+                    width: '100%',
+                    maxWidth: 1400
+                }}
+            >
                 <Typography fontSize={24} fontWeight={600}>
                     Μηνύματα ( {unread}/{allMessages.length} )              
                 </Typography>
-                <Stack direction='row' spacing={3}>                       
-                    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
-                        <TableContainer sx={{ maxHeight: 440 }}>
-                            <Table stickyHeader aria-label="sticky table">
-                            <TableHead>
-                                <TableRow>
-                                {columns.map((column, index) => (
-                                    <StyledTableCell
-                                        key={index}
-                                        align={column.align}
-                                        style={{ minWidth: column.minWidth }}
-                                    >
-                                        {column.label}
-                                    </StyledTableCell>
-                                ))}
-                                </TableRow>
-                            </TableHead>
-                            {allMessages.length > 0
-                            ? <TableBody>                            
-                                {allMessages
-                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                .reverse()
-                                .map((message) => {                                                             
-                                    return (                                        
-                                        <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message._id} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white', cursor: 'pointer' }}>                               
-                                            {columns.map((column) => {
-                                            const value = message[column.id];                                    
-                                            return (
-                                                <TableCell key={column.id} align={column.align}>
-                                                {column.format && typeof value === 'number'
-                                                    ? column.format(value)
-                                                    : value}
-                                                </TableCell>
-                                            );
-                                            })}
-                                        </TableRow>
-                                    );
-                                })}
-                            </TableBody>
-                            : <TableBody>  
-                                <Box sx={{ display: 'flex', justifyContent: 'center', p: 1 }}>
-                                    Δεν υπάρχουν διαθέσιμα μηνύματα
-                                </Box>                            
-                            </TableBody>
+                <Grid container
+                    rowGap={2}
+                    columnGap={2}
+                    justifyContent={'center'}
+                    sx={{
+                        width: '100%'
+                    }}
+                >    
+                    <Grid item
+                        xxs={12}
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={5}
+                    >                                        
+                        <Paper sx={{ overflow: 'hidden' }}>
+                            <TableContainer>
+                                <Table stickyHeader aria-label="sticky table">
+                                <TableHead>
+                                    <TableRow>
+                                    {columns.map((column, index) => (
+                                        <StyledTableCell
+                                            key={index}
+                                            align={column.align}
+                                            style={{ minWidth: column.minWidth }}
+                                        >
+                                            {column.label}
+                                        </StyledTableCell>
+                                    ))}
+                                    </TableRow>
+                                </TableHead>
+                                {allMessages.length > 0
+                                ? <TableBody>                            
+                                    {allMessages
+                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                    .reverse()
+                                    .map((message) => {                                                             
+                                        return (                                        
+                                            <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message._id} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white', cursor: 'pointer' }}>                               
+                                                {columns.map((column) => {
+                                                const value = message[column.id];                                    
+                                                return (
+                                                    <TableCell key={column.id} align={column.align}>
+                                                    {column.format && typeof value === 'number'
+                                                        ? column.format(value)
+                                                        : value}
+                                                    </TableCell>
+                                                );
+                                                })}
+                                            </TableRow>
+                                        );
+                                    })}
+                                </TableBody>
+                                : <TableBody>  
+                                    <Box sx={{  }}>
+                                        Δεν υπάρχουν διαθέσιμα μηνύματα
+                                    </Box>                            
+                                </TableBody>
+                                }
+                                </Table>
+                            </TableContainer>
+                            <TablePagination
+                                rowsPerPageOptions={[10, 25, 100]}
+                                component="div"
+                                count={allMessages.length}
+                                rowsPerPage={rowsPerPage}
+                                page={page}
+                                onPageChange={handleChangePage}
+                                onRowsPerPageChange={handleChangeRowsPerPage}
+                            />
+                        </Paper>       
+                    </Grid>
+                    <Grid item
+                        xxs={12}
+                        xs={12}
+                        sm={12}
+                        md={12}
+                        lg={5}
+                    >
+                        <Paper>
+                            {selectedMessage &&
+                                <Box>
+                                    <Stack>
+                                        <Stack direction='row' justifyContent='space-between' sx={{ boxShadow: 2, padding: 2, bgcolor: '#30343f', color: 'white',  alignItems: 'center' }}>
+                                            <Typography fontSize={14} fontWeight={600}>
+                                                {selectedMessage.name}
+                                            </Typography>
+                                            <Typography fontSize={12}>
+                                                {selectedMessage.date}
+                                            </Typography>
+                                            <Stack spacing={0}>
+                                                <Typography fontSize={12}>
+                                                    {selectedMessage.email}
+                                                </Typography> 
+                                                <Typography fontSize={12}>
+                                                    {selectedMessage.tel}
+                                                </Typography> 
+                                            </Stack>                                                                    
+                                        </Stack>            
+                                        <Typography sx={{ padding: 2 }}>
+                                            {selectedMessage.text}
+                                        </Typography>
+                                    </Stack>                                
+                                </Box>
                             }
-                            </Table>
-                        </TableContainer>
-                        <TablePagination
-                            rowsPerPageOptions={[10, 25, 100]}
-                            component="div"
-                            count={allMessages.length}
-                            rowsPerPage={rowsPerPage}
-                            page={page}
-                            onPageChange={handleChangePage}
-                            onRowsPerPageChange={handleChangeRowsPerPage}
-                        />
-                    </Paper>       
-                    <Paper sx={{ width: 900, overflowY: 'auto' }}>
-                        {selectedMessage &&
-                            <Box>
-                                <Stack>
-                                    <Stack direction='row' justifyContent='space-between' sx={{ boxShadow: 2, padding: 2, bgcolor: '#30343f', color: 'white',  alignItems: 'center' }}>
-                                        <Typography fontSize={14} fontWeight={600}>
-                                            {selectedMessage.name}
-                                        </Typography>
-                                        <Typography fontSize={12}>
-                                            {selectedMessage.date}
-                                        </Typography>
-                                        <Stack spacing={0}>
-                                            <Typography fontSize={12}>
-                                                {selectedMessage.email}
-                                            </Typography> 
-                                            <Typography fontSize={12}>
-                                                {selectedMessage.tel}
-                                            </Typography> 
-                                        </Stack>                                                                    
-                                    </Stack>            
-                                    <Typography sx={{ padding: 2 }}>
-                                        {selectedMessage.text}
-                                    </Typography>
-                                </Stack>                                
-                            </Box>
-                        }
-                    </Paper>         
-                </Stack>            
+                        </Paper>         
+                    </Grid>
+                </Grid>            
             </Stack>
         </Box>
     );

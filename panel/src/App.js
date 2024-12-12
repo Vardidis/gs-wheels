@@ -13,12 +13,10 @@ function App() {
     <BrowserRouter>
       <Stack>                      
         <SideMenu/>
-        <Box component="main" sx={{                           
-          width: '100%',
-          overflowY: 'auto',         
-          bgcolor: '#f8f8f8',  
-          marginTop: 8       
-        }}>      
+        <Box component="main"
+          sx={{                                         
+            bgcolor: '#f8f8f8'              
+          }}>      
           <Routes>
             <Route path="/" element={<Eshop/>}/>
             <Route path="/messages" element={<Messages/>}/>

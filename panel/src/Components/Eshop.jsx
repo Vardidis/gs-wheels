@@ -10,7 +10,13 @@ const Eshop = () => {
 
     if(allProducts.length > 0){
         return(
-            <Box sx={{  paddingLeft: 10, paddingRight: 10, marginTop: 3 }}>
+            <Box
+                sx={{
+                    margin: '64px 16px',
+                    display: 'flex',
+                    justifyContent: 'center'
+                }}
+            >
                 <Stack spacing={5}>   
                     <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                         <Typography fontSize={24} fontWeight={600}>

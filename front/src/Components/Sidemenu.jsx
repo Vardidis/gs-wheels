@@ -10,7 +10,7 @@ const Sidemenu = (props) => {
     return(
         <Box component="section" sx={{ 
             width: {lg: '200px', md: '200px', sm: '50px', xs: '50px', xxs: '50px'},
-            height: '100%',        
+            height: '100%',
             boxShadow: 4,
             backgroundColor: 'rgb(235, 235, 240)', 
             flexShrink: 0,

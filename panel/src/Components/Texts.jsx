@@ -1,8 +1,12 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Box, Button, Stack, TextField, Typography, Popper, Fade, Paper } from '@mui/material';
+import { Box, Button, Stack, Grid, TextField, Typography, Popper, Fade, Paper } from '@mui/material';
 import Grid2 from '@mui/material/Unstable_Grid2/Grid2';
 import { Context } from './Context';
 import { useNavigate } from "react-router-dom";
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHouse, faAddressCard, faGraduationCap } from '@fortawesome/free-solid-svg-icons';
+library.add(faHouse, faAddressCard, faGraduationCap);
 
 const TitleBox = ({title, text, func, setFunc, index}) => {
   const handleChange = (e, tag) => {
@@ -272,12 +276,11 @@ const Texts = () => {
 
   return (
     <Box
-        sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            marginTop: 3,
-            padding: 1
-        }}
+      sx={{
+        margin: '64px 16px',
+        display: 'flex',
+        justifyContent: 'center'
+      }}
     >
       <Popper id={id} open={open} anchorEl={anchorEl} transition>
         {({ TransitionProps }) => (
@@ -303,39 +306,100 @@ const Texts = () => {
       </Popper>
       <Stack
         spacing={5}
+        alignItems={'stretch'}
+        sx={{
+          width: '100%',
+          maxWidth: 1200
+        }}
       >      
-        <Stack
-          direction='row'
-          spacing={3}       
-        >              
-          <Typography
-            onClick={()=>setStage(0)}
-            sx={{ color: stage === 0 ? 'orangered' : '#231F20', cursor: 'pointer' }}            
-          >
-              Αρχική
-          </Typography>     
-          <Typography
-            onClick={()=>setStage(1)}
-            sx={{ color: stage === 1 ? 'orangered' : '#231F20', cursor: 'pointer' }}    
-          >
-              Σχετικά με εμάς
-          </Typography>
-          <Typography
-            onClick={handleClick}
-            sx={{ color: stage === 2 || stage === 3 || stage === 4 || stage === 5 ? 'orangered' : '#231F20', cursor: 'pointer' }}    
-          >
-              Υπηρεσίες
-          </Typography>        
-        </Stack>
+        <Grid container
+          rowGap={1}
+          columnGap={1}
+          alignItems={'center'}
+        >      
+          <Grid item>   
+            <Stack
+              onClick={()=>setStage(0)}
+              direction={'row'}
+              spacing={1}
+              alignItems={'center'}
+              sx={{
+                padding: '12px 24px',
+                borderRadius: 3,                
+                cursor: 'pointer',
+                boxShadow: stage === 0 ? 8 : 0,
+                bgcolor: stage === 0 ? '#231F20' : 'transparent',      
+                color: stage === 0 ? 'white' : '#231F20',   
+              }}  
+            >
+              <FontAwesomeIcon id='mob-0' icon={faHouse} size={'md'}/>
+              <Typography
+                fontSize={19}
+              >
+                  Αρχική
+              </Typography>     
+            </Stack>  
+          </Grid>
+          <Grid item>   
+            <Stack
+              onClick={()=>setStage(1)}            
+              direction={'row'}
+              spacing={1}
+              alignItems={'center'}
+              sx={{
+                padding: '12px 24px',
+                borderRadius: 3,                
+                cursor: 'pointer',
+                boxShadow: stage === 1 ? 8 : 0,
+                bgcolor: stage === 1 ? '#231F20' : 'transparent',      
+                color: stage === 1 ? 'white' : '#231F20',   
+              }}  
+            >
+              <FontAwesomeIcon id='mob-1' icon={faAddressCard} size={'md'}/>
+              <Typography
+                fontSize={19}                          
+              >
+                  Σχετικά με εμάς
+              </Typography>     
+            </Stack>  
+          </Grid>
+          <Grid item>   
+            <Stack
+              onClick={handleClick}    
+              direction={'row'}
+              spacing={1}
+              alignItems={'center'}
+              sx={{
+                padding: '12px 24px',
+                borderRadius: 3,
+                boxShadow: stage === 2 || stage === 3 || stage === 4 || stage === 5 ? 8 : 0,
+                bgcolor: stage === 2 || stage === 3 || stage === 4 || stage === 5 ? '#231F20' : 'transparent',      
+                color: stage === 2 || stage === 3 || stage === 4 || stage === 5 ? 'white' : '#231F20',   
+                cursor: 'pointer'
+              }}
+            >
+              <FontAwesomeIcon id='mob-2' icon={faGraduationCap} size={'md'}/>
+              <Typography
+                fontSize={18}                              
+              >
+                  Υπηρεσίες
+              </Typography>     
+            </Stack>  
+          </Grid>          
+        </Grid>
         {stage === 0 && (
           <Box
             sx={{
               padding: 3,
               boxShadow: 8,
-              borderRadius: 2
+              borderRadius: 2,   
             }}
           >
-            <Grid2 container columnSpacing={2} rowSpacing={2}>              
+            <Grid2 container
+              columnSpacing={2}
+              rowSpacing={2}
+              justifyContent={'center'}
+            > 
               {allTexts[0].items.map((text, index) => {               
                 return(
                   <Grid2 item>
@@ -361,7 +425,11 @@ const Texts = () => {
                 </Typography>
                 <PlaceBox text={allTexts[8].placeText} func={about} tag={0} setFunc={setAbout}/>
                 <PlaceBox text={allTexts[8].placeText2} func={about} tag={1} setFunc={setAbout}/>            
-                <Grid2 container columnSpacing={2}>              
+                <Grid2 container
+                  columnSpacing={2}
+                  rowSpacing={2}
+                  justifyContent={'center'}
+                >
                   {allTexts[8].items.map((text, index) => {
                     return(
                       <Grid2 item>
