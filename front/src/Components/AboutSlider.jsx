@@ -181,6 +181,7 @@ const AboutSlider = () => {
                     >
                         <Grid item>
                             <Box
+                                className={'tab-btn'}
                                 onClick={()=>handleMainChange(0)} 
                                 sx={{
                                     color: mainValue === 0 ? 'white' : '#30343f',
@@ -203,6 +204,7 @@ const AboutSlider = () => {
                         </Grid>
                         <Grid item>
                             <Box
+                                className={'tab-btn'}
                                 onClick={()=>handleMainChange(1)} 
                                 sx={{
                                     color: mainValue === 1 ? 'white' : '#30343f',
@@ -225,18 +227,34 @@ const AboutSlider = () => {
                         </Grid>
                     </Grid>                                                                              
                     {mainValue === 0 ? 
-                        <Box sx={{ padding: '0px 8px' }}>
+                        <Box>
                             <Box sx={{ marginBottom: 2, display: 'flex', justifyContent: 'end' }}>
                                 <Grid container
                                     rowGap={1}
                                     columnGap={2}
                                     justifyContent={'end'}
+                                    sx={{
+                                        padding: '0px 16px'
+                                    }}
                                 >
+                                    <Grid item lg={5} md={5} sm={12} xs={12} xxs={12}>
+                                        <Box
+                                            sx={{
+                                                height: 250,                                              
+                                                borderRadius: 2,
+                                                overflow: 'hidden',
+                                                boxShadow: 12,
+                                                display: vidOpen ? 'flex' : 'none'
+                                            }}
+                                        >
+                                                <YouTube className="yt-vid" videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>
+                                        </Box>
+                                    </Grid>     
                                     <Grid item>
                                         <Box
+                                            className={'tab-btn'}
                                             onClick={()=>{showVideo()}}
-                                            sx={{
-                                                border: '1px solid #30343f',
+                                            sx={{                                         
                                                 bgcolor: vidOpen ? '#30343f' : 'transparent',
                                                 color: vidOpen ? 'white' : '#30343f',
                                                 borderRadius: 10,
@@ -255,6 +273,15 @@ const AboutSlider = () => {
                                                 spacing={0.5}
                                                 alignItems={'center'}
                                             >
+                                                {/* <img
+                                                    src={'https://missioncollege.edu/news/images/tedx1.png'}
+                                                    style={{
+                                                        width: 22,
+                                                        height: 22,
+                                                        borderRadius: 90,
+                                                        objectFit: 'cover'
+                                                    }}
+                                                /> */}
                                                 <Typography
                                                     fontSize={15}
                                                 >
@@ -266,9 +293,9 @@ const AboutSlider = () => {
                                     </Grid>
                                     <Grid item>
                                         <Box
+                                            className={'tab-btn'}
                                             onClick={()=>{showBio()}}
-                                            sx={{
-                                                border: '1px solid #30343f',
+                                            sx={{                                        
                                                 bgcolor: bioOpen ? '#30343f' : 'transparent',
                                                 color: bioOpen ? 'white' : '#30343f',
                                                 borderRadius: 10,
@@ -295,14 +322,9 @@ const AboutSlider = () => {
                                                 <PortraitIcon fontSize={'small'}/>    
                                             </Stack>        
                                         </Box>      
-                                    </Grid>                                                            
+                                    </Grid>                                                                                           
                                 </Grid>
-                            </Box>             
-                            <Box sx={{ display: 'flex', justifyContent: 'center', display: vidOpen ? 'flex' : 'none', marginTop: 5, marginBottom: 5, bgcolor: 'rgb(235, 240, 248)', padding: 1, borderRadius: 2, boxShadow: 4 }}>
-                                        <Box sx={{ height: 250, width: 450, borderRadius: 3, overflow: 'hidden' }}>
-                                            <YouTube videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>
-                                        </Box>
-                                    </Box>  
+                            </Box>                                        
                             <Box sx={{ display: bioOpen ? 'flex' : 'none', justifyContent: 'center', width: '100%', marginTop: 5, marginBottom: 5 }}>
                                 <Stack spacing={3} sx={{ borderRadius: 2, bgcolor: 'rgb(235, 240, 248)', padding: 5, boxShadow: 8 }}>                                
                                     <Typography variant="body2">
@@ -359,13 +381,13 @@ const AboutSlider = () => {
                                     </Typography>                                       
                                 </Stack>
                             </Box>
-                            <Stack spacing={3}>                                
+                            <Stack spacing={3} sx={{ padding: '0px 16px' }}>                                
                                 <Box sx={{ padding: 4, bgcolor: '#30343f', borderRadius: 2, boxShadow: 2 }}>                                 
                                     <Typography variant="body2" sx={{ color: 'white' }}>
                                         {allTexts[8].placeText}
                                     </Typography>                                                                                                        
                                 </Box>         
-                                <Stack spacing={2} sx={{ paddingTop: 2, paddingBottom: 2 }}>
+                                <Stack spacing={2} sx={{ padding: 2 }}>
                                     <Typography variant='h6' sx={{ fontWeight: 'bold', color: '#30343f', display: 'flex', justifyContent: 'center' }}>
                                         Προσφέρουμε Συμβουλευτική
                                     </Typography>      

@@ -28,7 +28,23 @@ const fadeIn = keyframes`
 
 const ColorBox = (props) => {
     return(
-        <Box sx={{ boxShadow: 12, borderRadius: 4, padding: 4, bgcolor: props.color, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }}>
+        <Box
+            sx={{
+                boxShadow: 12,
+                borderRadius: 4,
+                padding: 4,
+                bgcolor: props.color,
+                display: 'flex',
+                alignItems: 'center',
+                minHeight: {
+                    lg: 200,
+                    md: 200,
+                    sm: 100,
+                    xs: 50,
+                    xxs: 50
+                }
+            }}
+        >
             <Stack spacing={3}>
                 <Typography fontSize={18} fontWeight={600}>
                     {props.title}
@@ -84,21 +100,30 @@ const GetStarted = () => {
                         (
                             <Grid2 container rowGap={2} columnGap={2} sx={{ justifyContent: 'center' }}>
                                 <Grid2 item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
                                 </Grid2>
                                 <Grid2 item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
                                 </Grid2>
                                 <Grid2 item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
                                 </Grid2>
                                 <Grid2 item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={350} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
+                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
                                 </Grid2>
                             </Grid2>
                         )
                     : (
-                        <Grid container spacing={2} rowSpacing={2} justifyContent='center' sx={{ animation: `${fadeIn} 1s ease-in-out`, padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, maxWidth: 1400, display: 'flex', alignItems: 'stretch' }}>                                                         
+                        <Grid container
+                            spacing={2} rowSpacing={2} justifyContent='center'
+                            sx={{
+                                animation: `${fadeIn} 1s ease-in-out`,
+                                padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1},
+                                maxWidth: 1400,
+                                display: 'flex',
+                               
+                            }}
+                        >
                             <Grid item xs={12} md={5}>
                                 <ColorBox
                                     color={'rgb(240, 235, 240)'}

@@ -53,6 +53,6 @@
 }
 
 .hoverable-btn:hover{
-    background-color: rgb(247, 247, 255);
-    color: #30343f;
+    opacity: 0.97;
+    box-shadow: 2px 3px 8px -2px black;    
 }
