@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Box, Paper, Typography, Stack, Button, TextField, MenuItem, Popper, InputLabel, FormControl, Select   } from '@mui/material';
+import { Box, Paper, Typography, Stack, Grid, Button, TextField, MenuItem, Popper, InputLabel, FormControl, Select   } from '@mui/material';
 import { Context } from "./Context";
 import { useParams } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
@@ -196,7 +196,13 @@ const Product = () => {
     }, [product])
     
     return(
-        <Box sx={{ paddingLeft: 10, paddingRight: 10, paddingTop: 3 }}>     
+        <Box
+            sx={{                             
+                margin: '64px 16px',
+                display: 'flex',
+                justifyContent: 'center'
+            }}
+        >     
             <Popper id={id} open={open} anchorEl={anchorEl} sx={{ zIndex: 1 }}>    
                 <Paper sx={{ p: 3 }}>
                     <UploadTable item={selectedImg} setItem={setSelectedImg}/>
@@ -207,224 +213,441 @@ const Product = () => {
                     </Box>                        
                 </Paper>
             </Popper>
-            <Box sx={{ display: 'flex', justifyContent: 'space-between', paddingBottom: 3}}>
-                <Link to='/' style={{ textDecoration: 'none' }}>
-                    <Typography className='edit-icon' fontSize={20} sx={{ color: 'black' }}>
-                        Πίσω
-                    </Typography>
-                </Link>
-                <Button variant='contained' onClick={handleSaveClick}>
-                    Αποθηκευση
-                </Button>
-            </Box>       
-            {popupShow && (
-                <PopupBox save={commitSave} close={setPopupShow}/>
-            )}       
-            <Paper sx={{ padding: 4 }}>
-                {product 
-                ?
-                    <Stack spacing={10}>                                               
-                        <Stack spacing={5}>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Βασική εικόνα
-                                </Typography>
-                                <Stack direction='row' spacing={1}>
-                                    <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                        <img id='mainImg' src={mainImg ? mainImg : product.thumbnail} alt='' style={{ width: '150px' }}/>
-                                    </Paper>  
-                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
-                                        <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
-                                    </Box>  
-                                </Stack>                            
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Πρόσθετες εικόνες
-                                </Typography>   
-                                <Stack direction='row' spacing={1} id='subs'>
-                                    {extraSubs.map((subImg, index) => {
-                                        return (
-                                            <Paper key={subImg} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                                <img onClick={()=>removeSub(index)} src={subImg} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
-                                            </Paper>                                        
-                                        );                                    
-                                    })
-                                    }                                    
-                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                        
-                                        <AddIcon className="edit-icon" fontSize="large" onClick={(e)=>handleClick(e, false)}/>
-                                    </Box>
-                                </Stack>                                                                                                    
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='title'>
-                                    Τίτλος
-                                </Typography>  
-                                <TextField onBlur={changeTitle} defaultValue={product.title} sx={{ width: 500 }}/>
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='subtitle'>
-                                    Υπότιτλος
-                                </Typography>  
-                                <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} sx={{ width: 500 }}/>
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='category'>
-                                    Κατηγορία
-                                </Typography>  
-                                <FormControl sx={{ width: 500 }}>
-                                    <InputLabel id="demo-simple-select-label">Κατηγορία</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={curCategory}
-                                        label="Category"
-                                        onChange={categoryChange}
+            <Stack
+                spacing={3}
+                alignItems={'center'}
+                sx={{                  
+                    width: '100%',
+                    maxWidth: 1200
+                }}
+            >
+                <Stack
+                    direction={'row'}
+                    justifyContent={'space-between'}
+                    alignItems={'center'}    
+                    sx={{
+                        width: '100%'
+                    }}                        
+                >
+                    <Link to='/' style={{ textDecoration: 'none' }}>
+                        <Typography className='edit-icon' fontSize={20} sx={{ color: 'black' }}>
+                            Πίσω
+                        </Typography>
+                    </Link>
+                    <Button variant='contained' onClick={handleSaveClick}>
+                        Αποθηκευση
+                    </Button>
+                </Stack>       
+                {popupShow && (
+                    <PopupBox save={commitSave} close={setPopupShow}/>
+                )}       
+                <Paper sx={{ padding: 4, width: 'fit-content' }}>
+                    {product 
+                    ?                                                             
+                        <Stack spacing={3}>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item
+                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                >
+                                    <Typography
+                                        fontSize={18}
                                     >
-                                        {categories.map((cat, index) => {
-                                            return <MenuItem value={cat} key={index}>{cat}</MenuItem>
-                                        })}                                                                        
-                                    </Select>
-                                </FormControl>
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='description'>
-                                    Περιγραφή
-                                </Typography>                               
-                                <TextField multiline onBlur={changeDesc} defaultValue={product.desc} sx={{ width: 500 }}/>                                                                                                        
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='details'>
-                                    Λεπτομέρειες
-                                </Typography>      
-                                <Stack spacing={1}>
-                                    {extraDets.map((char, index) => {                           
-                                        return(
-                                            <Stack key={index} id={`det${index}`} direction='row' spacing={2}>
-                                                <TextField className='det-key' defaultValue={char.title} sx={{ width: 250 }}/> 
-                                                <TextField className='det-value' defaultValue={char.value} sx={{ width: 250 }}/>  
-                                                <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                            
-                                                    <DeleteIcon fontSize="medium" onClick={()=>removeDet(index)}/>   
-                                                </Box>                                  
-                                            </Stack>
-                                        ); 
-                                    })}                                           
-                                        <Box className='edit-icon' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
-                                            <AddIcon fontSize="large" onClick={addDet}/>                                                               
-                                        </Box>                                                     
-                                </Stack>                                                                                                                                                                   
-                            </Stack>
-                        </Stack>                                           
-                    </Stack>
-                :
-                    <Stack spacing={10}>                                               
-                        <Stack spacing={5}>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Βασική εικόνα
-                                </Typography>
-                                <Stack direction='row' spacing={1}>
-                                    {mainImg
-                                    ?
-                                    <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>      
-                                        <img src={mainImg} alt='' style={{ width: '150px' }}/>                        
-                                    </Paper>                                          
-                                    :
-                                    <Paper sx={{ width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>      
-                                        <PhotoSizeSelectActualIcon fontSize='large'/>                         
-                                    </Paper>  
-                                    }                                        
-                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
-                                        <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
-                                    </Box>  
-                                </Stack>                            
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Πρόσθετες εικόνες
-                                </Typography>   
-                                <Stack direction='row' spacing={1}>     
-                                    {extraSubs.map((img, index) => {
-                                        return (
-                                            <Paper key={index} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                                <img onClick={()=>removeSub(index)} src={img} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
-                                            </Paper>                                        
-                                        );        
-                                    })}                               
-                                    <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                        
-                                        <AddIcon className="edit-icon" fontSize="large" onClick={(e)=>handleClick(e, false)}/>
-                                    </Box>
-                                </Stack>                                                                                                    
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='title'>
-                                    Τίτλος
-                                </Typography>  
-                                <TextField onBlur={changeTitle} sx={{ width: 500 }}/>
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }} id='subtitle'>
-                                    Υπότιτλος
-                                </Typography>  
-                                <TextField onBlur={changeSubtitle} sx={{ width: 500 }}/>
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Κατηγορία
-                                </Typography>  
-                                <FormControl sx={{ width: 500 }}>
-                                    <InputLabel id="demo-simple-select-label">Κατηγορία</InputLabel>
-                                    <Select
-                                        labelId="demo-simple-select-label"
-                                        id="demo-simple-select"
-                                        value={curCategory}
-                                        label="Category"
-                                        onChange={categoryChange}
+                                        Βασική εικόνα
+                                    </Typography>
+                                </Grid>
+                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
+                                    <Stack direction='row' spacing={1}>
+                                        <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>
+                                            <img id='mainImg' src={mainImg ? mainImg : product.thumbnail} alt='' style={{ width: '150px' }}/>
+                                        </Paper>  
+                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
+                                            <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
+                                        </Box>  
+                                    </Stack>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        fontSize={18}
                                     >
-                                        {categories.map((cat, index) => {
-                                            return <MenuItem key={index} value={cat}>{cat}</MenuItem>
-                                        })}                                                                        
-                                    </Select>
-                                </FormControl>
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Περιγραφή
-                                </Typography>                               
-                                <TextField multiline onBlur={changeDesc} sx={{ width: 500 }}/>                                                                                                        
-                            </Stack>
-                            <Stack direction='row' spacing={5}>
-                                <Typography sx={{ width: 150 }}>
-                                    Λεπτομέρειες
-                                </Typography>      
-                                <Stack spacing={1}>                                                                    
-                                    <Stack direction='row' spacing={2} id={`det-1`}>
-                                        <TextField className='det-key' sx={{ width: 250 }}/>  
-                                        <TextField className='det-value' sx={{ width: 250 }}/>  
-                                        <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
-                                            <DeleteIcon fontSize="medium" onClick={()=>removeDet(`det-1`)}/>                                                             
-                                        </Box>                               
-                                    </Stack>                            
-                                    {extraDets.map((char, index) => {                           
-                                        return(
-                                            <Stack key={index} id={`det${index}`} direction='row' spacing={2}>
-                                                <TextField className='det-key' defaultValue={char.title} sx={{ width: 250 }}/> 
-                                                <TextField className='det-value' defaultValue={char.value} sx={{ width: 250 }}/>  
-                                                <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                            
-                                                    <DeleteIcon fontSize="medium" onClick={()=>removeDet(index)}/>   
-                                                </Box>                                  
-                                            </Stack>
-                                        ); 
-                                    })}                                           
-                                        <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
-                                            <AddIcon fontSize="large" onClick={addDet}/>                                                               
-                                        </Box>           
-                                </Stack>                                                                                                                                                                   
-                            </Stack>
-                        </Stack>                                           
-                    </Stack>
-                }
-            </Paper>
+                                        Πρόσθετες εικόνες
+                                    </Typography>  
+                                </Grid> 
+                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
+                                    <Stack direction='row' spacing={1} id='subs'>
+                                        {extraSubs.map((subImg, index) => {
+                                            return (
+                                                <Paper key={subImg} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
+                                                    <img onClick={()=>removeSub(index)} src={subImg} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
+                                                </Paper>                                        
+                                            );                                    
+                                        })
+                                        }                                    
+                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                        
+                                            <AddIcon className="edit-icon" fontSize="large" onClick={(e)=>handleClick(e, false)}/>
+                                        </Box>
+                                    </Stack>              
+                                </Grid>                                                                                      
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        id='title'
+                                        fontSize={18}
+                                    >
+                                        Τίτλος
+                                    </Typography>  
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <TextField onBlur={changeTitle} defaultValue={product.title} sx={{width: '100%'}}/>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >        
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        id='subtitle'
+                                        fontSize={18}
+                                    >
+                                        Υπότιτλος
+                                    </Typography>  
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} sx={{width: '100%'}}/>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >   
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        id='category'
+                                        fontSize={18}
+                                    >
+                                        Κατηγορία
+                                    </Typography>  
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <FormControl sx={{ width: '100%' }}>
+                                        <InputLabel id="demo-simple-select-label">Κατηγορία</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={curCategory}
+                                            label="Category"
+                                            onChange={categoryChange}
+                                        >
+                                            {categories.map((cat, index) => {
+                                                return <MenuItem value={cat} key={index}>{cat}</MenuItem>
+                                            })}                                                                        
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item
+                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                >
+                                    <Typography
+                                        id='description'
+                                        fontSize={18}
+                                    >
+                                        Περιγραφή
+                                    </Typography>
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <TextField multiline onBlur={changeDesc} defaultValue={product.desc} sx={{ width: '100%' }}/>                                                                                                        
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item
+                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                >
+                                    <Typography sx={{ width: 150 }} id='details'>
+                                        Λεπτομέρειες
+                                    </Typography>      
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <Stack spacing={1}>
+                                        {extraDets.map((char, index) => {                           
+                                            return(
+                                                <Stack key={index} id={`det${index}`} direction='row' spacing={2}>
+                                                    <TextField className='det-key' defaultValue={char.title}/> 
+                                                    <TextField className='det-value' defaultValue={char.value}/>  
+                                                    <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                            
+                                                        <DeleteIcon fontSize="medium" onClick={()=>removeDet(index)}/>   
+                                                    </Box>                                  
+                                                </Stack>
+                                            ); 
+                                        })}                                           
+                                            <Box className='edit-icon' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
+                                                <AddIcon fontSize="large" onClick={addDet}/>                                                               
+                                            </Box>                                                     
+                                    </Stack>                       
+                                </Grid>                                                                                                                                            
+                            </Grid>
+                        </Stack>                                                             
+                    :                                                                 
+                        <Stack spacing={3}>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item
+                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                >
+                                    <Typography
+                                        fontSize={18}
+                                    >
+                                        Βασική εικόνα
+                                    </Typography>
+                                </Grid>
+                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
+                                    <Stack direction='row' spacing={1}>
+                                        {mainImg
+                                        ?
+                                        <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>      
+                                            <img src={mainImg} alt='' style={{ width: '150px' }}/>                        
+                                        </Paper>                                          
+                                        :
+                                        <Paper sx={{ width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>      
+                                            <PhotoSizeSelectActualIcon fontSize='large'/>                         
+                                        </Paper>  
+                                        }                                        
+                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
+                                            <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
+                                        </Box>  
+                                    </Stack>    
+                                </Grid>                        
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        fontSize={18}
+                                    >
+                                        Πρόσθετες εικόνες
+                                    </Typography>  
+                                </Grid> 
+                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
+                                    <Stack direction='row' spacing={1}>     
+                                        {extraSubs.map((img, index) => {
+                                            return (
+                                                <Paper key={index} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
+                                                    <img onClick={()=>removeSub(index)} src={img} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
+                                                </Paper>                                        
+                                            );        
+                                        })}                               
+                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                        
+                                            <AddIcon className="edit-icon" fontSize="large" onClick={(e)=>handleClick(e, false)}/>
+                                        </Box>
+                                    </Stack>                             
+                                </Grid>                                                                       
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        id='title'
+                                        fontSize={18}
+                                    >
+                                        Τίτλος
+                                    </Typography>  
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <TextField onBlur={changeTitle} sx={{ width: '100%' }}/>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >        
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        id='subtitle'
+                                        fontSize={18}
+                                    >
+                                        Υπότιτλος
+                                    </Typography>  
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <TextField onBlur={changeSubtitle} sx={{width: '100%'}}/>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >   
+                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                    <Typography
+                                        id='category'
+                                        fontSize={18}
+                                    >
+                                        Κατηγορία
+                                    </Typography>  
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <FormControl sx={{ width: '100%' }}>
+                                        <InputLabel id="demo-simple-select-label">Κατηγορία</InputLabel>
+                                        <Select
+                                            labelId="demo-simple-select-label"
+                                            id="demo-simple-select"
+                                            value={curCategory}
+                                            label="Category"
+                                            onChange={categoryChange}
+                                        >
+                                            {categories.map((cat, index) => {
+                                                return <MenuItem key={index} value={cat}>{cat}</MenuItem>
+                                            })}                                                                        
+                                        </Select>
+                                    </FormControl>
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item
+                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                >
+                                    <Typography
+                                        id='description'
+                                        fontSize={18}
+                                    >
+                                        Περιγραφή
+                                    </Typography>
+                                </Grid>    
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >               
+                                    <TextField multiline onBlur={changeDesc} sx={{ width: '100%' }}/>                                                                                                        
+                                </Grid>
+                            </Grid>
+                            <Grid container    
+                                columnGap={5}
+                                rowGap={2}
+                            >
+                                <Grid item
+                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                >
+                                    <Typography
+                                        id='details'
+                                        fontSize={18}
+                                    >
+                                        Λεπτομέρειες
+                                    </Typography>      
+                                </Grid>
+                                <Grid item
+                                    lg={8}
+                                    md={8}
+                                    sm={12}
+                                    xs={12}
+                                    xxs={12}
+                                >
+                                    <Stack spacing={1}>                                                                    
+                                        <Stack direction='row' spacing={2} id={`det-1`}>
+                                            <TextField className='det-key'/>  
+                                            <TextField className='det-value'/>  
+                                            <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
+                                                <DeleteIcon fontSize="medium" onClick={()=>removeDet(`det-1`)}/>                                                             
+                                            </Box>                               
+                                        </Stack>                            
+                                        {extraDets.map((char, index) => {                           
+                                            return(
+                                                <Stack key={index} id={`det${index}`} direction='row' spacing={2}>
+                                                    <TextField className='det-key' defaultValue={char.title}/> 
+                                                    <TextField className='det-value' defaultValue={char.value}/>  
+                                                    <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                            
+                                                        <DeleteIcon fontSize="medium" onClick={()=>removeDet(index)}/>   
+                                                    </Box>                                  
+                                                </Stack>
+                                            ); 
+                                        })}                                           
+                                            <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
+                                                <AddIcon fontSize="large" onClick={addDet}/>                                                               
+                                            </Box>           
+                                    </Stack>                                    
+                                </Grid>                                                                                                                               
+                            </Grid>
+                        </Stack>                                                                  
+                    }
+                </Paper>
+            </Stack>
         </Box>
     );
 }

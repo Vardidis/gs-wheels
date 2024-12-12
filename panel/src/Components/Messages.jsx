@@ -68,32 +68,31 @@ const Messages = () => {
                 margin: '64px 16px',
                 display: 'flex',
                 justifyContent: 'center'
-            }}>
+            }}
+        >
             <Stack
-                spacing={3}
-                alignItems={'stretch'}
+                spacing={5} 
+                alignItems={'start'}
                 sx={{
                     width: '100%',
-                    maxWidth: 1400
-                }}
+                    maxWidth: 1200
+                }}                                                     
             >
-                <Typography fontSize={24} fontWeight={600}>
-                    Μηνύματα ( {unread}/{allMessages.length} )              
-                </Typography>
+                <Box sx={{ display: 'flex'}}>
+                    <Typography fontSize={24} fontWeight={600}>
+                        Μηνύματα ( {unread}/{allMessages.length} )              
+                    </Typography>
+                </Box>
                 <Grid container
                     rowGap={2}
-                    columnGap={2}
-                    justifyContent={'center'}
-                    sx={{
-                        width: '100%'
-                    }}
+                    columnGap={2}                                 
                 >    
                     <Grid item
                         xxs={12}
                         xs={12}
                         sm={12}
                         md={12}
-                        lg={5}
+                        lg={6}
                     >                                        
                         <Paper sx={{ overflow: 'hidden' }}>
                             <TableContainer>

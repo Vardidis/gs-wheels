@@ -47,10 +47,7 @@ const Uploads = () => {
             }}
         >
             <Stack
-                spacing={5}               
-                sx={{
-                    width: '100%'
-                }}
+                spacing={5}                         
             >
                 <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Typography fontSize={24} fontWeight={600}>

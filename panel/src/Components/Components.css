@@ -15,6 +15,5 @@
 }
 
 .navlink.active{
-    color: orangered;
-    font-weight: bold;
+    color: orangered; 
 }
