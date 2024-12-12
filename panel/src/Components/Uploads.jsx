@@ -72,7 +72,7 @@ const Uploads = () => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Paper sx={{ padding: 1, width: 'fit-content'}}>
+                    <Paper sx={{ padding: 1, width: 'fit-content', height: 'fit-content' }}>
                         <UploadTable item={deleteImg} setItem={setDeleteImg}/>
                     </Paper>  
                 </Box>                
