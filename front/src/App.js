@@ -13,7 +13,6 @@ import Services from './Pages/Services.jsx';
 import Education from './Pages/Education.jsx';
 import Product from './Pages/Product.jsx';
 import FuncRepair from './Components/Services/FuncRepair.jsx';
-import { Analytics } from "@vercel/analytics/react"
 
 function App() {
   const theme = createTheme({
@@ -58,7 +57,6 @@ function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <Analytics/>
       <BrowserRouter>
         <Box display="flex" height="100vh">                      
           <Sidemenu desktop={isDesktop}/>
