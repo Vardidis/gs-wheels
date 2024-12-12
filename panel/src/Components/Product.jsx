@@ -216,10 +216,6 @@ const Product = () => {
             <Stack
                 spacing={3}
                 alignItems={'center'}
-                sx={{                  
-                    width: '100%',
-                    maxWidth: 1200
-                }}
             >
                 <Stack
                     direction={'row'}
