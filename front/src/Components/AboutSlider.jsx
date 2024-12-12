@@ -471,7 +471,7 @@ const AboutSlider = () => {
                     <Box sx={{ width: '100%' }}>                                 
                         <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ display: 'flex', alignItems: 'stretch' }}>
                             <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                    
-                                <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 5, boxShadow: 12, minHeight: 200 }}>                          
+                                <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12, minHeight: 200 }}>                          
                                     <Stack spacing={2}>     
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
                                             <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>                    
@@ -506,7 +506,7 @@ const AboutSlider = () => {
                                 </Paper>                             
                             </Grid>
                             <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                        
-                                <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 5, boxShadow: 12 }}>                                        
+                                <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12 }}>                                        
                                     <Stack spacing={2}>     
                                         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
                                             <img src={suc2} alt=""/>   
