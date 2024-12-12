@@ -29,7 +29,14 @@ const ProductImageView = (props) => {
                 >
                     <ImageZoom className='zoom-image' src={bigImage}  alt="" zoom="600"/>
                 </Box>               
-            </Grid>              
+            </Grid> 
+            <Grid item             
+                xl={5} lg={5} md={12} sm={12} xs={12} xxs={12}
+            >
+                <Typography fontSize={22} textAlign={'center'} fontWeight={600} sx={{padding: 1, width: '100%'}}>
+                    {props.title}
+                </Typography>         
+            </Grid>                       
             <Grid item xl={6} lg={6} md={12} sm={12} xs={12} xxs={12}>
                 <Stack direction='row' spacing={2} sx={{padding: 1, width: '100%', minWidth: 275, overflowX: 'auto'}}>
                     <Box className='sub-list' sx={{ display: 'flex', gap: 1, overflowX: 'auto', }}>
@@ -45,14 +52,7 @@ const ProductImageView = (props) => {
                         })}                                                                                  
                     </Box>    
                 </Stack>       
-            </Grid>                                         
-            <Grid item             
-                xl={5} lg={5} md={12} sm={12} xs={12} xxs={12}
-            >
-                <Typography fontSize={22} textAlign={'center'} fontWeight={600} sx={{padding: 1, width: '100%'}}>
-                    {props.title}
-                </Typography>         
-            </Grid>                
+            </Grid>                                                           
         </Grid>                  
     );
 }

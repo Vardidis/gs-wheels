@@ -1,4 +1,4 @@
-import { Box, Typography, Stack, Paper } from "@mui/material";
+import { Box, Typography, Stack, Paper, Grid } from "@mui/material";
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../Components/Context";
@@ -31,28 +31,34 @@ const Product = () => {
                 sx={{
                     width: '100%',
                     display: 'flex',
-                    justifyContent: 'center'  ,                                                     
+                    justifyContent: 'center',
+                    marginBottom: 3                                                     
                 }}>                               
                 <Stack                  
                     alignItems={'stretch'}
-                    spacing={2}        
+                    spacing={4}        
                     sx={{
                         width: '100%'
                     }}                                                  
                 >
                     <ProductImageView mainImg={productItem.thumbnail} title={productItem.title} subImages={productItem.sub}/>     
-                    <Stack
-                        spacing={4}
-                        alignItems={'center'}
+                    <Grid container
+                        columnGap={2}
+                        rowGap={2}
+                        justifyContent={'center'}    
                         sx={{
-                            padding: 1
-                        }}
+                            padding: '0px 16px'
+                        }}                 
                     >
-                        <DetailsBox
-                            desc={productItem.desc}
-                        />    
-                        <ProductViewDetails chars={productItem.chars}/>
-                    </Stack>                                                                                      
+                        <Grid item lg={5} md={12} sm={12} xs={12} xxs={12}>
+                            <DetailsBox
+                                desc={productItem.desc}
+                            />  
+                        </Grid>
+                        <Grid item lg={5} md={12} sm={12} xs={12} xxs={12}>
+                            <ProductViewDetails chars={productItem.chars}/>
+                        </Grid>                        
+                    </Grid>                                                                                      
                 </Stack>                                     
             </Box>
         );
