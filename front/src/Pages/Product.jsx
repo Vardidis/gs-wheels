@@ -7,8 +7,8 @@ import ProductViewDetails from "../Components/ProductViewDetails";
 
 const DetailsBox = (props) => {
     return(
-        <Paper sx={{ padding: 3, bgcolor: '#30343f', color: 'white', borderRadius: 2}}>
-            <Stack spacing={3} alignItems='center' sx={{ maxWidth: 1400 }}>
+        <Paper sx={{ padding: 3, bgcolor: '#30343f', color: 'white', borderRadius: 2, maxWidth: 1050}}>
+            <Stack spacing={3} alignItems='center'>
                 <Typography variant='h6' sx={{ textAlign: 'center' }}>
                     Περιγραφή
                 </Typography>
@@ -16,7 +16,7 @@ const DetailsBox = (props) => {
                     {props.desc}
                 </Typography>
             </Stack>                
-        </Paper>
+        </Paper>        
     );
 }
 
@@ -25,29 +25,29 @@ const Product = () => {
     const {allProducts, isDesktop} = useContext(Context);
     const productItem = allProducts.filter((prod) => {return prod._id === String(productId)})[0] || null;
 
-    const style = isDesktop ? {
-        display: 'flex',
-        justifyContent: 'center',
-        paddingBottom: 5,
-        paddingTop: 3,
-        paddingLeft: 2,
-        paddingRight: 2
-    }
-    : {
-        padding: 0
-    }
-
-    const orient = isDesktop ? 'row' : 'column';
-
     if(productItem){
         return(
-            <Box sx={style}>                               
-                <Stack direction={orient} alignItems={isDesktop ? 'top' : 'center'} spacing={{xl: 12, lg: 6, md: 6, sm: 4, xs: 4, xxs: 1}} sx={{padding: 1}}>
-                    <ProductImageView mainImg={productItem.thumbnail} subImages={productItem.sub}/>     
-                    <Stack spacing={4}>
-                    <Typography fontSize={22} fontWeight={600}>
-                        {productItem.title}
-                    </Typography>
+            <Box
+                sx={{
+                    width: '100%',
+                    display: 'flex',
+                    justifyContent: 'center'  ,                                                     
+                }}>                               
+                <Stack                  
+                    alignItems={'stretch'}
+                    spacing={2}        
+                    sx={{
+                        width: '100%'
+                    }}                                                  
+                >
+                    <ProductImageView mainImg={productItem.thumbnail} title={productItem.title} subImages={productItem.sub}/>     
+                    <Stack
+                        spacing={4}
+                        alignItems={'center'}
+                        sx={{
+                            padding: 1
+                        }}
+                    >
                         <DetailsBox
                             desc={productItem.desc}
                         />    

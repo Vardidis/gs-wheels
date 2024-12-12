@@ -1,41 +1,43 @@
-import React, { useState } from "react";
-import { Stack, Chip } from "@mui/material";
-import AlbumIcon from '@mui/icons-material/Album';
+import React from "react";
+import { Stack, Grid } from "@mui/material";
 import SupportIcon from '@mui/icons-material/Support';
 import WheelchairPickupIcon from '@mui/icons-material/WheelchairPickup';
-import FiberSmartRecordIcon from '@mui/icons-material/FiberSmartRecord';
 import ProductMenuItem from "./ProductMenuItem";
-import TripOriginIcon from '@mui/icons-material/TripOrigin';
 import { Link } from "react-router-dom";
 
 const CategoryMenu = (props) => {   
     return(
-        <Stack direction='row' className='no-scrollbar' spacing={1} sx={{ display: 'flex', overflowX: 'auto', width: '100%', justifyContent: {lg: 'center', md: 'center', sm: 'center', xs: 'front', xxs: 'front'} }}>
-            <Link to='/products' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
-            </Link>
-            <Link to='wheelchairs' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Αμαξίδια'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='wheelchairs'}/>
-            </Link>
-            <Link to='parts' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Ανταλλακτικά'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='parts'}/>
-            </Link>
-            <Link to='helpers' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Βοηθήματα'} icon={<SupportIcon fontSize="small"/>} highlight={props.tag==='helpers'}/>
-            </Link>
-            {/* <Link to='wheels' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Ρόδες'} icon={<AlbumIcon fontSize="small"/>} highlight={props.tag==='wheels'}/>
-            </Link>
-            <Link to='parts' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Ελαστικά'} icon={<TripOriginIcon fontSize="small"/>} highlight={props.tag==='parts'}/>
-            </Link>
-            <Link to='helpers' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Βοηθήματα'} icon={<SupportIcon fontSize="small"/>} highlight={props.tag==='helpers'}/>
-            </Link>
-            <Link to='brakes' style={{ textDecoration: 'none' }}>
-                <ProductMenuItem text={'Φρένα'} icon={<FiberSmartRecordIcon fontSize="small"/>} highlight={props.tag==='brakes'}/>
-            </Link> */}                
-        </Stack>
+        <Grid container
+            className='no-scrollbar'
+            justifyContent={'center'}
+            rowGap={1}
+            columnGap={1}
+            sx={{
+                width: '100%',
+                margin: '0px 8px',                            
+            }}
+        >
+            <Grid item xxs={12} xs={12} sm={4} md={2.5}>
+                <Link to='/products' style={{ textDecoration: 'none' }}>
+                    <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
+                </Link>
+            </Grid>
+            <Grid item xxs={12} xs={12} sm={4} md={2.5}>
+                <Link to='wheelchairs' style={{ textDecoration: 'none' }}>
+                    <ProductMenuItem text={'Αμαξίδια'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='wheelchairs'}/>
+                </Link>
+            </Grid>
+            <Grid item xxs={12} xs={12} sm={4} md={2.5}>
+                <Link to='parts' style={{ textDecoration: 'none' }}>
+                    <ProductMenuItem text={'Ανταλλακτικά'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='parts'}/>
+                </Link>
+            </Grid>
+            <Grid item xxs={12} xs={12} sm={4} md={2.5}>
+                <Link to='helpers' style={{ textDecoration: 'none' }}>
+                    <ProductMenuItem text={'Βοηθήματα'} icon={<SupportIcon fontSize="small"/>} highlight={props.tag==='helpers'}/>
+                </Link>    
+            </Grid>      
+        </Grid>
     );
 }
 

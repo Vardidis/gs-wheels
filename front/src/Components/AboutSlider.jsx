@@ -107,13 +107,10 @@ const AboutSlider = () => {
     const [bioOpen, setBioOpen] = useState(false);
     const [loading, setLoading] = useState(true);
 
-    const handleMainChange = (event, newValue) => {
-        setMainValue(newValue);
-        const els = document.getElementsByClassName('styled-t');
-        for(let el of els){
-            el.style.backgroundColor = 'transparent';          
-        }
-        event.target.style.backgroundColor = '#30343f';
+    const handleMainChange = (newValue) => {
+        if(newValue !== mainValue){
+            setMainValue(newValue);
+        }               
     };
 
     const handleSecChange = (newValue) => {
@@ -164,34 +161,94 @@ const AboutSlider = () => {
     }
 
     return(
-            <Box sx={{ paddingBottom: 5, display: 'flex', justifyContent: 'center' }}>              
-                <Stack>                                                                                            
-                    <Box sx={{ display: 'flex', justifyContent: 'center', padding: 3 }}>
-                        <MainTabs
-                            value={mainValue}
-                            onChange={handleMainChange}                                                                                                                                         
-                        >
-                            <MainTab className='styled-t' label="Ποιοί είμαστε" sx={{ fontWeight: 600, fontSize: 15, padding: 2, color: '#30343f', backgroundColor: '#30343f', boxShadow: 2 }}/>
-                            <MainTab className='styled-t' label="Success Stories" sx={{ fontWeight: 600, fontSize: 15, padding: 2, boxShadow: 2 }}/>
-                        </MainTabs>             
-                    </Box>                                                                         
+            <Box sx={{ marginTop: 3, width: '100%', display: 'flex', justifyContent: 'center' }}>              
+                <Stack
+                    spacing={3}
+                    alignItems={'stretch'}
+                    sx={{                        
+                        width: '100%',
+                        maxWidth: 1400,
+                        padding: '0px 32px'
+                    }}
+                >
+                    <Grid container
+                        columnGap={2}
+                        rowGap={1}
+                        justifyContent={'center'}
+                        sx={{
+                            paddingBottom: 3
+                        }}
+                    >
+                        <Grid item>
+                            <Box
+                                onClick={()=>handleMainChange(0)} 
+                                sx={{
+                                    color: mainValue === 0 ? 'white' : '#30343f',
+                                    bgcolor: mainValue === 0 ? '#30343f' : 'transparent',
+                                    boxShadow: mainValue === 0 ? 8 : 4,
+                                    padding: '12px 32px',
+                                    borderRadius: 20,
+                                    maxWidth: 125,
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <Typography
+                                    fontSize={15}
+                                    fontWeight={'bold'}
+                                    textAlign={'center'}
+                                >
+                                    Ποιοί είμαστε
+                                </Typography>
+                            </Box>
+                        </Grid>
+                        <Grid item>
+                            <Box
+                                onClick={()=>handleMainChange(1)} 
+                                sx={{
+                                    color: mainValue === 1 ? 'white' : '#30343f',
+                                    bgcolor: mainValue === 1 ? '#30343f' : 'transparent',
+                                    boxShadow: mainValue === 1 ? 8 : 4,                                  
+                                    padding: '12px 32px',
+                                    borderRadius: 20,
+                                    maxWidth: 125,
+                                    cursor: 'pointer'
+                                }}
+                            >
+                                <Typography
+                                    fontSize={15}
+                                    fontWeight={'bold'}
+                                    textAlign={'center'}
+                                >
+                                    Success Stories
+                                </Typography>
+                            </Box>
+                        </Grid>
+                    </Grid>                                                                              
                     {mainValue === 0 ? 
-                        <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1}, maxWidth: 1400 }}>
+                        <Box sx={{ padding: '0px 8px' }}>
                             <Box sx={{ marginBottom: 2, display: 'flex', justifyContent: 'end' }}>
-                                <Stack direction='row' spacing={1}>
-                                    <Box onClick={()=>{showVideo()}} sx={{ border: '1px solid #30343f', bgcolor: vidOpen ? '#30343f' : 'transparent', color: vidOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
-                                        <Typography>
-                                            Προβολή βίντεο
-                                        </Typography>
-                                        <PlayArrowIcon/>               
-                                    </Box>      
-                                    <Box onClick={()=>{showBio()}} sx={{ border: '1px solid #30343f', bgcolor: bioOpen ? '#30343f' : 'transparent', color: bioOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
-                                        <Typography>
-                                            Προβολή βιογραφικού
-                                        </Typography>
-                                        <PortraitIcon/>            
-                                    </Box>                                                                  
-                                </Stack>
+                                <Grid container
+                                    rowGap={1}
+                                    columnGap={2}
+                                    justifyContent={'end'}
+                                >
+                                    <Grid item>
+                                        <Box onClick={()=>{showVideo()}} sx={{ border: '1px solid #30343f', bgcolor: vidOpen ? '#30343f' : 'transparent', color: vidOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
+                                            <Typography>
+                                                Προβολή βίντεο
+                                            </Typography>
+                                            <PlayArrowIcon/>               
+                                        </Box>      
+                                    </Grid>
+                                    <Grid item>
+                                        <Box onClick={()=>{showBio()}} sx={{ border: '1px solid #30343f', bgcolor: bioOpen ? '#30343f' : 'transparent', color: bioOpen ? 'white' : '#30343f', borderRadius: 10, padding: 1, paddingLeft: 2, paddingRight: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer', boxShadow: 4 }}>            
+                                            <Typography>
+                                                Προβολή βιογραφικού
+                                            </Typography>
+                                            <PortraitIcon/>            
+                                        </Box>      
+                                    </Grid>                                                            
+                                </Grid>
                             </Box>             
                             <Box sx={{ display: 'flex', justifyContent: 'center', display: vidOpen ? 'flex' : 'none', marginTop: 5, marginBottom: 5, bgcolor: 'rgb(235, 240, 248)', padding: 1, borderRadius: 2, boxShadow: 4 }}>
                                         <Box sx={{ height: 250, width: 450, borderRadius: 3, overflow: 'hidden' }}>
@@ -254,7 +311,7 @@ const AboutSlider = () => {
                                     </Typography>                                       
                                 </Stack>
                             </Box>
-                            <Stack spacing={10}>                                
+                            <Stack spacing={3}>                                
                                 <Box sx={{ padding: 4, bgcolor: '#30343f', borderRadius: 2, boxShadow: 2 }}>                                 
                                     <Typography variant="body2" sx={{ color: 'white' }}>
                                         {allTexts[8].placeText}
