@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import ProductMenu from "../ProductMenu";
-import { Stack, Chip } from "@mui/material";
+import { Stack, Chip, Grid } from "@mui/material";
 import { Context } from "../Context";
 
 const Parts = () => {
@@ -117,33 +117,51 @@ const Parts = () => {
     }, [wheels, rubber, wheelies, brakes, allProducts]);    
 
     return(
-        <Stack sx={{ width: '100%', marginTop: 5 }}>
-            <Stack direction="row" spacing={1} sx={{ paddingLeft: {lg: 20, md: 10, sm: 5} }}>
-                <Chip
-                    label="Ζάντες"
-                    variant={wheels}
-                    onClick={handleClickWheels}
-                    onDelete={handleDeleteWheels}
-                />
-                <Chip
-                    label="Ελαστικά"
-                    variant={rubber}
-                    onClick={handleClickRubber}
-                    onDelete={handleDeleteRubber}
-                />
-                <Chip
-                    label="Ροδάκια"
-                    variant={wheelies}
-                    onClick={handleClickWheelies}
-                    onDelete={handleDeleteWheelies}
-                />
-                <Chip
-                    label="Φρένα"
-                    variant={brakes}
-                    onClick={handleClickBrakes}
-                    onDelete={handleDeleteBrakes}
-                />
-            </Stack>
+        <Stack
+            sx={{
+                width: '100%'
+            }}
+        >
+            <Grid container    
+                columnGap={1}   
+                rowGap={1}        
+                sx={{                  
+                    padding: {lg: '0px 88px', md: '0px 72px', sm: '0px 40px'}            
+                }}
+            >      
+                <Grid item>      
+                    <Chip
+                        label="Ζάντες"
+                        variant={wheels}
+                        onClick={handleClickWheels}
+                        onDelete={handleDeleteWheels}
+                    />
+                </Grid>
+                <Grid item>      
+                    <Chip
+                        label="Ελαστικά"
+                        variant={rubber}
+                        onClick={handleClickRubber}
+                        onDelete={handleDeleteRubber}
+                    />
+                </Grid>
+                <Grid item>      
+                    <Chip
+                        label="Ροδάκια"
+                        variant={wheelies}
+                        onClick={handleClickWheelies}
+                        onDelete={handleDeleteWheelies}
+                    />
+                </Grid>
+                <Grid item>      
+                    <Chip
+                        label="Φρένα"
+                        variant={brakes}
+                        onClick={handleClickBrakes}
+                        onDelete={handleDeleteBrakes}
+                    />
+                </Grid>
+            </Grid>
             <ProductMenu items={items}/>
         </Stack>
     );

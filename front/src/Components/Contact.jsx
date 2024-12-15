@@ -76,8 +76,7 @@ const Contact = (props) => {
 
     const submitMessage = async() => {        
         if(!isSubmitting){            
-            setIsSubmitting(true)
-            console.log(validate())
+            setIsSubmitting(true)            
             if(validate()){          
                      
                 sanitize(subInfo.name);

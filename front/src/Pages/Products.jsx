@@ -30,7 +30,7 @@ const Products = () => {
         return(
             <Box>            
                 <Box sx={{ margin: '32px 8px'}}>                       
-                    <Stack spacing={{lg: 4, md: 4}} alignItems='center'>
+                    <Stack spacing={4} alignItems='center'>
                         <CategoryMenu tag={category}/>         
                         {category === 'wheelchairs' &&
                             <Wheelchairs/>
@@ -43,8 +43,7 @@ const Products = () => {
                         }        
                         {category === undefined &&
                             <ProductMenu items={items}/>
-                        }
-                        
+                        }                        
                     </Stack>                         
                 </Box>      
             </Box>

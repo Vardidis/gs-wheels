@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import ProductMenu from "../ProductMenu";
 
 const Wheelchairs = () => {
-    const {allProducts} = useContext(Context);
+    const {allProducts, isDesktop} = useContext(Context);
     const [items, setItems] = useState([]);    
     const [lightW, setLightW] = useState('');
     const [athl, setAthl] = useState('');
@@ -118,33 +118,51 @@ const Wheelchairs = () => {
     }, [lightW, athl, gallerian, portfolio, allProducts]);    
 
     return(
-        <Stack sx={{ width: '100%', marginTop: 5}}>
-            <Stack direction="row" spacing={1} sx={{ paddingLeft: {lg: 20, md: 10, sm: 5} }}>
-                <Chip
-                    label="Ελαφριού Τύπου"
-                    variant={lightW}
-                    onClick={handleClickLight}
-                    onDelete={handleDeleteLight}
-                />
-                <Chip
-                    label="Αθλητικό"
-                    variant={athl}
-                    onClick={handleClickAthl}
-                    onDelete={handleDeleteAthl}
-                />
-                <Chip
-                    label="Εκθεσιακά"
-                    variant={gallerian}
-                    onClick={handleClickGal}
-                    onDelete={handleDeleteGal}
-                />
-                <Chip
-                    label="Πορτφόλιο"
-                    variant={portfolio}
-                    onClick={handleClickPort}
-                    onDelete={handleDeletePort}
-                />
-            </Stack>
+        <Stack
+            sx={{
+                width: '100%',                
+            }}
+        >
+            <Grid container    
+                columnGap={1}   
+                rowGap={1}        
+                sx={{                  
+                    padding: {lg: '0px 88px', md: '0px 72px', sm: '0px 40px'}            
+                }}
+            >       
+                <Grid item>      
+                    <Chip
+                        label="Ελαφριού Τύπου"
+                        variant={lightW}
+                        onClick={handleClickLight}
+                        onDelete={handleDeleteLight}
+                    />
+                </Grid>  
+                <Grid item>
+                    <Chip
+                        label="Αθλητικό"
+                        variant={athl}
+                        onClick={handleClickAthl}
+                        onDelete={handleDeleteAthl}
+                    />
+                </Grid>
+                <Grid item>
+                    <Chip
+                        label="Εκθεσιακά"
+                        variant={gallerian}
+                        onClick={handleClickGal}
+                        onDelete={handleDeleteGal}
+                    />
+                </Grid>
+                <Grid item>
+                    <Chip
+                        label="Πορτφόλιο"
+                        variant={portfolio}
+                        onClick={handleClickPort}
+                        onDelete={handleDeletePort}
+                    />
+                </Grid>
+            </Grid>
             <ProductMenu items={items}/>
         </Stack>
         
