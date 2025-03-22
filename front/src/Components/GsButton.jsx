@@ -5,22 +5,21 @@ import { Link } from 'react-router-dom';
 const GsButton = () => {
     return(   
         <Link to='customize-your-life' style={{ textDecoration: 'none' }}>             
-            <Box
-                className={'read-more'}
+            <Box                
                 sx={{     
-                    bgcolor: '#222222',  
-                    borderRadius: 10,             
+                    bgcolor: '#d85704',  
+                    borderRadius: 3,             
                     cursor: 'pointer',
                     boxShadow: 12,        
-                    width: 250,
-                    minHeight: 65,
+                    width: 200,
+                    minHeight: 50,
                     display: 'flex',
                     justifyContent: 'center' ,
                     alignItems: 'center',
                     color: 'white'
                 }}
             >                
-            <Typography fontSize={20} fontWeight={600}>
+            <Typography fontSize={18} fontWeight={600}>
                 Customize Your Life
             </Typography>             
             </Box>

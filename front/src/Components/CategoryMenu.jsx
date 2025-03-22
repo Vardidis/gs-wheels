@@ -1,7 +1,5 @@
 import React from "react";
-import { Stack, Grid } from "@mui/material";
-import SupportIcon from '@mui/icons-material/Support';
-import WheelchairPickupIcon from '@mui/icons-material/WheelchairPickup';
+import { Grid } from "@mui/material";
 import ProductMenuItem from "./ProductMenuItem";
 import { Link } from "react-router-dom";
 
@@ -24,17 +22,17 @@ const CategoryMenu = (props) => {
             </Grid>
             <Grid item xxs={12} xs={12} sm={4} md={2.5}>
                 <Link to='wheelchairs' style={{ textDecoration: 'none' }}>
-                    <ProductMenuItem text={'Αμαξίδια'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='wheelchairs'}/>
+                    <ProductMenuItem text={'Αμαξίδια'} highlight={props.tag==='wheelchairs'}/>
                 </Link>
             </Grid>
             <Grid item xxs={12} xs={12} sm={4} md={2.5}>
                 <Link to='parts' style={{ textDecoration: 'none' }}>
-                    <ProductMenuItem text={'Ανταλλακτικά'} icon={<WheelchairPickupIcon fontSize="small"/>} highlight={props.tag==='parts'}/>
+                    <ProductMenuItem text={'Ανταλλακτικά'} highlight={props.tag==='parts'}/>
                 </Link>
             </Grid>
             <Grid item xxs={12} xs={12} sm={4} md={2.5}>
                 <Link to='helpers' style={{ textDecoration: 'none' }}>
-                    <ProductMenuItem text={'Βοηθήματα'} icon={<SupportIcon fontSize="small"/>} highlight={props.tag==='helpers'}/>
+                    <ProductMenuItem text={'Βοηθήματα'} highlight={props.tag==='helpers'}/>
                 </Link>    
             </Grid>      
         </Grid>

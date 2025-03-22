@@ -1,17 +1,21 @@
 import React from "react";
 import './Pages.css';
 import { Stack, Box, Typography, keyframes, Grid, Skeleton } from "@mui/material";
-import logo from '../assets/logo.png';
 import GsButton from "../Components/GsButton";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
-import wheels from '../assets/wheelchairs.png';
 import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { Context } from "../Components/Context";
 import { useState } from "react";
 import { useEffect } from "react";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Header from '../assets/HEADER-Arxiki_UP.jpg'
+import Box1Image from '../assets/PHOTO-Plaisio_1.png';
+import Box2Image from '../assets/PHOTO-Plaisio_2.png';
+import Box3Image from '../assets/PHOTO-Plaisio_3.png';
+import Box4Image from '../assets/PHOTO-Plaisio_4.png';
+import MainImage from '../assets/BACKGROUND-Arxiki.jpg';
 
 library.add(faPhone, faEnvelope, faLocationDot);
 
@@ -28,39 +32,54 @@ const fadeIn = keyframes`
 
 const ColorBox = (props) => {
     return(
-        <Box
+        <Grid item
+            xs={12}
+            md={5}
             sx={{
+                bgcolor: 'white',
                 boxShadow: 12,
                 borderRadius: 4,
-                padding: 4,
-                bgcolor: props.color,
-                display: 'flex',
-                alignItems: 'center',
-                minHeight: {
-                    lg: 200,
-                    md: 200,
-                    sm: 100,
-                    xs: 50,
-                    xxs: 50
-                }
+                padding: 2,
+                backgroundImage: `url(${props.image})`,
+                backgroundSize: 'cover',                
+                backgroundRepeat: 'no-repeat',                               
+                overflow: 'hidden'
             }}
-        >
-            <Stack spacing={3}>
-                <Typography fontSize={18} fontWeight={600}>
+        >       
+            <Stack
+                spacing={2}
+                alignItems={'end'}
+                justifyContent={'space-between'}
+                sx={{
+                    height: '100%'
+                }}
+            >
+                <Typography
+                    fontSize={18}
+                    fontWeight={600}
+                    sx={{
+                        color: '#d85704'
+                    }}
+                >
                     {props.title}
                 </Typography>
-                <Typography>
+                <Typography
+                    textAlign={'right'}
+                    sx={{
+                        paddingLeft: 18
+                    }}
+                >
                     {props.text}
                 </Typography>   
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <Link to={props.link} state={{ anchor: props.anchor }} style={{ textDecoration: 'none' }}>
-                        <Typography className="hoverable-btn" sx={{ borderRadius: 20, bgcolor: '#30343f', color: 'white', padding: 1, paddingLeft: 2, paddingRight: 2, cursor: 'pointer', boxShadow: 4 }}>
+                        <Typography className="hoverable-btn" sx={{ borderRadius: 1, bgcolor: '#7e7e7e', color: 'white', padding: 1, paddingLeft: 2, paddingRight: 2, cursor: 'pointer', boxShadow: 4 }}>
                             Δες περισσότερα
                         </Typography>
                     </Link>                
                 </Box>      
-            </Stack>       
-        </Box>
+            </Stack>                  
+        </Grid>
     )
 }
 
@@ -75,26 +94,25 @@ const GetStarted = () => {
     }, [allTexts]);
 
     return(
-        <Box sx={{
-            textAlign: 'center',            
-            paddingBottom: 5    
-        }}>            
-            <Box sx={{
-                display: 'flex',
-                justifyContent: 'center',
-                gap: 2,
-                alignItems: 'center',  
-                paddingTop: 2,                             
-            }}>
-                <Box sx={{ paddingTop: 2, width: {lg: 75, md: 75, sm: 65, xs: 55, xxs: 45} }}>
-                    <img src={logo} style={{ width: 'inherit' }} alt="gslogo"/>
-                </Box>  
-                <Box sx={{ width: {lg: 350, md: 350, sm: 300, xs: 250, xxs: 200} }}>
-                    <img src={wheels} style={{ width: 'inherit' }} alt="gsfont"/>               
-                </Box>              
-                                    
-            </Box>               
-            <Box sx={{ paddingTop: 7, display: 'flex', justifyContent: 'center' }}>
+        <Stack
+            spacing={8}
+            alignItems={'center'}
+            sx={{
+                textAlign: 'center',            
+                paddingBottom: 5,
+                backgroundImage: `url(${MainImage})`,
+                backgroundSize: 'cover',                
+                backgroundRepeat: 'no-repeat',  
+                backgroundPosition: 'center',       
+            }}
+        >            
+            <img
+                src={Header}
+                style={{
+                    width: '100%'
+                }}
+            />           
+            <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Stack spacing={2} alignItems='center'>
                     {loading ? 
                         (
@@ -115,55 +133,49 @@ const GetStarted = () => {
                         )
                     : (
                         <Grid container
-                            spacing={2} rowSpacing={2} justifyContent='center'
+                            columnGap={2}
+                            rowGap={2}
+                            justifyContent='center'
                             sx={{
                                 animation: `${fadeIn} 1s ease-in-out`,
-                                padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1},
-                                maxWidth: 1400,
+                                padding: 1,
+                                maxWidth: 1800,
                                 display: 'flex',
                                
                             }}
                         >
-                            <Grid item xs={12} md={5}>
-                                <ColorBox
-                                    color={'rgb(240, 235, 240)'}
+                                <ColorBox                                   
                                     title={allTexts[0].items[0].title}
                                     text={allTexts[0].items[0].text}
                                     link={'/service/education'}
                                     anchor={1}
-                                />                        
-                            </Grid>
-                            <Grid item xs={12} md={5}>
-                                <ColorBox
-                                    color={'rgb(240, 230, 245)'}
+                                    image={Box1Image}
+                                />                                                                               
+                                <ColorBox                                    
                                     title={allTexts[0].items[1].title}
                                     text={allTexts[0].items[1].text}
                                     link={'/service/life-coaching'}
-                                />                             
-                            </Grid>
-                            <Grid item xs={12} md={5}>
-                                <ColorBox
-                                    color={'rgb(240, 225, 230)'}
+                                    image={Box2Image}
+                                />                                                                                    
+                                <ColorBox                                    
                                     title={allTexts[0].items[2].title}
                                     text={allTexts[0].items[2].text}
                                     link={'/service/interior-design'}
-                                />                            
-                            </Grid>
-                            <Grid item xs={12} md={5}>
-                                <ColorBox
-                                    color={'rgb(240, 225, 250)'}
+                                    image={Box3Image}
+                                />                                                                                
+                                <ColorBox                                    
                                     title={allTexts[0].items[3].title}
                                     text={allTexts[0].items[3].text}
                                     link={'/service/apokatastasi'}
                                     anchor={0}
-                                />                           
-                            </Grid>                                                                            
-                        </Grid>     
-                    )}
-                    <GsButton/>
+                                    image={Box4Image}
+                                />    
+                            </Grid>                       
+                    )}                    
                 </Stack>
             </Box>
-        </Box>
+            <GsButton/>
+        </Stack>
     );
 }
 

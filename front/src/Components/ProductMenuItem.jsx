@@ -4,20 +4,17 @@ import React from "react";
 const ProductMenuItem = (props) => {
     return(
         <Box sx={{
-            id: props.id,
-            borderRadius: 90,
-            minWidth: {lg: 130, md: 130, sm: 130, xs: 100, xxs: 100},
-            height: 30,
-            backgroundColor: props.highlight ? '#30343f' : 'transparent',
-            border: '1px solid #30343f',
+            borderRadius: 2,
+            height: 32,
+            backgroundColor: props.highlight ? '#d46926' : '#9a9a9a',
             display: 'flex',
-            alignItems: 'center', 
-            justifyContent: 'center',       
-            gap: 1,
+            alignItems: 'center',
+            justifyContent: 'center',
             cursor: 'pointer',
-            color: props.highlight ? 'white' : '#30343f',       
-            padding: 1,       
-            boxShadow: 2,       
+            padding: 1,
+            margin: '0px 8px',
+            marginTop: '24px',
+            color: 'white'
         }}
         >
             {props.icon}

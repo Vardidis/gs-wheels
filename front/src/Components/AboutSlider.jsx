@@ -1,42 +1,12 @@
 import React, { useState } from "react";
 import suc1 from '../assets/stompis.jpg';
 import suc2 from '../assets/kopelia.jpg';
-import { Typography, Tabs, Tab, Box, Stack, Paper, Grid } from '@mui/material';
+import { Typography, Tabs, Tab, Box, Stack, Paper, Grid, Divider } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import YouTube from 'react-youtube';
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import PortraitIcon from '@mui/icons-material/Portrait';
 import { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "./Context";
-
-const MainTabs = styled((props) => (
-    <Tabs
-        {...props}
-        TabIndicatorProps={{ children: <span className="MuiTabs-indicatorSpan" /> }}
-    />
-))({
-    '& .MuiTabs-indicator': {
-        display: 'flex',
-        justifyContent: 'center',
-        backgroundColor: 'transparent',
-        padding: 3
-    },   
-});
-  
-const MainTab = styled((props) => <Tab disableRipple {...props} />)(
-    ({ theme }) => ({
-        textTransform: 'none',            
-        marginRight: theme.spacing(1),
-        color: '#30343f',
-        '&.Mui-selected': {
-        color: 'white',
-        },
-        border: '1px solid #30343f',
-        borderRadius: 90,
-        maxHeight: 30,        
-    }),
-);
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -63,39 +33,98 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 );
 
 const TripleBox = (props) => {
-    const boxSets = {
-        bgcolor: '#30343f',
-        color: 'white',
-        padding: 3,
-        borderRadius: 2,
-        boxShadow: 4,
-        minHeight: 50
+    const boxSets = {        
+        color: '#30343f'        
     }
 
     return(
-        <Grid container columnGap={2} rowGap={3} justifyContent='center' sx={{ display: 'flex', alignItems: 'stretch' }}>  
-            <Grid item xxs={12} sm={5}>
-                <Box sx={boxSets}>                                                    
-                    <Typography variant="body2">
-                        {props.text1}
-                    </Typography>                                                                                           
-                </Box>
-            </Grid>                   
-            <Grid item xxs={12} sm={5}>
-                <Box sx={boxSets}>                    
-                    <Typography variant="body2">
-                        {props.text2}
-                    </Typography>                                              
-                </Box>
-            </Grid>
-            <Grid item xxs={12} sm={10}>
-                <Box sx={boxSets}>                   
-                    <Typography variant="body2">
-                        {props.text3}
-                    </Typography>                                                   
-                </Box>     
-            </Grid>
-        </Grid>                    
+       <Stack
+        direction={'row'}
+        justifyContent={'space-between'}
+        spacing={2}
+       >
+            <Stack
+                spacing={1}                
+                direction={'row'}
+                alignItems={'center'}
+                sx={boxSets}
+            >
+                <Divider
+                    orientation={'vertical'}
+                    sx={{
+                        bgcolor: 'orangered',
+                        border: '1px solid orangered'
+                    }}
+                />                                                    
+                <Typography variant="body2">
+                    {props.text1}
+                </Typography>                                                                                           
+            </Stack>
+            <Stack
+                spacing={1}                
+                direction={'row'}
+                alignItems={'center'}
+                sx={boxSets}
+            >
+                <Divider
+                    orientation={'vertical'}
+                    sx={{
+                        bgcolor: 'orangered',
+                        border: '1px solid orangered'
+                    }}
+                />                                
+                <Typography variant="body2">
+                    {props.text2}
+                </Typography>                                              
+            </Stack>
+            <Stack
+                spacing={1}                
+                direction={'row'}
+                alignItems={'center'}
+                sx={boxSets}
+            >
+                <Divider
+                    orientation={'vertical'}
+                    sx={{
+                        bgcolor: 'orangered',
+                        border: '1px solid orangered'
+                    }}
+                />                           
+                <Typography
+                    variant="body2"
+                    sx={{
+                        maxWidth: 900
+                    }}
+                >
+                    {props.text3}
+                </Typography>                                                   
+            </Stack>                
+        </Stack>                    
+    );
+}
+
+const TabButton = ({title, index, handleMainChange, mainValue}) => {
+    return(
+        <Box
+            className={'tab-btn'}
+            onClick={()=>handleMainChange(index)} 
+            sx={{
+                color: mainValue === index ? 'white' : '#30343f',
+                bgcolor: mainValue === index ? '#30343f' : 'transparent',
+                boxShadow: mainValue === index ? 8 : 3,
+                padding: '12px 32px',
+                borderRadius: 2,                
+                cursor: 'pointer'                
+            }}
+        >
+            <Typography
+                fontSize={15}
+                fontWeight={'bold'}
+                textAlign={'center'}
+            >
+                {title}
+            </Typography>
+        </Box>
     );
 }
 
@@ -136,7 +165,7 @@ const AboutSlider = () => {
     }
 
     const opts = {
-        height: '300',
+        maxHeight: '500',
         width: '100%',
         playerVars: {
           autoplay: 0,
@@ -161,7 +190,7 @@ const AboutSlider = () => {
     }
 
     return(
-            <Box sx={{ marginTop: 3, width: '100%', display: 'flex', justifyContent: 'center' }}>              
+            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>              
                 <Stack
                     spacing={3}
                     alignItems={'stretch'}
@@ -171,224 +200,94 @@ const AboutSlider = () => {
                         padding: '0px 32px'
                     }}
                 >
-                    <Grid container
-                        columnGap={2}
-                        rowGap={1}
-                        justifyContent={'center'}
-                        sx={{
-                            paddingBottom: 3
-                        }}
+                    <Stack
+                        direction={'row'}
+                        spacing={2}
+                        justifyContent={'space-between'}
                     >
-                        <Grid item>
-                            <Box
-                                className={'tab-btn'}
-                                onClick={()=>handleMainChange(0)} 
-                                sx={{
-                                    color: mainValue === 0 ? 'white' : '#30343f',
-                                    bgcolor: mainValue === 0 ? '#30343f' : 'transparent',
-                                    boxShadow: mainValue === 0 ? 8 : 3,
-                                    padding: '12px 32px',
-                                    borderRadius: 20,
-                                    maxWidth: 125,
-                                    cursor: 'pointer'
-                                }}
-                            >
+                        <Stack
+                            direction={'row'}
+                            spacing={2}
+                        >
+                            <TabButton
+                                title={'Ποιοί είμαστε'}
+                                index={0}
+                                handleMainChange={handleMainChange}
+                                mainValue={mainValue}
+                            />
+                            <TabButton
+                                title={'Success Stories'}
+                                index={1}
+                                handleMainChange={handleMainChange}
+                                mainValue={mainValue}
+                            />
+                        </Stack>
+                        <Stack
+                            direction={'row'}
+                            spacing={2}
+                        >    
+                            <TabButton
+                                title={'Προβολή βίντεο'}
+                                index={2}
+                                handleMainChange={handleMainChange}
+                                mainValue={mainValue}
+                            />
+                            <TabButton
+                                title={'Προβολή βιογραφικού'}
+                                index={3}
+                                handleMainChange={handleMainChange}
+                                mainValue={mainValue}
+                            />
+                        </Stack>
+                    </Stack>                         
+                    {mainValue === 0 && ( 
+                        <Box>                                                        
+                            <Stack spacing={6} sx={{ marginTop: 3 }}>                                                                                           
                                 <Typography
-                                    fontSize={15}
-                                    fontWeight={'bold'}
-                                    textAlign={'center'}
-                                >
-                                    Ποιοί είμαστε
-                                </Typography>
-                            </Box>
-                        </Grid>
-                        <Grid item>
-                            <Box
-                                className={'tab-btn'}
-                                onClick={()=>handleMainChange(1)} 
-                                sx={{
-                                    color: mainValue === 1 ? 'white' : '#30343f',
-                                    bgcolor: mainValue === 1 ? '#30343f' : 'transparent',
-                                    boxShadow: mainValue === 1 ? 8 : 3,                                  
-                                    padding: '12px 32px',
-                                    borderRadius: 20,
-                                    maxWidth: 125,
-                                    cursor: 'pointer'
-                                }}
-                            >
-                                <Typography
-                                    fontSize={15}
-                                    fontWeight={'bold'}
-                                    textAlign={'center'}
-                                >
-                                    Success Stories
-                                </Typography>
-                            </Box>
-                        </Grid>
-                    </Grid>                                                                              
-                    {mainValue === 0 ? 
-                        <Box>
-                            <Box sx={{ marginBottom: 2, display: 'flex', justifyContent: 'end' }}>
-                                <Grid container
-                                    rowGap={1}
-                                    columnGap={2}
-                                    justifyContent={'end'}
+                                    fontSize={16}
                                     sx={{
-                                        padding: '0px 16px'
+                                        color: '#30343f'
                                     }}
                                 >
-                                    <Grid item lg={5} md={5} sm={12} xs={12} xxs={12}>
-                                        <Box
-                                            sx={{
-                                                height: 250,                                              
-                                                borderRadius: 2,
-                                                overflow: 'hidden',
-                                                boxShadow: 12,
-                                                display: vidOpen ? 'flex' : 'none'
-                                            }}
-                                        >
-                                                <YouTube className="yt-vid" videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>
-                                        </Box>
-                                    </Grid>     
-                                    <Grid item>
-                                        <Box
-                                            className={'tab-btn'}
-                                            onClick={()=>{showVideo()}}
-                                            sx={{                                         
-                                                bgcolor: vidOpen ? '#30343f' : 'transparent',
-                                                color: vidOpen ? 'white' : '#30343f',
-                                                borderRadius: 10,
-                                                padding: 1,
-                                                paddingLeft: 2,
-                                                paddingRight: 2,
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                cursor: 'pointer',
-                                                boxShadow: vidOpen ? 8 : 3
-                                            }}
-                                            >
-                                            <Stack
-                                                direction={'row'}
-                                                spacing={0.5}
-                                                alignItems={'center'}
-                                            >
-                                                {/* <img
-                                                    src={'https://missioncollege.edu/news/images/tedx1.png'}
-                                                    style={{
-                                                        width: 22,
-                                                        height: 22,
-                                                        borderRadius: 90,
-                                                        objectFit: 'cover'
-                                                    }}
-                                                /> */}
-                                                <Typography
-                                                    fontSize={15}
-                                                >
-                                                    Προβολή βίντεο
-                                                </Typography>
-                                                <PlayArrowIcon ontSize={'small'}/>           
-                                            </Stack>    
-                                        </Box>      
-                                    </Grid>
-                                    <Grid item>
-                                        <Box
-                                            className={'tab-btn'}
-                                            onClick={()=>{showBio()}}
-                                            sx={{                                        
-                                                bgcolor: bioOpen ? '#30343f' : 'transparent',
-                                                color: bioOpen ? 'white' : '#30343f',
-                                                borderRadius: 10,
-                                                padding: 1,
-                                                paddingLeft: 2,
-                                                paddingRight: 2,
-                                                display: 'flex',
-                                                justifyContent: 'space-between',
-                                                alignItems: 'center',
-                                                cursor: 'pointer',
-                                                boxShadow: bioOpen ? 8 : 3
-                                            }}
-                                        >            
-                                            <Stack
-                                                direction={'row'}
-                                                spacing={0.5}
-                                                alignItems={'center'}
-                                            >
-                                                <Typography
-                                                    fontSize={15}
-                                                >
-                                                    Προβολή βιογραφικού
-                                                </Typography>
-                                                <PortraitIcon fontSize={'small'}/>    
-                                            </Stack>        
-                                        </Box>      
-                                    </Grid>                                                                                           
-                                </Grid>
-                            </Box>                                        
-                            <Box sx={{ display: bioOpen ? 'flex' : 'none', justifyContent: 'center', width: '100%', marginTop: 5, marginBottom: 5 }}>
-                                <Stack spacing={3} sx={{ borderRadius: 2, bgcolor: 'rgb(235, 240, 248)', padding: 5, boxShadow: 8 }}>                                
-                                    <Typography variant="body2">
-                                        Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
-                                        Νοσηλεύτηκα στο Νοσοκομείο Παπανικολάου της Θεσσαλονίκης για σχεδόν δύο μήνες
-                                        όπου οι γιατροί διέγνωσαν τραυματισμό στην σπονδυλική μου στήλη στο επιπεδο Α8
-                                        Νευροτόμιο.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Μετά από μια σύντομη παραμονή στο σπίτι, και δίχως να μου έχουν δώσει
-                                        κάποιο βοήθημα μετακίνησης, μεταφέρθηκα στη Χαϊδελβέργη της Γερμανίας σε κέντρο
-                                        αποκατάστασης όπου εκεί μου εξήγησαν τι σημαίνει τραυματισμός στη σπονδυλική στήλη.
-                                        Μόνιμη παράλυση κάτω άκρων από το επίπεδο του τραυματισμού και κάτω. Νοσηλεύτηκα
-                                        για τέσσερις μήνες και τον Δεκέμβριο της ίδιας χρονιάς επέστρεψα στη Θεσσαλονίκη. Τον
-                                        Ιανουάριο συνέχισα το σχολείο μου.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Τελείωσα το Γυμνάσιο, πήγα στο λύκειο, σπούδασα Εφαρμοσμένη πληροφορική στο
-                                        Πανεπιστήμιο Μακεδονίας, και το 1995 ασχολήθηκα με το μπάσκετ με αμαξίδιο όπου από
-                                        το 1999 έως το 2009 ήμουν μέλος της Εθνικής ομάδας με πολλές συμμετοχές σε
-                                        ευρωπαϊκούς και πανευρωπαϊκούς αγώνες ενώ το 2004 πήρα μέρος στους
-                                        Παραολυμπιακούς αγώνες της Αθήνας.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Πρόεδρος της ομάδας του Αθλητικού Συλλόγου Αναπήρων Κένταυρος της Θεσσαλονίκης,
-                                        πρόεδρος της ομάδας μπάσκετ με αμαξίδιο του Άρη Θεσσαλονίκης. Δοκίμασα διάφορα
-                                        αθλήματα σαν Χόμπι ενώ υπήρξα αθλητής της προσαρμοσμένης χιονοδρομίας SEATSKI.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Το 2006 έγινα πιστοποιημένος εκπαιδευτής για ανθρώπους με τραυματισμό στην
-                                        σπονδυλική στήλη από τον Σουηδικό οργανισμό RG ενεργητική αποκατάσταση.
-                                        Ιδρυτικό μέλος και εκπαιδευτής του σωματείου Άλλη Όψη που σαν σκοπό είχε την
-                                        δημιουργία εκπαιδευτικών προγραμμάτων για άτομα με τραυματισμό στην σπονδυλική
-                                        στήλη με στόχο την βελτίωση της αυτονομίας σε βασικά θέματα καθημερινότητας.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Εργάστηκα στην Νομαρχία Θεσσαλονίκης στο τμήμα αθλητισμού και από εκεί για 8 χρόνια
-                                        σε ιδιωτικό κέντρο αποκατάστασης στη Θεσσαλονίκη, στο τμήμα εργοθεραπείας σαν
-                                        εκπαιδευτής, ενώ από το 2019 ασχολούμαι και με την κατασκευή αναπηρικών αμαξιδίων
-                                        Custom Made.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Η GS wheelchairs είναι το αποτέλεσμα όλων αυτών των ετών στο χώρο της αναπηρίας. Όλη
-                                        μου η εμπειρία στον χώρο την λειτουργικής αποκατάστασης, η φιλοσοφία μου για το τι
-                                        είναι αναπηρία, ποιες είναι η δυνατότητες σου και ποιες είναι οι πραγματικές σου ανάγκες
-                                        είναι αυτό που κάνει την GS (Get Started) την πρώτη εταιρία με ολιστική προσέγγιση.
-                                        Στόχος της είναι έχει να παρέχει ολοκληρωμένες λύσεις σε άτομα με αναπηρία και σε
-                                        όσους ζουν την αναπηρία από κοντά, με στόχο την βελτίωση της αυτονομίας και μια
-                                        καλύτερη ποιότητα ζωής. Όσο υψηλότερο το επίπεδο αυτονομίας τόσο καλύτερη και η
-                                        ποιότητα ζωής.
-                                    </Typography>
-                                    <Typography variant="body2">
-                                        Η αναπηρία είναι μια κατάσταση, εσύ επιλέγεις το πως θα την ζήσεις.
-                                    </Typography>                                       
-                                </Stack>
-                            </Box>
-                            <Stack spacing={3} sx={{ padding: '0px 16px' }}>                                
-                                <Box sx={{ padding: 4, bgcolor: '#30343f', borderRadius: 2, boxShadow: 2 }}>                                 
-                                    <Typography variant="body2" sx={{ color: 'white' }}>
-                                        {allTexts[8].placeText}
-                                    </Typography>                                                                                                        
-                                </Box>         
-                                <Stack spacing={2} sx={{ padding: 2 }}>
-                                    <Typography variant='h6' sx={{ fontWeight: 'bold', color: '#30343f', display: 'flex', justifyContent: 'center' }}>
+                                    {allTexts[8].placeText}
+                                </Typography>   
+                                <Stack
+                                    direction={'row'}
+                                    justifyContent={'space-between'}
+                                    spacing={1}
+                                    sx={{
+                                        maxHeight: 300,                                       
+                                        width: '100%',
+                                        overflow: 'hidden'
+                                    }}
+                                >                                   
+                                    <img
+                                        src={suc1}
+                                        style={{
+                                            width: '100%',
+                                            height: 300,
+                                            objectFit: 'cover'
+                                        }}
+                                    />                                    
+                                    <img
+                                        src={suc1}
+                                        style={{
+                                            width: '100%',
+                                            height: 300,
+                                            objectFit: 'cover'
+                                        }}
+                                    />                                    
+                                    <img
+                                        src={suc1}
+                                        style={{
+                                            width: '100%',
+                                            height: 300,
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                </Stack>                                                                                                                                              
+                                <Stack spacing={2}>
+                                    <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'orangered', display: 'flex', justifyContent: 'center' }}>
                                         Προσφέρουμε Συμβουλευτική
                                     </Typography>      
                                     <SecTabs
@@ -404,7 +303,7 @@ const AboutSlider = () => {
                                     </SecTabs>                                                                                                                  
                                     {secValue === 0 &&                           
                                         <Box>
-                                            <Stack spacing={10}>
+                                            <Stack spacing={4}>
                                                 <Typography variant="body2">
                                                     {allTexts[8].placeText2}
                                                 </Typography>
@@ -434,7 +333,7 @@ const AboutSlider = () => {
                                         </Box>
                                     }           
                                     { secValue === 2 &&
-                                        <Box sx={{ padding: 4, bgcolor: '#30343f', color: 'white', borderRadius: 2, boxShadow: 8 }}>
+                                        <Box sx={{ color: '#30343f'}}>
                                             <Stack spacing={3}>
                                                 <Typography variant="body2">
                                                     {allTexts[10].placeText}
@@ -446,7 +345,7 @@ const AboutSlider = () => {
                                         </Box>
                                     }                       
                                     { secValue === 3 &&
-                                        <Box sx={{ padding: 4, bgcolor: '#30343f', color: 'white', borderRadius: 2, boxShadow: 8 }}>
+                                        <Box sx={{ color: '#30343f' }}>
                                             <Stack spacing={3}>
                                                 <Typography variant="body2">
                                                     Η υπηρεσία συμβουλευτικής της GS Wheelchairs δεν περιορίζεται μόνο στην
@@ -467,81 +366,166 @@ const AboutSlider = () => {
                                 </Stack>
                             </Stack>
                         </Box>
-                    :
-                    <Box sx={{ width: '100%' }}>                                 
-                        <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ display: 'flex', alignItems: 'stretch' }}>
-                            <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                    
-                                <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12, minHeight: 200 }}>                          
-                                    <Stack spacing={2}>     
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
-                                            <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>                    
-                                                <img src={suc1} alt=""/>                                                        
-                                                <Typography variant="body3" fontWeight={600}>
-                                                    Το κουτί με τις έγνοιες
-                                                </Typography>                                                                                                                                                                
-                                            </Stack>                    
-                                            <Typography fontSize={13} fontWeight={600} fontStyle={'italic'} sx={{ color: 'rgb(80, 80, 80)' }}>
-                                                Νίκος
-                                            </Typography>                        
-                                        </Box>                                        
-                                        <Typography variant="body2">
-                                            Ο Παναγιώτης ή Γιώτης όπως τον φωνάζουν, 
-                                            ήταν το άτομο που μου έδειξε τον τρόπο προς την αυτονομία.
-                                            Ένα άτομο με κάταγμα στην σπονδυλική στήλη έχει άμεση ανάγκη από
-                                            έναν άνθρωπο που θα του ανοίξει τους ορίζοντες προς την αποδοχή
-                                            και την άμεση αποκατάσταση. Για μένα αυτό το άτομο ήταν ο Γιώτης.
-                                        </Typography>
-                                        <Typography variant="body2">
-                                            Μαζί του έμαθα να ντύνομαι,
-                                            να σηκώνομαι από το κρεβάτι και να κινούμαι με το αμαξίδιο άνετα.
-                                            Το σημαντικότερο όμως μάθημα που πήρα από αυτόν ήταν το “κουτί με τις έγνοιες”.
-                                            Προσπαθούμε να τακτοποιήσουμε μια έγνοια μέχρι να έρθει η επόμενη και να πάρει
-                                            την θέση της στο κουτί. Έτσι έμαθα να ζω με την αναπηρία και σήμερα ζω σχεδόν
-                                            αυτόνομος όντας τετραπληγικός στην Ελλάδα.
-                                        </Typography>
-                                        <Typography variant="body2">
-                                            Σε ευχαριστώ για άλλη μια φορά!
-                                        </Typography>          
-                                    </Stack>
-                                </Paper>                             
-                            </Grid>
-                            <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                        
-                                <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12 }}>                                        
-                                    <Stack spacing={2}>     
-                                        <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
-                                            <img src={suc2} alt=""/>   
-                                            <Stack>                                              
+                    )}
+                    {mainValue === 1 && (
+                        <Box sx={{ width: '100%' }}>                                 
+                            <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ display: 'flex', alignItems: 'stretch' }}>
+                                <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                    
+                                    <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12, minHeight: 200 }}>                          
+                                        <Stack spacing={2}>     
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
+                                                <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>                    
+                                                    <img src={suc1} alt=""/>                                                        
+                                                    <Typography variant="body3" fontWeight={600}>
+                                                        Το κουτί με τις έγνοιες
+                                                    </Typography>                                                                                                                                                                
+                                                </Stack>                    
                                                 <Typography fontSize={13} fontWeight={600} fontStyle={'italic'} sx={{ color: 'rgb(80, 80, 80)' }}>
-                                                    Ελπίδα
-                                                </Typography>
-                                            </Stack>       
-                                        </Box>                                                                                                                                 
-                                        <Typography variant="body2">
-                                            Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,
-                                            έμαθα πώς να χρησιμοποιώ το αναπηρικό μου αμαξίδιο και πώς να το εντάξω στην
-                                            καθημερινότητά μου με αυτονομία και αυτοπεποίθηση. Μου μετέδωσε το μήνυμα ότι
-                                            έχω τη δυνατότητα να επιλέξω τον τρόπο ζωής που επιθυμώ, παρά τις προκλήσεις
-                                            που αντιμετωπίζω.
-                                        </Typography>
-                                        <Typography variant="body2">
-                                            Σε ψυχολογικό επίπεδο, ήταν πάντα δίπλα μου, έτοιμος να με
-                                            στηρίξει και να μου προσφέρει την άνεση και την ασφάλεια που χρειαζόμουν.
-                                            Είχε πάντα κάτι να πει που θα με βοηθούσε να αντιμετωπίσω τις δυσκολίες και
-                                            να νιώσω καλύτερα, ανεξάρτητα από το τι μου περνούσε στο μυαλό.
-                                        </Typography>
-                                        <Typography variant="body2">
-                                            Ήταν ένας εξαιρετικός επαγγελματίας, αφοσιωμένος στο έργο του και πρόθυμος να με βοηθήσει σε κάθε βήμα του
-                                            ταξιδιού μου προς την αυτονομία. Πέρα από αυτό, όμως, ήταν και ένας θερμός και αγαπητός
-                                            άνθρωπος, που φρόντιζε για την ευημερία μου όχι μόνο σωματικά αλλά και ψυχικά.
-                                        </Typography>                                        
-                                    </Stack>
-                                </Paper>                            
+                                                    Νίκος
+                                                </Typography>                        
+                                            </Box>                                        
+                                            <Typography variant="body2">
+                                                Ο Παναγιώτης ή Γιώτης όπως τον φωνάζουν, 
+                                                ήταν το άτομο που μου έδειξε τον τρόπο προς την αυτονομία.
+                                                Ένα άτομο με κάταγμα στην σπονδυλική στήλη έχει άμεση ανάγκη από
+                                                έναν άνθρωπο που θα του ανοίξει τους ορίζοντες προς την αποδοχή
+                                                και την άμεση αποκατάσταση. Για μένα αυτό το άτομο ήταν ο Γιώτης.
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                Μαζί του έμαθα να ντύνομαι,
+                                                να σηκώνομαι από το κρεβάτι και να κινούμαι με το αμαξίδιο άνετα.
+                                                Το σημαντικότερο όμως μάθημα που πήρα από αυτόν ήταν το “κουτί με τις έγνοιες”.
+                                                Προσπαθούμε να τακτοποιήσουμε μια έγνοια μέχρι να έρθει η επόμενη και να πάρει
+                                                την θέση της στο κουτί. Έτσι έμαθα να ζω με την αναπηρία και σήμερα ζω σχεδόν
+                                                αυτόνομος όντας τετραπληγικός στην Ελλάδα.
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                Σε ευχαριστώ για άλλη μια φορά!
+                                            </Typography>          
+                                        </Stack>
+                                    </Paper>                             
+                                </Grid>
+                                <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                        
+                                    <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12 }}>                                        
+                                        <Stack spacing={2}>     
+                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
+                                                <img src={suc2} alt=""/>   
+                                                <Stack>                                              
+                                                    <Typography fontSize={13} fontWeight={600} fontStyle={'italic'} sx={{ color: 'rgb(80, 80, 80)' }}>
+                                                        Ελπίδα
+                                                    </Typography>
+                                                </Stack>       
+                                            </Box>                                                                                                                                 
+                                            <Typography variant="body2">
+                                                Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,
+                                                έμαθα πώς να χρησιμοποιώ το αναπηρικό μου αμαξίδιο και πώς να το εντάξω στην
+                                                καθημερινότητά μου με αυτονομία και αυτοπεποίθηση. Μου μετέδωσε το μήνυμα ότι
+                                                έχω τη δυνατότητα να επιλέξω τον τρόπο ζωής που επιθυμώ, παρά τις προκλήσεις
+                                                που αντιμετωπίζω.
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                Σε ψυχολογικό επίπεδο, ήταν πάντα δίπλα μου, έτοιμος να με
+                                                στηρίξει και να μου προσφέρει την άνεση και την ασφάλεια που χρειαζόμουν.
+                                                Είχε πάντα κάτι να πει που θα με βοηθούσε να αντιμετωπίσω τις δυσκολίες και
+                                                να νιώσω καλύτερα, ανεξάρτητα από το τι μου περνούσε στο μυαλό.
+                                            </Typography>
+                                            <Typography variant="body2">
+                                                Ήταν ένας εξαιρετικός επαγγελματίας, αφοσιωμένος στο έργο του και πρόθυμος να με βοηθήσει σε κάθε βήμα του
+                                                ταξιδιού μου προς την αυτονομία. Πέρα από αυτό, όμως, ήταν και ένας θερμός και αγαπητός
+                                                άνθρωπος, που φρόντιζε για την ευημερία μου όχι μόνο σωματικά αλλά και ψυχικά.
+                                            </Typography>                                        
+                                        </Stack>
+                                    </Paper>                            
+                                </Grid>
                             </Grid>
-                        </Grid>
-                    </Box>}               
+                        </Box>
+                    )}  
+                    {mainValue === 2 && (
+                        <Stack
+                            sx={{
+                                height: 'fit-content',                                              
+                                borderRadius: 2,
+                                overflow: 'hidden',
+                                boxShadow: 12                                                          
+                            }}
+                        >
+                                <YouTube className="yt-vid" videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>                                                         
+                        </Stack>
+                    )}          
+                    {mainValue === 3 && (
+                        <Box
+                            sx={{                               
+                                justifyContent: 'center',
+                                width: '100%',
+                            }}
+                        >
+                            <Stack
+                                spacing={3}
+                                sx={{
+                                    borderRadius: 2,
+                                    bgcolor: 'rgb(235, 240, 248)',
+                                    padding: 5,
+                                    boxShadow: 8
+                                }}
+                                >
+                                <Typography variant="body2">
+                                    Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
+                                    Νοσηλεύτηκα στο Νοσοκομείο Παπανικολάου της Θεσσαλονίκης για σχεδόν δύο μήνες
+                                    όπου οι γιατροί διέγνωσαν τραυματισμό στην σπονδυλική μου στήλη στο επιπεδο Α8
+                                    Νευροτόμιο.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Μετά από μια σύντομη παραμονή στο σπίτι, και δίχως να μου έχουν δώσει
+                                    κάποιο βοήθημα μετακίνησης, μεταφέρθηκα στη Χαϊδελβέργη της Γερμανίας σε κέντρο
+                                    αποκατάστασης όπου εκεί μου εξήγησαν τι σημαίνει τραυματισμός στη σπονδυλική στήλη.
+                                    Μόνιμη παράλυση κάτω άκρων από το επίπεδο του τραυματισμού και κάτω. Νοσηλεύτηκα
+                                    για τέσσερις μήνες και τον Δεκέμβριο της ίδιας χρονιάς επέστρεψα στη Θεσσαλονίκη. Τον
+                                    Ιανουάριο συνέχισα το σχολείο μου.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Τελείωσα το Γυμνάσιο, πήγα στο λύκειο, σπούδασα Εφαρμοσμένη πληροφορική στο
+                                    Πανεπιστήμιο Μακεδονίας, και το 1995 ασχολήθηκα με το μπάσκετ με αμαξίδιο όπου από
+                                    το 1999 έως το 2009 ήμουν μέλος της Εθνικής ομάδας με πολλές συμμετοχές σε
+                                    ευρωπαϊκούς και πανευρωπαϊκούς αγώνες ενώ το 2004 πήρα μέρος στους
+                                    Παραολυμπιακούς αγώνες της Αθήνας.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Πρόεδρος της ομάδας του Αθλητικού Συλλόγου Αναπήρων Κένταυρος της Θεσσαλονίκης,
+                                    πρόεδρος της ομάδας μπάσκετ με αμαξίδιο του Άρη Θεσσαλονίκης. Δοκίμασα διάφορα
+                                    αθλήματα σαν Χόμπι ενώ υπήρξα αθλητής της προσαρμοσμένης χιονοδρομίας SEATSKI.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Το 2006 έγινα πιστοποιημένος εκπαιδευτής για ανθρώπους με τραυματισμό στην
+                                    σπονδυλική στήλη από τον Σουηδικό οργανισμό RG ενεργητική αποκατάσταση.
+                                    Ιδρυτικό μέλος και εκπαιδευτής του σωματείου Άλλη Όψη που σαν σκοπό είχε την
+                                    δημιουργία εκπαιδευτικών προγραμμάτων για άτομα με τραυματισμό στην σπονδυλική
+                                    στήλη με στόχο την βελτίωση της αυτονομίας σε βασικά θέματα καθημερινότητας.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Εργάστηκα στην Νομαρχία Θεσσαλονίκης στο τμήμα αθλητισμού και από εκεί για 8 χρόνια
+                                    σε ιδιωτικό κέντρο αποκατάστασης στη Θεσσαλονίκη, στο τμήμα εργοθεραπείας σαν
+                                    εκπαιδευτής, ενώ από το 2019 ασχολούμαι και με την κατασκευή αναπηρικών αμαξιδίων
+                                    Custom Made.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Η GS wheelchairs είναι το αποτέλεσμα όλων αυτών των ετών στο χώρο της αναπηρίας. Όλη
+                                    μου η εμπειρία στον χώρο την λειτουργικής αποκατάστασης, η φιλοσοφία μου για το τι
+                                    είναι αναπηρία, ποιες είναι η δυνατότητες σου και ποιες είναι οι πραγματικές σου ανάγκες
+                                    είναι αυτό που κάνει την GS (Get Started) την πρώτη εταιρία με ολιστική προσέγγιση.
+                                    Στόχος της είναι έχει να παρέχει ολοκληρωμένες λύσεις σε άτομα με αναπηρία και σε
+                                    όσους ζουν την αναπηρία από κοντά, με στόχο την βελτίωση της αυτονομίας και μια
+                                    καλύτερη ποιότητα ζωής. Όσο υψηλότερο το επίπεδο αυτονομίας τόσο καλύτερη και η
+                                    ποιότητα ζωής.
+                                </Typography>
+                                <Typography variant="body2">
+                                    Η αναπηρία είναι μια κατάσταση, εσύ επιλέγεις το πως θα την ζήσεις.
+                                </Typography>                                       
+                            </Stack>
+                        </Box>
+                    )}
                 </Stack>            
-            </Box>
-    );
+            </Box>  
+    )
 }
 
 export default AboutSlider;

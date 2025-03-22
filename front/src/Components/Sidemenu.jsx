@@ -1,5 +1,5 @@
 import React from "react";
-import logo from '../assets/logo.png';
+import logo from '../assets/LOGO-MenuBar_UP.png';
 import {Box, Stack } from '@mui/material';
 import Menulist from "./Menulist";
 import MenuFooter from "./MenuFooter";
@@ -12,7 +12,7 @@ const Sidemenu = (props) => {
             width: {lg: '200px', md: '200px', sm: '50px', xs: '50px', xxs: '50px'},
             height: '100%',
             boxShadow: 4,
-            backgroundColor: 'rgb(235, 235, 240)', 
+            background: 'linear-gradient(to bottom, rgb(195, 195, 200), white, rgb(195, 195, 200))', 
             flexShrink: 0,
             position: 'fixed',     
             overflow: 'hidden'

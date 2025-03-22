@@ -125,10 +125,7 @@ const Wheelchairs = () => {
         >
             <Grid container    
                 columnGap={1}   
-                rowGap={1}        
-                sx={{                  
-                    padding: {lg: '0px 88px', md: '0px 72px', sm: '0px 40px'}            
-                }}
+                rowGap={1}                       
             >       
                 <Grid item>      
                     <Chip

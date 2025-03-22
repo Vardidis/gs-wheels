@@ -17,6 +17,7 @@ const Products = () => {
             
         let sortedData;
         if(category){
+            console.log(category)
             sortedData = allProducts.filter(product => product.tag === category);
         }else{
             sortedData = allProducts;                
@@ -26,31 +27,35 @@ const Products = () => {
             setItems((prevItems) => [...prevItems, product]);                
         });
     }, [category, allProducts]);    
-
-        return(
-            <Box>            
-                <Box sx={{ margin: '32px 8px'}}>                       
-                    <Stack spacing={4} alignItems='center'>
-                        <CategoryMenu tag={category}/>         
-                        {category === 'wheelchairs' &&
-                            <Wheelchairs/>
-                        }        
-                        {category === 'parts' &&
-                            <Parts/>
-                        }     
-                        {category === 'helpers' &&
-                            <ProductMenu items={items}/>
-                        }        
-                        {category === undefined &&
-                            <ProductMenu items={items}/>
-                        }                        
-                    </Stack>                         
-                </Box>      
-            </Box>
-        );
-
-
-        
+    
+    return(                    
+        <Box
+            sx={{               
+                background: 'linear-gradient(#c5c5c5, #e5e5e5, #ffffff)'
+            }}
+        >                       
+            <Stack
+                spacing={6}
+                sx={{
+                    padding: '0px 48px'                    
+                }}
+            >
+                <CategoryMenu tag={category}/>         
+                {category === 'wheelchairs' &&
+                    <Wheelchairs/>
+                }        
+                {category === 'parts' &&
+                    <Parts/>
+                }     
+                {category === 'helpers' &&
+                    <ProductMenu items={items}/>
+                }        
+                {category === undefined &&
+                    <ProductMenu items={items}/>
+                }                        
+            </Stack>                         
+        </Box>                
+    );        
 }
 
 export default Products;

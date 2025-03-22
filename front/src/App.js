@@ -13,6 +13,7 @@ import Services from './Pages/Services.jsx';
 import Education from './Pages/Education.jsx';
 import Product from './Pages/Product.jsx';
 import FuncRepair from './Components/Services/FuncRepair.jsx';
+import Footer from './Pages/Footer.jsx';
 
 function App() {
   const theme = createTheme({
@@ -82,7 +83,8 @@ function App() {
               <Route path='/about-us' element={<About/>}/>    
               <Route path='customize-your-life' element={<FuncRepair/>}/>         
             </Routes>
-          </Box>     
+            <Footer/>
+          </Box>               
         </Box>
       </BrowserRouter>
     </ThemeProvider>

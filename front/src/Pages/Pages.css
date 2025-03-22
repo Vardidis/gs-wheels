@@ -52,7 +52,12 @@
     object-fit: cover;
 }
 
+.hoverable-btn{
+    transition: background-color ease;
+}
+
 .hoverable-btn:hover{
     opacity: 0.97;
     box-shadow: 2px 3px 8px -2px black;    
+    background-color: #d85704;
 }
