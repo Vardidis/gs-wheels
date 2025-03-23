@@ -7,6 +7,10 @@ import gw from '../assets/gbgb.jpg';
 import id from '../assets/interior1.jpg';
 import { Box, keyframes, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
+import Service1 from '../assets/YPHRESIES-Plaisio_1.png';
+import Service2 from '../assets/YPHRESIES-Plaisio_2.png';
+import Service3 from '../assets/YPHRESIES-Plaisio_3.png';
+import Service4 from '../assets/YPHRESIES-Plaisio_4.png';
 
 const fadeIn = keyframes`
   0% {
@@ -20,31 +24,38 @@ const fadeIn = keyframes`
 `;
 
 const Servicebox = () => {
-    return(
-        <Box sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1} }}>
-            <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ maxWidth: 1400, animation: `${fadeIn} 1s ease-in-out` }}>                                      
+    return(       
+            <Grid container
+                justifyContent={'center'}
+                rowSpacing={8}
+                columnSpacing={32}
+                sx={{
+                    maxWidth: 1400,
+                    padding: '48px 24px',
+                    animation: `${fadeIn} 1s ease-in-out`
+                }}
+            >                                      
                 <Grid item xxs={12} md={6}>            
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
-                        <Servicecard image={bgimg2} text={'Λειτουργική Αποκατάσταση'}/>
+                        <Servicecard image={Service1} text={'Λειτουργική Αποκατάσταση'}/>
                     </Link>
                 </Grid>
                 <Grid item xxs={12} md={6}>
                     <Link to='/service/education' style={{textDecoration: 'none'}}>
-                        <Servicecard image={bgimg} text={'Εκπαίδευση'}/>
+                        <Servicecard image={Service2} text={'Εκπαίδευση'}/>
                     </Link>      
                 </Grid>
                 <Grid item xxs={12} md={6}>
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
-                            <Servicecard image={id} text={'Διαμόρφωση Χώρου'}/>
+                            <Servicecard image={Service3} text={'Διαμόρφωση Χώρου'}/>
                     </Link>
                 </Grid>
                 <Grid item xxs={12} md={6}>
                     <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
-                        <Servicecard image={gw} text={'Συμβουλευτική'}/>
+                        <Servicecard image={Service4} text={'Συμβουλευτική'}/>
                     </Link>
                 </Grid>                                                                             
-            </Grid>
-        </Box>
+            </Grid>       
     );
 }
 

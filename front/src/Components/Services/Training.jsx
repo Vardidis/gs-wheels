@@ -7,6 +7,8 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../Context";
 import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
+import Header from '../../assets/HEADER-AboutUs_UP.jpg';
+import Background from '../../assets/BACKGROUND-Arxiki.jpg';
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -63,8 +65,23 @@ const Training = () => {
     }
 
     return(
-        <Box>             
-            <Stack spacing={3} alignItems='center' sx={{padding: 2 }}>
+        <Stack
+            spacing={1}
+            alignItems={'center'}
+            sx={{
+                backgroundImage: `url(${Background})`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',                
+            }}
+        >             
+            <img
+                src={Header}
+                style={{
+                    width: '100%'
+                }}
+            />
+            <Stack spacing={3} alignItems='center'>
                 <Box>        
                     <SecTabs
                         value={selection}
@@ -72,8 +89,8 @@ const Training = () => {
                         scrollButtons="auto"                                      
                         allowScrollButtonsMobile  
                     >
-                        <SecTab label='Βασικές Αρχές' sx={{ fontWeight: 600, fontSize: 16, color: selection === 0 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(0)}/>
-                        <SecTab label='Προσαρμογή Αμαξιδίου' sx={{ fontWeight: 600, fontSize: 16, color: selection === 1 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(1)}/>                            
+                        <SecTab label='Βασικές Αρχές' sx={{ fontWeight: 600, fontSize: 16, color: selection === 0 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(0)}/>
+                        <SecTab label='Προσαρμογή Αμαξιδίου' sx={{ fontWeight: 600, fontSize: 16, color: selection === 1 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(1)}/>                            
                     </SecTabs>  
                 </Box>                                                                                                                 
             </Stack>              
@@ -83,7 +100,7 @@ const Training = () => {
             {selection === 1 &&
                 <CustomWheels/>
             }          
-        </Box>               
+        </Stack>               
     );
 }
 

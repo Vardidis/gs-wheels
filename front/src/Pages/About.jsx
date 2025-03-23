@@ -6,8 +6,7 @@ const About = () => {
     return(
         <Box
             sx={{
-                width: '100%',
-                margin: '48px 0px'
+                width: '100%',             
             }}
         >
             <AboutSlider/>

@@ -7,6 +7,11 @@ import YouTube from 'react-youtube';
 import { useEffect } from "react";
 import { useContext } from "react";
 import { Context } from "./Context";
+import BioImg from '../assets/BIOGRAFIKO-AboutUs_BACKGROUND.jpg';
+import Header from '../assets/HEADER-AboutUs_UP.jpg';
+import Image1 from '../assets/PHOTO-1-AboutUs_TEXT.jpg';
+import Image2 from '../assets/PHOTO-2-AboutUs_TEXT.jpg';
+import Image3 from '../assets/PHOTO-3-AboutUs_TEXT.jpg';
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -27,7 +32,7 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
         textTransform: 'none',                
         color: '#30343f',
         '&.Mui-selected': {
-        color: 'orangered',
+        color: '#d85704',
         },       
     }),
 );
@@ -42,7 +47,7 @@ const TripleBox = (props) => {
         direction={'row'}
         justifyContent={'space-between'}
         spacing={2}
-       >
+       >            
             <Stack
                 spacing={1}                
                 direction={'row'}
@@ -52,11 +57,19 @@ const TripleBox = (props) => {
                 <Divider
                     orientation={'vertical'}
                     sx={{
-                        bgcolor: 'orangered',
-                        border: '1px solid orangered'
+                        bgcolor: '#d85704',
+                        border: '1px solid #d85704'
                     }}
                 />                                                    
-                <Typography variant="body2">
+                <Typography
+                    variant="body2"
+                    sx={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: 'hidden'
+                    }}
+                >
                     {props.text1}
                 </Typography>                                                                                           
             </Stack>
@@ -69,11 +82,19 @@ const TripleBox = (props) => {
                 <Divider
                     orientation={'vertical'}
                     sx={{
-                        bgcolor: 'orangered',
-                        border: '1px solid orangered'
+                        bgcolor: '#d85704',
+                        border: '1px solid #d85704'
                     }}
                 />                                
-                <Typography variant="body2">
+                <Typography
+                    variant="body2"
+                    sx={{
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: 'hidden'
+                    }}
+                >
                     {props.text2}
                 </Typography>                                              
             </Stack>
@@ -86,14 +107,17 @@ const TripleBox = (props) => {
                 <Divider
                     orientation={'vertical'}
                     sx={{
-                        bgcolor: 'orangered',
-                        border: '1px solid orangered'
+                        bgcolor: '#d85704',
+                        border: '1px solid #d85704'
                     }}
                 />                           
                 <Typography
                     variant="body2"
                     sx={{
-                        maxWidth: 900
+                        display: "-webkit-box",
+                        WebkitBoxOrient: "vertical",
+                        WebkitLineClamp: 6,
+                        overflow: 'hidden'                      
                     }}
                 >
                     {props.text3}
@@ -132,8 +156,6 @@ const AboutSlider = () => {
     const {allTexts} = useContext(Context);
     const [mainValue, setMainValue] = useState(0);
     const [secValue, setSecValue] = useState(0);
-    const [vidOpen, setVidOpen] = useState(false);
-    const [bioOpen, setBioOpen] = useState(false);
     const [loading, setLoading] = useState(true);
 
     const handleMainChange = (newValue) => {
@@ -145,24 +167,6 @@ const AboutSlider = () => {
     const handleSecChange = (newValue) => {
         setSecValue(newValue);
     };
-
-    const showVideo = () => {
-        if(vidOpen){
-            setVidOpen(false);
-        }else{
-            setBioOpen(false);
-            setVidOpen(true);
-        }        
-    }
-
-    const showBio = () => {
-        if(bioOpen){
-            setBioOpen(false);
-        }else{
-            setVidOpen(false);
-            setBioOpen(true);
-        }      
-    }
 
     const opts = {
         maxHeight: '500',
@@ -189,15 +193,19 @@ const AboutSlider = () => {
         )
     }
 
-    return(
-            <Box sx={{ width: '100%', display: 'flex', justifyContent: 'center' }}>              
+    return(          
+            <Stack>
+                <img
+                    src={Header}
+                    style={{
+                        width: '100%'
+                    }}
+                />
                 <Stack
-                    spacing={3}
-                    alignItems={'stretch'}
-                    sx={{                        
-                        width: '100%',
+                    spacing={3}                   
+                    sx={{                                                
                         maxWidth: 1400,
-                        padding: '0px 32px'
+                        padding: '32px 24px'
                     }}
                 >
                     <Stack
@@ -262,7 +270,7 @@ const AboutSlider = () => {
                                     }}
                                 >                                   
                                     <img
-                                        src={suc1}
+                                        src={Image1}
                                         style={{
                                             width: '100%',
                                             height: 300,
@@ -270,7 +278,7 @@ const AboutSlider = () => {
                                         }}
                                     />                                    
                                     <img
-                                        src={suc1}
+                                        src={Image2}
                                         style={{
                                             width: '100%',
                                             height: 300,
@@ -278,7 +286,7 @@ const AboutSlider = () => {
                                         }}
                                     />                                    
                                     <img
-                                        src={suc1}
+                                        src={Image3}
                                         style={{
                                             width: '100%',
                                             height: 300,
@@ -287,7 +295,7 @@ const AboutSlider = () => {
                                     />
                                 </Stack>                                                                                                                                              
                                 <Stack spacing={2}>
-                                    <Typography variant='h6' sx={{ fontWeight: 'bold', color: 'orangered', display: 'flex', justifyContent: 'center' }}>
+                                    <Typography variant='h6' sx={{ fontWeight: 'bold', color: '#d85704', display: 'flex', justifyContent: 'center' }}>
                                         Προσφέρουμε Συμβουλευτική
                                     </Typography>      
                                     <SecTabs
@@ -296,10 +304,10 @@ const AboutSlider = () => {
                                         scrollButtons="auto"                                  
                                         allowScrollButtonsMobile                                                                    
                                     >
-                                        <SecTab label="για Άτομα με Αναπηρία" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 0 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(0)}/>
-                                        <SecTab label="για Οικογένειες" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 1 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(1)}/>
-                                        <SecTab label="για Αλληλεπίδραση με την Κοινωνία" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 2 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(2)}/>
-                                        <SecTab label="ως Εργαλείο Ενδυνάμωσης" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 3 ? 'orangered' : '#30343f' }} onClick={()=>handleSecChange(3)}/>
+                                        <SecTab label="για Άτομα με Αναπηρία" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 0 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(0)}/>
+                                        <SecTab label="για Οικογένειες" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 1 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(1)}/>
+                                        <SecTab label="για Αλληλεπίδραση με την Κοινωνία" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 2 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(2)}/>
+                                        <SecTab label="ως Εργαλείο Ενδυνάμωσης" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 3 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(3)}/>
                                     </SecTabs>                                                                                                                  
                                     {secValue === 0 &&                           
                                         <Box>
@@ -462,52 +470,76 @@ const AboutSlider = () => {
                             <Stack
                                 spacing={3}
                                 sx={{
-                                    borderRadius: 2,
-                                    bgcolor: 'rgb(235, 240, 248)',
-                                    padding: 5,
-                                    boxShadow: 8
+                                    borderRadius: 2,                                   
+                                    padding: 5,                            
+                                    backgroundImage: `url(${BioImg})`,
+                                    backgroundSize: 'cover',
+                                    backgroundPosition: 'center',
+                                    backgroundRepeat: 'no-repeat',                                    
+                                    color: 'white'
                                 }}
                                 >
-                                <Typography variant="body2">
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        paddingLeft: 35,
+                                    }}
+                                >
                                     Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
                                     Νοσηλεύτηκα στο Νοσοκομείο Παπανικολάου της Θεσσαλονίκης για σχεδόν δύο μήνες
                                     όπου οι γιατροί διέγνωσαν τραυματισμό στην σπονδυλική μου στήλη στο επιπεδο Α8
                                     Νευροτόμιο.
                                 </Typography>
-                                <Typography variant="body2">
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        paddingLeft: 35,
+                                    }}
+                                >
                                     Μετά από μια σύντομη παραμονή στο σπίτι, και δίχως να μου έχουν δώσει
                                     κάποιο βοήθημα μετακίνησης, μεταφέρθηκα στη Χαϊδελβέργη της Γερμανίας σε κέντρο
                                     αποκατάστασης όπου εκεί μου εξήγησαν τι σημαίνει τραυματισμός στη σπονδυλική στήλη.
                                     Μόνιμη παράλυση κάτω άκρων από το επίπεδο του τραυματισμού και κάτω. Νοσηλεύτηκα
                                     για τέσσερις μήνες και τον Δεκέμβριο της ίδιας χρονιάς επέστρεψα στη Θεσσαλονίκη. Τον
-                                    Ιανουάριο συνέχισα το σχολείο μου.
-                                </Typography>
-                                <Typography variant="body2">
-                                    Τελείωσα το Γυμνάσιο, πήγα στο λύκειο, σπούδασα Εφαρμοσμένη πληροφορική στο
+                                    Ιανουάριο συνέχισα το σχολείο μου.                                
+                                        Τελείωσα το Γυμνάσιο, πήγα στο λύκειο, σπούδασα Εφαρμοσμένη πληροφορική στο
                                     Πανεπιστήμιο Μακεδονίας, και το 1995 ασχολήθηκα με το μπάσκετ με αμαξίδιο όπου από
                                     το 1999 έως το 2009 ήμουν μέλος της Εθνικής ομάδας με πολλές συμμετοχές σε
                                     ευρωπαϊκούς και πανευρωπαϊκούς αγώνες ενώ το 2004 πήρα μέρος στους
-                                    Παραολυμπιακούς αγώνες της Αθήνας.
-                                </Typography>
-                                <Typography variant="body2">
+                                    Παραολυμπιακούς αγώνες της Αθήνας.                               
                                     Πρόεδρος της ομάδας του Αθλητικού Συλλόγου Αναπήρων Κένταυρος της Θεσσαλονίκης,
                                     πρόεδρος της ομάδας μπάσκετ με αμαξίδιο του Άρη Θεσσαλονίκης. Δοκίμασα διάφορα
                                     αθλήματα σαν Χόμπι ενώ υπήρξα αθλητής της προσαρμοσμένης χιονοδρομίας SEATSKI.
                                 </Typography>
-                                <Typography variant="body2">
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        paddingLeft: 35,
+                                    }}
+                                >
                                     Το 2006 έγινα πιστοποιημένος εκπαιδευτής για ανθρώπους με τραυματισμό στην
                                     σπονδυλική στήλη από τον Σουηδικό οργανισμό RG ενεργητική αποκατάσταση.
                                     Ιδρυτικό μέλος και εκπαιδευτής του σωματείου Άλλη Όψη που σαν σκοπό είχε την
                                     δημιουργία εκπαιδευτικών προγραμμάτων για άτομα με τραυματισμό στην σπονδυλική
                                     στήλη με στόχο την βελτίωση της αυτονομίας σε βασικά θέματα καθημερινότητας.
                                 </Typography>
-                                <Typography variant="body2">
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        paddingLeft: 65,
+                                    }}
+                                >
                                     Εργάστηκα στην Νομαρχία Θεσσαλονίκης στο τμήμα αθλητισμού και από εκεί για 8 χρόνια
                                     σε ιδιωτικό κέντρο αποκατάστασης στη Θεσσαλονίκη, στο τμήμα εργοθεραπείας σαν
                                     εκπαιδευτής, ενώ από το 2019 ασχολούμαι και με την κατασκευή αναπηρικών αμαξιδίων
                                     Custom Made.
                                 </Typography>
-                                <Typography variant="body2">
+                                <Typography
+                                    variant="body2"
+                                    sx={{
+                                        paddingLeft: 65,
+                                    }}
+                                >
                                     Η GS wheelchairs είναι το αποτέλεσμα όλων αυτών των ετών στο χώρο της αναπηρίας. Όλη
                                     μου η εμπειρία στον χώρο την λειτουργικής αποκατάστασης, η φιλοσοφία μου για το τι
                                     είναι αναπηρία, ποιες είναι η δυνατότητες σου και ποιες είναι οι πραγματικές σου ανάγκες
@@ -517,14 +549,48 @@ const AboutSlider = () => {
                                     καλύτερη ποιότητα ζωής. Όσο υψηλότερο το επίπεδο αυτονομίας τόσο καλύτερη και η
                                     ποιότητα ζωής.
                                 </Typography>
-                                <Typography variant="body2">
+                                <Typography
+                                    variant="body2"
+                                    fontSize={17}
+                                    fontWeight={'bold'}
+                                    sx={{
+                                        paddingLeft: 65,
+                                        opacity: 0.5
+                                    }}
+                                >
                                     Η αναπηρία είναι μια κατάσταση, εσύ επιλέγεις το πως θα την ζήσεις.
-                                </Typography>                                       
+                                </Typography>   
+                                <Stack
+                                    spacing={-1}
+                                    sx={{                                    
+                                        position: 'relative',                                        
+                                        bottom: 50
+                                    }}
+                                >
+                                    <Typography
+                                        fontSize={32}
+                                        fontWeight={'bold'}
+                                        sx={{
+                                            opacity: 0.5
+                                        }}
+                                    >
+                                        ΠΑΝΑΓΙΩΤΗΣ
+                                    </Typography>        
+                                    <Typography
+                                        fontSize={40}
+                                        fontWeight={'bold'}
+                                        sx={{
+                                            opacity: 0.7
+                                        }}
+                                    >
+                                        ΧΡΥΣΟΒΕΡΓΗΣ
+                                    </Typography>      
+                                </Stack>                                                            
                             </Stack>
                         </Box>
                     )}
-                </Stack>            
-            </Box>  
+                </Stack>    
+            </Stack>                        
     )
 }
 

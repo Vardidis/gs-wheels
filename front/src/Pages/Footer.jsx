@@ -5,6 +5,7 @@ import LocalPhoneIcon from '@mui/icons-material/LocalPhone';
 import EmailIcon from '@mui/icons-material/Email';
 import FooterImage from '../assets/FOOTER-Background.jpg';
 import FooterLogo from '../assets/LOGO-Footer_LEFT.png';
+import GWatermark from '../assets/LEOUDIS-Signature_WEB.png';
 
 const Footer = () => {
     return (
@@ -178,11 +179,23 @@ const Footer = () => {
                 >
                     @2025 GS Wheelchairs
                 </Typography>
-                <Typography
-                    fontSize={13}
+                <Stack
+                    direction={'row'}
+                    alignItems={'center'}
+                    spacing={3}
                 >
-                    Developed by Vardis
-                </Typography>
+                    <Typography
+                        fontSize={13}
+                    >
+                        Developed by Vardis
+                    </Typography>
+                    <img
+                        src={GWatermark}
+                        style={{
+                            width: 150
+                        }}
+                    />                    
+                </Stack>                
             </Stack>
         </Stack>
     );
