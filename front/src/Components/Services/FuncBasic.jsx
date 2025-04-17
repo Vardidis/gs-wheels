@@ -52,12 +52,13 @@ const ColorBox = (props) => {
             xs={12}
             sm={5.5}
             sx={{
-                boxShadow: 12,
-                borderRadius: 5,
+                boxShadow: props.isDesktop && 12,
+                borderRadius: 6,
                 padding: 4,
                 bgcolor: props.color,
                 display: 'flex',
-                alignItems: 'center'
+                alignItems: 'center',
+                border: '0.1px solid #cccccc'
             }}
         >
             <Stack spacing={2}>
@@ -77,15 +78,9 @@ const ModelBox = (props) => {
             spacing={1}
             sx={{
                 color: '#30343f',
-                maxWidth: 1200
+                maxWidth: 1200                
             }}
-        >
-            <Divider
-                orientation={'vertical'}
-                sx={{
-                    border: '1px solid #d85704',                          
-                }}
-            />
+        >            
             <Stack
                 spacing={2}
                 justifyContent={'space-between'}
@@ -150,7 +145,7 @@ const FuncBasic = () => {
                     width: '100%'
                 }}
             />
-            <Stack spacing={4} sx={{ padding: {lg: 5, md: 5, sm: 3, xs: 1, xxs: 1} }}>           
+            <Stack spacing={4} sx={{ padding: 2 }}>           
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <SecTabs
                         value={secValue}
@@ -185,61 +180,103 @@ const FuncBasic = () => {
                                 color={'rgb(255, 255, 255)'}
                                 icon={<FontAwesomeIcon icon={faLinkSlash} size={iconSize} style={{ color: '#d85704' }}/>}
                                 text={allTexts[1].items[0].text}
+                                isDesktop={isDesktop}
                             />                           
                             <ColorBox
                                 color={'rgb(255, 255, 255)'}
                                 icon={<FontAwesomeIcon icon={faWheelchairMove} size={iconSize} style={{ color: '#d85704' }}/>}
                                 text={allTexts[1].items[1].text}
+                                isDesktop={isDesktop}
                             />                                      
                             <ColorBox
                                 color={'rgb(255, 255, 255)'}
                                 icon={<FontAwesomeIcon icon={faBook} size={iconSize} style={{ color: '#d85704' }}/>}
                                 text={allTexts[1].items[2].text}
+                                isDesktop={isDesktop}
                             />                              
                             <ColorBox
                                 color={'rgb(255, 255, 255)'}
                                 icon={<FontAwesomeIcon icon={faHandshakeAngle} size={iconSize} style={{ color: '#d85704' }}/>}
                                 text={allTexts[1].items[3].text}
+                                isDesktop={isDesktop}
                             />                                                                                                      
                         </Grid>                                                                                                          
                     </Stack>                 
                 }
                 {secValue === 1 &&                                                                      
                     <Grid container
-                        rowSpacing={8}
-                        columnSpacing={6}
+                        rowGap={8}
+                        columnGap={6}
+                        justifyContent={'center'}   
                         sx={{
-                            width: '100%'                           
-                        }}
+                            paddingBottom: 5
+                        }}                  
                     >
                         <Grid item
                             xs={12}
-                            sm={6}                                    
+                            sm={6}   
+                            lg={5.5}   
+                            sx={{
+                                borderLeft: '2px solid #d85704', 
+                                paddingLeft: 1
+                            }}                                                   
                         >
                             <ModelBox
                                 title={allTexts[2].items[0].title}
                                 text={allTexts[2].items[0].text}
                             />                                      
                         </Grid>
-                        <Grid item xs={12} sm={6}>
+                        <Grid item
+                            xs={12}
+                            sm={6}     
+                            lg={5.5}                     
+                            sx={{
+                                borderLeft: '2px solid #d85704', 
+                                paddingLeft: 1
+                            }}                                                   
+                        >                      
                             <ModelBox
                                 title={allTexts[2].items[1].title}
                                 text={allTexts[2].items[1].text}
                             />  
                         </Grid>   
-                        <Grid item xs={12} sm={6}> 
+                        <Grid item
+                            xs={12}
+                            sm={6}           
+                            lg={5.5}               
+                            sx={{
+                                borderLeft: '2px solid #d85704', 
+                                paddingLeft: 1
+                            }}                                                   
+                        >         
                             <ModelBox
                                 title={allTexts[2].items[2].title}
                                 text={allTexts[2].items[2].text}
                             />                                         
                         </Grid>
-                        <Grid item xs={12} sm={6}>   
+                        <Grid item
+                            xs={12}
+                            sm={6}      
+                            lg={5.5}                    
+                            sx={{
+                                borderLeft: '2px solid #d85704', 
+                                paddingLeft: 1
+                            }}                                                   
+                        >         
                             <ModelBox
                                 title={allTexts[2].items[3].title}
                                 text={allTexts[2].items[3].text}
                             />                                         
                         </Grid>
-                        <Grid item xs={12} sm={6}>     
+                        <Grid item
+                            xs={12}
+                            sm={6}     
+                            lg={5.5}                     
+                            sx={{
+                                borderLeft: '2px solid #d85704', 
+                                paddingLeft: 1
+                            }}                                                   
+                        >          
                             <ModelBox
                                 title={allTexts[2].items[4].title}
                                 text={allTexts[2].items[4].text}
@@ -269,13 +306,25 @@ const FuncBasic = () => {
                                     rowSpacing={2}
                                     columnSpacing={2}
                                 >  
-                                    <Grid item xs={12} sm={6} lg={4}>                            
+                                    <Grid item xs={12} sm={6} lg={4}
+                                        sx={{
+                                            borderLeft: '2px solid #d85704'
+                                        }}
+                                    >                            
                                         <TextWindow title={allTexts[3].items[0].title} text={allTexts[3].items[0].text}/>
                                     </Grid>  
-                                    <Grid item xs={12} sm={6} lg={4}>     
+                                    <Grid item xs={12} sm={6} lg={4}
+                                        sx={{
+                                            borderLeft: '2px solid #d85704'
+                                        }}
+                                    >      
                                         <TextWindow title={allTexts[3].items[1].title} text={allTexts[3].items[1].text}/>
                                     </Grid>
-                                    <Grid item xs={12} sm={6} lg={4}>   
+                                    <Grid item xs={12} sm={6} lg={4}
+                                        sx={{
+                                            borderLeft: '2px solid #d85704'
+                                        }}
+                                    >     
                                         <TextWindow title={allTexts[3].items[2].title} text={allTexts[3].items[2].text}/>
                                     </Grid>
                                 </Grid>                                                                                                                       

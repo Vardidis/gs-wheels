@@ -35,10 +35,7 @@ const Products = () => {
             }}
         >                       
             <Stack
-                spacing={6}
-                sx={{
-                    padding: '0px 48px'                    
-                }}
+                spacing={4}                
             >
                 <CategoryMenu tag={category}/>         
                 {category === 'wheelchairs' &&

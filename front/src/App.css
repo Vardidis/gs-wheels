@@ -45,3 +45,21 @@ body{
   transform: scale(1.05);
   box-shadow: 0px 0px 40px rgb(51, 51, 51);
 }
+
+.spread-shade{
+  cursor: 'pointer';
+  transition: box-shadow ease;
+}
+
+.spread-shade:hover{
+  box-shadow: 0px 0px 16px rgb(148, 148, 148);
+}
+
+.highlight{
+  cursor: pointer;
+  transition: color ease;
+}
+
+.highlight:hover{
+  color: #d85704;
+}

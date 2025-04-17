@@ -125,9 +125,9 @@ const Parts = () => {
             <Grid container    
                 columnGap={1}   
                 rowGap={1}        
-                sx={{                  
-                    padding: {lg: '0px 88px', md: '0px 72px', sm: '0px 40px'}            
-                }}
+                sx={{
+                    padding: '0px 8px'
+                }}               
             >      
                 <Grid item>      
                     <Chip

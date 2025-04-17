@@ -120,12 +120,15 @@ const Wheelchairs = () => {
     return(
         <Stack
             sx={{
-                width: '100%',                
+                width: '100%',                               
             }}
         >
             <Grid container    
                 columnGap={1}   
-                rowGap={1}                       
+                rowGap={1}       
+                sx={{
+                    padding: '0px 8px' 
+                }}                
             >       
                 <Grid item>      
                     <Chip

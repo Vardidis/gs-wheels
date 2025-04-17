@@ -43,7 +43,7 @@ const LifeCoaching = () => {
                 alignItems={'center'}
                 sx={{
                     maxWidth: 1400,
-                    padding: '24px 24px'
+                    padding: '24px 16px'
                 }}
             >  
                 <Typography variant='h5' fontWeight={600}>

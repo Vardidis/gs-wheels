@@ -27,11 +27,11 @@ const Servicebox = () => {
     return(       
             <Grid container
                 justifyContent={'center'}
-                rowSpacing={8}
+                rowSpacing={4}
                 columnSpacing={32}
                 sx={{
                     maxWidth: 1400,
-                    padding: '48px 24px',
+                    padding: '48px 8px',
                     animation: `${fadeIn} 1s ease-in-out`
                 }}
             >                                      

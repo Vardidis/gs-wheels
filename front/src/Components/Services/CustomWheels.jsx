@@ -41,7 +41,7 @@ const CustomWheels = () => {
             spacing={6}
             alignItems='center'
             sx={{
-                padding: '16px 24px'
+                padding: '16px 16px'
             }}
         >
             <Typography
@@ -63,17 +63,33 @@ const CustomWheels = () => {
                     των χρηστών, η GS Wheelchairs δημιουργεί προσβάσιμους και εργονομικούς
                     χώρους, βοηθώντας τα άτομα να αποκτήσουν μεγαλύτερη ανεξαρτησία.
                 </Typography>                                   
-                <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ maxWidth: 1400 }}>
-                    <Grid item xs={12} md={6}>
+                <Grid container justifyContent='center' rowGap={4} columnSpacing={2} sx={{ maxWidth: 1400 }}>
+                    <Grid item xs={12} sm={6}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >  
                         <TextWindow title={allTexts[5].items[0].title} text={allTexts[5].items[0].text}/>                        
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items[1].title} text={allTexts[5].items[1].text}/>                        
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items[2].title} text={allTexts[5].items[2].text}/>                                                
                     </Grid>
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} sm={6}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items[3].title} text={allTexts[5].items[3].text}/>                                                
                     </Grid>                      
                 </Grid>                                
@@ -93,13 +109,25 @@ const CustomWheels = () => {
                     συνδέονται άμεσα με τη σημασία ενός πλήρως προσαρμοσμένου αμαξιδίου.
                 </Typography>                                       
                 <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2} sx={{ maxWidth: 1400 }}>
-                    <Grid item xs={12} md={6} lg={4}>
+                    <Grid item xs={12} md={6} lg={4}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items2[0].title} text={allTexts[5].items2[0].text}/>                        
                     </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
+                    <Grid item xs={12} md={6} lg={4}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items2[1].title} text={allTexts[5].items2[1].text}/>                        
                     </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
+                    <Grid item xs={12} md={6} lg={4}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items2[2].title} text={allTexts[5].items2[2].text}/>                                               
                     </Grid>
                 </Grid>              
@@ -109,13 +137,25 @@ const CustomWheels = () => {
                     Τι Προσφέρει ένα Προσαρμοσμένο Αμαξίδιο στον Χρήστη
                 </Typography> 
                 <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2} sx={{ maxWidth: 1400 }}>
-                    <Grid item xs={12} md={6} lg={4}>
+                    <Grid item xs={12} md={6} lg={4}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items3[0].title} text={allTexts[5].items3[0].text}/>                        
                     </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
+                    <Grid item xs={12} md={6} lg={4}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items3[1].title} text={allTexts[5].items3[1].text}/>                        
                     </Grid>
-                    <Grid item xs={12} md={6} lg={4}>
+                    <Grid item xs={12} md={6} lg={4}
+                        sx={{
+                            borderLeft: '2px solid #d85704'
+                        }}
+                    >
                         <TextWindow title={allTexts[5].items3[2].title} text={allTexts[5].items3[2].text}/>                                              
                     </Grid>                        
                 </Grid>                            

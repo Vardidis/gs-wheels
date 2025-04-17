@@ -39,12 +39,13 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 
 const TripleBox = (props) => {
     const boxSets = {        
-        color: '#30343f'        
+        color: '#30343f',
+        bgcolor: 'rgb(250, 250, 250)'      
     }
 
     return(
        <Stack
-        direction={'row'}
+        direction={props.isDesktop ? 'row' : 'column'}
         justifyContent={'space-between'}
         spacing={2}
        >            
@@ -54,20 +55,25 @@ const TripleBox = (props) => {
                 alignItems={'center'}
                 sx={boxSets}
             >
-                <Divider
-                    orientation={'vertical'}
-                    sx={{
-                        bgcolor: '#d85704',
-                        border: '1px solid #d85704'
-                    }}
-                />                                                    
+                {props.isDesktop && (
+                    <Divider
+                        orientation={'vertical'}
+                        sx={{
+                            bgcolor: '#d85704',
+                            border: '1px solid #d85704'
+                        }}
+                    />                              
+                )}                      
                 <Typography
                     variant="body2"
+                    fontSize={props.isDesktop ? 16 : 17}
                     sx={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 6,
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        borderLeft: !props.isDesktop && '3px solid #d85704',
+                        paddingLeft: !props.isDesktop && 1
                     }}
                 >
                     {props.text1}
@@ -79,20 +85,25 @@ const TripleBox = (props) => {
                 alignItems={'center'}
                 sx={boxSets}
             >
-                <Divider
-                    orientation={'vertical'}
-                    sx={{
-                        bgcolor: '#d85704',
-                        border: '1px solid #d85704'
-                    }}
-                />                                
+                {props.isDesktop && (
+                    <Divider
+                        orientation={'vertical'}
+                        sx={{
+                            bgcolor: '#d85704',
+                            border: '1px solid #d85704'
+                        }}
+                    />                              
+                )}                      
                 <Typography
                     variant="body2"
+                    fontSize={props.isDesktop ? 16 : 17}
                     sx={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 6,
-                        overflow: 'hidden'
+                        overflow: 'hidden',
+                        borderLeft: !props.isDesktop && '3px solid #d85704',
+                        paddingLeft: !props.isDesktop && 1
                     }}
                 >
                     {props.text2}
@@ -104,20 +115,25 @@ const TripleBox = (props) => {
                 alignItems={'center'}
                 sx={boxSets}
             >
-                <Divider
-                    orientation={'vertical'}
-                    sx={{
-                        bgcolor: '#d85704',
-                        border: '1px solid #d85704'
-                    }}
-                />                           
+                {props.isDesktop && (
+                    <Divider
+                        orientation={'vertical'}
+                        sx={{
+                            bgcolor: '#d85704',
+                            border: '1px solid #d85704'
+                        }}
+                    />                              
+                )}                      
                 <Typography
                     variant="body2"
+                    fontSize={props.isDesktop ? 16 : 17}
                     sx={{
                         display: "-webkit-box",
                         WebkitBoxOrient: "vertical",
                         WebkitLineClamp: 6,
-                        overflow: 'hidden'                      
+                        overflow: 'hidden',
+                        borderLeft: !props.isDesktop && '3px solid #d85704',
+                        paddingLeft: !props.isDesktop && 1
                     }}
                 >
                     {props.text3}
@@ -128,15 +144,17 @@ const TripleBox = (props) => {
 }
 
 const TabButton = ({title, index, handleMainChange, mainValue}) => {
+    const {isDesktop} = useContext(Context);
+
     return(
         <Box
-            className={'tab-btn'}
+            className={'spread-shade'}
             onClick={()=>handleMainChange(index)} 
             sx={{
                 color: mainValue === index ? 'white' : '#30343f',
-                bgcolor: mainValue === index ? '#30343f' : 'transparent',
+                bgcolor: mainValue === index ? '#d85704' : 'rgb(230, 230, 235)',
                 boxShadow: mainValue === index ? 8 : 3,
-                padding: '12px 32px',
+                padding: isDesktop ? '12px 32px' : '8px 12px',
                 borderRadius: 2,                
                 cursor: 'pointer'                
             }}
@@ -145,6 +163,9 @@ const TabButton = ({title, index, handleMainChange, mainValue}) => {
                 fontSize={15}
                 fontWeight={'bold'}
                 textAlign={'center'}
+                sx={{
+                    whiteSpace: "nowrap"
+                }}
             >
                 {title}
             </Typography>
@@ -153,7 +174,7 @@ const TabButton = ({title, index, handleMainChange, mainValue}) => {
 }
 
 const AboutSlider = () => {
-    const {allTexts} = useContext(Context);
+    const {allTexts, isDesktop} = useContext(Context);
     const [mainValue, setMainValue] = useState(0);
     const [secValue, setSecValue] = useState(0);
     const [loading, setLoading] = useState(true);
@@ -168,13 +189,10 @@ const AboutSlider = () => {
         setSecValue(newValue);
     };
 
-    const opts = {
-        maxHeight: '500',
-        width: '100%',
+    const opts = {            
         playerVars: {
           autoplay: 0,
-        },
-        borderRadius: 10,
+        }       
     };
 
     const onReady = (event) => {        
@@ -205,13 +223,17 @@ const AboutSlider = () => {
                     spacing={3}                   
                     sx={{                                                
                         maxWidth: 1400,
-                        padding: '32px 24px'
+                        padding: isDesktop ? '32px 24px' : '9px 8px'
                     }}
                 >
                     <Stack
                         direction={'row'}
                         spacing={2}
                         justifyContent={'space-between'}
+                        sx={{
+                            overflowX: 'auto',
+                            padding: '16px 8px'
+                        }}
                     >
                         <Stack
                             direction={'row'}
@@ -250,7 +272,7 @@ const AboutSlider = () => {
                     </Stack>                         
                     {mainValue === 0 && ( 
                         <Box>                                                        
-                            <Stack spacing={6} sx={{ marginTop: 3 }}>                                                                                           
+                            <Stack spacing={6} sx={{ marginTop: isDesktop ? 3 : 0 }}>                                                                                           
                                 <Typography
                                     fontSize={16}
                                     sx={{
@@ -260,11 +282,10 @@ const AboutSlider = () => {
                                     {allTexts[8].placeText}
                                 </Typography>   
                                 <Stack
-                                    direction={'row'}
+                                    direction={isDesktop ? 'row' : 'column'}
                                     justifyContent={'space-between'}
                                     spacing={1}
-                                    sx={{
-                                        maxHeight: 300,                                       
+                                    sx={{                                                                          
                                         width: '100%',
                                         overflow: 'hidden'
                                     }}
@@ -274,7 +295,8 @@ const AboutSlider = () => {
                                         style={{
                                             width: '100%',
                                             height: 300,
-                                            objectFit: 'cover'
+                                            objectFit: 'cover',
+                                            borderRadius: 4
                                         }}
                                     />                                    
                                     <img
@@ -282,7 +304,8 @@ const AboutSlider = () => {
                                         style={{
                                             width: '100%',
                                             height: 300,
-                                            objectFit: 'cover'
+                                            objectFit: 'cover',
+                                            borderRadius: 4
                                         }}
                                     />                                    
                                     <img
@@ -290,7 +313,8 @@ const AboutSlider = () => {
                                         style={{
                                             width: '100%',
                                             height: 300,
-                                            objectFit: 'cover'
+                                            objectFit: 'cover',
+                                            borderRadius: 4
                                         }}
                                     />
                                 </Stack>                                                                                                                                              
@@ -319,6 +343,7 @@ const AboutSlider = () => {
                                                     text1={allTexts[8].items[0].text}
                                                     text2={allTexts[8].items[1].text}
                                                     text3={allTexts[8].items[2].text}
+                                                    isDesktop={isDesktop}
                                                 />                                                                                                                                                                                         
                                                 <Typography variant="body2">
                                                     {allTexts[8].placeText3}
@@ -333,6 +358,7 @@ const AboutSlider = () => {
                                                     {allTexts[9].placeText}
                                                 </Typography>
                                                 <TripleBox
+                                                    isDesktop={isDesktop}
                                                     text1={allTexts[9].items[0].text}
                                                     text2={allTexts[9].items[1].text}
                                                     text3={allTexts[9].items[2].text}
@@ -376,54 +402,108 @@ const AboutSlider = () => {
                         </Box>
                     )}
                     {mainValue === 1 && (
-                        <Box sx={{ width: '100%' }}>                                 
-                            <Grid container justifyContent='center' rowSpacing={4} columnSpacing={2} sx={{ display: 'flex', alignItems: 'stretch' }}>
-                                <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                    
-                                    <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12, minHeight: 200 }}>                          
-                                        <Stack spacing={2}>     
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
-                                                <Stack direction='row' spacing={2} sx={{ alignItems: 'center' }}>                    
+                        <Box
+                            sx={{
+                                width: '100%'
+                            }}
+                        >                                 
+                            <Grid container
+                                justifyContent='center'
+                                rowSpacing={4}
+                                columnSpacing={2}                             
+                            >
+                                <Grid item
+                                    xs={12}
+                                    md={12}
+                                    lg={5}
+                                    xl={4}
+                                    className="suc-stories" 
+                                    sx={{
+                                        maxWidth: 700
+                                    }}
+                                >                                                                                       
+                                        <Stack
+                                            spacing={2}                                      
+                                        >     
+                                            <Stack
+                                                direction={'row'}
+                                                alignItems={'center'}
+                                                justifyContent={'space-between'}
+                                                sx={{
+                                                    bgcolor: 'rgb(245, 245, 245)',
+                                                    padding: '8px 12px',
+                                                    borderRadius: 2
+                                                }}
+                                            >                                               
                                                     <img src={suc1} alt=""/>                                                        
                                                     <Typography variant="body3" fontWeight={600}>
                                                         Το κουτί με τις έγνοιες
                                                     </Typography>                                                                                                                                                                
-                                                </Stack>                    
+                                                                
                                                 <Typography fontSize={13} fontWeight={600} fontStyle={'italic'} sx={{ color: 'rgb(80, 80, 80)' }}>
                                                     Νίκος
                                                 </Typography>                        
-                                            </Box>                                        
-                                            <Typography variant="body2">
-                                                Ο Παναγιώτης ή Γιώτης όπως τον φωνάζουν, 
-                                                ήταν το άτομο που μου έδειξε τον τρόπο προς την αυτονομία.
-                                                Ένα άτομο με κάταγμα στην σπονδυλική στήλη έχει άμεση ανάγκη από
-                                                έναν άνθρωπο που θα του ανοίξει τους ορίζοντες προς την αποδοχή
-                                                και την άμεση αποκατάσταση. Για μένα αυτό το άτομο ήταν ο Γιώτης.
-                                            </Typography>
-                                            <Typography variant="body2">
-                                                Μαζί του έμαθα να ντύνομαι,
-                                                να σηκώνομαι από το κρεβάτι και να κινούμαι με το αμαξίδιο άνετα.
-                                                Το σημαντικότερο όμως μάθημα που πήρα από αυτόν ήταν το “κουτί με τις έγνοιες”.
-                                                Προσπαθούμε να τακτοποιήσουμε μια έγνοια μέχρι να έρθει η επόμενη και να πάρει
-                                                την θέση της στο κουτί. Έτσι έμαθα να ζω με την αναπηρία και σήμερα ζω σχεδόν
-                                                αυτόνομος όντας τετραπληγικός στην Ελλάδα.
-                                            </Typography>
-                                            <Typography variant="body2">
-                                                Σε ευχαριστώ για άλλη μια φορά!
-                                            </Typography>          
-                                        </Stack>
-                                    </Paper>                             
+                                            </Stack>  
+                                            <Stack
+                                                spacing={2}
+                                                sx={{
+                                                    padding: '0px 8px'
+                                                }}
+                                            >                                              
+                                                <Typography variant="body2">
+                                                    Ο Παναγιώτης ή Γιώτης όπως τον φωνάζουν, 
+                                                    ήταν το άτομο που μου έδειξε τον τρόπο προς την αυτονομία.
+                                                    Ένα άτομο με κάταγμα στην σπονδυλική στήλη έχει άμεση ανάγκη από
+                                                    έναν άνθρωπο που θα του ανοίξει τους ορίζοντες προς την αποδοχή
+                                                    και την άμεση αποκατάσταση. Για μένα αυτό το άτομο ήταν ο Γιώτης.
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    Μαζί του έμαθα να ντύνομαι,
+                                                    να σηκώνομαι από το κρεβάτι και να κινούμαι με το αμαξίδιο άνετα.
+                                                    Το σημαντικότερο όμως μάθημα που πήρα από αυτόν ήταν το “κουτί με τις έγνοιες”.
+                                                    Προσπαθούμε να τακτοποιήσουμε μια έγνοια μέχρι να έρθει η επόμενη και να πάρει
+                                                    την θέση της στο κουτί. Έτσι έμαθα να ζω με την αναπηρία και σήμερα ζω σχεδόν
+                                                    αυτόνομος όντας τετραπληγικός στην Ελλάδα.
+                                                </Typography>
+                                                <Typography variant="body2">
+                                                    Σε ευχαριστώ για άλλη μια φορά!
+                                                </Typography>          
+                                            </Stack>
+                                        </Stack>                                                             
                                 </Grid>
-                                <Grid item xs={12} md={12} lg={5} xl={4} className="suc-stories" sx={{ maxWidth: 700 }}>                                                        
-                                    <Paper sx={{ padding: 3, bgcolor: 'rgb(235, 240, 248)', borderRadius: 2, boxShadow: 12 }}>                                        
-                                        <Stack spacing={2}>     
-                                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingRight: 2 }}>
-                                                <img src={suc2} alt=""/>   
-                                                <Stack>                                              
-                                                    <Typography fontSize={13} fontWeight={600} fontStyle={'italic'} sx={{ color: 'rgb(80, 80, 80)' }}>
-                                                        Ελπίδα
-                                                    </Typography>
-                                                </Stack>       
-                                            </Box>                                                                                                                                 
+                                <Grid item
+                                    xs={12}
+                                    lg={5}
+                                    xl={4}
+                                    className="suc-stories"
+                                    sx={{
+                                        maxWidth: 700
+                                    }}
+                                >                                                                                           
+                                    <Stack
+                                        spacing={2}                               
+                                    >
+                                        <Stack
+                                            direction={'row'}
+                                            alignItems={'center'}
+                                            justifyContent={'space-between'}
+                                            sx={{
+                                                bgcolor: 'rgb(245, 245, 245)',
+                                                padding: '8px 12px',
+                                                borderRadius: 2
+                                            }}
+                                        >                                               
+                                                <img src={suc2} alt=""/>                                              
+                                            <Typography fontSize={13} fontWeight={600} fontStyle={'italic'} sx={{ color: 'rgb(80, 80, 80)' }}>
+                                                Ελπίδα
+                                            </Typography>                        
+                                        </Stack>          
+                                        <Stack
+                                            spacing={2}
+                                            sx={{
+                                                padding: '0px 8px'
+                                            }}
+                                        >                                                                                                                                                                           
                                             <Typography variant="body2">
                                                 Γνώρισα τον Γιώτη μετά από ένα τροχαίο ατύχημα που είχα. Με τη βοήθειά του,
                                                 έμαθα πώς να χρησιμοποιώ το αναπηρικό μου αμαξίδιο και πώς να το εντάξω στην
@@ -441,20 +521,18 @@ const AboutSlider = () => {
                                                 Ήταν ένας εξαιρετικός επαγγελματίας, αφοσιωμένος στο έργο του και πρόθυμος να με βοηθήσει σε κάθε βήμα του
                                                 ταξιδιού μου προς την αυτονομία. Πέρα από αυτό, όμως, ήταν και ένας θερμός και αγαπητός
                                                 άνθρωπος, που φρόντιζε για την ευημερία μου όχι μόνο σωματικά αλλά και ψυχικά.
-                                            </Typography>                                        
-                                        </Stack>
-                                    </Paper>                            
+                                            </Typography> 
+                                        </Stack>                                             
+                                    </Stack>                                                         
                                 </Grid>
                             </Grid>
                         </Box>
                     )}  
                     {mainValue === 2 && (
                         <Stack
-                            sx={{
-                                height: 'fit-content',                                              
-                                borderRadius: 2,
-                                overflow: 'hidden',
-                                boxShadow: 12                                                          
+                            alignItems={'center'}
+                            sx={{                           
+                                overflow: 'hidden',                                                                                                                                                                                                                         
                             }}
                         >
                                 <YouTube className="yt-vid" videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>                                                         
@@ -471,10 +549,10 @@ const AboutSlider = () => {
                                 spacing={3}
                                 sx={{
                                     borderRadius: 2,                                   
-                                    padding: 5,                            
+                                    padding: isDesktop ? 5 : 2,
                                     backgroundImage: `url(${BioImg})`,
                                     backgroundSize: 'cover',
-                                    backgroundPosition: 'center',
+                                    backgroundPosition: isDesktop ? 'center' : 'none',
                                     backgroundRepeat: 'no-repeat',                                    
                                     color: 'white'
                                 }}
@@ -482,7 +560,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: 35,
+                                        paddingLeft: isDesktop ? 35 : 0,
                                     }}
                                 >
                                     Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
@@ -493,7 +571,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: 35,
+                                        paddingLeft: isDesktop ? 35 : 0,
                                     }}
                                 >
                                     Μετά από μια σύντομη παραμονή στο σπίτι, και δίχως να μου έχουν δώσει
@@ -514,7 +592,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: 35,
+                                        paddingLeft: isDesktop ? 35 : 0,
                                     }}
                                 >
                                     Το 2006 έγινα πιστοποιημένος εκπαιδευτής για ανθρώπους με τραυματισμό στην
@@ -526,7 +604,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: 65,
+                                        paddingLeft: isDesktop ? 65 : 0,
                                     }}
                                 >
                                     Εργάστηκα στην Νομαρχία Θεσσαλονίκης στο τμήμα αθλητισμού και από εκεί για 8 χρόνια
@@ -537,7 +615,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: 65,
+                                        paddingLeft: isDesktop ? 65 : 0,
                                     }}
                                 >
                                     Η GS wheelchairs είναι το αποτέλεσμα όλων αυτών των ετών στο χώρο της αναπηρίας. Όλη
@@ -554,38 +632,63 @@ const AboutSlider = () => {
                                     fontSize={17}
                                     fontWeight={'bold'}
                                     sx={{
-                                        paddingLeft: 65,
+                                        paddingLeft: isDesktop ? 65 : 0,
                                         opacity: 0.5
                                     }}
                                 >
                                     Η αναπηρία είναι μια κατάσταση, εσύ επιλέγεις το πως θα την ζήσεις.
-                                </Typography>   
-                                <Stack
-                                    spacing={-1}
-                                    sx={{                                    
-                                        position: 'relative',                                        
-                                        bottom: 50
-                                    }}
-                                >
-                                    <Typography
-                                        fontSize={32}
-                                        fontWeight={'bold'}
-                                        sx={{
-                                            opacity: 0.5
+                                </Typography> 
+                                {isDesktop ? (  
+                                    <Stack
+                                        spacing={-1}
+                                        sx={{                                    
+                                            position: 'relative',                                        
+                                            bottom: 50
                                         }}
                                     >
-                                        ΠΑΝΑΓΙΩΤΗΣ
-                                    </Typography>        
-                                    <Typography
-                                        fontSize={40}
-                                        fontWeight={'bold'}
-                                        sx={{
-                                            opacity: 0.7
-                                        }}
+                                        <Typography
+                                            fontSize={32}
+                                            fontWeight={'bold'}
+                                            sx={{
+                                                opacity: 0.5
+                                            }}
+                                        >
+                                            ΠΑΝΑΓΙΩΤΗΣ
+                                        </Typography>        
+                                        <Typography
+                                            fontSize={40}
+                                            fontWeight={'bold'}
+                                            sx={{
+                                                opacity: 0.7
+                                            }}
+                                        >
+                                            ΧΡΥΣΟΒΕΡΓΗΣ
+                                        </Typography>      
+                                    </Stack>            
+                                ) : (
+                                    <Stack
+                                        spacing={-1}                                    
                                     >
-                                        ΧΡΥΣΟΒΕΡΓΗΣ
-                                    </Typography>      
-                                </Stack>                                                            
+                                        <Typography
+                                            fontSize={32}
+                                            fontWeight={'bold'}
+                                            sx={{
+                                                opacity: 0.5
+                                            }}
+                                        >
+                                            ΠΑΝΑΓΙΩΤΗΣ
+                                        </Typography>        
+                                        <Typography
+                                            fontSize={40}
+                                            fontWeight={'bold'}
+                                            sx={{
+                                                opacity: 0.7
+                                            }}
+                                        >
+                                            ΧΡΥΣΟΒΕΡΓΗΣ
+                                        </Typography>      
+                                    </Stack>            
+                                )}                                             
                             </Stack>
                         </Box>
                     )}

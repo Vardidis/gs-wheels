@@ -1,14 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Card, CardContent, CardMedia, Typography, CardActionArea} from '@mui/material';
+import { Context } from "./Context";
 
 const Servicecard = (props) => {
+    const {isDesktop} = useContext(Context);
+    
     return(
         <Card
             className={'scalable'}
             sx={{
                 textAlign: 'center',
-                borderRadius: 3,
-                boxShadow: 12
+                borderRadius: 6,
+                boxShadow: isDesktop && 12
             }}
         >
             <CardActionArea>
@@ -17,7 +20,7 @@ const Servicecard = (props) => {
                     image={props.image}            
                     sx={{ height: {xl: 200, lg: 200, md: 150, sm: 220, xs: 180, xxs: 140} }}
                 />
-                <CardContent sx={{ bgcolor: '#d85704'}}>
+                <CardContent sx={{ bgcolor: '#d85704', padding: 2, paddingTop: {xxs: 1, xs: 1, sm: 1, md: 2, lg: 2, xl: 2}}}>
                     <Typography
                         variant="body2"
                         color="white"

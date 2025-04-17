@@ -12,8 +12,7 @@ const ProductMenuItem = (props) => {
             justifyContent: 'center',
             cursor: 'pointer',
             padding: 1,
-            margin: '0px 8px',
-            marginTop: '24px',
+            margin: '0px 8px',            
             color: 'white'
         }}
         >

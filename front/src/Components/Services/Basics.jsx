@@ -28,22 +28,42 @@ const Basics = () => {
             rowGap={6}       
             sx={{
                 maxWidth: 1400,
-                padding: '32px 24px',              
+                padding: '32px 24px'                          
             }}
         >
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6} lg={4}
+                sx={{
+                    borderLeft: '2px solid #d85704'
+                }}
+            >     
                 <TextWindow title={allTexts[4].items[0].title} text={allTexts[4].items[0].text}/>
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6} lg={4}
+                sx={{
+                    borderLeft: '2px solid #d85704'
+                }}
+            >   
                 <TextWindow title={allTexts[4].items[1].title} text={allTexts[4].items[1].text}/> 
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6} lg={4}
+                sx={{
+                    borderLeft: '2px solid #d85704'
+                }}
+            >   
                 <TextWindow title={allTexts[4].items[2].title} text={allTexts[4].items[2].text}/> 
             </Grid>
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6} lg={4}
+                sx={{
+                    borderLeft: '2px solid #d85704'
+                }}
+            >   
                 <TextWindow title={allTexts[4].items[3].title} text={allTexts[4].items[3].text}/> 
             </Grid>                                    
-            <Grid item xs={12} md={6}>
+            <Grid item xs={12} sm={6} lg={4}
+                sx={{
+                    borderLeft: '2px solid #d85704'
+                }}
+            >   
                 <TextWindow title={allTexts[4].items[4].title} text={allTexts[4].items[4].text}/> 
             </Grid>                         
         </Grid>                                                                                                                                   

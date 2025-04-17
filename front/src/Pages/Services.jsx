@@ -5,7 +5,7 @@ import { Context } from "../Components/Context";
 import BackgroundImage from '../assets/YPHRESIES-Background.png';
 
 const Services = () => {
-    const {fullHeight} = useContext(Context);
+    const {fullHeight, isDesktop} = useContext(Context);
 
     return(
         <Box
@@ -18,10 +18,10 @@ const Services = () => {
         >               
             <Stack  
                 sx={{
-                    paddingTop: 5,
+                    paddingTop: isDesktop && 5,
                     overflow: 'auto',
                     maxHeight: fullHeight,
-                    paddingBottom: 20
+                    paddingBottom: 5
                 }}
             >                
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -42,7 +42,7 @@ const Interior = () => {
                 spacing={6}
                 alignItems='center'
                 sx={{
-                    padding: '16px 24px'
+                    padding: '16px 16px'
                 }}
             >  
                 <Typography variant='h5' fontWeight={600}>
@@ -57,22 +57,38 @@ const Interior = () => {
                     </Typography> 
                     <Grid container
                         justifyContent='center'
-                        rowGap={2}
+                        rowGap={6}
                         columnSpacing={2}
                         sx={{
                             maxWidth: 1400
                         }}
                         >
-                        <Grid item xs={12} md={6} xl={3}>
+                        <Grid item xs={12} md={6} xl={3}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items[0].title} text={allTexts[6].items[0].text}/>
                         </Grid>
-                        <Grid item xs={12} md={6} xl={3}>
+                        <Grid item xs={12} md={6} xl={3}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items[1].title} text={allTexts[6].items[1].text}/>
                         </Grid>
-                        <Grid item xs={12} md={6} xl={3}>
+                        <Grid item xs={12} md={6} xl={3}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items[2].title} text={allTexts[6].items[2].text}/>                        
                         </Grid>
-                        <Grid item xs={12} md={6} xl={3}>
+                        <Grid item xs={12} md={6} xl={3}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items[3].title} text={allTexts[6].items[3].text}/>                            
                         </Grid>            
                     </Grid>
@@ -90,13 +106,25 @@ const Interior = () => {
                         χώρους, βοηθώντας τα άτομα να αποκτήσουν μεγαλύτερη ανεξαρτησία.
                     </Typography>                                                
                     <Grid container justifyContent='center' rowSpacing={2} columnSpacing={2} sx={{ maxWidth: 1400 }}>
-                        <Grid item xs={12} md={6} lg={4}>
+                        <Grid item xs={12} md={6} lg={4}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items2[0].title} text={allTexts[6].items2[0].text}/>
                         </Grid>
-                        <Grid item xs={12} md={6} lg={4}>
+                        <Grid item xs={12} md={6} lg={4}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items2[1].title} text={allTexts[6].items2[1].text}/>
                         </Grid>
-                        <Grid item xs={12} md={6} lg={4}>
+                        <Grid item xs={12} md={6} lg={4}
+                            sx={{
+                                borderLeft: '2px solid #d85704'
+                            }}
+                        >
                             <TextWindow title={allTexts[6].items2[2].title} text={allTexts[6].items2[2].text}/>
                         </Grid>
                     </Grid>      

@@ -6,13 +6,15 @@ const GsButton = () => {
     return(   
         <Link to='customize-your-life' style={{ textDecoration: 'none' }}>             
             <Box                
-                sx={{     
+                className={'shady'}
+                sx={{                        
                     bgcolor: '#d85704',  
+                    marginTop: 6,
                     borderRadius: 3,             
                     cursor: 'pointer',
                     boxShadow: 12,        
                     width: 200,
-                    minHeight: 50,
+                    padding: '12px 32px',
                     display: 'flex',
                     justifyContent: 'center' ,
                     alignItems: 'center',

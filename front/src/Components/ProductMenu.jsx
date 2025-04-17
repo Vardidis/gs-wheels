@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import ProductItem from "./ProductItem";
 import { Grid, keyframes } from "@mui/material";
+import { Context } from "./Context";
 
 const fadeIn = keyframes`
   0% {
@@ -14,6 +15,8 @@ const fadeIn = keyframes`
 `;
 
 const ProductMenu = (props) => {
+    const {isDesktop} = useContext(Context);
+    
     return(
         <Grid container columnGap={2} rowGap={2} justifyContent={'center'} sx={{ padding: '32px 8px'}}>
             {props.items.map((item, index) => {                                
@@ -29,7 +32,7 @@ const ProductMenu = (props) => {
                         sx={{
                             marginBottom: 3,
                             bgcolor: 'white',
-                            boxShadow: 6,
+                            boxShadow: isDesktop ? 6 : 1,
                             cursor: 'pointer',
                             borderRadius: 6,                                            
                             animation: `${fadeIn} 1s ease-in-out`,

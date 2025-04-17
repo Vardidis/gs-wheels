@@ -30,19 +30,22 @@ const fadeIn = keyframes`
   }
 `;
 
+
+
 const ColorBox = (props) => {
+    const {isDesktop} = useContext(Context);
     return(
         <Grid item
             xs={12}
             md={5}
             sx={{
                 bgcolor: 'white',
-                boxShadow: 12,
-                borderRadius: 4,
+                boxShadow: isDesktop && 12,
+                borderRadius: isDesktop ? 4 : 3,
                 padding: 2,
-                backgroundImage: `url(${props.image})`,
-                backgroundSize: 'cover',                
-                backgroundRepeat: 'no-repeat',                               
+                backgroundImage: `url(${props.image})`,                            
+                backgroundRepeat: 'no-repeat',        
+                backgroundSize: 'cover',                        
                 overflow: 'hidden'
             }}
         >       
@@ -55,18 +58,23 @@ const ColorBox = (props) => {
                 }}
             >
                 <Typography
-                    fontSize={18}
+                    fontSize={isDesktop ? 18 : 17}
                     fontWeight={600}
+                    textAlign={'right'}
                     sx={{
-                        color: '#d85704'
+                        color: '#d85704',
+                        paddingLeft: isDesktop ? 0 : 5,
+                        lineHeight: isDesktop ? '150%' : '120%'
                     }}
                 >
                     {props.title}
                 </Typography>
                 <Typography
                     textAlign={'right'}
+                    fontSize={isDesktop ? 16 : 13}
                     sx={{
-                        paddingLeft: 18
+                        paddingLeft: isDesktop ? 18 : 18,
+                        lineHeight: isDesktop ? '150%' : '120%'
                     }}
                 >
                     {props.text}
@@ -105,13 +113,14 @@ const GetStarted = () => {
                 backgroundRepeat: 'no-repeat',  
                 backgroundPosition: 'center',       
             }}
-        >            
+        >          
+                      
             <img
                 src={Header}
                 style={{
                     width: '100%'
                 }}
-            />           
+            />                    
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                 <Stack spacing={2} alignItems='center'>
                     {loading ? 
@@ -149,7 +158,7 @@ const GetStarted = () => {
                                     text={allTexts[0].items[0].text}
                                     link={'/service/education'}
                                     anchor={1}
-                                    image={Box1Image}
+                                    image={Box1Image}                                    
                                 />                                                                               
                                 <ColorBox                                    
                                     title={allTexts[0].items[1].title}
@@ -171,10 +180,10 @@ const GetStarted = () => {
                                     image={Box4Image}
                                 />    
                             </Grid>                       
-                    )}                    
+                    )}  
+                    <GsButton/>                     
                 </Stack>
-            </Box>
-            <GsButton/>
+            </Box>                    
         </Stack>
     );
 }

@@ -13,6 +13,7 @@ const CategoryMenu = (props) => {
             sx={{
                 width: '100%',
                 margin: '0px 8px',                            
+                paddingTop: 2
             }}
         >
             <Grid item xxs={12} xs={12} sm={4} md={2.5}>
