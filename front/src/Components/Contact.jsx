@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, TextField, Stack, Box, Typography } from '@mui/material';
 import axios from 'axios';
+import SendIcon from '@mui/icons-material/Send';
 
 const Contact = (props) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -134,21 +135,28 @@ const Contact = (props) => {
                         className={'clickable'}
                         onClick={submitMessage}
                         direction={'row'}
-                        spacing={1}
+                        spacing={1.5}
                         justifyContent={'center'}
+                        alignItems={'center'}
                         sx={{                           
                             bgcolor: '#30343f',
-                            padding: '8px 24px',
+                            padding: '12px 24px',
                             borderRadius: 2,
                             color: 'white'
                         }}
                     >
                         <Typography
                             fontSize={20}
+                            sx={{
+                                lineHeight: '100%'
+                            }}
                         >
 
                             Αποστολή
                         </Typography>
+                        <SendIcon
+                            fontSize={'small'}
+                        />
                     </Stack>                       
                 </Stack>                                                             
             </Box>
