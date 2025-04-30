@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, TextField, Stack, Box } from '@mui/material';
+import { Alert, Button, TextField, Stack, Box, Typography } from '@mui/material';
 import axios from 'axios';
 
 const Contact = (props) => {
@@ -108,32 +108,49 @@ const Contact = (props) => {
     return(
         <Box>                
             <Box sx={{
-                position: 'absolute',
-                top: '50%',
-                left: '50%',
+                position: 'absolute',                
                 transform: 'translate(-50%, -50%)',
-                width: {xl: 750, lg: 550, md: 550, sm: 550, xs: '80%', xxs: '80%'},
+                top: '50%',
+                left: '50%',                
                 bgcolor: 'theme.light',
                 boxShadow: 24,
-                padding: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
-                border: "none",
-                textAlign: "center",
+                padding: 4,
+                border: 'none',               
                 borderRadius: 2,
-                height: {xl: '80vh', lg: '80vh', md: '80vh', sm: '80vh', xs: 'fit-content', xxs: 'fit-content'},
+                height: 'fit-content',
                 overflowY: 'auto',
             }}>
-                <Box sx={{ overflowY: 'auto' }}>
-                    <Stack spacing={2} sx={{ paddingBottom: 20 }}>
-                        <Alert severity="info" sx={{ boxShadow: 2 }}>Επικοινωνήστε μαζί μας για οποιαδήποτε διευκρίνηση ή απορία έχετε.</Alert>
-                        <Stack spacing={1} sx={{ paddingTop: {lg: 0, md: 0, sm: 5} }}>
+                <Stack
+                    spacing={5}
+                >
+                    <Alert severity="info">Επικοινωνήστε μαζί μας για οποιαδήποτε διευκρίνηση ή απορία έχετε.</Alert>                                            
+                        <Stack spacing={1}>
                             <TextField id="name" error={fieldError.name} label="Όνομα" variant="outlined" onChange={handleChange}/>
                             <TextField id="tel" error={fieldError.tel} label="Τηλέφωνο επικοινωνίας" variant="outlined" onChange={handleChange}/>
                             <TextField id="email" error={fieldError.email} label="Email" variant="outlined" onChange={handleChange}/>
-                            <TextField id="text" error={fieldError.text} label="Πείτε μας λίγα λόγια" variant="outlined" onChange={handleChange} multiline rows={5} sx={{ height: '100px' }}/>
-                        </Stack>                    
-                    </Stack>     
-                    <Button onClick={submitMessage} variant="contained" sx={{ position: 'absolute', bottom: '30px', left: '5%', width: '90%', height: 45, fontSize: {lg: 16, md: 16, sm: 20}, bgcolor: '#30343f', boxShadow: 8}}>Υποβολη</Button>                            
-                </Box>                                                             
+                            <TextField id="text" error={fieldError.text} label="Πείτε μας λίγα λόγια" variant="outlined" onChange={handleChange} multiline rows={5}/>
+                        </Stack>                                      
+                    <Stack
+                        className={'clickable'}
+                        onClick={submitMessage}
+                        direction={'row'}
+                        spacing={1}
+                        justifyContent={'center'}
+                        sx={{                           
+                            bgcolor: '#30343f',
+                            padding: '8px 24px',
+                            borderRadius: 2,
+                            color: 'white'
+                        }}
+                    >
+                        <Typography
+                            fontSize={20}
+                        >
+
+                            Αποστολή
+                        </Typography>
+                    </Stack>                       
+                </Stack>                                                             
             </Box>
         </Box>
     )

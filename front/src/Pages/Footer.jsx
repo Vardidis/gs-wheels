@@ -165,7 +165,7 @@ const Footer = () => {
                                 <RoomIcon fontSize='small'/>
                                 <Typography
                                     className={'hoverable'}
-                                    onClick={()=>window.location.href='https://www.google.com/maps/place/Difros+Custom+Made+Wheelchairs/@40.5966063,22.9584522,17z/data=!4m7!3m6!1s0x14a838d41353a295:0x8d5082922a20e2e3!4b1!8m2!3d40.5966063!4d22.9584522!16s%2Fg%2F1hc5dmtxm?entry=ttu&g_ep=EgoyMDI1MDQyNy4xIKXMDSoASAFQAw%3D%3D'}
+                                    onClick={()=>window.open('https://www.google.com/maps/place/Difros+Custom+Made+Wheelchairs/@40.5966063,22.9584522,17z/data=!4m7!3m6!1s0x14a838d41353a295:0x8d5082922a20e2e3!4b1!8m2!3d40.5966063!4d22.9584522!16s%2Fg%2F1hc5dmtxm?entry=ttu&g_ep=EgoyMDI1MDQyNy4xIKXMDSoASAFQAw%3D%3D', '_blank')}
                                     fontSize={15}
                                     fontWeight={'bold'}
                                     sx={{

@@ -1,15 +1,11 @@
 import React, { useCallback, useState } from "react";
 import { Box, Stack, Typography } from '@mui/material';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
-
-library.add(faPhone, faEnvelope, faLocationDot);
+import LaunchIcon from '@mui/icons-material/Launch';
 
 const containerStyle = {
     width: '100%',
-    height: '350px',
+    height: '350px'    
   }
   
   const center = {
@@ -43,7 +39,7 @@ const Info = () => {
             width: {xl: 750, lg: 550, md: 550, sm: 550, xs: 350, xxs: 325},
             bgcolor: 'theme.light',
             boxShadow: 24,
-            p: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
+            p: 4,
             border: "none",
             textAlign: "center",
             borderRadius: 3,
@@ -54,20 +50,30 @@ const Info = () => {
                     spacing={2}            
                 >
                     <Stack
-                        spacing={0}
+                        direction={'row'}
+                        justifyContent={'space-between'}
                         alignItems={'start'}
                     >
-                        <Typography
-                            fontSize={16}
-                            fontWeight={'bold'}
+                        <Stack         
+                            spacing={-0.5}               
+                            alignItems={'start'}
                         >
-                            Κρήτης 80, Θεσσαλονίκη
-                        </Typography>
-                        <Typography
-                            fontSize={14}
-                        >
-                            Ελλάδα, Τ.Κ. 54646
-                        </Typography>                    
+                            <Typography
+                                fontSize={16}
+                                fontWeight={'bold'}
+                            >
+                                Διεύθυνση
+                            </Typography>
+                            <Typography
+                                fontSize={14}
+                            >
+                                Κρήτης 80, Θεσσαλονίκη
+                            </Typography>                    
+                        </Stack>
+                        <LaunchIcon
+                            className={'hoverable'}
+                            onClick={()=>window.open('https://www.google.com/maps/place/Difros+Custom+Made+Wheelchairs/@40.5966063,22.9584522,17z/data=!4m7!3m6!1s0x14a838d41353a295:0x8d5082922a20e2e3!4b1!8m2!3d40.5966063!4d22.9584522!16s%2Fg%2F1hc5dmtxm?entry=ttu&g_ep=EgoyMDI1MDQyNy4xIKXMDSoASAFQAw%3D%3D', '_blank')}
+                        />
                     </Stack>
                     {isLoaded && (
                         <GoogleMap
@@ -83,7 +89,7 @@ const Info = () => {
                                 streetViewControl: false, // Remove Street View
                                 mapTypeControl: false, // Remove map type (satellite/terrain)
                                 zoomControl: true, // Keep zoom buttons
-                            }}
+                            }}                            
                         >
                             <Marker position={{lat: 40.596625, lng: 22.958450}}/>
                         </GoogleMap>
