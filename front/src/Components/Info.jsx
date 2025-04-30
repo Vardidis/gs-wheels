@@ -1,11 +1,39 @@
-import React from "react";
+import React, { useCallback, useState } from "react";
 import { Box, Stack, Typography } from '@mui/material';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone, faEnvelope, faLocationDot } from '@fortawesome/free-solid-svg-icons';
+import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
+
 library.add(faPhone, faEnvelope, faLocationDot);
 
+const containerStyle = {
+    width: '100%',
+    height: '350px',
+  }
+  
+  const center = {
+    lat: 40.596625,
+    lng: 22.958450
+  }
+
 const Info = () => {
+    const { isLoaded } = useJsApiLoader({
+        id: 'google-map-script',
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+      })
+      const [map, setMap] = useState(null)
+    
+      const onLoad = useCallback(function callback(map) {       
+        map.setZoom(17)
+    
+        setMap(map);
+      }, [])
+    
+      const onUnmount = useCallback(function callback(map) {
+        setMap(null)
+      }, [])
+
     return(
         <Box sx={{
             position: 'absolute',
@@ -21,45 +49,46 @@ const Info = () => {
             borderRadius: 3,
             height: 'fit-content',
             overflowY: 'auto',
-        }}>
-            <Box sx={{ display: 'flex', justifyContent: 'center',}}>
-                <Stack spacing={4}>
-                    <Stack direction='row' spacing={2} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Box sx={{ boxShadow: '1px 2px 3px -2px black', backgroundColor: 'black', opacity: 0.8, width: 40, height: 40, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid orangered' }}>
-                            <FontAwesomeIcon icon={faPhone} size='lg' style={{ color: 'white' }}/>
-                        </Box>                        
-                        <Typography fontSize={22}>
-                            +30 2310 428949
-                        </Typography>
-                    </Stack>
-                    <Stack spacing={2} direction='row' sx={{ display: 'flex', alignItems: 'center' }}>
-                        <Box sx={{ boxShadow: '1px 2px 3px -2px black', backgroundColor: 'black', opacity: 0.8, width: 40, height: 40, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid orangered' }}>
-                            <FontAwesomeIcon icon={faEnvelope} size='lg' style={{ color: 'white' }}/>
-                        </Box>    
-                        <Box>
-                            <Typography fontSize={20}>
-                                gswheelchairs@gmail.com
-                            </Typography>
-                            <Typography fontSize={18} sx={{ textAlign: 'start' }}>
-                                info@gswheelchairs.gr
-                            </Typography>
-                        </Box>                                           
-                    </Stack>
-                    <Stack spacing={2} direction='row' sx={{ display: 'flex', alignItems: 'center' }}>
-                    <Box sx={{ boxShadow: '1px 2px 3px -2px black', backgroundColor: 'black', opacity: 0.8, width: 40, height: 40, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center', border: '2px solid orangered' }}>
-                        <FontAwesomeIcon icon={faLocationDot} size='lg' style={{ color: 'white' }}/>
-                    </Box>
-                    <Box sx={{ textAlign: 'start' }}>
-                        <Typography fontWeight={600}>
+        }}>            
+                <Stack
+                    spacing={2}            
+                >
+                    <Stack
+                        spacing={0}
+                        alignItems={'start'}
+                    >
+                        <Typography
+                            fontSize={16}
+                            fontWeight={'bold'}
+                        >
                             Κρήτης 80, Θεσσαλονίκη
                         </Typography>
-                        <Typography variant='body2' fontWeight={600}>
+                        <Typography
+                            fontSize={14}
+                        >
                             Ελλάδα, Τ.Κ. 54646
                         </Typography>                    
-                    </Box>
                     </Stack>
-                </Stack>
-            </Box>
+                    {isLoaded && (
+                        <GoogleMap
+                            mapContainerStyle={containerStyle}
+                            center={center}          
+                            onLoad={onLoad}
+                            zoom={17}
+                            onUnmount={onUnmount}
+                            lat={'40.596625'}
+                            lng={'22.958450'}
+                            options={{
+                                fullscreenControl: false, // Remove fullscreen button
+                                streetViewControl: false, // Remove Street View
+                                mapTypeControl: false, // Remove map type (satellite/terrain)
+                                zoomControl: true, // Keep zoom buttons
+                            }}
+                        >
+                            <Marker position={{lat: 40.596625, lng: 22.958450}}/>
+                        </GoogleMap>
+                    )}                    
+                </Stack>                           
         </Box>
     );
 }

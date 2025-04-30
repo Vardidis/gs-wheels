@@ -63,3 +63,7 @@ body{
 .highlight:hover{
   color: #d85704;
 }
+
+.zoom-image{
+  max-height: 300px;  
+}

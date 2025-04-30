@@ -61,7 +61,7 @@ const Menulist = () => {
                         { isDesktop && <ListItemText primary="Υπηρεσίες"/> }
                     </ListItem> 
                 </NavLink>    
-                <NavLink to='/products' className='navlink' onClick={()=>setNavSelection(3)}>  
+                <NavLink to='/products/wheelchairs' className='navlink' onClick={()=>setNavSelection(3)}>  
                     <ListItem id='3' className="hoverable" sx={{ gap: 1, paddingBottom: {lg: 1, md: 1, sm: 2, xs: 2, xxs: 2}, paddingTop: {lg: 1, md: 1, sm: 2, xs: 2, xxs: 2}, backgroundColor: 'transparent', borderRadius: 2 }}>
                         <ProductsIcon 
                             fill={navSelection === 3 ? 'white' : '#30343f'}

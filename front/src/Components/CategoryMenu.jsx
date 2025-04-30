@@ -15,12 +15,7 @@ const CategoryMenu = (props) => {
                 margin: '0px 8px',                            
                 paddingTop: 2
             }}
-        >
-            <Grid item xxs={12} xs={12} sm={4} md={2.5}>
-                <Link to='/products' style={{ textDecoration: 'none' }}>
-                    <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
-                </Link>
-            </Grid>
+        >            
             <Grid item xxs={12} xs={12} sm={4} md={2.5}>
                 <Link to='wheelchairs' style={{ textDecoration: 'none' }}>
                     <ProductMenuItem text={'Αμαξίδια'} highlight={props.tag==='wheelchairs'}/>
@@ -35,7 +30,12 @@ const CategoryMenu = (props) => {
                 <Link to='helpers' style={{ textDecoration: 'none' }}>
                     <ProductMenuItem text={'Βοηθήματα'} highlight={props.tag==='helpers'}/>
                 </Link>    
-            </Grid>      
+            </Grid>    
+            <Grid item xxs={12} xs={12} sm={4} md={2.5}>
+                <Link to='/products' style={{ textDecoration: 'none' }}>
+                    <ProductMenuItem text={'Όλα τα προϊόντα'} highlight={props.tag===undefined}/>
+                </Link>
+            </Grid>  
         </Grid>
     );
 }

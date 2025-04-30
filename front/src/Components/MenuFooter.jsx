@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { Context } from "./Context";
-import { List, ListItem, ListItemText, Modal, Typography, Paper, Popper, Fade, Box, Snackbar } from '@mui/material';
+import { List, ListItem, ListItemText, ClickAwayListener, Modal, Typography, Paper, Popper, Fade, Box, Snackbar } from '@mui/material';
 import Contact from "./Contact";
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -26,10 +26,22 @@ const MenuFooter = () => {
     const { vertical, horizontal, openSnack } = state;
     const iconSize = isDesktop ? 'md' : 'lg';
     
-    const handleClose = () => setOpenModal(false);
-    const handleOpen = () => setOpenModal(true);
-    const openInfoMod = () => setOpenInfoModal(true);
-    const closeInfoMod = () => setOpenInfoModal(false);
+    const handleClose = () => {
+        setOpenModal(false);
+        setOpen(false);
+    }
+    const handleOpen = () => {
+        setOpenModal(true);
+        setOpen(false);
+    }
+    const openInfoMod = () => {
+        setOpenInfoModal(true);
+        setOpen(false);
+    }
+    const closeInfoMod = () => {
+        setOpenInfoModal(false);
+        setOpen(false);
+    }
 
     const handleClick = (newPlacement) => (event) => {
         setMenuOpen(!menuOpen);
@@ -63,10 +75,12 @@ const MenuFooter = () => {
                 anchorEl={anchorEl}
                 placement={'right'}
                 transition
-            >
+                onClose={()=>setOpen(false)}
+            >                
                 {({ TransitionProps }) => (
-                    <Fade {...TransitionProps} timeout={350}>
+                    <Fade {...TransitionProps} timeout={350}>                        
                         <Paper sx={{ backgroundColor: '#30343f', color: 'white' }}>
+                            <ClickAwayListener onClickAway={()=>setOpen(false)}>
                             <List>
                                 <ListItem className='contact-list' onClick={()=>{handleOpen()}}>
                                     <Typography>
@@ -75,13 +89,14 @@ const MenuFooter = () => {
                                 </ListItem>
                                 <ListItem className='contact-list' onClick={()=>openInfoMod()}>
                                     <Typography>
-                                        Πληροφορίες επικοινωνίας
+                                        Τοποθεσία καταστήματος
                                     </Typography>
                                 </ListItem>                       
                             </List>
-                        </Paper>
+                            </ClickAwayListener>
+                        </Paper>                        
                     </Fade>
-                )}
+                )}                
             </Popper>
             <Modal
                 open={openModal}

@@ -23,7 +23,8 @@ const ProductImageView = (props) => {
                         bgcolor: 'white',
                         width: '100%',
                         display: 'flex',
-                        justifyContent: 'center'
+                        justifyContent: 'center',
+                        maxHeight: 300
                     }}
                 >
                     <ImageZoom className='zoom-image' src={bigImage}  alt="" zoom="600"/>

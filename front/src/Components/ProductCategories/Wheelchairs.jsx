@@ -123,7 +123,7 @@ const Wheelchairs = () => {
                 width: '100%',                               
             }}
         >
-            <Grid container    
+            {/* <Grid container    
                 columnGap={1}   
                 rowGap={1}       
                 sx={{
@@ -162,7 +162,7 @@ const Wheelchairs = () => {
                         onDelete={handleDeletePort}
                     />
                 </Grid>
-            </Grid>
+            </Grid> */}
             <ProductMenu items={items}/>
         </Stack>
         
