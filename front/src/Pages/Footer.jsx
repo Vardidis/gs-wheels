@@ -21,7 +21,7 @@ const Footer = () => {
                     backgroundSize: 'cover',                
                     backgroundRepeat: 'no-repeat',                               
                     overflow: 'hidden',  
-                    color: 'white'              
+                    color: 'white!important'              
                 }}
             >           
                 <Stack
@@ -30,7 +30,7 @@ const Footer = () => {
                     alignItems={'center'}
                     sx={{
                         padding: '32px 112px',
-                        color: 'white'
+                        color: 'white!important'
                     }}
                 >
                     <img
@@ -43,7 +43,7 @@ const Footer = () => {
                         spacing={1.5}
                         justifyContent={'space-between'}      
                         sx={{
-                            color: 'white'
+                            color: 'white!important'
                         }}          
                     >
                         <Typography
@@ -103,14 +103,14 @@ const Footer = () => {
                         >
                             <Typography                                
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 ΕΚΠΑΙΔΕΥΣΗ ΑΥΤΟΝΟΜΙΑΣ
                             </Typography>
                             <Typography
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 & Λειτουργικής Αποκατάστασης
@@ -124,7 +124,7 @@ const Footer = () => {
                         >
                             <Typography                               
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 ΚΑΤΑΣΚΕΥΗ ΑΝΑΠΗΡΙΚΩΝ ΑΜΑΞΙΔΙΩΝ                               
@@ -221,7 +221,7 @@ const Footer = () => {
                 </Stack>
                 <Divider
                     sx={{
-                        color: 'white'
+                        color: 'white!important'
                     }}
                 />
                 <Stack
@@ -234,7 +234,7 @@ const Footer = () => {
                     <Typography
                         fontSize={13}
                         sx={{
-                            color: 'white'
+                            color: 'white!important'
                         }}         
                     >
                         @2025 GS Wheelchairs
@@ -271,14 +271,14 @@ const Footer = () => {
                     backgroundSize: 'cover',                
                     backgroundRepeat: 'no-repeat',                               
                     overflow: 'hidden',  
-                    color: 'white',
+                    color: 'white!important',
                     width: '100%'         
                 }}
             >           
                 <Stack
                     spacing={3}
                     sx={{
-                        color: 'white'
+                        color: 'white!important'
                     }}     
                 >
                     <Stack                    
@@ -288,7 +288,7 @@ const Footer = () => {
                         sx={{
                             padding: '24px 8px',
                             paddingBottom: 0,
-                            color: 'white',
+                            color: 'white!important',
                         }}
                     >
                         <Stack
@@ -300,7 +300,7 @@ const Footer = () => {
                                 onClick={()=>navigate('/')}
                                 fontWeight={'bold'}
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}
                             >
                                 Αρχική
@@ -310,7 +310,7 @@ const Footer = () => {
                                 onClick={()=>navigate('/about-us')}
                                 fontWeight={'bold'}
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 Σχετικά με εμάς
@@ -340,7 +340,7 @@ const Footer = () => {
                             spacing={2}      
                             alignItems={'end'}   
                             sx={{
-                                color: 'white'
+                                color: 'white!important'
                             }}                                       
                         >      
                             <Stack
@@ -348,14 +348,14 @@ const Footer = () => {
                                 spacing={-0.5}
                                 alignItems={'end'}
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}     
                             >                                     
                                 <Typography
                                     fontSize={15}
                                     fontWeight={'bold'}    
                                     sx={{
-                                        color: 'white'
+                                        color: 'white!important'
                                     }}                                                                                         
                                 >
                                     Κρήτης 80, 546
@@ -364,7 +364,7 @@ const Footer = () => {
                                     fontSize={14}
                                     fontWeight={'bold'}    
                                     sx={{
-                                        color: 'white',
+                                        color: 'white!important',
                                         opacity: 0.9
                                     }}                      
                                 >
@@ -375,7 +375,7 @@ const Footer = () => {
                                 fontWeight={'bold'}
                                 fontSize={15}
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 +30 2310 42 89 49
@@ -386,7 +386,7 @@ const Footer = () => {
                                 <Typography
                                     fontSize={13}
                                     sx={{
-                                        color: 'white'
+                                        color: 'white!important'
                                     }}         
                                 >
                                     gswheelchairs@gmail.com
@@ -394,7 +394,7 @@ const Footer = () => {
                                 <Typography
                                     fontSize={14}
                                     sx={{
-                                        color: 'white'
+                                        color: 'white!important'
                                     }}         
                                 >
                                     info@wheelchairs.gr
@@ -416,14 +416,14 @@ const Footer = () => {
                         >
                             <Typography
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 ΕΚΠΑΙΔΕΥΣΗ ΑΥΤΟΝΟΜΙΑΣ
                             </Typography>
                             <Typography
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 & Λειτουργικής Αποκατάστασης
@@ -436,14 +436,14 @@ const Footer = () => {
                         >
                             <Typography
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}         
                             >
                                 ΚΑΤΑΣΚΕΥΗ ΑΝΑΠΗΡΙΚΩΝ ΑΜΑΞΙΔΙΩΝ                               
                             </Typography>
                             <Typography
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}
                             >
                                 Χειροποίητα, προσαρμοσμένα κατά παραγγελία
@@ -482,7 +482,7 @@ const Footer = () => {
                             <Typography
                                 fontSize={13}
                                 sx={{
-                                    color: 'white'
+                                    color: 'white!important'
                                 }}
                             >
                                 Developed by Vardis
