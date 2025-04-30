@@ -120,6 +120,8 @@ const Contact = (props) => {
                 borderRadius: 2,
                 height: 'fit-content',
                 overflowY: 'auto',
+                width: 'fit-content',
+                minWidth: 300
             }}>
                 <Stack
                     spacing={5}
