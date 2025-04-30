@@ -97,11 +97,11 @@ const Footer = () => {
                     >
                         <Stack
                             className={'hoverable'}
+                            onClick={()=>navigate('/service/apokatastasi')}
                             alignItems={'end'}
                             spacing={-1}
                         >
-                            <Typography
-                                onClick={()=>navigate('/service/apokatastasi')}
+                            <Typography                                
                                 sx={{
                                     color: 'white'
                                 }}         
