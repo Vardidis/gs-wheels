@@ -212,7 +212,9 @@ const AboutSlider = () => {
     }
 
     return(          
-            <Stack>
+            <Stack
+                alignItems={'center'}
+            >
                 <img
                     src={Header}
                     style={{
@@ -220,10 +222,10 @@ const AboutSlider = () => {
                     }}
                 />
                 <Stack
-                    spacing={3}                   
+                    spacing={3}                                   
                     sx={{                                                
                         maxWidth: 1400,
-                        padding: isDesktop ? '32px 24px' : '9px 8px'
+                        padding: isDesktop ? '32px 24px' : '9px 8px',                        
                     }}
                 >
                     <Stack

@@ -24,7 +24,8 @@ const LifeCoaching = () => {
     }
 
     return(
-        <Box
+        <Stack
+            alignItems={'center'}
             sx={{
                 backgroundImage: `url(${Background})`,
                 backgroundSize: 'cover',
@@ -43,7 +44,7 @@ const LifeCoaching = () => {
                 alignItems={'center'}
                 sx={{
                     maxWidth: 1400,
-                    padding: '24px 16px'
+                    padding: '24px 16px'                    
                 }}
             >  
                 <Typography variant='h5' fontWeight={600}>
@@ -102,7 +103,7 @@ const LifeCoaching = () => {
                     </Grid>
                 </Grid>                                                                              
             </Stack>   
-        </Box>
+        </Stack>
     );
 }
 

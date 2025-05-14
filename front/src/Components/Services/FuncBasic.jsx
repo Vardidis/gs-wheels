@@ -131,7 +131,8 @@ const FuncBasic = () => {
     }
 
     return(
-        <Box
+        <Stack
+            alignItems={'center'}
             sx={{
                 backgroundImage: `url(${Background})`,
                 backgroundSize: 'cover',
@@ -145,7 +146,14 @@ const FuncBasic = () => {
                     width: '100%'
                 }}
             />
-            <Stack spacing={4} sx={{ padding: 2 }}>           
+            <Stack
+                alignItems={'center'}
+                spacing={4}
+                sx={{
+                    padding: 2,
+                    maxWidth: 1400
+                }}
+            >
                 <Box sx={{ display: 'flex', justifyContent: 'center' }}>
                     <SecTabs
                         value={secValue}
@@ -366,7 +374,7 @@ const FuncBasic = () => {
                     </Stack>                                      
                 }
             </Stack>                   
-        </Box>                      
+        </Stack>                      
     );
 }
 
