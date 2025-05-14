@@ -5,7 +5,7 @@ import { useContext, useEffect } from 'react';
 import { Context } from './Components/Context.jsx';
 import { createTheme, Box } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import GetStarted from './Pages/GetStarted.jsx';
 import Products from './Pages/Products.jsx';
 import About from './Pages/About.jsx';
@@ -14,6 +14,16 @@ import Education from './Pages/Education.jsx';
 import Product from './Pages/Product.jsx';
 import FuncRepair from './Components/Services/FuncRepair.jsx';
 import Footer from './Pages/Footer.jsx';
+
+const ScrollToTop = () => {
+  const {pathname} = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
 
 function App() {
   const theme = createTheme({
@@ -59,6 +69,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
+        <ScrollToTop/>
         <Box display="flex" height="100vh">                      
           <Sidemenu desktop={isDesktop}/>
           <Box component="main" sx={{
