@@ -213,7 +213,7 @@ const AboutSlider = () => {
 
     return(          
             <Stack
-                alignItems={'center'}
+                alignItems={isDesktop && 'center'}
             >
                 <img
                     src={Header}

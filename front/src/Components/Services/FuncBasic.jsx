@@ -132,7 +132,7 @@ const FuncBasic = () => {
 
     return(
         <Stack
-            alignItems={'center'}
+            alignItems={isDesktop && 'center'}
             sx={{
                 backgroundImage: `url(${Background})`,
                 backgroundSize: 'cover',

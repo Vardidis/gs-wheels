@@ -319,6 +319,9 @@ const Footer = () => {
                                 className={'hoverable'}
                                 onClick={()=>navigate('/services')}
                                 fontWeight={'bold'}
+                                sx={{
+                                    color: 'white!important'
+                                }}
                             >
                                 Υπηρεσίες
                             </Typography>
@@ -326,6 +329,9 @@ const Footer = () => {
                                 className={'hoverable'}
                                 onClick={()=>navigate('/products/wheelchairs')}
                                 fontWeight={'bold'}
+                                sx={{
+                                    color: 'white!important'
+                                }}
                             >
                                 Προϊόντα
                             </Typography>
