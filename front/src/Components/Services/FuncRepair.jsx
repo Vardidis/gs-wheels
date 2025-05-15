@@ -16,20 +16,32 @@ const CButton = (props) => {
                 textDecoration: 'none' 
             }}
         >
-            <Box className={'highlight'} sx={{ padding: 2, borderRadius: 2, bgcolor: 'white', color: '#30343f', boxShadow: 8, display: 'flex', justifyContent: 'space-between', alignItems: 'center', cursor: 'pointer' }}>                                                  
+            <Stack            
+                className={'highlight'}
+                direction={'row'}
+                justifyContent={'space-between'}
+                alignItems={'center'}
+                sx={{
+                    padding: 2,
+                    borderRadius: 2,
+                    bgcolor: 'white',
+                    color: '#30343f',
+                    boxShadow: 8,                    
+                    cursor: 'pointer'
+                }}
+            >
                 <Typography>
                     {props.text}
                 </Typography>
                 <PlayArrowIcon/>                                              
-            </Box>
+            </Stack>
         </Link>
     );
 }
 
 const FuncRepair = () => {
     return(        
-        <Stack
-            spacing={-2}  
+        <Stack             
             sx={{
                 backgroundImage: `url(${Background})`,
                 backgroundSize: 'cover'                
@@ -45,31 +57,37 @@ const FuncRepair = () => {
                 spacing={4}
                 alignItems={'center'}
                 sx={{
-                    padding:'48px 16px'
+                    padding:'48px 0px',                    
                 }}
             >
                 <Typography
-                    fontSize={28}
+                    fontSize={32}
                     fontWeight={'bold'}
                     sx={{
-                        color: '#353535'
+                        color: '#353535',
+                        lineHeight: '100%'
                     }}
                 >
                     Customize Your Life
                 </Typography>               
                 <Grid container
-                    rowGap={6}
-                    columnSpacing={3}
-                    justifyContent={'center'}
+                    rowSpacing={4}
+                    columnGap={3}   
+                    justifyContent={'center'}               
                     sx={{
-                        maxWidth: 1400
+                        maxWidth: 1400,
+                        padding: '0px 8px'
                     }}
                 >     
-                    <Grid item xxs={12} md={6} lg={5}>
+                    <Grid item
+                        xxs={12}
+                        md={6}
+                        lg={5}                                               
+                    >
                         <Stack
-                            spacing={3}
+                            spacing={3}                                    
                         >
-                            <Typography fontSize={20} fontWeight={600} textAlign='center' sx={{ color: '#d85704' }}>
+                            <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Λειτουργική Αποκατάσταση
                             </Typography>   
                             <Stack spacing={1}>
@@ -83,7 +101,7 @@ const FuncRepair = () => {
                         <Stack
                             spacing={3}
                         >
-                            <Typography fontSize={20} fontWeight={600} textAlign='center' sx={{ color: '#d85704' }}>
+                            <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Εκπαίδευση
                             </Typography>   
                             <Stack spacing={1}>
@@ -96,7 +114,7 @@ const FuncRepair = () => {
                         <Stack
                             spacing={3}
                         >
-                            <Typography fontSize={20} fontWeight={600} textAlign='center' sx={{ color: '#d85704' }}>
+                            <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Διαμόρφωση Χώρου
                             </Typography>    
                             <CButton text={'Η Σημασία της Προσαρμογής του Χώρου'} link={'/service/interior-design'}/>                                             
@@ -106,7 +124,7 @@ const FuncRepair = () => {
                         <Stack
                             spacing={3}
                         >
-                            <Typography fontSize={20} fontWeight={600} textAlign='center' sx={{ color: '#d85704' }}>
+                            <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Συμβουλευτική
                             </Typography>    
                             <CButton text={'Ψυχοκοινωνική Στήριξη'} link={'/service/life-coaching'}/>                                                   
