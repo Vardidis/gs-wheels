@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Box, Table, Stack, Button, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Snackbar, Modal, Typography } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import axios from "axios";
@@ -33,6 +33,7 @@ const ProductsTable = (props) => {
     const handleCloseModal = () => setOpenModal(false);
     const handleOpenModal = () => setOpenModal(true);
     const [toDelete, setToDelete] = useState(null);
+    const navigate = useNavigate();
 
     const deleteFunc = async() => {
         const id = toDelete[0];
@@ -110,46 +111,74 @@ const ProductsTable = (props) => {
                 autoHideDuration={3000}
                 onClose={handleClose}
                 message="Επιτυχής διαγραφή"
-            />           
-            <TableContainer component={Paper}>
-                <Table aria-label="customized table">
-                    <TableHead>
-                    <TableRow>
-                        <StyledTableCell>Βασική εικόνα</StyledTableCell>
-                        <StyledTableCell>Όνομα προϊόντος</StyledTableCell>
-                        <StyledTableCell>Πρόσθετες εικόνες</StyledTableCell>
-                        <StyledTableCell>Επεξεργασία</StyledTableCell>
-                    </TableRow>
-                    </TableHead>
-                    <TableBody>                    
-                    {props.products.map((product) => (                                           
-                        <StyledTableRow key={product._id} hover sx={{ cursor: 'pointer' }}>                         
-                            <StyledTableCell component="th" scope="row">
-                                <img src={product.thumbnail} style={{ width: '75px', height: '55px', borderRadius: '5px', border: '1px solid rgb(242, 242, 242)' }}/>
-                            </StyledTableCell>
-                            <StyledTableCell>
-                                <Typography fontSize={16}>
-                                    {product.title}
-                                </Typography>
-                            </StyledTableCell>                 
-                            <StyledTableCell> 
-                                {product.sub.map(subImg => {
-                                    return <img src={subImg} key={subImg} alt='' style={{ width: '50px' }}/>
-                                })}
-                            </StyledTableCell>
-                            <StyledTableCell>
-                                <Box sx={{ display: 'flex', gap: 2 }}>
-                                    <Link to={`/edit/${product._id}`} style={{ textDecoration: 'none' }}>
-                                        <EditIcon className='edit-icon' sx={{ color: 'black' }}/>
-                                    </Link>
-                                    <DeleteIcon className='edit-icon' onClick={(e)=>handleDelete(e, product._id)}/>
-                                </Box>                            
-                            </StyledTableCell>
-                        </StyledTableRow>            
-                    ))}
-                    </TableBody>
-                </Table>
-            </TableContainer>
+            />   
+            <Stack
+                spacing={1}
+                sx={{
+                    maxHeight: '90vh'
+                }}
+            >
+                {props.products.map((product) => (   
+                    <Stack
+                        className={'shady'}
+                        onClick={()=>navigate(`/edit/${product._id}`)}
+                        direction={'row'}
+                        justifyContent={'space-between'}
+                        alignItems={'center'}
+                        sx={{
+                            bgcolor: 'white',
+                            padding: 2,
+                            borderRadius: 3
+                        }}
+                    >
+                        <Stack
+                        >                            
+                            <img
+                                src={product.thumbnail}
+                                style={{
+                                    width: '80px',
+                                    height: '80px',
+                                    objectFit: 'cover',
+                                    borderRadius: '5px',
+                                    border: '1px solid rgb(242, 242, 242)'
+                                }}
+                            />
+                            <Typography fontSize={16}>
+                                {product.title}
+                            </Typography>
+                        </Stack>
+                        <Stack
+                            direction={'row'}
+                            spacing={1}
+                        >   
+                            {product.sub.map(subImg => {
+                                return (
+                                    <img
+                                        src={subImg}
+                                        key={subImg}
+                                        alt=''
+                                        style={{
+                                            width: '80px',
+                                            height: '80px',
+                                            objectFit: 'cover'
+                                        }}
+                                    />
+                                )
+                            })}
+                        </Stack>  
+                        <Box                            
+                            sx={{
+                                display: 'flex',
+                                gap: 2
+
+                            }}
+                        >
+                            <EditIcon className='edit-icon' sx={{ color: 'black' }}/>                            
+                            <DeleteIcon className='edit-icon' onClick={(e)=>handleDelete(e, product._id)}/>
+                        </Box>                                          
+                    </Stack>
+                ))}
+            </Stack>                
         </Box>
     );
 }

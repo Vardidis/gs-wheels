@@ -8,9 +8,9 @@ const GsButton = () => {
             <Box                
                 className={'shady'}
                 sx={{                        
-                    bgcolor: '#d85704',  
+                    background: 'linear-gradient(90deg,rgba(216, 87, 4, 1) 0%, rgb(241, 157, 119) 50%, rgba(216, 87, 4, 1) 100%)',  
                     marginTop: 6,
-                    borderRadius: 3,             
+                    borderRadius: 90,             
                     cursor: 'pointer',
                     boxShadow: 12,        
                     width: 200,
@@ -21,7 +21,7 @@ const GsButton = () => {
                     color: 'white'
                 }}
             >                
-            <Typography fontSize={18} fontWeight={600}>
+            <Typography fontSize={20} fontWeight={600}>
                 Customize Your Life
             </Typography>             
             </Box>

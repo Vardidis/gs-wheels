@@ -1,10 +1,10 @@
 import React , { useState } from "react";
-import './Components.css';
+import '../Components.css';
 import { Box, Stack, Typography, Paper, Table, TableBody, TableCell, Grid, TableContainer, TableHead, TablePagination, TableRow } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import { tableCellClasses } from '@mui/material/TableCell';
 import { useContext } from "react";
-import { Context } from "./Context";
+import { Context } from "../Context";
 import axios from 'axios';
 
 const columns = [

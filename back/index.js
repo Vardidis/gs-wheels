@@ -13,6 +13,7 @@ const fetchAllTexts = require('./api/allTexts');
 const uploadImage = require('./controllers/uploadFile');
 const {deleteImage} = require('./controllers/deleteFile');
 const textUpdate = require('./controllers/editText');
+const { uploadStory } = require('./controllers/uploadStory');
 
 const app = express();
 app.use(express.json());
@@ -65,10 +66,17 @@ app.post('/submit-texts', async(req, res) => {
     const texts = req.body.texts;    
     const resp = await textUpdate(texts);
     
-    res.json({success: resp});
+    return res.json({success: resp});
 
 })
 
+app.post('/upload-story', async(req, res) => {
+    const {form} = req.body;
+    const response = await uploadStory(form)
+    if(response.success){
+        return res.status(200).json({success: true});
+    }
+})
 
 const port = 4300;
 app.listen(port, (error)=>{

@@ -13,14 +13,16 @@ const ProductImageView = (props) => {
 
     return(        
         <Grid container
-            columnGap={1}
+            columnSpacing={1}
             rowGap={1}
             alignItems={'center'}                
         >
-            <Grid item xxs={12} xs={12} sm={12} md={12} lg={12} xl={12}>
+            <Grid item 
+                size={12}
+            >           
                 <Box
                     sx={{
-                        bgcolor: 'white',
+                        background: 'linear-gradient(180deg,rgba(255, 255, 255, 1) 0%, rgb(247, 235, 228) 50%, rgba(255, 255, 255, 1) 100%)',
                         width: '100%',
                         display: 'flex',
                         justifyContent: 'center',
@@ -30,16 +32,18 @@ const ProductImageView = (props) => {
                     <ImageZoom className='zoom-image' src={bigImage}  alt="" zoom="600"/>
                 </Box>               
             </Grid> 
-            <Grid item             
-                xl={5} lg={5} md={12} sm={12} xs={12} xxs={12}
-            >
-                <Typography fontSize={22} textAlign={'center'} fontWeight={600} sx={{padding: 1, width: '100%'}}>
+            <Grid item   
+                size={12}
+            >                          
+                <Typography fontSize={28} textAlign={'center'} fontWeight={600} sx={{padding: 1, width: '100%', color: '#D85704'}}>
                     {props.title}
                 </Typography>         
             </Grid>                       
-            <Grid item xl={6} lg={6} md={12} sm={12} xs={12} xxs={12}>
+            <Grid item
+                size={12}
+            >           
                 <Stack direction='row' spacing={2} sx={{padding: 1, width: '100%', minWidth: 275, overflowX: 'auto'}}>
-                    <Box className='sub-list' sx={{ display: 'flex', gap: 1, overflowX: 'auto', }}>
+                    <Box className='sub-list' sx={{ display: 'flex', gap: 1, width: '100%' }}>
                         <Box onClick={()=>switchImage(props.mainImg)}>
                             <img src={props.mainImg} className='sub-image'/>
                         </Box>

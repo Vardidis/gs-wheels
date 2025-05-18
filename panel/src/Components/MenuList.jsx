@@ -25,11 +25,11 @@ const MenuList = () => {
                             Media
                         </Typography>
                     </Box>                     
-                </NavLink>     
-                <NavLink to='/texts' className='navlink' activeclassname='active'style={{ textDecoration: 'none' }}>           
+                </NavLink>                    
+                <NavLink to='/success-stories' className='navlink' activeclassname='active'style={{ textDecoration: 'none' }}>           
                     <Box>                    
                         <Typography>
-                            Κείμενα
+                            Success Stories
                         </Typography>
                     </Box>                     
                 </NavLink> 

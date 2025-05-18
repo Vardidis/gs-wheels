@@ -25,7 +25,7 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 const ProductViewDetails = (props) => {
     return(
-      <TableContainer component={Paper} sx={{ height: 'fit-content', maxWidth: 1100 }}>
+      <TableContainer component={Paper} sx={{ height: 'fit-content', maxWidth: 1100, borderRadius: 6 }}>
         <Table aria-label="customized table">
           <TableHead>
             <TableRow>

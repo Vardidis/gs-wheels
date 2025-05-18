@@ -18,17 +18,25 @@ const ProductMenu = (props) => {
     const {isDesktop} = useContext(Context);
     
     return(
-        <Grid container columnGap={2} rowGap={2} justifyContent={'center'} sx={{ padding: '32px 8px'}}>
+        <Grid container
+            columnSpacing={1}
+            rowGap={2}             
+            sx={{
+                padding: isDesktop ? '32px 16px' : '32px 8px',           
+            }}
+        >
             {props.items.map((item, index) => {                                
                 return(
                     <Grid item   
                         className={'scalable'}                     
                         key={item._id}
-                        xs={12}
-                        sm={1.8}
-                        md={3.5}
-                        lg={2.6}
-                        xl={2.93}
+                        size={{
+                            xs: 12,
+                            sm: 6,
+                            md: 4,
+                            lg: 3,
+                            xl: 3
+                        }}                        
                         sx={{
                             marginBottom: 3,
                             bgcolor: 'white',

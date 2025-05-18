@@ -1,8 +1,8 @@
 import React, { useContext, useRef, useState } from "react";
 import { Box, Button, Stack, Typography, Paper } from '@mui/material';
-import { Context } from "./Context";
+import { Context } from "../Context";
 import FileUploadIcon from '@mui/icons-material/FileUpload';
-import UploadTable from "./UploadTable";
+import UploadTable from "../UploadTable";
 import axios from 'axios';
 
 const Uploads = () => {

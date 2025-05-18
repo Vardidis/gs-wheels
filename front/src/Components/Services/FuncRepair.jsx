@@ -64,7 +64,7 @@ const FuncRepair = () => {
                     fontSize={32}
                     fontWeight={'bold'}
                     sx={{
-                        color: '#353535',
+                        color: '#555555',
                         lineHeight: '100%'
                     }}
                 >

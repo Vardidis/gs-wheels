@@ -35,22 +35,30 @@ const Servicebox = () => {
                     animation: `${fadeIn} 1s ease-in-out`
                 }}
             >                                      
-                <Grid item xxs={12} md={6}>            
+                <Grid item
+                    size={{xxs: 12, sm: 11, md: 5.5}}
+                >            
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
                         <Servicecard image={Service1} text={'Λειτουργική Αποκατάσταση'}/>
                     </Link>
                 </Grid>
-                <Grid item xxs={12} md={6}>
+                <Grid item
+                    size={{xxs: 12, sm: 11, md: 5.5}}
+                >  
                     <Link to='/service/education' style={{textDecoration: 'none'}}>
                         <Servicecard image={Service2} text={'Εκπαίδευση'}/>
                     </Link>      
                 </Grid>
-                <Grid item xxs={12} md={6}>
+                <Grid item
+                    size={{xxs: 12, sm: 11, md: 5.5}}
+                >  
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
                             <Servicecard image={Service3} text={'Διαμόρφωση Χώρου'}/>
                     </Link>
                 </Grid>
-                <Grid item xxs={12} md={6}>
+                <Grid item
+                    size={{xxs: 12, sm: 11, md: 5.5}}
+                >  
                     <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
                         <Servicecard image={Service4} text={'Συμβουλευτική'}/>
                     </Link>

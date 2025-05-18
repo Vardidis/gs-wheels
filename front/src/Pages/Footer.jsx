@@ -21,7 +21,9 @@ const Footer = () => {
                     backgroundSize: 'cover',                
                     backgroundRepeat: 'no-repeat',                               
                     overflow: 'hidden',  
-                    color: 'white!important'              
+                    color: 'white!important',
+                    position: 'relative',
+                    bottom: 0   
                 }}
             >           
                 <Stack

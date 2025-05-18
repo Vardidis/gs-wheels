@@ -31,7 +31,8 @@ const Products = () => {
     return(                    
         <Box
             sx={{               
-                background: 'linear-gradient(#c5c5c5, #e5e5e5, #ffffff)'
+                background: 'linear-gradient(#c5c5c5, #e5e5e5, #ffffff)',
+                minHeight: '70vh'
             }}
         >                       
             <Stack

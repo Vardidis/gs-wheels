@@ -1,4 +1,4 @@
-import { Box, Typography, Stack, Paper, Grid } from "@mui/material";
+import { Box, Typography, Stack, Grid } from "@mui/material";
 import React, { useContext } from "react";
 import { useParams } from "react-router-dom";
 import { Context } from "../Components/Context";
@@ -7,7 +7,7 @@ import ProductViewDetails from "../Components/ProductViewDetails";
 
 const DetailsBox = (props) => {
     return(
-        <Paper sx={{ padding: 3, bgcolor: '#30343f', color: 'white', borderRadius: 2, maxWidth: 1050}}>
+        <Box sx={{ padding: 3, bgcolor: 'white', color: '#30343f', borderRadius: 6, maxWidth: 1050}}>
             <Stack spacing={3} alignItems='center'>
                 <Typography variant='h6' sx={{ textAlign: 'center' }}>
                     Περιγραφή
@@ -16,7 +16,7 @@ const DetailsBox = (props) => {
                     {props.desc}
                 </Typography>
             </Stack>                
-        </Paper>        
+        </Box>        
     );
 }
 
@@ -32,7 +32,8 @@ const Product = () => {
                     width: '100%',
                     display: 'flex',
                     justifyContent: 'center',
-                    marginBottom: 3                                                     
+                    paddingBottom: 6,
+                    bgcolor: '#eeeeee'                                  
                 }}>                               
                 <Stack                  
                     alignItems={'stretch'}
@@ -43,19 +44,27 @@ const Product = () => {
                 >
                     <ProductImageView mainImg={productItem.thumbnail} title={productItem.title} subImages={productItem.sub}/>     
                     <Grid container
-                        columnGap={2}
+                        columnSpacing={2}
                         rowGap={2}
                         justifyContent={'center'}    
                         sx={{
                             padding: '0px 16px'
                         }}                 
                     >
-                        <Grid item lg={5} md={12} sm={12} xs={12} xxs={12}>
+                        <Grid item 
+                            size={{
+                                xxs: 12,
+                                lg: 6
+                            }}>
                             <DetailsBox
                                 desc={productItem.desc}
                             />  
                         </Grid>
-                        <Grid item lg={5} md={12} sm={12} xs={12} xxs={12}>
+                        <Grid item
+                            size={{
+                                xxs: 12,
+                                lg: 6
+                            }}>
                             <ProductViewDetails chars={productItem.chars}/>
                         </Grid>                        
                     </Grid>                                                                                      

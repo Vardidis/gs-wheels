@@ -9,7 +9,6 @@ import { useContext } from "react";
 import { Context } from "../Components/Context";
 import { useState } from "react";
 import { useEffect } from "react";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Header from '../assets/HEADER-Arxiki_UP.jpg'
 import Box1Image from '../assets/PHOTO-Plaisio_1.png';
 import Box2Image from '../assets/PHOTO-Plaisio_2.png';
@@ -36,8 +35,7 @@ const ColorBox = (props) => {
     const {isDesktop} = useContext(Context);
     return(
         <Grid item
-            xs={12}
-            md={5}
+            size={{xs: 12, md: 5, lg: 6}}            
             sx={{
                 bgcolor: 'white',
                 boxShadow: isDesktop && 12,
@@ -125,25 +123,31 @@ const GetStarted = () => {
                 <Stack spacing={2} alignItems='center'>
                     {loading ? 
                         (
-                            <Grid2 container rowGap={2} columnGap={2} sx={{ justifyContent: 'center' }}>
-                                <Grid2 item size={6}>
+                            <Grid container
+                                rowSpacing={2}
+                                columnSpacing={2}
+                                sx={{
+                                    justifyContent: 'center' 
+                                }}
+                            >
+                                <Grid item size={6}>
                                     <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid2>
-                                <Grid2 item size={6}>
+                                </Grid>
+                                <Grid item size={6}>
                                     <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid2>
-                                <Grid2 item size={6}>
+                                </Grid>
+                                <Grid item size={6}>
                                     <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid2>
-                                <Grid2 item size={6}>
+                                </Grid>
+                                <Grid item size={6}>
                                     <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid2>
-                            </Grid2>
+                                </Grid>
+                            </Grid>
                         )
                     : (
                         <Grid container
-                            columnGap={2}
-                            rowGap={2}
+                            columnSpacing={2}
+                            rowSpacing={2}
                             justifyContent='center'
                             sx={{
                                 animation: `${fadeIn} 1s ease-in-out`,
