@@ -49,8 +49,10 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 const ColorBox = (props) => {
     return(
         <Grid item
-            xs={12}
-            sm={5.5}
+        size={{
+            xs: 12,
+            sm: 6
+        }}         
             sx={{
                 boxShadow: props.isDesktop && 12,
                 borderRadius: 6,
@@ -138,6 +140,7 @@ const FuncBasic = () => {
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
+                paddingBottom: 12
             }}
         >
             <img
@@ -177,7 +180,7 @@ const FuncBasic = () => {
                         </Box>                                       
                         <Grid container
                             rowGap={3}
-                            columnGap={3}
+                            columnSpacing={3}
                             justifyContent={'center'}
                             sx={{
                                 animation: `${fadeIn} 1s ease-in-out`,
@@ -292,86 +295,87 @@ const FuncBasic = () => {
                         </Grid>                                                           
                     </Grid>                                          
                 }
-                {secValue === 2 &&
-                    <Stack>                                                   
-                        <Stack spacing={6} sx={{ display: 'flex', justifyContent: 'center' }}>                            
-                            <Typography sx={{ color: '#30343f' }}>
-                                {allTexts[3].placeText}
-                            </Typography>                                      
-                            <Stack spacing={3}>
-                                <Typography
-                                    variant='h6'
-                                    textAlign={'center'}
+                {secValue === 2 &&                                                                     
+                    <Stack spacing={12} sx={{ display: 'flex', justifyContent: 'center' }}>                            
+                        <Typography sx={{ color: '#30343f' }}>
+                            {allTexts[3].placeText}
+                        </Typography>                                      
+                        <Stack spacing={3}>
+                            <Typography
+                                variant='h6'
+                                textAlign={'center'}
+                                sx={{
+                                    fontWeight: 'bold',
+                                    color: '#30343f'                                    
+                                }}
+                            >
+                                Η εταιρεία προσφέρει μια ολοκληρωμένη προσέγγιση που συνδυάζει τρεις βασικούς πυλώνες
+                            </Typography>                              
+                            <Grid container
+                                justifyContent='center'
+                                rowSpacing={4}
+                                columnSpacing={2}
+                            >  
+                                <Grid item xs={12} sm={6} lg={4}
                                     sx={{
-                                        fontWeight: 'bold',
-                                        color: '#30343f'                                    
+                                        borderLeft: '2px solid #d85704',
+                                        paddingLeft: 1
                                     }}
-                                >
-                                    Η εταιρεία προσφέρει μια ολοκληρωμένη προσέγγιση που συνδυάζει τρεις βασικούς πυλώνες
-                                </Typography>                              
-                                <Grid container
-                                    justifyContent='center'
-                                    rowSpacing={2}
-                                    columnSpacing={2}
-                                >  
-                                    <Grid item xs={12} sm={6} lg={4}
-                                        sx={{
-                                            borderLeft: '2px solid #d85704'
-                                        }}
-                                    >                            
-                                        <TextWindow title={allTexts[3].items[0].title} text={allTexts[3].items[0].text}/>
-                                    </Grid>  
-                                    <Grid item xs={12} sm={6} lg={4}
-                                        sx={{
-                                            borderLeft: '2px solid #d85704'
-                                        }}
-                                    >      
-                                        <TextWindow title={allTexts[3].items[1].title} text={allTexts[3].items[1].text}/>
-                                    </Grid>
-                                    <Grid item xs={12} sm={6} lg={4}
-                                        sx={{
-                                            borderLeft: '2px solid #d85704'
-                                        }}
-                                    >     
-                                        <TextWindow title={allTexts[3].items[2].title} text={allTexts[3].items[2].text}/>
-                                    </Grid>
-                                </Grid>                                                                                                                       
-                            </Stack>
-                            <Stack spacing={3}>
-                                <Typography
-                                    variant='h6'
-                                    textAlign={'center'}
+                                >                            
+                                    <TextWindow title={allTexts[3].items[0].title} text={allTexts[3].items[0].text}/>
+                                </Grid>  
+                                <Grid item xs={12} sm={6} lg={4}
                                     sx={{
-                                        fontWeight: 'bold',
-                                        color: '#30343f'
+                                        borderLeft: '2px solid #d85704',
+                                        paddingLeft: 1
                                     }}
-                                >
-                                    Γιατί να Επιλέξετε τη Λειτουργική Αποκατάσταση
-                                </Typography>                                                                        
-                                <Grid container
-                                    justifyContent='center'
-                                    rowSpacing={2}
-                                    columnSpacing={2}
-                                >
-                                    <Grid item xs={12} sm={6} lg={4}>                                                                                   
-                                        <Typography sx={{ color: '30343f' }}>
-                                            {allTexts[3].items2[0].text}
-                                        </Typography>                                                                                                                                                     
-                                    </Grid>
-                                    <Grid item xs={12} sm={6} lg={4}>                                              
-                                        <Typography sx={{ color: '30343f' }}>
-                                            {allTexts[3].items2[1].text}
-                                        </Typography>                                            
-                                    </Grid>
-                                    <Grid item xs={12} sm={6} lg={4}>                                                 
-                                        <Typography sx={{ color: '30343f' }}>
-                                            {allTexts[3].items2[2].text}
-                                        </Typography>                                                 
-                                    </Grid>
-                                </Grid>                                                                                                                                                      
-                            </Stack>                                                
-                        </Stack>                                 
-                    </Stack>                                      
+                                >      
+                                    <TextWindow title={allTexts[3].items[1].title} text={allTexts[3].items[1].text}/>
+                                </Grid>
+                                <Grid item xs={12} sm={6} lg={4}
+                                    sx={{
+                                        borderLeft: '2px solid #d85704',
+                                        paddingLeft: 1
+                                    }}
+                                >     
+                                    <TextWindow title={allTexts[3].items[2].title} text={allTexts[3].items[2].text}/>
+                                </Grid>
+                            </Grid>                                                                                                                       
+                        </Stack>
+                        <Stack spacing={3}>
+                            <Typography
+                                variant='h6'
+                                textAlign={'center'}
+                                sx={{
+                                    fontWeight: 'bold',
+                                    color: '#30343f'
+                                }}
+                            >
+                                Γιατί να Επιλέξετε τη Λειτουργική Αποκατάσταση
+                            </Typography>                                                                        
+                            <Grid container
+                                justifyContent='center'
+                                rowSpacing={2}
+                                columnSpacing={2}
+                            >
+                                <Grid item xs={12} sm={6} lg={4}>                                                                                   
+                                    <Typography sx={{ color: '30343f' }}>
+                                        {allTexts[3].items2[0].text}
+                                    </Typography>                                                                                                                                                     
+                                </Grid>
+                                <Grid item xs={12} sm={6} lg={4}>                                              
+                                    <Typography sx={{ color: '30343f' }}>
+                                        {allTexts[3].items2[1].text}
+                                    </Typography>                                            
+                                </Grid>
+                                <Grid item xs={12} sm={6} lg={4}>                                                 
+                                    <Typography sx={{ color: '30343f' }}>
+                                        {allTexts[3].items2[2].text}
+                                    </Typography>                                                 
+                                </Grid>
+                            </Grid>                                                                                                                                                      
+                        </Stack>                                                
+                    </Stack>                                                                                        
                 }
             </Stack>                   
         </Stack>                      

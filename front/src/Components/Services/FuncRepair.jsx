@@ -79,11 +79,13 @@ const FuncRepair = () => {
                         padding: '0px 8px'
                     }}
                 >     
-                    <Grid item
-                        xxs={12}
-                        md={6}
-                        lg={5}                                               
-                    >
+                    <Grid item 
+                        size={{
+                            xs: 12,
+                            md: 6,
+                            lg: 5
+                        }}                                  
+                    >     
                         <Stack
                             spacing={3}                                    
                         >

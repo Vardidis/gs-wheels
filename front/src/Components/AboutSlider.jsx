@@ -153,7 +153,7 @@ const TabButton = ({title, index, handleMainChange, mainValue}) => {
             sx={{
                 color: mainValue === index ? 'white' : '#30343f',
                 bgcolor: mainValue === index ? '#d85704' : 'rgb(230, 230, 235)',
-                boxShadow: mainValue === index ? 8 : 3,
+                boxShadow: mainValue === index ? 4 : 0,
                 padding: isDesktop ? '12px 32px' : '8px 12px',
                 borderRadius: 2,                
                 cursor: 'pointer'                
@@ -214,6 +214,9 @@ const AboutSlider = () => {
     return(          
             <Stack
                 alignItems={isDesktop && 'center'}
+                sx={{
+                    paddingBottom: 12
+                }}
             >
                 <img
                     src={Header}
@@ -404,25 +407,21 @@ const AboutSlider = () => {
                         </Box>
                     )}
                     {mainValue === 1 && (
-                        <Box
-                            sx={{
-                                width: '100%'
-                            }}
+                        <Box                          
                         >                                 
                             <Grid container
                                 justifyContent='center'
                                 rowSpacing={4}
-                                columnSpacing={2}                             
+                                columnSpacing={isDesktop ? 4 : 2}                                                                              
                             >
                                 <Grid item
-                                    xs={12}
-                                    md={12}
-                                    lg={5}
-                                    xl={4}
-                                    className="suc-stories" 
-                                    sx={{
-                                        maxWidth: 700
-                                    }}
+                                    size={{
+                                        xs: 12,
+                                        sm: 6,
+                                        lg: 5,
+                                        xl: 4
+                                    }}                                    
+                                    className="suc-stories"                                     
                                 >                                                                                       
                                         <Stack
                                             spacing={2}                                      
@@ -474,13 +473,13 @@ const AboutSlider = () => {
                                         </Stack>                                                             
                                 </Grid>
                                 <Grid item
-                                    xs={12}
-                                    lg={5}
-                                    xl={4}
-                                    className="suc-stories"
-                                    sx={{
-                                        maxWidth: 700
+                                    size={{
+                                        xs: 12,
+                                        sm: 6,
+                                        lg: 5,
+                                        xl: 4
                                     }}
+                                    className="suc-stories"                                    
                                 >                                                                                           
                                     <Stack
                                         spacing={2}                               

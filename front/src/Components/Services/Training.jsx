@@ -1,4 +1,4 @@
-import { Box, Stack, Tabs, Tab, Skeleton } from "@mui/material";
+import { Box, Stack, Tabs, Tab, Skeleton, Grid } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Basics from "./Basics";
 import CustomWheels from "./CustomWheels";
@@ -6,7 +6,6 @@ import { styled } from '@mui/material/styles';
 import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../Context";
-import Grid2 from "@mui/material/Unstable_Grid2/Grid2";
 import Header from '../../assets/HEADER-AboutUs_UP.jpg';
 import Background from '../../assets/BACKGROUND-Arxiki.jpg';
 
@@ -28,7 +27,7 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
         textTransform: 'none',                
         color: '#30343f',
         '&.Mui-selected': {
-        color: 'orangered',
+        color: '#d85704',
         },       
     }),
 );
@@ -56,11 +55,11 @@ const Training = () => {
 
     if(loading){
         return(
-            <Grid2 container>
-                <Grid2 item>
+            <Grid container>
+                <Grid item>
                     <Skeleton variant="rectangular" sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                </Grid2>
-            </Grid2>
+                </Grid>
+            </Grid>
         )
     }
 
@@ -72,7 +71,8 @@ const Training = () => {
                 backgroundImage: `url(${Background})`,
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',                
+                backgroundRepeat: 'no-repeat',    
+                paddingBottom: 12            
             }}
         >             
             <img
