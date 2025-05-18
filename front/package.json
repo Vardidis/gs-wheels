@@ -25,6 +25,8 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-image-zooom": "^1.4.1",
+    "react-loading": "^2.0.3",
+    "react-loading-indicators": "^1.0.1",
     "react-router-dom": "^7.6.0",
     "react-scripts": "^5.0.1",
     "react-svg-loader": "^3.0.3",

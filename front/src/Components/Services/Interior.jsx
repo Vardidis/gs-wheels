@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import Header from '../../assets/HEADER-AboutUs_UP.jpg';
 import Background from '../../assets/BACKGROUND-Arxiki.jpg';
+import LoadingComp from "../LoadingComp";
 
 const Interior = () => {
     const {allTexts, isDesktop} = useContext(Context);
@@ -20,7 +21,7 @@ const Interior = () => {
 
     if(loading){
         return(
-            <>Loading...</>
+            <LoadingComp/>
         )
     }
     return(

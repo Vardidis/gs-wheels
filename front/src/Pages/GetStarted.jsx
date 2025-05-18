@@ -15,6 +15,7 @@ import Box2Image from '../assets/PHOTO-Plaisio_2.png';
 import Box3Image from '../assets/PHOTO-Plaisio_3.png';
 import Box4Image from '../assets/PHOTO-Plaisio_4.png';
 import MainImage from '../assets/BACKGROUND-Arxiki.jpg';
+import LoadingComp from "../Components/LoadingComp";
 
 library.add(faPhone, faEnvelope, faLocationDot);
 
@@ -97,8 +98,14 @@ const GetStarted = () => {
         if(allTexts.length > 0){
             setLoading(false);
         }
-    }, [allTexts]);
-
+    }, [allTexts]); 
+    
+    if(loading){
+        return(
+            <LoadingComp/>
+        )
+    }
+    
     return(
         <Stack
             spacing={8}
@@ -120,71 +127,46 @@ const GetStarted = () => {
                 }}
             />                    
             <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                <Stack spacing={2} alignItems='center'>
-                    {loading ? 
-                        (
-                            <Grid container
-                                rowSpacing={2}
-                                columnSpacing={2}
-                                sx={{
-                                    justifyContent: 'center' 
-                                }}
-                            >
-                                <Grid item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid>
-                                <Grid item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid>
-                                <Grid item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid>
-                                <Grid item size={6}>
-                                    <Skeleton variant="rectangular" animation="wave" width={400} sx={{ boxShadow: 12, borderRadius: 4, padding: 4, display: 'flex', alignItems: 'center', minHeight: {lg: 200, md: 200, sm: 100, xs: 50, xxs: 50} }} />
-                                </Grid>
-                            </Grid>
-                        )
-                    : (
-                        <Grid container
-                            columnSpacing={2}
-                            rowSpacing={2}
-                            justifyContent='center'
-                            sx={{
-                                animation: `${fadeIn} 1s ease-in-out`,
-                                padding: 1,
-                                maxWidth: 1800,
-                                display: 'flex',
-                               
-                            }}
-                        >
-                                <ColorBox                                   
-                                    title={allTexts[0].items[0].title}
-                                    text={allTexts[0].items[0].text}
-                                    link={'/service/education'}
-                                    anchor={1}
-                                    image={Box1Image}                                    
-                                />                                                                               
-                                <ColorBox                                    
-                                    title={allTexts[0].items[1].title}
-                                    text={allTexts[0].items[1].text}
-                                    link={'/service/life-coaching'}
-                                    image={Box2Image}
-                                />                                                                                    
-                                <ColorBox                                    
-                                    title={allTexts[0].items[2].title}
-                                    text={allTexts[0].items[2].text}
-                                    link={'/service/interior-design'}
-                                    image={Box3Image}
-                                />                                                                                
-                                <ColorBox                                    
-                                    title={allTexts[0].items[3].title}
-                                    text={allTexts[0].items[3].text}
-                                    link={'/service/apokatastasi'}
-                                    anchor={0}
-                                    image={Box4Image}
-                                />    
-                            </Grid>                       
-                    )}  
+                <Stack spacing={2} alignItems='center'>                    
+                    <Grid container
+                        columnSpacing={2}
+                        rowSpacing={2}
+                        justifyContent='center'
+                        sx={{
+                            animation: `${fadeIn} 1s ease-in-out`,
+                            padding: 1,
+                            maxWidth: 1800,
+                            display: 'flex',
+                            
+                        }}
+                    >
+                        <ColorBox                                   
+                            title={allTexts[0].items[0].title}
+                            text={allTexts[0].items[0].text}
+                            link={'/service/education'}
+                            anchor={1}
+                            image={Box1Image}                                    
+                        />                                                                               
+                        <ColorBox                                    
+                            title={allTexts[0].items[1].title}
+                            text={allTexts[0].items[1].text}
+                            link={'/service/life-coaching'}
+                            image={Box2Image}
+                        />                                                                                    
+                        <ColorBox                                    
+                            title={allTexts[0].items[2].title}
+                            text={allTexts[0].items[2].text}
+                            link={'/service/interior-design'}
+                            image={Box3Image}
+                        />                                                                                
+                        <ColorBox                                    
+                            title={allTexts[0].items[3].title}
+                            text={allTexts[0].items[3].text}
+                            link={'/service/apokatastasi'}
+                            anchor={0}
+                            image={Box4Image}
+                        />    
+                    </Grid>                                     
                     <GsButton/>                     
                 </Stack>
             </Box>                    
