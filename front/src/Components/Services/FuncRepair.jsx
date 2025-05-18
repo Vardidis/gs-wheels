@@ -72,7 +72,7 @@ const FuncRepair = () => {
                 </Typography>               
                 <Grid container
                     rowSpacing={4}
-                    columnGap={3}   
+                    columnSpacing={3}   
                     justifyContent={'center'}               
                     sx={{
                         maxWidth: 1400,
@@ -87,7 +87,7 @@ const FuncRepair = () => {
                         }}                                  
                     >     
                         <Stack
-                            spacing={3}                                    
+                            spacing={2}                                    
                         >
                             <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Λειτουργική Αποκατάσταση
@@ -99,9 +99,15 @@ const FuncRepair = () => {
                             </Stack>                                             
                         </Stack>
                     </Grid>        
-                    <Grid item xxs={12} md={6} lg={5}>
+                    <Grid item 
+                        size={{
+                            xs: 12,
+                            md: 6,
+                            lg: 5
+                        }}                                  
+                    >     
                         <Stack
-                            spacing={3}
+                            spacing={2}
                         >
                             <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Εκπαίδευση
@@ -112,9 +118,15 @@ const FuncRepair = () => {
                             </Stack>                                                                  
                         </Stack>
                     </Grid>
-                    <Grid item xxs={12} md={6} lg={5}>
+                    <Grid item 
+                        size={{
+                            xs: 12,
+                            md: 6,
+                            lg: 5
+                        }}                                  
+                    >     
                         <Stack
-                            spacing={3}
+                            spacing={2}
                         >
                             <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Διαμόρφωση Χώρου
@@ -122,9 +134,15 @@ const FuncRepair = () => {
                             <CButton text={'Η Σημασία της Προσαρμογής του Χώρου'} link={'/service/interior-design'}/>                                             
                         </Stack>
                     </Grid>
-                    <Grid item xxs={12} md={6} lg={5}>
+                    <Grid item 
+                        size={{
+                            xs: 12,
+                            md: 6,
+                            lg: 5
+                        }}                                  
+                    >     
                         <Stack
-                            spacing={3}
+                            spacing={2}
                         >
                             <Typography fontSize={20} fontWeight={600} sx={{ color: '#d85704' }}>
                                 Συμβουλευτική
