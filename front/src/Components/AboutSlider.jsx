@@ -12,6 +12,7 @@ import Header from '../assets/HEADER-AboutUs_UP.jpg';
 import Image1 from '../assets/PHOTO-1-AboutUs_TEXT.jpg';
 import Image2 from '../assets/PHOTO-2-AboutUs_TEXT.jpg';
 import Image3 from '../assets/PHOTO-3-AboutUs_TEXT.jpg';
+import LoadingComp from "./LoadingComp";
 
 const SecTabs = styled((props) => (
     <Tabs
@@ -40,7 +41,7 @@ const SecTab = styled((props) => <Tab disableRipple {...props} />)(
 const TripleBox = (props) => {
     const boxSets = {        
         color: '#30343f',
-        bgcolor: 'rgb(250, 250, 250)'      
+        bgcolor: 'rgb(250, 250, 250)'   ,        
     }
 
     return(
@@ -207,7 +208,7 @@ const AboutSlider = () => {
 
     if(loading){
         return(
-            <>Loading...</>
+            <LoadingComp/>
         )
     }
 
@@ -215,7 +216,8 @@ const AboutSlider = () => {
             <Stack
                 alignItems={isDesktop && 'center'}
                 sx={{
-                    paddingBottom: 12
+                    paddingBottom: 12,
+                    width: '100%'
                 }}
             >
                 <img
@@ -227,8 +229,9 @@ const AboutSlider = () => {
                 <Stack
                     spacing={3}                                   
                     sx={{                                                
-                        maxWidth: 1400,
-                        padding: isDesktop ? '32px 24px' : '9px 8px',                        
+                        maxWidth: 1400, 
+                        width: '80vw',                           
+                        padding: isDesktop ? '32px 32px' : '8px 8px',                        
                     }}
                 >
                     <Stack
@@ -237,7 +240,8 @@ const AboutSlider = () => {
                         justifyContent={'space-between'}
                         sx={{
                             overflowX: 'auto',
-                            padding: '16px 8px'
+                            padding: '16px 8px',
+                            width: '100%'
                         }}
                     >
                         <Stack
@@ -533,7 +537,7 @@ const AboutSlider = () => {
                         <Stack
                             alignItems={'center'}
                             sx={{                           
-                                overflow: 'hidden',                                                                                                                                                                                                                         
+                                overflow: 'hidden',                                                                                                                                                                                                                                                                    
                             }}
                         >
                                 <YouTube className="yt-vid" videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>                                                         
