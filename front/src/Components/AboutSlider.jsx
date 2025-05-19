@@ -155,7 +155,7 @@ const TabButton = ({title, index, handleMainChange, mainValue}) => {
                 color: mainValue === index ? 'white' : '#30343f',
                 bgcolor: mainValue === index ? '#d85704' : 'rgb(230, 230, 235)',
                 boxShadow: mainValue === index ? 4 : 0,
-                padding: isDesktop ? '12px 32px' : '8px 12px',
+                padding: {xs: '8px 12px', lg: '12px 32px'},
                 borderRadius: 2,                
                 cursor: 'pointer'                
             }}
@@ -215,9 +215,8 @@ const AboutSlider = () => {
     return(          
             <Stack
                 alignItems={isDesktop && 'center'}
-                sx={{
-                    paddingBottom: 12,
-                    width: '100%'
+                sx={{                                        
+                    paddingBottom: 12
                 }}
             >
                 <img
@@ -229,24 +228,22 @@ const AboutSlider = () => {
                 <Stack
                     spacing={3}                                   
                     sx={{                                                
-                        maxWidth: 1400, 
-                        width: '80vw',                           
-                        padding: isDesktop ? '32px 32px' : '8px 8px',                        
+                        maxWidth: 1400,                          
+                        padding: isDesktop ? '0px 16px' : '0px 8px',                                          
                     }}
                 >
                     <Stack
                         direction={'row'}
-                        spacing={2}
+                        spacing={1}
                         justifyContent={'space-between'}
                         sx={{
                             overflowX: 'auto',
-                            padding: '16px 8px',
-                            width: '100%'
+                            padding: '16px 0px',                                                  
                         }}
                     >
                         <Stack
                             direction={'row'}
-                            spacing={2}
+                            spacing={1}
                         >
                             <TabButton
                                 title={'Ποιοί είμαστε'}
@@ -263,7 +260,7 @@ const AboutSlider = () => {
                         </Stack>
                         <Stack
                             direction={'row'}
-                            spacing={2}
+                            spacing={1}
                         >    
                             <TabButton
                                 title={'Προβολή βίντεο'}
@@ -280,7 +277,8 @@ const AboutSlider = () => {
                         </Stack>
                     </Stack>                         
                     {mainValue === 0 && ( 
-                        <Box>                                                        
+                        <Box                            
+                        >                                                        
                             <Stack spacing={6} sx={{ marginTop: isDesktop ? 3 : 0 }}>                                                                                           
                                 <Typography
                                     fontSize={16}
@@ -343,9 +341,12 @@ const AboutSlider = () => {
                                         <SecTab label="ως Εργαλείο Ενδυνάμωσης" sx={{ fontWeight: 600, fontSize: 15, color: secValue === 3 ? '#d85704' : '#30343f' }} onClick={()=>handleSecChange(3)}/>
                                     </SecTabs>                                                                                                                  
                                     {secValue === 0 &&                           
-                                        <Box>
+                                        <Box                                         
+                                        >
                                             <Stack spacing={4}>
-                                                <Typography variant="body2">
+                                                <Typography
+                                                    variant="body2"
+                                                >
                                                     {allTexts[8].placeText2}
                                                 </Typography>
                                                 <TripleBox
@@ -411,7 +412,7 @@ const AboutSlider = () => {
                         </Box>
                     )}
                     {mainValue === 1 && (
-                        <Box                          
+                        <Box                                 
                         >                                 
                             <Grid container
                                 justifyContent='center'
@@ -537,17 +538,28 @@ const AboutSlider = () => {
                         <Stack
                             alignItems={'center'}
                             sx={{                           
-                                overflow: 'hidden',                                                                                                                                                                                                                                                                    
+                                overflow: 'hidden',                                                                                                                                                                                                                                                                                        
                             }}
                         >
+                            <Stack>
                                 <YouTube className="yt-vid" videoId='d0fYQ3sorTE' opts={opts} onReady={onReady}/>                                                         
+                                <Typography
+                                    textAlign={'left'}
+                                    fontSize={24}
+                                    sx={{
+                                        width: '100%'
+                                    }}
+                                >
+                                    TEDxThessaloniki - Panagiotis Chrisovergis - The Other View
+                                </Typography>
+                            </Stack>
                         </Stack>
                     )}          
                     {mainValue === 3 && (
                         <Box
                             sx={{                               
                                 justifyContent: 'center',
-                                width: '100%',
+                                width: '100%'
                             }}
                         >
                             <Stack
@@ -565,7 +577,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: isDesktop ? 35 : 0,
+                                        paddingLeft: {xs: 0, lg: 35}
                                     }}
                                 >
                                     Σε ηλικία 14 χρονών απέκτησα την αναπηρία μου μετά από ένα τροχαίο ατύχημα.
@@ -576,7 +588,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: isDesktop ? 35 : 0,
+                                        paddingLeft: {xs: 0, lg: 35}
                                     }}
                                 >
                                     Μετά από μια σύντομη παραμονή στο σπίτι, και δίχως να μου έχουν δώσει
@@ -597,7 +609,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: isDesktop ? 35 : 0,
+                                        paddingLeft: {xs: 0, lg: 35}
                                     }}
                                 >
                                     Το 2006 έγινα πιστοποιημένος εκπαιδευτής για ανθρώπους με τραυματισμό στην
@@ -609,7 +621,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: isDesktop ? 65 : 0,
+                                        paddingLeft: {xs: 0, lg: 65}
                                     }}
                                 >
                                     Εργάστηκα στην Νομαρχία Θεσσαλονίκης στο τμήμα αθλητισμού και από εκεί για 8 χρόνια
@@ -620,7 +632,7 @@ const AboutSlider = () => {
                                 <Typography
                                     variant="body2"
                                     sx={{
-                                        paddingLeft: isDesktop ? 65 : 0,
+                                        paddingLeft: {xs: 0, lg: 65}
                                     }}
                                 >
                                     Η GS wheelchairs είναι το αποτέλεσμα όλων αυτών των ετών στο χώρο της αναπηρίας. Όλη
@@ -637,7 +649,7 @@ const AboutSlider = () => {
                                     fontSize={17}
                                     fontWeight={'bold'}
                                     sx={{
-                                        paddingLeft: isDesktop ? 65 : 0,
+                                        paddingLeft: {xs: 0, md: 40, lg: 65},
                                         opacity: 0.5
                                     }}
                                 >
