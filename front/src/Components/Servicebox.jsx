@@ -28,7 +28,7 @@ const Servicebox = () => {
             <Grid container
                 justifyContent={'center'}
                 rowSpacing={4}
-                columnSpacing={32}
+                columnSpacing={{xs: 0, md: 3, lg: 32}}
                 sx={{
                     maxWidth: 1400,
                     padding: '48px 8px',
@@ -36,28 +36,28 @@ const Servicebox = () => {
                 }}
             >                                      
                 <Grid item
-                    size={{xxs: 12, sm: 11, md: 5.5}}
+                    size={{xxs: 12, sm: 11, md: 6, lg: 5.5}}
                 >            
                     <Link to='/service/apokatastasi' style={{textDecoration: 'none'}}>
                         <Servicecard image={Service1} text={'Λειτουργική Αποκατάσταση'}/>
                     </Link>
                 </Grid>
                 <Grid item
-                    size={{xxs: 12, sm: 11, md: 5.5}}
+                    size={{xxs: 12, sm: 11, md: 6, lg: 5.5}}
                 >  
                     <Link to='/service/education' style={{textDecoration: 'none'}}>
                         <Servicecard image={Service2} text={'Εκπαίδευση'}/>
                     </Link>      
                 </Grid>
                 <Grid item
-                    size={{xxs: 12, sm: 11, md: 5.5}}
+                    size={{xxs: 12, sm: 11, md: 6, lg: 5.5}}
                 >  
                     <Link to='/service/interior-design' style={{textDecoration: 'none'}}>
                             <Servicecard image={Service3} text={'Διαμόρφωση Χώρου'}/>
                     </Link>
                 </Grid>
                 <Grid item
-                    size={{xxs: 12, sm: 11, md: 5.5}}
+                    size={{xxs: 12, sm: 11, md: 6, lg: 5.5}}
                 >  
                     <Link to='/service/life-coaching' style={{textDecoration: 'none'}}>
                         <Servicecard image={Service4} text={'Συμβουλευτική'}/>

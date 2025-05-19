@@ -34,9 +34,10 @@ const fadeIn = keyframes`
 
 const ColorBox = (props) => {
     const {isDesktop} = useContext(Context);
+
     return(
         <Grid item
-            size={{xs: 12, md: 5, lg: 6}}            
+            size={{xs: 12, lg: 6}}            
             sx={{
                 bgcolor: 'white',
                 boxShadow: isDesktop && 12,
@@ -135,8 +136,7 @@ const GetStarted = () => {
                         sx={{
                             animation: `${fadeIn} 1s ease-in-out`,
                             padding: 1,
-                            maxWidth: 1800,
-                            display: 'flex',
+                            maxWidth: 1800                          
                             
                         }}
                     >
