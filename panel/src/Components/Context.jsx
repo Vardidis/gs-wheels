@@ -9,6 +9,7 @@ const ContextProvider = (props) => {
     const [allMessages, setAllMessages] = useState([]);
     const [allImages, setAllImages] = useState([]);
     const [allTexts, setAllTexts] = useState([]);        
+    const [isAdmin, setIsAdmin] = useState(localStorage.getItem('isAdmin'));
 
     const submitTexts = () => {
         axios.post(`${process.env.REACT_APP_BACKEND}/submit-texts`, {texts: allTexts})
@@ -17,7 +18,18 @@ const ContextProvider = (props) => {
         })
     }
 
-    const contextValue = {allProducts, endpoint, allMessages, allImages, allTexts, setAllTexts, submitTexts};    
+    const login = async(username, password) => {
+        const response = await axios.post(`${process.env.REACT_APP_BACKEND}/login`, {username: username, password: password})
+
+        if(response.data.success){
+            localStorage.setItem('isAdmin', true)
+            setIsAdmin(true);            
+        }
+
+        return {success: response.data.success};
+    }
+
+    const contextValue = {allProducts, endpoint, allMessages, allImages, allTexts, setAllTexts, submitTexts, isAdmin, login};    
 
     useEffect(()=>{
         axios.get(`${process.env.REACT_APP_BACKEND}/api/all-products`)
