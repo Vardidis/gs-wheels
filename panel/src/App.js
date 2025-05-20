@@ -25,17 +25,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <Stack>                      
-        <SideMenu/>
+      <Stack>                              
         <Box component="main"> 
           <Routes>
-            <Route path="/" element={<Editor/>}/>
-            <Route path="/messages" element={<Messages/>}/>
+            <Route path="/" element={<Editor/>}/>           
             <Route path="/edit" element={<Product/>}>
               <Route path='/edit/:productId' element={<Product/>}/>
-            </Route>
-            <Route path="/uploads" element={<Uploads/>}/>    
-            <Route path="/success-stories" element={<Editor/>}/>
+            </Route>           
           </Routes>            
         </Box>
       </Stack>
