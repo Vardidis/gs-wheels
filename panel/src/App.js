@@ -29,7 +29,7 @@ function App() {
         <SideMenu/>
         <Box component="main"> 
           <Routes>
-            <Route path="/" element={<Eshop/>}/>
+            <Route path="/" element={<Editor/>}/>
             <Route path="/messages" element={<Messages/>}/>
             <Route path="/edit" element={<Product/>}>
               <Route path='/edit/:productId' element={<Product/>}/>

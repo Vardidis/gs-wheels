@@ -11,12 +11,7 @@ const Eshop = () => {
 
     if(allProducts.length > 0){
         return(
-            <Stack
-                justifyContent={'center'}
-                sx={{
-                    margin: '96px 16px',        
-                    maxWidth: 1400     
-                }}
+            <Stack               
             >
                 <Grid container
                     columnSpacing={1}                                     
@@ -27,7 +22,7 @@ const Eshop = () => {
                         <ProductsTable products={allProducts} endpoint={endpoint}/>                                                   
                     </Grid>
                     <Grid item
-                        lg={3}
+                        lg={3}                        
                     >
                         <EshopMenu/>
                     </Grid>

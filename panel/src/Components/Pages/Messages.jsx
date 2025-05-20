@@ -63,130 +63,145 @@ const Messages = () => {
     }
 
     return(
-        <Box
-            sx={{                             
-                margin: '64px 16px',
-                display: 'flex',
-                justifyContent: 'center'
-            }}
+        <Box      
+            sx={{
+                padding: '16px 0px',
+                width: '100%'
+            }}      
         >
             <Stack
-                spacing={5} 
-                alignItems={'start'}
-                sx={{
-                    width: '100%',
-                    maxWidth: 1200
-                }}                                                     
+                spacing={3} 
+                alignItems={'start'}                                                  
             >
                 <Box sx={{ display: 'flex'}}>
-                    <Typography fontSize={24} fontWeight={600}>
-                        Μηνύματα ( {unread}/{allMessages.length} )              
+                    <Typography fontSize={18} fontWeight={600}>
+                        Εισερχόμενα ( {unread}/{allMessages.length} )              
                     </Typography>
                 </Box>
-                <Grid container
-                    rowGap={2}
-                    columnGap={2}                                 
-                >    
-                    <Grid item
-                        xxs={12}
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={6}
-                    >                                        
-                        <Paper sx={{ overflow: 'hidden' }}>
-                            <TableContainer>
-                                <Table stickyHeader aria-label="sticky table">
-                                <TableHead>
-                                    <TableRow>
-                                    {columns.map((column, index) => (
-                                        <StyledTableCell
-                                            key={index}
-                                            align={column.align}
-                                            style={{ minWidth: column.minWidth }}
-                                        >
-                                            {column.label}
-                                        </StyledTableCell>
-                                    ))}
-                                    </TableRow>
-                                </TableHead>
-                                {allMessages.length > 0
-                                ? <TableBody>                            
-                                    {allMessages
-                                    .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                                    .reverse()
-                                    .map((message) => {                                                             
-                                        return (                                        
-                                            <TableRow onClick={(e)=>handleClick(e, message)} className='table-row' role="checkbox" tabIndex={-1} key={message._id} sx={{ bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white', cursor: 'pointer' }}>                               
-                                                {columns.map((column) => {
+                <Stack
+                    spacing={1}
+                    sx={{                       
+                        width: '100%'
+                    }}          
+                >
+                    <Stack
+                        justifyContent={'space-between'}
+                        alignItems={'center'}
+                        direction={'row'}
+                        sx={{                                
+                            color: '#232323',                                           
+                        }}
+                    >
+                        {columns.map((column, index) => (
+                            <Typography
+                                fontWeight={'bold'}
+                            >
+                                {column.label}
+                            </Typography>
+                        ))}                            
+                    </Stack>          
+                    <Stack                        
+                    >
+                        {allMessages.length > 0
+                            ? <Stack
+                                spacing={0.5}
+                                justifyContent={'space-between'}
+                                alignItems={'center'}                                                                                                  
+                            >                            
+                                {allMessages
+                                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                                .reverse()
+                                .map((message) => {                                                             
+                                    return (                                        
+                                        <Stack                                            
+                                            direction={'row'}
+                                            alignItems={'center'}
+                                            justifyContent={'space-between'}
+                                            onClick={(e)=>handleClick(e, message)}
+                                            className='table-row'                                                                                       
+                                            key={message._id}
+                                            sx={{
+                                                bgcolor: message.read ? 'rgb(247, 247, 247)' : 'white',
+                                                cursor: 'pointer',
+                                                width: '100%',
+                                                padding: 2                                                
+                                            }}
+                                        >                               
+                                            {columns.map((column) => {
                                                 const value = message[column.id];                                    
                                                 return (
-                                                    <TableCell key={column.id} align={column.align}>
+                                                    <Typography>
                                                     {column.format && typeof value === 'number'
                                                         ? column.format(value)
                                                         : value}
-                                                    </TableCell>
+                                                    </Typography>
                                                 );
-                                                })}
-                                            </TableRow>
-                                        );
-                                    })}
-                                </TableBody>
-                                : <TableBody>  
-                                    <Box sx={{  }}>
-                                        Δεν υπάρχουν διαθέσιμα μηνύματα
-                                    </Box>                            
-                                </TableBody>
-                                }
-                                </Table>
-                            </TableContainer>
-                            <TablePagination
-                                rowsPerPageOptions={[10, 25, 100]}
-                                component="div"
-                                count={allMessages.length}
-                                rowsPerPage={rowsPerPage}
-                                page={page}
-                                onPageChange={handleChangePage}
-                                onRowsPerPageChange={handleChangeRowsPerPage}
-                            />
-                        </Paper>       
-                    </Grid>
-                    <Grid item
-                        xxs={12}
-                        xs={12}
-                        sm={12}
-                        md={12}
-                        lg={5}
-                    >
-                        <Paper>
-                            {selectedMessage &&
-                                <Box>
-                                    <Stack>
-                                        <Stack direction='row' justifyContent='space-between' sx={{ boxShadow: 2, padding: 2, bgcolor: '#30343f', color: 'white',  alignItems: 'center' }}>
-                                            <Typography fontSize={14} fontWeight={600}>
-                                                {selectedMessage.name}
-                                            </Typography>
-                                            <Typography fontSize={12}>
-                                                {selectedMessage.date}
-                                            </Typography>
-                                            <Stack spacing={0}>
-                                                <Typography fontSize={12}>
-                                                    {selectedMessage.email}
-                                                </Typography> 
-                                                <Typography fontSize={12}>
-                                                    {selectedMessage.tel}
-                                                </Typography> 
-                                            </Stack>                                                                    
-                                        </Stack>            
-                                        <Typography sx={{ padding: 2 }}>
-                                            {selectedMessage.text}
-                                        </Typography>
-                                    </Stack>                                
-                                </Box>
+                                            })}
+                                        </Stack>
+                                    );
+                                })}
+                            </Stack>
+                            : <TableBody>  
+                                <Box sx={{  }}>
+                                    Δεν υπάρχουν διαθέσιμα μηνύματα
+                                </Box>                            
+                            </TableBody>
                             }
-                        </Paper>         
-                    </Grid>
-                </Grid>            
+                    </Stack>        
+                </Stack>                                          
+                {selectedMessage &&                    
+                    <Stack
+                        sx={{
+                            width: '100%',
+                            border: '1px solid #aaaaaa',    
+                            borderRadius: 3,
+                            overflow: 'hidden'                                     
+                        }}
+                    >
+                        <Stack
+                            direction='row'
+                            justifyContent='space-between'
+                            sx={{                                                            
+                                color: '#30343f', 
+                                alignItems: 'center',                                
+                                bgcolor: '#f5f5f5',
+                                padding: 1
+                            }}
+                        >
+                            <Typography fontSize={16} fontWeight={600}>
+                                {selectedMessage.name}
+                            </Typography>
+                            <Stack
+                                spacing={-0.5}
+                                alignItems={'end'}
+                            >
+                                <Typography
+                                    fontSize={14}
+                                    fontWeight={'bold'}
+                                >
+                                    {selectedMessage.date.split(' ')[0]}
+                                </Typography>
+                                <Typography fontSize={12}>
+                                    {selectedMessage.date.split(' ')[1]}
+                                </Typography>
+                            </Stack>                            
+                            <Stack
+                                spacing={0}
+                                alignItems={'end'}
+                            >
+                                <Typography fontSize={12}>
+                                    {selectedMessage.email}
+                                </Typography> 
+                                <Typography fontSize={12}>
+                                    {selectedMessage.tel}
+                                </Typography> 
+                            </Stack>                                                                    
+                        </Stack>            
+                        <Typography sx={{ padding: 2 }}>
+                            {selectedMessage.text}
+                        </Typography>
+                    </Stack>                                                       
+                }                   
             </Stack>
         </Box>
     );

@@ -5,6 +5,9 @@ import AddPhotoAlternateIcon from '@mui/icons-material/AddPhotoAlternate';
 import { useRef } from 'react';
 import axios from 'axios';
 import Texts from './Texts';
+import Eshop from './Eshop';
+import Uploads from './Uploads';
+import Messages from './Messages';
 
 const Editor = () => {
     const [menuSelection, setMenuSelection] = useState(null);
@@ -111,7 +114,7 @@ const Editor = () => {
                     </Stack>           
                 </Grid>
                 <Grid item
-                    lg={8}
+                    lg={9}
                 >                    
                         <Stack
                             spacing={1}
@@ -241,6 +244,15 @@ const Editor = () => {
                             )}                            
                             {menuSelection === 1 && (
                                 <Texts/>
+                            )}
+                            {menuSelection === 2 && (
+                                <Eshop/>
+                            )}
+                            {menuSelection === 3 && (
+                                <Uploads/>
+                            )}
+                            {menuSelection === 4 && (
+                                <Messages/>
                             )}
                         </Stack>                    
                 </Grid>

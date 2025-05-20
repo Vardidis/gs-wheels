@@ -10,7 +10,10 @@ const UploadTable = (props) => {
     };
 
     return(                            
-        <ImageList sx={{ maxWidth: 800, maxHeight: 500, padding: 3 }} cols={3} rowHeight={164}>
+        <ImageList
+            cols={3}            
+            gap={8}                      
+        >
             {allImages.map((image, index) => {
                 return(
                     <ImageListItem key={index} onClick={() => handleImageClick(image.originalName)} sx={{ cursor: 'pointer', borderRadius: 1, border: props.item === image.originalName ? '2px solid #609cfc' : 'none' }}>

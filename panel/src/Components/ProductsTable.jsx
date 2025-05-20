@@ -115,7 +115,9 @@ const ProductsTable = (props) => {
             <Stack
                 spacing={1}
                 sx={{
-                    maxHeight: '90vh'
+                    maxHeight: '90vh',
+                    overflowY: 'auto',
+                    padding: '8px 16px'
                 }}
             >
                 {props.products.map((product) => (   
@@ -126,7 +128,8 @@ const ProductsTable = (props) => {
                         justifyContent={'space-between'}
                         alignItems={'center'}
                         sx={{
-                            bgcolor: 'white',
+                            border: '1px solid #eeeeee',
+                            bgcolor: '#fafafa',
                             padding: 2,
                             borderRadius: 3
                         }}
@@ -136,8 +139,8 @@ const ProductsTable = (props) => {
                             <img
                                 src={product.thumbnail}
                                 style={{
-                                    width: '80px',
-                                    height: '80px',
+                                    maxWidth: '80px',
+                                    maxHeight: '72px',
                                     objectFit: 'cover',
                                     borderRadius: '5px',
                                     border: '1px solid rgb(242, 242, 242)'
@@ -158,8 +161,8 @@ const ProductsTable = (props) => {
                                         key={subImg}
                                         alt=''
                                         style={{
-                                            width: '80px',
-                                            height: '80px',
+                                            maxWidth: '64px',
+                                            maxHeight: '64px',
                                             objectFit: 'cover'
                                         }}
                                     />

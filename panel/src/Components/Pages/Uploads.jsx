@@ -39,48 +39,72 @@ const Uploads = () => {
     }
 
     return(
-        <Box
-            sx={{
-                margin: '64px 16px',
-                display: 'flex',
-                justifyContent: 'center'
-            }}
+        <Box           
         >
             <Stack
                 spacing={5}                         
             >
-                <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Stack
+                    direction={'row'}
+                    justifyContent={'space-between'}
+                    alignItems={'center'}
+                >
                     <Typography fontSize={24} fontWeight={600}>
                         Uploads ({count})
                     </Typography>    
-                    <Box>
-                        <Button
-                            component="label"                
-                            role={undefined}
-                            variant="contained"
-                            tabIndex={-1}
-                            startIcon={<FileUploadIcon />}
-                        >
-                            <input ref={fileInputRef} onChange={handleUpload} style={{ display: 'none' }} type="file" accept=".jpg,.jpeg"/>
-                            Ανεβαστε αρχειο                        
-                        </Button>       
-                    </Box>
-                </Box>  
+                    <Stack
+                        direction={'row'}
+                        spacing={2}
+                    >
+                        {deleteImg !== null &&
+                            <Button
+                                onClick={handleDelete}
+                                sx={{
+                                    maxWidth: 200,
+                                    bgcolor: '#e5e8f3',
+                                    padding: '8px 24px',
+                                    color: '#232323'
+                                }}
+                            >
+                                Διαγραφη
+                            </Button>     
+                        }                 
+                        <Box>
+                            <Button
+                                component="label"                                       
+                                role={undefined}                           
+                                tabIndex={-1}
+                                startIcon={<FileUploadIcon />}
+                                sx={{
+                                    bgcolor: '#e5e8f3',
+                                    padding: '8px 24px',
+                                    color: '#232323'
+                                }}
+                            >
+                                <input ref={fileInputRef} onChange={handleUpload} style={{ display: 'none' }} type="file" accept=".jpg,.jpeg"/>
+                                Ανεβαστε αρχειο                        
+                            </Button>       
+                        </Box>                                 
+                    </Stack>
+                </Stack>                  
                 <Box
                     sx={{
                         display: 'flex',
                         justifyContent: 'center'
                     }}
                 >
-                    <Paper sx={{ padding: 1, width: 'fit-content', height: 'fit-content' }}>
+                    <Box
+                        sx={{
+                            padding: '8px 24px',
+                            bgcolor: '#e5e8f3',
+                            borderRadius: 3,
+                            maxHeight: '60vh',
+                            overflowY: 'auto'
+                        }}
+                    >
                         <UploadTable item={deleteImg} setItem={setDeleteImg}/>
-                    </Paper>  
-                </Box>                
-                {deleteImg !== null &&
-                    <Button variant="outlined" onClick={handleDelete} color="error" sx={{ maxWidth: 200 }}>
-                        Διαγραφη
-                    </Button>     
-                }                                                            
+                    </Box>  
+                </Box>                                                                          
             </Stack>
         </Box>
     );
