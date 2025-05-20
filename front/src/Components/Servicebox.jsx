@@ -1,11 +1,7 @@
 import React from "react";
 import './Components.css';
 import Servicecard from "./Servicecard";
-import bgimg from '../assets/bgbg2.jpg';
-import bgimg2 from '../assets/gbgbgbgb.jpg';
-import gw from '../assets/gbgb.jpg';
-import id from '../assets/interior1.jpg';
-import { Box, keyframes, Grid } from "@mui/material";
+import { keyframes, Grid } from "@mui/material";
 import { Link } from "react-router-dom";
 import Service1 from '../assets/YPHRESIES-Plaisio_1.png';
 import Service2 from '../assets/YPHRESIES-Plaisio_2.png';
@@ -28,7 +24,7 @@ const Servicebox = () => {
             <Grid container
                 justifyContent={'center'}
                 rowSpacing={4}
-                columnSpacing={{xs: 0, md: 3, lg: 32}}
+                columnSpacing={{xxs: 0, md: 3, lg: 32}}
                 sx={{
                     maxWidth: 1400,
                     padding: '48px 8px',
