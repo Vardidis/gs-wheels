@@ -76,7 +76,7 @@ const Editor = () => {
     return (
         <Stack
             sx={{
-                margin: '96px 16px'
+                margin: '24px 16px'
             }}
         >
             <Snackbar
@@ -115,6 +115,9 @@ const Editor = () => {
                 </Grid>
                 <Grid item
                     lg={9}
+                    sx={{
+                        minHeight: 400
+                    }}
                 >                    
                         <Stack
                             spacing={1}
