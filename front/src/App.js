@@ -19,7 +19,10 @@ const ScrollToTop = () => {
   const {pathname} = useLocation();
 
   useEffect(() => {
-    window.scrollTo(0, 0);
+    const main = document.querySelector('main');
+    if (main) {
+      main.scrollTo(0, 0);
+    }
   }, [pathname]);
 
   return null;
