@@ -1,62 +1,44 @@
-import React, { useState } from "react";
-import { Box, Table, Stack, Button, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Snackbar, Modal, Typography } from '@mui/material';
-import { styled } from '@mui/material/styles';
-import { tableCellClasses } from '@mui/material/TableCell';
-import { Link, useNavigate } from 'react-router-dom';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
-import axios from "axios";
+import React, { useLayoutEffect, useState } from "react";
+import { Box, Stack, Snackbar, Typography, Grid, Chip } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-    [`&.${tableCellClasses.head}`]: {
-      backgroundColor: theme.palette.common.black,
-      color: theme.palette.common.white,
-    },
-    [`&.${tableCellClasses.body}`]: {
-      fontSize: 14,
-    },
-}));
+const categoryMatch = {
+    wheelchairs: 'Αμαξίδια',
+    parts: 'Ανταλλακτικά',
+    helpers: 'Βοηθήματα'
+}
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // hide last border
-    '&:last-child td, &:last-child th': {
-      border: 0,
-    },
-}));
+const subCategoryMatch = {
+    lightweight: 'Ελαφριού τύπου',
+    rubber: 'Ελαστικά',
+    test: '',
+    brakes: 'Φρένα',
+    wheels: 'Ζάντες',
+    wheelies: 'Ροδάκια'
+}
+
+const chips = [
+    'Αμαξίδια',
+    'Ανταλλακτικά',
+    'Βοηθήματα'
+]
+
+const chipsMatch = {
+    wheelchairs: 'Αμαξίδια',
+    parts: 'Ανταλλακτικά',
+    helpers: 'Βοηθήματα',    
+    rubber: 'Ελαστικά',    
+    brakes: 'Φρένα',
+    wheels: 'Ζάντες',
+    wheelies: 'Ροδάκια'
+}
 
 const ProductsTable = (props) => {
     const [open, setOpen] = useState(false);
-    const [openModal, setOpenModal] = useState(false);
-    const handleCloseModal = () => setOpenModal(false);
-    const handleOpenModal = () => setOpenModal(true);
-    const [toDelete, setToDelete] = useState(null);
+    const [allChips, setAllChips] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
     const navigate = useNavigate();
-
-    const deleteFunc = async() => {
-        const id = toDelete[0];
-
-        try {
-            await axios.delete(`${process.env.REACT_APP_BACKEND}/api/delete-item`, {params: {id: id}})
-            .then(response => {     
-                if(!response.ok){
-                    console.log('oops')
-                }      
-                setOpen(true);
-                toDelete[1].remove();
-            })                                                                            
-        } catch (error) {
-            console.log(error)
-        }     
-        handleCloseModal();          
-    }
-
-    const handleDelete = async(e, id) => {             
-        setToDelete([id, e.target.parentElement.parentElement.parentElement.parentElement]);
-        handleOpenModal();                         
-    }
 
     const handleClose = (event, reason) => {
         if (reason === 'clickaway') {
@@ -66,52 +48,91 @@ const ProductsTable = (props) => {
         setOpen(false);
     };
 
+    const handleClick = (id) => {
+        if(props.deleteBucket.includes(id)){
+            props.setDeleteBucket(prevItems => prevItems.filter(item => item !== id));
+        }else{
+            props.setDeleteBucket(prevItems => [...prevItems, id]);
+        }
+    }
+
+    const handleChipClick = () => {        
+        const reset = props.products;
+
+        if (allChips.length === 0 || allChips.includes(0)) {
+            setFilteredProducts(reset);
+            return;
+        }
+
+        const selectedTags = allChips.map(index => {
+            const chipLabel = chips[index - 1];
+            // Reverse match: Greek => English tag
+            return Object.keys(chipsMatch).find(
+              key => chipsMatch[key] === chipLabel
+            );
+        });
+
+        const filtered = reset.filter(product => {
+            
+            const primaryTagMatch = selectedTags.includes(product.tag);
+
+            const secondaryTagMatch = selectedTags.includes(product.secTag)              
+
+            return primaryTagMatch || secondaryTagMatch;
+                                   
+        });
+
+        setFilteredProducts(filtered);
+    }
+
+    useLayoutEffect(() => {
+        handleChipClick()
+    }, [allChips, props.products])
+
     return(
-        <Box>
-            <Modal
-                open={openModal}
-                onClose={handleCloseModal}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Paper sx={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)',
-                    width: {xl: 750, lg: 550, md: 550, sm: 550, xs: 350, xxs: 325},
-                    bgcolor: 'theme.light',
-                    boxShadow: 24,
-                    p: {xl: 4, lg: 4, md: 4, sm: 4, xs: 2, xxs: 2},
-                    border: "none",
-                    textAlign: "center",
-                    borderRadius: 2,
-                    height: 'fit-content',                
-                    overflowY: 'auto' }}
-                >
-                    <Stack spacing={2}>
-                        <Typography>
-                            Είστε σίγουροι ότι θέλετε να διαγράψετε οριστικά αυτό το προϊόν;
-                        </Typography>
-                        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-                            <Stack spacing={5} direction='row'>
-                                <Button variant='contained' color='error' onClick={deleteFunc}>
-                                    Διαγραφη
-                                </Button>
-                                <Button variant='outlined' onClick={handleCloseModal}>
-                                    Ακυρωση
-                                </Button>
-                            </Stack>
-                        </Box>                        
-                    </Stack>                    
-                </Paper>
-            </Modal>   
+        <Box>            
             <Snackbar
                 open={open}
                 autoHideDuration={3000}
                 onClose={handleClose}
                 message="Επιτυχής διαγραφή"
             />   
+            <Stack
+                direction={'row'}
+                justifyContent={'space-between'}
+                alignItems={'center'}
+                sx={{
+                    overflowX: 'auto',
+                    padding: '4px 0px'
+                }}
+            >
+                <Stack
+                    direction={'row'}
+                    spacing={0.5}
+                    alignItems={'center'}
+                    sx={{
+                        padding: '0px 16px'
+                    }}
+                >
+                    <Chip
+                        
+                        label="Όλα"
+                        variant={(allChips.length === 0 || (allChips.length === 1 && allChips[0] === 0)) ? '' : 'outlined'}
+                        onClick={()=>setAllChips([0])}
+                        onDelete={()=>setAllChips([])}
+                    />
+                    {chips.map((chip, index) => (
+                        <Chip                        
+                            label={chip}
+                            variant={allChips.includes(index+1) ? '' : 'outlined'}
+                            onClick={() => setAllChips(prevItems => [...prevItems, index+1])}
+                            onDelete={()=>{
+                                setAllChips(prevItems => prevItems.filter(item => item !== index+1 && item !== 0));                                
+                            }}
+                        />
+                    ))} 
+                </Stack>                   
+            </Stack>
             <Stack
                 spacing={1}
                 sx={{
@@ -120,22 +141,22 @@ const ProductsTable = (props) => {
                     padding: '8px 16px'
                 }}
             >
-                {props.products.map((product) => (   
+                {filteredProducts.map((product) => (   
                     <Stack
                         className={'shady'}
-                        onClick={()=>navigate(`/edit/${product._id}`)}
+                        onClick={props.deleteMode ? ()=>handleClick(product._id) : ()=>navigate(`/edit/${product._id}`)}
                         direction={'row'}
                         justifyContent={'space-between'}
                         alignItems={'center'}
+                        spacing={2}
                         sx={{
-                            border: '1px solid #eeeeee',
+                            border: (props.deleteMode && props.deleteBucket.includes(product._id)) ? '1px solid orangered' : '1px solid #eeeeee',
                             bgcolor: '#fafafa',
                             padding: 2,
                             borderRadius: 3
                         }}
                     >
-                        <Stack
-                        >                            
+                        <Stack>                            
                             <img
                                 src={product.thumbnail}
                                 style={{
@@ -146,43 +167,45 @@ const ProductsTable = (props) => {
                                     border: '1px solid rgb(242, 242, 242)'
                                 }}
                             />
-                            <Typography fontSize={16}>
+                            <Typography>
                                 {product.title}
                             </Typography>
+                            <Typography
+                                fontSize={14}
+                                sx={{
+                                    color: '#999999'
+                                }}
+                            >
+                                {categoryMatch[product.tag]} {product.secTag ? `/ ${subCategoryMatch[product.secTag]}` : ''}
+                            </Typography>
                         </Stack>
-                        <Stack
-                            direction={'row'}
-                            spacing={1}
+                        <Grid container
+                            columnSpacing={1}                                                  
+                            sx={{
+                                width: 'fit-content'                                
+                            }}                         
                         >   
-                            {product.sub.map(subImg => {
-                                return (
+                            {product.sub.map(subImg => (          
+                                <Grid item>                     
                                     <img
                                         src={subImg}
                                         key={subImg}
                                         alt=''
-                                        style={{
-                                            maxWidth: '64px',
-                                            maxHeight: '64px',
-                                            objectFit: 'cover'
+                                        style={{                                            
+                                            maxWidth: '100%',  
+                                            maxHeight: 40,                                                                                  
+                                            objectFit: 'cover',
+                                            border: '1px solid #eeeeee',
+                                            borderRadius: 3
                                         }}
-                                    />
-                                )
-                            })}
-                        </Stack>  
-                        <Box                            
-                            sx={{
-                                display: 'flex',
-                                gap: 2
-
-                            }}
-                        >
-                            <EditIcon className='edit-icon' sx={{ color: 'black' }}/>                            
-                            <DeleteIcon className='edit-icon' onClick={(e)=>handleDelete(e, product._id)}/>
-                        </Box>                                          
+                                    /> 
+                                </Grid>                               
+                            ))}
+                        </Grid>                                                                                                                                         
                     </Stack>
                 ))}
             </Stack>                
-        </Box>
+        </Box>    
     );
 }
 

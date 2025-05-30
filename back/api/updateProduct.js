@@ -13,7 +13,7 @@ async function handle(req, res) {
         const sub = product.subs;
         const desc = product.desc;
         const chars = product.dets;    
-        const secTag = 'test';
+        const secTag = product.secTag;
         const title = product.title;
 
         let productDoc;        

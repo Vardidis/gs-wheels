@@ -65,8 +65,7 @@ const Messages = () => {
     return(
         <Box      
             sx={{
-                padding: '16px 0px',
-                width: '100%'
+                padding: '0px 24px'                
             }}      
         >
             <Stack

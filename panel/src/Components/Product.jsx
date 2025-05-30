@@ -1,14 +1,42 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Box, Paper, Typography, Stack, Grid, Button, TextField, MenuItem, Popper, InputLabel, FormControl, Select   } from '@mui/material';
 import { Context } from "./Context";
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import AddIcon from '@mui/icons-material/Add';
 import CameraswitchIcon from '@mui/icons-material/Cameraswitch';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { Link } from 'react-router-dom';
 import UploadTable from "./UploadTable";
 import PhotoSizeSelectActualIcon from '@mui/icons-material/PhotoSizeSelectActual';
 import axios from 'axios';
+
+const categories = [
+    'Αμαξίδια',
+    'Ανταλλακτικά',
+    'Βοηθήματα'
+];
+
+const subCategories = [
+    'Ελαφριού τύπου',
+    'Ελαστικά',
+    'Φρένα',
+    'Ζάντες',
+    'Ροδάκια'
+];
+
+const categoriesMatch = {
+    wheelchairs: 'Αμαξίδια',
+    parts: 'Ανταλλακτικά',
+    helpers: 'Βοηθήματα'
+}
+
+const subCategoriesMatch = {
+    lightweight: 'Ελαφριού τύπου',
+    rubber: 'Ελαστικά',
+    test: 'Σφάλμα',
+    brakes: 'Φρένα',
+    wheels: 'Ζάντες',
+    wheelies: 'Ροδάκια'
+}
 
 const PopupBox = (props) => {
     return(
@@ -42,12 +70,35 @@ const PopupBox = (props) => {
                         direction={'row'}
                         spacing={2}
                     >
-                        <Button variant='contained' onClick={()=>props.save()}>
-                            Ναι
-                        </Button>
-                        <Button variant="outlined" color="error" onClick={()=>props.close(false)}>
-                            Ακυρωση
-                        </Button>
+                        <Box 
+                            className={'shady'}
+                            onClick={()=>props.save()}
+                            sx={{
+                                bgcolor: '#232323',
+                                color: 'white',
+                                padding: '6px 24px',
+                                borderRadius: 1
+                            }}
+                        >
+                            <Typography
+                                fontWeight={'bold'}
+                            >
+                                Ναι
+                            </Typography>                            
+                        </Box>
+                        <Box
+                            className={'hoverable'}
+                            onClick={()=>props.close(false)}
+                            sx={{
+                                color: '#232323',
+                                padding: '6px 24px',
+                                borderRadius: 1
+                            }}
+                        >
+                            <Typography>
+                                Ακυρωση
+                            </Typography>                            
+                        </Box>
                     </Stack>
                 </Stack>
             </Box>
@@ -58,16 +109,21 @@ const PopupBox = (props) => {
 const Product = () => {
     const {productId} = useParams();
     const isNew = !productId;
-    const {allProducts, allImages} = useContext(Context);
+    
+    const {allProducts, allImages, fetchProducts} = useContext(Context);
+
     let product = !isNew ? allProducts.filter((prod) => { return prod._id === String(productId) })[0] : null;
     const [anchorEl, setAnchorEl] = useState(null);
     const [mainImg, setMainImg] = useState(null);
-    const [extraSubs, setExtraSubs] = useState([]);
-    const [extraDets, setExtraDets] = useState([]);
+    const [extraSubs, setExtraSubs] = useState(product?.sub || []);
+    const [extraDets, setExtraDets] = useState(product?.chars || []);
     const [title, setTitle] = useState([]);
     const [subtitle, setSubtitle] = useState([]);
     const [selectedImg, setSelectedImg] = useState(null);
-    const [curDesc, setCurDesc] = useState(null);
+    const [curDesc, setCurDesc] = useState(product?.desc || null);    
+    const [curCategory, setCurCategory] = useState(product?.tag || '')
+    const [curSubCategory, setCurSubCategory] = useState(subCategoriesMatch[product?.secTag] || '')
+    const [popupShow, setPopupShow] = useState(false);
     const [changes, setChanges] = useState({
         mainImg: null,
         subs: [],
@@ -77,14 +133,8 @@ const Product = () => {
         desc: null,
         dets: []
     });
-    const [curCategory, setCurCategory] = useState(product ? product.tag : '')
-    const [popupShow, setPopupShow] = useState(false);
-
-    const categories = [
-        'wheelchairs',
-        'parts',
-        'helpers'
-    ]
+    
+    const navigate = useNavigate();
     const [isMain, setIsMain] = useState(true);
 
     const handleClick = (event, main) => {
@@ -144,6 +194,7 @@ const Product = () => {
             title: title,
             subtitle: subtitle,
             category: curCategory,
+            subCategory: curSubCategory,
             dets: details,
             desc: curDesc,
         }));
@@ -160,7 +211,8 @@ const Product = () => {
             }             
 
             if(response){
-                window.location.href = '/';
+                fetchProducts();
+                navigate('/products');
             }
         }
     }
@@ -183,70 +235,132 @@ const Product = () => {
         setChanges(prevItems => ({...prevItems, subtitle: newSubtitle}));
     }
 
+    const subCategoryChange = (e) => {
+        setCurSubCategory(e.target.value)
+        const sub = e.target.value;
+        setChanges(prevItems => ({...prevItems, subCategory: sub}));
+    }
+
     useEffect(() => {        
         if(product){   
             setMainImg(product.thumbnail);
             setCurCategory(product.tag);
+            setCurSubCategory(product.secTag)
             setExtraSubs(product.sub);
             setExtraDets(product.chars);
             setCurDesc(product.desc);
             setTitle(product.title);
-            setSubtitle(product.subtitle);
+            setSubtitle(product.subtitle);            
         }        
     }, [product])
     
     return(
-        <Box
-            sx={{                             
-                margin: '64px 16px',
-                display: 'flex',
-                justifyContent: 'center'
-            }}
-        >     
-            <Popper id={id} open={open} anchorEl={anchorEl} sx={{ zIndex: 1 }}>    
-                <Paper sx={{ p: 3 }}>
-                    <UploadTable item={selectedImg} setItem={setSelectedImg}/>
-                    <Box sx={{ display: 'flex', justifyContent: 'end' }}>
-                        <Button variant='contained' onClick={()=>handleChange(isMain)}>
+        <Stack
+            spacing={3}           
+        >             
+            <Popper
+                id={id}
+                open={open} 
+                anchorEl={anchorEl}
+                sx={{
+                    zIndex: 1,
+                    bgcolor: 'white',
+                    maxWidth: 500,
+                    maxHeight: 400,                   
+                    overflow: 'hidden',
+                    padding: 2,
+                    borderRadius: 3
+                }}
+            >        
+                <Stack
+                    spacing={2}
+                >
+                    <Stack
+                        alignItems={'end'}
+                        justifyContent={'center'}
+                    >
+                        <Typography                            
+                            className={'shady'}
+                            onClick={()=>handleChange(isMain)}                            
+                            fontWeight={'bold'}
+                            sx={{                                                              
+                                padding: '6px 24px',
+                                bgcolor: '#232323',
+                                color: 'white',
+                                borderRadius: 2
+                    }}
+                        >
                             Επιλογη
-                        </Button>
-                    </Box>                        
-                </Paper>
+                        </Typography>                     
+                    </Stack>
+                    <UploadTable item={selectedImg} setItem={setSelectedImg}/>
+                </Stack>                                          
             </Popper>
             <Stack
-                spacing={3}
-                alignItems={'center'}
+                spacing={3}                
             >
                 <Stack
                     direction={'row'}
-                    justifyContent={'space-between'}
-                    alignItems={'center'}    
+                    justifyContent={'end'}
+                    alignItems={'center'}  
+                    spacing={1}  
                     sx={{
                         width: '100%'
                     }}                        
-                >
-                    <Link to='/' style={{ textDecoration: 'none' }}>
-                        <Typography className='edit-icon' fontSize={20} sx={{ color: 'black' }}>
-                            Πίσω
+                >          
+                    <Stack
+                        className={'hoverable'}
+                        onClick={()=>navigate('/products')}
+                        sx={{
+                            padding: '8px 16px',     
+                            borderRadius: 2,                                                                           
+                            color: '#232323'
+                        }}
+                    >
+                        <Typography
+                            fontSize={15}
+                            fontWeight={'bold'}
+                        >
+                            Ακύρωση
                         </Typography>
-                    </Link>
-                    <Button variant='contained' onClick={handleSaveClick}>
-                        Αποθηκευση
-                    </Button>
+                    </Stack>                                              
+                    <Stack
+                        className={'shady'}
+                        onClick={handleSaveClick}
+                        sx={{
+                            padding: '8px 16px',
+                            borderRadius: 2,
+                            bgcolor: 'black',
+                            color: 'white'
+                        }}
+                    >
+                        <Typography
+                            fontSize={15}
+                            fontWeight={'bold'}
+                        >
+                            Αποθήκευση
+                        </Typography>
+                    </Stack>                  
                 </Stack>       
                 {popupShow && (
                     <PopupBox save={commitSave} close={setPopupShow}/>
                 )}       
-                <Paper sx={{ padding: 4, width: 'fit-content' }}>
-                    {product 
-                    ?                                                             
-                        <Stack spacing={3}>
+                <Stack>                                            
+                        <Stack
+                            spacing={2}
+                            sx={{
+                                padding: 3
+                            }}
+                        >
                             <Grid container    
                                 columnGap={5}
                                 rowGap={2}
                             >
                                 <Grid item
-                                    lg={3} md={3} sm={12} xs={12} xxs={12}
+                                    size={{
+                                        xxs: 12,
+                                        md: 3
+                                    }}
                                 >
                                     <Typography
                                         fontSize={18}
@@ -254,212 +368,52 @@ const Product = () => {
                                         Βασική εικόνα
                                     </Typography>
                                 </Grid>
-                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
-                                    <Stack direction='row' spacing={1}>
-                                        <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                            <img id='mainImg' src={mainImg ? mainImg : product.thumbnail} alt='' style={{ width: '150px' }}/>
-                                        </Paper>  
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
-                                            <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
-                                        </Box>  
-                                    </Stack>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        fontSize={18}
-                                    >
-                                        Πρόσθετες εικόνες
-                                    </Typography>  
-                                </Grid> 
-                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
-                                    <Stack direction='row' spacing={1} id='subs'>
-                                        {extraSubs.map((subImg, index) => {
-                                            return (
-                                                <Paper key={subImg} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
-                                                    <img onClick={()=>removeSub(index)} src={subImg} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
-                                                </Paper>                                        
-                                            );                                    
-                                        })
-                                        }                                    
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                        
-                                            <AddIcon className="edit-icon" fontSize="large" onClick={(e)=>handleClick(e, false)}/>
-                                        </Box>
-                                    </Stack>              
-                                </Grid>                                                                                      
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        id='title'
-                                        fontSize={18}
-                                    >
-                                        Τίτλος
-                                    </Typography>  
-                                </Grid>
                                 <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
+                                    size={{
+                                        xxs: 12,
+                                        md: 8
+                                    }}
                                 >
-                                    <TextField onBlur={changeTitle} defaultValue={product.title} sx={{width: '100%'}}/>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >        
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        id='subtitle'
-                                        fontSize={18}
-                                    >
-                                        Υπότιτλος
-                                    </Typography>  
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <TextField onBlur={changeSubtitle} defaultValue={product.subtitle} sx={{width: '100%'}}/>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >   
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        id='category'
-                                        fontSize={18}
-                                    >
-                                        Κατηγορία
-                                    </Typography>  
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <FormControl sx={{ width: '100%' }}>
-                                        <InputLabel id="demo-simple-select-label">Κατηγορία</InputLabel>
-                                        <Select
-                                            labelId="demo-simple-select-label"
-                                            id="demo-simple-select"
-                                            value={curCategory}
-                                            label="Category"
-                                            onChange={categoryChange}
-                                        >
-                                            {categories.map((cat, index) => {
-                                                return <MenuItem value={cat} key={index}>{cat}</MenuItem>
-                                            })}                                                                        
-                                        </Select>
-                                    </FormControl>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item
-                                    lg={3} md={3} sm={12} xs={12} xxs={12}
-                                >
-                                    <Typography
-                                        id='description'
-                                        fontSize={18}
-                                    >
-                                        Περιγραφή
-                                    </Typography>
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <TextField multiline onBlur={changeDesc} defaultValue={product.desc} sx={{ width: '100%' }}/>                                                                                                        
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item
-                                    lg={3} md={3} sm={12} xs={12} xxs={12}
-                                >
-                                    <Typography sx={{ width: 150 }} id='details'>
-                                        Λεπτομέρειες
-                                    </Typography>      
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <Stack spacing={1}>
-                                        {extraDets.map((char, index) => {                           
-                                            return(
-                                                <Stack key={index} id={`det${index}`} direction='row' spacing={2}>
-                                                    <TextField className='det-key' defaultValue={char.title}/> 
-                                                    <TextField className='det-value' defaultValue={char.value}/>  
-                                                    <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                            
-                                                        <DeleteIcon fontSize="medium" onClick={()=>removeDet(index)}/>   
-                                                    </Box>                                  
-                                                </Stack>
-                                            ); 
-                                        })}                                           
-                                            <Box className='edit-icon' sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
-                                                <AddIcon fontSize="large" onClick={addDet}/>                                                               
-                                            </Box>                                                     
-                                    </Stack>                       
-                                </Grid>                                                                                                                                            
-                            </Grid>
-                        </Stack>                                                             
-                    :                                                                 
-                        <Stack spacing={3}>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item
-                                    lg={3} md={3} sm={12} xs={12} xxs={12}
-                                >
-                                    <Typography
-                                        fontSize={18}
-                                    >
-                                        Βασική εικόνα
-                                    </Typography>
-                                </Grid>
-                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
                                     <Stack direction='row' spacing={1}>
                                         {mainImg
                                         ?
-                                        <Paper sx={{ width: 'fit-content', height: 'fit-content' }}>      
-                                            <img src={mainImg} alt='' style={{ width: '150px' }}/>                        
-                                        </Paper>                                          
+                                        <Box
+                                            sx={{
+                                                width: 'fit-content',
+                                                height: 'fit-content',
+                                                bgcolor: 'white',
+                                                borderRadius: 3,
+                                                overflow: 'hidden'
+                                            }}
+                                        >      
+                                            <img src={mainImg} alt='main-img' style={{ width: '152px' }}/>                        
+                                        </Box>                                          
                                         :
-                                        <Paper sx={{ width: '100px', height: '100px', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>      
+                                        <Box
+                                            sx={{
+                                                width: '96px',
+                                                height: '96px',
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                bgcolor: 'white',
+                                                borderRadius: 3,
+                                                overflow: 'hidden'
+                                            }}
+                                        >      
                                             <PhotoSizeSelectActualIcon fontSize='large'/>                         
-                                        </Paper>  
+                                        </Box>  
                                         }                                        
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 4 }}>                                        
+                                        <Box
+                                            sx={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                padding: 4,
+                                                borderRadius: 3,
+                                                overflow: 'hidden'
+                                            }}
+                                        >
                                             <CameraswitchIcon onClick={(e)=>handleClick(e, true)} className="edit-icon" fontSize="large"/>
                                         </Box>  
                                     </Stack>    
@@ -469,97 +423,92 @@ const Product = () => {
                                 columnGap={5}
                                 rowGap={2}
                             >
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
+                                <Grid item
+                                    size={{
+                                        xxs: 12,
+                                        md: 3
+                                    }}
+                                >
                                     <Typography
                                         fontSize={18}
                                     >
                                         Πρόσθετες εικόνες
                                     </Typography>  
                                 </Grid> 
-                                <Grid item lg={8} md={8} sm={12} xs={12} xxs={12}>
+                                <Grid item
+                                    size={{
+                                        xxs: 12,
+                                        md: 8
+                                    }}
+                                >
                                     <Stack direction='row' spacing={1}>     
                                         {extraSubs.map((img, index) => {
                                             return (
-                                                <Paper key={index} id={`sub${index}`} sx={{ width: 'fit-content', height: 'fit-content' }}>
+                                                <Box
+                                                    key={index}
+                                                    id={`sub${index}`}
+                                                    sx={{
+                                                        width: 'fit-content',
+                                                        height: 'fit-content',
+                                                        overflow: 'hidden',
+                                                        borderRadius: 3
+                                                    }}
+                                                >
                                                     <img onClick={()=>removeSub(index)} src={img} alt='' style={{ width: '75px', cursor: 'pointer' }}/>
-                                                </Paper>                                        
+                                                </Box>                                        
                                             );        
                                         })}                               
-                                        <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                        
-                                            <AddIcon className="edit-icon" fontSize="large" onClick={(e)=>handleClick(e, false)}/>
+                                        <Box    
+                                            sx={{
+                                                display: 'flex',
+                                                justifyContent: 'center',
+                                                alignItems: 'center',
+                                                padding: 1
+                                            }}
+                                            >
+                                            <AddIcon
+                                                className="edit-icon"
+                                                fontSize="large"
+                                                onClick={(e)=>handleClick(e, false)}
+                                            />
                                         </Box>
                                     </Stack>                             
                                 </Grid>                                                                       
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        id='title'
-                                        fontSize={18}
+                            </Grid>                                                               
+                                    <TextField
+                                        value={title}
+                                        label={'Τίτλος (Το όνομα του προϊόντος)'}
+                                        onChange={(e)=>setTitle(e.target.value)}
+                                        onBlur={changeTitle}
+                                        sx={{
+                                            width: '100%',
+                                            bgcolor: 'white',
+                                            opacity: 0.9
+                                        }}
+                                    />                                                                                            
+                                    <TextField
+                                        value={subtitle}
+                                        label={'Υπότιτλος (Η σύντομη περιγραφή του προϊόντος)'}
+                                        onChange={(e)=>setSubtitle(e.target.value)}
+                                        onBlur={changeSubtitle}
+                                        sx={{
+                                            width: '100%',
+                                            bgcolor: 'white',
+                                            opacity: 0.9
+                                        }}
+                                    />                             
+                                    <FormControl
+                                        sx={{
+                                            width: '100%',
+                                            bgcolor: 'white',
+                                            opacity: 0.9
+                                        }}
                                     >
-                                        Τίτλος
-                                    </Typography>  
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <TextField onBlur={changeTitle} sx={{ width: '100%' }}/>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >        
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        id='subtitle'
-                                        fontSize={18}
-                                    >
-                                        Υπότιτλος
-                                    </Typography>  
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <TextField onBlur={changeSubtitle} sx={{width: '100%'}}/>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >   
-                                <Grid item lg={3} md={3} sm={12} xs={12} xxs={12}>
-                                    <Typography
-                                        id='category'
-                                        fontSize={18}
-                                    >
-                                        Κατηγορία
-                                    </Typography>  
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <FormControl sx={{ width: '100%' }}>
                                         <InputLabel id="demo-simple-select-label">Κατηγορία</InputLabel>
                                         <Select
                                             labelId="demo-simple-select-label"
                                             id="demo-simple-select"
-                                            value={curCategory}
+                                            value={categoriesMatch[curCategory] || curCategory}
                                             label="Category"
                                             onChange={categoryChange}
                                         >
@@ -567,67 +516,87 @@ const Product = () => {
                                                 return <MenuItem key={index} value={cat}>{cat}</MenuItem>
                                             })}                                                                        
                                         </Select>
-                                    </FormControl>
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item
-                                    lg={3} md={3} sm={12} xs={12} xxs={12}
-                                >
-                                    <Typography
-                                        id='description'
-                                        fontSize={18}
+                                    </FormControl>                                                        
+                                    <FormControl
+                                        sx={{
+                                            width: '100%',
+                                            bgcolor: 'white',
+                                            opacity: 0.9
+                                        }}
                                     >
-                                        Περιγραφή
-                                    </Typography>
-                                </Grid>    
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >               
-                                    <TextField multiline onBlur={changeDesc} sx={{ width: '100%' }}/>                                                                                                        
-                                </Grid>
-                            </Grid>
-                            <Grid container    
-                                columnGap={5}
-                                rowGap={2}
-                            >
-                                <Grid item
-                                    lg={3} md={3} sm={12} xs={12} xxs={12}
-                                >
-                                    <Typography
-                                        id='details'
-                                        fontSize={18}
-                                    >
-                                        Λεπτομέρειες
-                                    </Typography>      
-                                </Grid>
-                                <Grid item
-                                    lg={8}
-                                    md={8}
-                                    sm={12}
-                                    xs={12}
-                                    xxs={12}
-                                >
-                                    <Stack spacing={1}>                                                                    
-                                        <Stack direction='row' spacing={2} id={`det-1`}>
-                                            <TextField className='det-key'/>  
-                                            <TextField className='det-value'/>  
-                                            <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
-                                                <DeleteIcon fontSize="medium" onClick={()=>removeDet(`det-1`)}/>                                                             
-                                            </Box>                               
-                                        </Stack>                            
+                                        <InputLabel id="sub-cat">Υποκατηγορία</InputLabel>
+                                        <Select
+                                            labelId="sub-cat"
+                                            id="sub"
+                                            value={subCategoriesMatch[curSubCategory] || curSubCategory}
+                                            label="Category"
+                                            onChange={subCategoryChange}
+                                        >
+                                            {subCategories.map((cat, index) => {
+                                                return <MenuItem value={cat} key={index}>{cat}</MenuItem>
+                                            })}                                                                        
+                                        </Select>
+                                    </FormControl>                              
+                                    <TextField
+                                        multiline
+                                        label={'Περιγραφή'}
+                                        value={curDesc}
+                                        onBlur={changeDesc}
+                                        sx={{
+                                            width: '100%',
+                                            bgcolor: 'white',
+                                            opacity: 0.9
+                                        }}
+                                    />                               
+                                    <Stack spacing={1}>      
+                                        {extraDets.length === 0 && (                                                              
+                                            <Stack direction='row' spacing={2} id={`det-1`}>
+                                                <TextField
+                                                    className='det-key'
+                                                    label={`Λεπτομέρεια 1: είδος`}
+                                                    sx={{
+                                                        width: '45%',
+                                                        bgcolor: 'white',
+                                                        opacity: 0.9
+                                                    }}
+                                                />
+                                                <TextField
+                                                    className='det-value'
+                                                    label={`Λεπτομέρεια 1: τιμή`}
+                                                    sx={{
+                                                        width: '45%',
+                                                        bgcolor: 'white',
+                                                        opacity: 0.9
+                                                    }}
+                                                />
+                                                <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
+                                                    <DeleteIcon fontSize="medium" onClick={()=>removeDet(`det-1`)}/>                                                             
+                                                </Box>                               
+                                            </Stack>                            
+                                        )}
                                         {extraDets.map((char, index) => {                           
                                             return(
                                                 <Stack key={index} id={`det${index}`} direction='row' spacing={2}>
-                                                    <TextField className='det-key' defaultValue={char.title}/> 
-                                                    <TextField className='det-value' defaultValue={char.value}/>  
+                                                    <TextField
+                                                        className='det-key'
+                                                        label={`Λεπτομέρεια ${index+1}: είδος`}
+                                                        value={char.title}
+                                                        sx={{
+                                                            width: '45%',
+                                                            bgcolor: 'white',
+                                                            opacity: 0.9
+                                                        }}
+                                                    />
+                                                    <TextField
+                                                        className='det-value'
+                                                        label={`Λεπτομέρεια ${index+1}: τιμή`}
+                                                        value={char.value}
+                                                        sx={{
+                                                            width: '45%',
+                                                            bgcolor: 'white',
+                                                            opacity: 0.9
+                                                        }}
+                                                    />
                                                     <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                            
                                                         <DeleteIcon fontSize="medium" onClick={()=>removeDet(index)}/>   
                                                     </Box>                                  
@@ -637,14 +606,11 @@ const Product = () => {
                                             <Box className='edit-icon'  sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: 1 }}>                                                                             
                                                 <AddIcon fontSize="large" onClick={addDet}/>                                                               
                                             </Box>           
-                                    </Stack>                                    
-                                </Grid>                                                                                                                               
-                            </Grid>
-                        </Stack>                                                                  
-                    }
-                </Paper>
+                                    </Stack>                                                                  
+                        </Stack>                                                                                     
+                </Stack>
             </Stack>
-        </Box>
+        </Stack>
     );
 }
 

@@ -45,3 +45,25 @@
 .shady:hover{
   box-shadow: 2px 2px 16px rgb(109, 109, 109);
 }
+
+.error-hoverable{
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  transition: transform 0.2s ease;
+}
+
+.error-hoverable:hover{
+  background-color: #ffdcdc;
+  transform: scale(1.02)
+}
+
+.success-hoverable{
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  transition: transform 0.2s ease;
+}
+
+.success-hoverable:hover{
+  background-color: #eeffeb;
+  transform: scale(1.02)
+}

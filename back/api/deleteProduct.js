@@ -5,10 +5,9 @@ async function handle(req, res) {
     const {method} = req;
     await mongooseConnect();
     if(method === 'DELETE'){       
-        const {id} = req.query; 
-
-        const productDoc = await Product.deleteOne({
-            _id: id            
+        const {ids} = req.query;         
+        const productDoc = await Product.deleteMany({
+            _id: {$in: ids}            
         });
         res.json(productDoc);
     }

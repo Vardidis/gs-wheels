@@ -49,8 +49,13 @@ const Uploads = () => {
                     justifyContent={'space-between'}
                     alignItems={'center'}
                 >
-                    <Typography fontSize={24} fontWeight={600}>
-                        Uploads ({count})
+                    <Typography
+                        fontSize={24}
+                        sx={{
+                            color: '#232323'
+                        }}
+                    >
+                        Συνολικά Πολυμέσα ({count})
                     </Typography>    
                     <Stack
                         direction={'row'}
@@ -68,23 +73,22 @@ const Uploads = () => {
                             >
                                 Διαγραφη
                             </Button>     
-                        }                 
-                        <Box>
-                            <Button
-                                component="label"                                       
-                                role={undefined}                           
-                                tabIndex={-1}
-                                startIcon={<FileUploadIcon />}
-                                sx={{
-                                    bgcolor: '#e5e8f3',
-                                    padding: '8px 24px',
-                                    color: '#232323'
-                                }}
-                            >
-                                <input ref={fileInputRef} onChange={handleUpload} style={{ display: 'none' }} type="file" accept=".jpg,.jpeg"/>
-                                Ανεβαστε αρχειο                        
-                            </Button>       
-                        </Box>                                 
+                        }                           
+                        <Button
+                            className={'hoverable'}
+                            component="label"                                       
+                            role={undefined}                           
+                            tabIndex={-1}
+                            startIcon={<FileUploadIcon />}
+                            sx={{
+                                bgcolor: '#e5e8f3',
+                                padding: '8px 24px',
+                                color: '#232323'
+                            }}
+                        >
+                            <input ref={fileInputRef} onChange={handleUpload} style={{ display: 'none' }} type="file" accept=".jpg,.jpeg"/>
+                            Ανεβαστε αρχειο                        
+                        </Button>                                                                                                                                               
                     </Stack>
                 </Stack>                  
                 <Box
@@ -93,15 +97,7 @@ const Uploads = () => {
                         justifyContent: 'center'
                     }}
                 >
-                    <Box
-                        sx={{
-                            padding: '8px 24px',
-                            bgcolor: '#e5e8f3',
-                            borderRadius: 3,
-                            maxHeight: '60vh',
-                            overflowY: 'auto'
-                        }}
-                    >
+                    <Box>
                         <UploadTable item={deleteImg} setItem={setDeleteImg}/>
                     </Box>  
                 </Box>                                                                          

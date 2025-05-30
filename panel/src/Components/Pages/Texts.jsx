@@ -22,12 +22,7 @@ const TitleBox = ({title, text, func, setFunc, index}) => {
 
   return(
     <Stack
-      spacing={1}
-      sx={{
-        bgcolor: '#231F20',
-        padding: 2,
-        borderRadius: 3,  
-      }}
+      spacing={1}      
     >
       <TextField
         onChange={(e)=>handleChange(e, 'title')}
@@ -35,15 +30,12 @@ const TitleBox = ({title, text, func, setFunc, index}) => {
         value={func.items[index].title}
         sx={{
           "& .MuiInputBase-root": {
-            color: "white",
-            bgcolor: '#231F20'            
-          },
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white"
-          },
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#231F20"
-          }
+            color: "#231F20",
+            bgcolor: '#f5f5f5',
+            borderRadius: 2,
+            border: 'none',
+            fontWeight: 'bold'
+          }  
         }}
       />   
       <TextField
@@ -53,15 +45,10 @@ const TitleBox = ({title, text, func, setFunc, index}) => {
         multiline
         sx={{
           "& .MuiInputBase-root": {
-            color: "white",
-            bgcolor: '#231F20'
-          },
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white"
-          },
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#231F20"
-          }   
+            color: "#231F20",
+            bgcolor: '#f5f5f5', 
+            borderRadius: 3           
+          }          
         }}
       />   
     </Stack>     
@@ -104,19 +91,11 @@ const PlaceBox = ({text, func, setFunc, tag}) => {
       fullWidth
       sx={{
         "& .MuiInputBase-root": {
-          color: "white",
-          bgcolor: '#231F20',
+          color: "#231F20",
+          bgcolor: '#f5f5f5',
           borderRadius: 3,
           padding: 3
-        },
-        "&:hover .MuiOutlinedInput-notchedOutline": {
-          borderColor: "white"
-        },
-        "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#231F20"
-        }, 
-        
-        borderRadius: 3
+        }        
       }}
     />
   );
@@ -132,13 +111,7 @@ const TextBox = ({text, func, index, setFunc}) => {
   }  
 
   return(
-    <Stack
-      sx={{
-        bgcolor: '#231F20',
-        padding: 2,
-        borderRadius: 3,           
-      }}
-    >                        
+    <Stack>                        
       <TextField
         onChange={handleChange}
         defaultValue={text}
@@ -146,15 +119,10 @@ const TextBox = ({text, func, index, setFunc}) => {
         multiline
         sx={{
           "& .MuiInputBase-root": {
-            color: "white",
-            bgcolor: '#231F20'
-          },
-          "&:hover .MuiOutlinedInput-notchedOutline": {
-            borderColor: "white"
-          },
-          "& .MuiOutlinedInput-notchedOutline": {
-            borderColor: "#231F20"
-          }   
+            color: "#231F20",
+            bgcolor: '#f5f5f5',
+            borderRadius: 3
+          }         
         }}
       />   
     </Stack>     
@@ -275,15 +243,9 @@ const Texts = () => {
   }
 
   return (
-    <Box
-      sx={{      
-        display: 'flex',            
-        width: '100%'
-      }}
-    >
-      {console.log(allTexts[0])}
+    <Box>      
       <Snackbar
-          anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
+          anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
           autoHideDuration={3000}
           open={snackbarOpen}
           onClose={()=>setSnackbarOpen(false)}
@@ -292,7 +254,7 @@ const Texts = () => {
       <Popper id={id} open={open} anchorEl={anchorEl} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Box sx={{ borderRadius: 2, p: 2, bgcolor: '#231F20', color: 'white' }}>
+            <Box sx={{ borderRadius: 2, p: 2, bgcolor: 'white', color: '#231F20' }}>
               <Stack spacing={1.5}>
                 <Typography sx={{ cursor: 'pointer' }} onClick={()=>{setStage(2); setOpen(false)}}>
                   Λειτουργική Αποκατάσταση
@@ -324,8 +286,8 @@ const Texts = () => {
         alignItems={'center'}
       >
         <Grid container
-          rowGap={1}          
-          alignItems={'center'}
+          rowSpacing={1}          
+          columnSpacing={0}          
         >      
           <Grid item>               
             <Stack
@@ -334,11 +296,11 @@ const Texts = () => {
               spacing={1}
               alignItems={'center'}
               sx={{
-                padding: '6px 32px',
-                borderRadius: 5,                
+                padding: '4px 24px',
+                borderRadius: 2,                
                 cursor: 'pointer',                
-                bgcolor: stage === 0 ? '#e5e8f3' : 'transparent',      
-                color: '#231F20',   
+                bgcolor: stage === 0 ? '#231F20' : 'transparent',      
+                color: stage === 0 ? 'white' : '#231F20',   
               }}  
             >
               <FontAwesomeIcon
@@ -368,11 +330,11 @@ const Texts = () => {
               spacing={1}
               alignItems={'center'}
               sx={{
-                padding: '6px 32px',
-                borderRadius: 5,                
+                padding: '4px 24px',
+                borderRadius: 2,                
                 cursor: 'pointer',                
-                bgcolor: stage === 1 ? '#e5e8f3' : 'transparent',      
-                color: '#231F20',   
+                bgcolor: stage === 1 ? '#231F20' : 'transparent',      
+                color: stage === 1 ? 'white' : '#231F20',   
               }}  
             >
               <FontAwesomeIcon id='mob-1' icon={faAddressCard} size={'sm'}/>
@@ -398,11 +360,11 @@ const Texts = () => {
               spacing={1}
               alignItems={'center'}
               sx={{
-                padding: '6px 32px',
-                borderRadius: 5,                
+                padding: '4px 24px',
+                borderRadius: 2,                
                 cursor: 'pointer',                
-                bgcolor: stage === 2 ? '#e5e8f3' : 'transparent',      
-                color: '#231F20',   
+                bgcolor: (stage === 2 || stage === 3 || stage === 4 || stage === 5) ? '#231F20' : 'transparent',      
+                color: (stage === 2 || stage === 3 || stage === 4 || stage === 5) ? 'white' : '#231F20',   
               }}  
             >
               <FontAwesomeIcon id='mob-2' icon={faGraduationCap} size={'sm'}/>
@@ -414,32 +376,49 @@ const Texts = () => {
             </Stack>  
           </Grid>          
         </Grid>
-        <Button
+        <Box
+          className={'shady'}
           onClick={handleSave}
           sx={{
             padding: '8px 24px',
             borderRadius: 2,
-            bgcolor: '#e5e8f3',
-            color: '#231F20'
+            bgcolor: '#231F20',
+            color: 'white'
           }}
         >
           <Typography
-            fontSize={13}
+            fontSize={14}
             fontWeight={'bold'}
           >
             Αποθηκευση
           </Typography>          
-        </Button>
+        </Box>
       </Stack>                      
         {stage === 0 && (         
             <Grid container
-              columnGap={2}
-              rowSpacing={2}                 
+              columnSpacing={1}
+              rowSpacing={1}                 
             > 
               {allTexts[0].items.map((text, index) => {               
                 return(
-                  <Grid item>
-                    <TitleBox title={text.title} text={text.text} func={main} setFunc={setMain} index={index}/>
+                  <Grid item
+                    size={{
+                      xxs: 12,
+                      md: 6
+                    }}
+                    sx={{
+                      bgcolor: 'white',
+                      padding: 2,
+                      borderRadius: 3,  
+                    }}
+                  >
+                    <TitleBox 
+                      title={text.title}
+                      text={text.text}
+                      func={main}
+                      setFunc={setMain}
+                      index={index}
+                    />
                   </Grid>
                 );
               })}          
@@ -448,21 +427,39 @@ const Texts = () => {
         {stage === 1 && (
           <Stack spacing={10}>       
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Για άτομα με αναπηρία
                 </Typography>
                 <PlaceBox text={allTexts[8].placeText} func={about} tag={0} setFunc={setAbout}/>
                 <PlaceBox text={allTexts[8].placeText2} func={about} tag={1} setFunc={setAbout}/>            
                 <Grid container
-                  columnGap={2}
-                  rowSpacing={2}               
+                  columnSpacing={1}
+                  rowSpacing={1}               
                 >
                   {allTexts[8].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}            
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,           
+                        }}           
                       >
-                        <TextBox title={text.title} text={text.text} func={about} index={index} setFunc={setAbout}/>
+                        <TextBox
+                          title={text.title}
+                          text={text.text}
+                          func={about}
+                          index={index}
+                          setFunc={setAbout}
+                        />
                       </Grid>
                     );
                   })}          
@@ -470,15 +467,30 @@ const Texts = () => {
                 <PlaceBox text={allTexts[8].placeText3} func={about} tag={2} setFunc={setAbout}/>    
               </Stack>                       
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Για οικογένειες
                 </Typography>       
                 <PlaceBox text={allTexts[9].placeText} func={about2} tag={0} setFunc={setAbout2}/>    
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >              
                   {allTexts[9].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}        
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,           
+                        }}        
                       >
                         <TextBox text={text.text} setFunc={setAbout2} func={about2} index={index}/>
                       </Grid>
@@ -492,7 +504,11 @@ const Texts = () => {
               }}
             >
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Για αλληλεπίδραση με την κοινωνία
                 </Typography>
                 <PlaceBox text={allTexts[10].placeText} func={about3} tag={0} setFunc={setAbout3}/>               
@@ -504,7 +520,11 @@ const Texts = () => {
               }}
             >
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Ως εργαλείο ενδυνάμωσης
                 </Typography>
                 <PlaceBox text={allTexts[11].placeText} func={about4} tag={0} setFunc={setAbout4}/>               
@@ -520,15 +540,30 @@ const Texts = () => {
               }}
             >
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Βασικές Έννοιες
                 </Typography>
                 <PlaceBox text={allTexts[1].placeText} func={services} tag={0} setFunc={setServices}/>
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >
                   {allTexts[1].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}     
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}             
                       >
                         <TextBox text={text.text} func={services} index={index} setFunc={setServices}/>
                       </Grid>
@@ -543,14 +578,29 @@ const Texts = () => {
               }}
             >
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Μοντέλα Αποκατάστασης
                 </Typography>       
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >              
                   {allTexts[2].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}     
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                 
                       >
                         <TitleBox title={text.title} text={text.text} func={services2} index={index} setFunc={setServices2}/>
                       </Grid>
@@ -564,27 +614,53 @@ const Texts = () => {
                 borderRadius: 2
               }}
             >
-              <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+              <Stack spacing={6}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Η GS Wheelchairs και ο ρόλος της
                 </Typography>
                 <PlaceBox text={allTexts[3].placeText} func={services3} tag={0} setFunc={setServices3}/>
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >
                   {allTexts[3].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}    
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                 
                       >
                         <TextBox text={text.text} func={services3} index={index} setFunc={setServices3}/>
                       </Grid>
                     );
                   })}          
                 </Grid>  
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >
                   {allTexts[3].items2.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}      
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                 
                       >
                         <TextBox text={text.text} func={services3} index={index} setFunc={setServices3}/>
                       </Grid>
@@ -603,14 +679,29 @@ const Texts = () => {
               }}
             >
               <Stack spacing={2}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Βασικές Αρχές
                 </Typography>               
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >
                   {allTexts[4].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                            
                       >
                         <TitleBox title={text.title} text={text.text} func={training} index={index} setFunc={setTraining}/>
                       </Grid>
@@ -625,36 +716,73 @@ const Texts = () => {
               }}
             >
               <Stack spacing={5}>
-                <Typography fontSize={22} fontWeight={'bold'}>
+                <Typography
+                  fontSize={22}
+                  fontWeight={'bold'}
+                  textAlign={'center'}
+                >
                   Προσαρμογή Αμαξιδίου
                 </Typography>       
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >
                   {allTexts[5].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                                               
                       >
                         <TitleBox title={text.title} text={text.text} func={training2} index={index} setFunc={setTraining2}/>
                       </Grid>
                     );
                   })}          
                 </Grid>          
-                <Grid container columnGap={2} rowSpacing={2} justifyContent={'center'}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >
                   {allTexts[5].items2.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                                               
                       >
                         <TitleBox title={text.title} text={text.text} func={training2} index={index} setFunc={setTraining2}/>
                       </Grid>
                     );
                   })}          
                 </Grid>   
-                <Grid container columnGap={2} rowSpacing={2} justifyContent={'center'}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}
+                >    
                   {allTexts[5].items3.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}                                               
                       >
                         <TitleBox title={text.title} text={text.text} func={training2} index={index} setFunc={setTraining2}/>
                       </Grid>
@@ -674,22 +802,44 @@ const Texts = () => {
             >
               <Stack spacing={5}>                     
                 <PlaceBox text={allTexts[6].placeText} func={inter} tag={0} setFunc={setInter}/>
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}               
+                >
                   {allTexts[6].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}     
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}             
                       >
                         <TitleBox title={text.title} text={text.text} func={inter} index={index} setFunc={setInter}/>
                       </Grid>
                     );
                   })}          
                 </Grid>
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}               
+                >           
                   {allTexts[6].items2.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}     
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}             
                       >
                         <TitleBox title={text.title} text={text.text} func={inter} index={index} setFunc={setInter}/>
                       </Grid>
@@ -709,11 +859,22 @@ const Texts = () => {
             >
               <Stack spacing={5}>                     
                 <PlaceBox text={allTexts[7].placeText} func={coach} tag={0} setFunc={setCoach}/>
-                <Grid container columnGap={2} rowSpacing={2}>              
+                <Grid container
+                  columnSpacing={1}
+                  rowSpacing={1}               
+                >           
                   {allTexts[7].items.map((text, index) => {
                     return(
                       <Grid item
-                        lg={3.85}                       
+                        size={{
+                          xxs: 12,
+                          md: 6
+                        }}     
+                        sx={{
+                          bgcolor: 'white',
+                          padding: 2,
+                          borderRadius: 3,  
+                        }}             
                       >
                         <TextBox text={text.text} func={coach} index={index} setFunc={setCoach}/>
                       </Grid>

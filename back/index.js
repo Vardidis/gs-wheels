@@ -7,9 +7,11 @@ const productDelete = require('./api/deleteProduct');
 const productsFetch = require('./api/fetchProducts');
 const messageSubmit = require('./api/submitMessage');
 const messagesFetch = require('./api/fetchMessages');
+const fetchAllStories = require('./api/fetchAllStories');
 const messageRead = require('./api/readMessage');
 const {fetchAllImages} = require('./api/fetchImages');
 const fetchAllTexts = require('./api/allTexts');
+
 const uploadImage = require('./controllers/uploadFile');
 const {deleteImage} = require('./controllers/deleteFile');
 const textUpdate = require('./controllers/editText');
@@ -52,6 +54,7 @@ app.use('/api/submit-message', messageSubmit);
 app.use('/api/all-messages', messagesFetch);
 app.use('/api/read-message', messageRead);
 app.use('/api/all-texts', fetchAllTexts);
+app.use('/api/all-success-stories', fetchAllStories);
 
 app.post('/upload-image', upload.single('image'), async(req, res) => {
     await uploadImage(req, res);
